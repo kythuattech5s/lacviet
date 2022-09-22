@@ -21,9 +21,7 @@
 </div>
 <section class="2xl:py-10 py-6">
     <div class="container">
-        <p class="title-all text-center uppercase 2xl:text-[2rem] lg:text-[1.5rem] text-[1.25rem] text-[#0557ac] font-semibold 2xl:mb-10 mb-6">
-            4 LÝ DO NÊN CHỌN lạc việt intech
-        </p>
+        <p class="title-all text-center uppercase 2xl:text-[2rem] lg:text-[1.5rem] text-[1.25rem] text-[#0557ac] font-semibold 2xl:mb-10 mb-6">{[title_reson_choose_home]}</p>
         <div class="grid grid-cols-2 md:grid-cols-4 sm:gap-4 gap-2">
             @foreach ($listReasonChoose as $key => $itemReasonChoose)
                 <div class="col-span-1 wow flipInY" data-wow-delay="{{($key + 1)*0.02}}s">
@@ -39,10 +37,9 @@
         </div>
     </div>
 </section>
-<section class="section-service__index 2xl:py-10 py-6 bg-no-repeat bg-cover relative after:bg-[rgba(255,255,255,.5)] after:absolute after:top-0 after:left-0 after:w-full after:h-full"
-    style="background-image: url(theme/frontend/images/bg-service.jpg);">
+<section class="section-service__index 2xl:py-10 py-6 bg-no-repeat bg-cover relative after:bg-[rgba(255,255,255,.5)] after:absolute after:top-0 after:left-0 after:w-full after:h-full" style="background-image: url({Ibg_service_home.imgI};">
     <div class="container relative z-[1]">
-        <p class="title-all text-center uppercase 2xl:text-[2rem] lg:text-[1.5rem] text-[1.25rem] text-[#0557ac] font-semibold lg:mb-24 mb-6">Dịch vụ nổi bật</p>
+        <p class="title-all text-center uppercase 2xl:text-[2rem] lg:text-[1.5rem] text-[1.25rem] text-[#0557ac] font-semibold lg:mb-24 mb-6">{[title_service_home]}</p>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             @foreach ($listHotService as $key => $itemHotService)
                 <div class="col-span-1 wow fadeInUp" data-wow-delay="{{($key + 1)*0.02}}s">

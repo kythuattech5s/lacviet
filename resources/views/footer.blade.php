@@ -3,41 +3,36 @@
         <div class="container">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:gap-12 gap-4">
                 <div class="col-span-1 md:col-span-2 lg:col-span-1">
-                    <a href="#" title="" class="logo-footer block 2xl:mb-12 mb-6">
-                        <img src="theme/frontend/images/logo-footer.png" alt="">
+                    <a href="{{\VRoute::get("home")}}" title="Trang chủ" class="logo-footer block 2xl:mb-12 mb-6">
+                        @include('image_loader.config.all',['config_key'=>'logo_footer','noLazyLoad'=>1])
                     </a>
-                    <div class="content-footer text-white mb-4 text-justify">
-                        Nha khoa Lạc Việt Intech là trung tâm trồng răng, chỉnh nha chuyên sâu được hình thành từ năm
-                        2007. Từ
-                        những ngày thành lập, Lạc Việt Intech đã được định hướng phát triển là đơn vị nha khoa chuyên
-                        biệt và
-                        chuyên sâu về hai lĩnh vực: cấy ghép implant nha khoa và niềng răng – chỉnh nha.
-                    </div>
+                    <div class="content-footer text-white mb-4 text-justify">{[footer_content]}</div>
                     <p class="item-info__footer relative pl-6 mb-4 last:mb-0">
                         <i class="fa fa-phone absolute top-[4px] left-0" aria-hidden="true"></i>
-                        <a href="tel:19006421" title="hotline" class="text font-bold">
-                            19006421
-                        </a>
+                        <a href="tel:{[hotline]}" title="hotline" class="text font-bold">{[hotline]}</a>
                     </p>
                     <p class="item-info__footer relative pl-6 mb-4 last:mb-0">
                         <i class="fa fa-bell absolute top-[4px] left-0" aria-hidden="true"></i>
                         <span class="text font-bold">
-                            Giờ mở cửa: 08:00 - 18:30
+                            Giờ mở cửa: {[time_open]}
                         </span>
                     </p>
                     <p class="item-info__footer relative pl-6 mb-4 last:mb-0">
                         <i class="fa fa-calendar absolute top-[4px] left-0" aria-hidden="true"></i>
                         <span class="text font-bold">
-                            Ngày hoạt động: Thứ 2 - Chủ nhật
+                            Ngày hoạt động: {[time_work]}
                         </span>
                     </p>
-                    <div class="img-certifi hidden md:block 2xl:mt-10 mt-6">
-                        <img src="theme/frontend/images/bct.png" alt="">
-                    </div>
+                    @if (SettingHelper::getSetting('link_dky_bct') != '')
+                        <div class="img-certifi hidden md:block 2xl:mt-10 mt-6">
+                            <a href="{[link_dky_bct]}" target="_blank" rel="noopener" title="Đã đăng lý bộ công thương">
+                                <img src="theme/frontend/images/bct.png" alt="Đã đăng lý bộ công thương">
+                            </a>
+                        </div>
+                    @endif
                 </div>
                 <div class="col-span-1 lg:pt-12">
-                    <p
-                        class="title-footer w-fit relative after:h-[2px] after:w-full after:bg-[#f7d274] after:block after:mt-2 font-semibold text-[#f7d274] uppercase 2xl:mb-6 mb-4">
+                    <p class="title-footer w-fit relative after:h-[2px] after:w-full after:bg-[#f7d274] after:block after:mt-2 font-semibold text-[#f7d274] uppercase 2xl:mb-6 mb-4">
                         Địa chỉ các chi nhánh
                     </p>
                     <p class="zone font-bold uppercase pl-6 relative text-[#f7d274] mb-4">
@@ -65,27 +60,22 @@
                     </ul>
                 </div>
                 <div class="col-span-1 lg:pt-12">
-                    <p
-                        class="title-footer w-fit relative after:h-[2px] after:w-full after:bg-[#f7d274] after:block after:mt-2 font-semibold text-[#f7d274] uppercase 2xl:mb-6 mb-4">
-                        Kết nối với chúng tôi
-                    </p>
+                    <p class="title-footer w-fit relative after:h-[2px] after:w-full after:bg-[#f7d274] after:block after:mt-2 font-semibold text-[#f7d274] uppercase 2xl:mb-6 mb-4">Kết nối với chúng tôi</p>
                     <ul class="social-footer">
                         <li class="inline-block mr-5 last:mr-0">
-                            <a href="" title="Youtube"
-                                class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-lg bg-white text-[#044da8] lg:text-[1.875rem] text-[1.25rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white">
-                                <i class="fa fa-youtube-play" aria-hidden="true"></i>
-                            </a>
+                            <a href="{[facebook]}" title="Youtube" target="_blank" rel="noopener" class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-lg bg-white text-[#044da8] lg:text-[1.875rem] text-[1.25rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
                         </li>
                         <li class="inline-block mr-5 last:mr-0">
-                            <a href="" title="Facebook"
-                                class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-lg bg-white text-[#044da8] lg:text-[1.875rem] text-[1.25rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white">
-                                <i class="fa fa-facebook" aria-hidden="true"></i>
-                            </a>
+                            <a href="{[youtube]}" title="Facebook" target="_blank" rel="noopener" class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-lg bg-white text-[#044da8] lg:text-[1.875rem] text-[1.25rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                         </li>
                     </ul>
-                    <div class="img-certifi block md:hidden 2xl:mt-10 mt-6">
-                        <img src="theme/frontend/images/bct.png" alt="">
-                    </div>
+                    @if (SettingHelper::getSetting('link_dky_bct') != '')
+                        <div class="img-certifi block md:hidden 2xl:mt-10 mt-6">
+                            <a href="{[link_dky_bct]}" target="_blank" rel="noopener" title="Đã đăng lý bộ công thương">
+                                <img src="theme/frontend/images/bct.png" alt="Đã đăng lý bộ công thương">
+                            </a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -94,15 +84,15 @@
         <div class="container">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <div class="col-span-1">
-                    <p class="copyright text-white text-center lg:text-left">NhaKhoaLacVietIntech@2022. All Rights
-                        Reserved.</p>
+                    <p class="copyright text-white text-center lg:text-left">{[copy_right]}</p>
                 </div>
                 <div class="col-span-1 hidden lg:block text-center">
-                    <a href="#" title="" class="link-footer text-white inline-block relative">Chính sách và điều
-                        khoản</a>
-                    <a href="#" title="" class="link-footer text-white inline-block relative">Chính sách bảo mật thông
-                        tin cá
-                        nhân</a>
+                    @php
+                        $menus = \App\Models\Menu::where('menu_category_id',2)->get();
+                    @endphp
+                    @foreach ($menus as $itemMenu)
+                        <a href="{{$itemMenu->link == '' ? 'javascript:void(0)':trim($menu->link,'/').'/'}}" title="{{Support::show($itemMenu,'name')}}" class="link-footer text-white inline-block relative" {!!Support::showNofollow($itemMenu)!!}>{{Support::show($itemMenu,'name')}}</a>
+                    @endforeach
                 </div>
             </div>
         </div>
