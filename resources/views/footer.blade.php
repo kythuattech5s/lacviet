@@ -1,4 +1,4 @@
-<footer class="footer bg-no-repeat bg-cover" style="background-image: url(theme/frontend/images/bg-footer.jpg);">
+<footer class="footer bg-no-repeat bg-cover" style="background-image: url({Ibg_footer.imgI});">
     <div class="footer-top 2xl:pt-10 py-6">
         <div class="container">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:gap-12 gap-4">
@@ -35,29 +35,20 @@
                     <p class="title-footer w-fit relative after:h-[2px] after:w-full after:bg-[#f7d274] after:block after:mt-2 font-semibold text-[#f7d274] uppercase 2xl:mb-6 mb-4">
                         Địa chỉ các chi nhánh
                     </p>
-                    <p class="zone font-bold uppercase pl-6 relative text-[#f7d274] mb-4">
-                        <i class="fa fa-map-marker absolute top-[4px] left-0" aria-hidden="true"></i>
-                        Hà Nội
-                    </p>
-                    <ul class="list-branch mb-4 last:mb-0 ml-4">
-                        <li class="mb-4 text-white last:mb-0">Số 160 Tây Sơn, Đống Đa, Hà Nội.</li>
-                        <li class="mb-4 text-white last:mb-0">Số 9 Nguyễn Văn Huyên, Cầu Giấy, Hà Nội.</li>
-                        <li class="mb-4 text-white last:mb-0">Số 426 Minh Khai, Hai Bà Trưng, Hà Nội.</li>
-                    </ul>
-                    <p class="zone font-bold uppercase pl-6 relative text-[#f7d274] mb-4">
-                        <i class="fa fa-map-marker absolute top-[4px] left-0" aria-hidden="true"></i>
-                        Hải Phòng
-                    </p>
-                    <ul class="list-branch mb-4 last:mb-0 ml-4">
-                        <li class="mb-4 text-white last:mb-0">Số 107 Tô Hiệu, Lê Chân, TP Hải Phòng.</li>
-                    </ul>
-                    <p class="zone font-bold uppercase pl-6 relative text-[#f7d274] mb-4">
-                        <i class="fa fa-map-marker absolute top-[4px] left-0" aria-hidden="true"></i>
-                        Nghệ An
-                    </p>
-                    <ul class="list-branch mb-4 last:mb-0 ml-4">
-                        <li class="mb-4 text-white last:mb-0">Số 22 Cao Thắng, P. Hồng Sơn, TP Vinh, Nghệ An.</li>
-                    </ul>
+                    @php
+                        $listBranchSystemProvince = \App\Models\Province::whereHas('branchSystem')->with('branchSystem')->get();
+                    @endphp
+                    @foreach ($listBranchSystemProvince as $itemBranchSystemProvince)
+                        <p class="zone font-bold uppercase pl-6 relative text-[#f7d274] mb-4">
+                            <i class="fa fa-map-marker absolute top-[4px] left-0" aria-hidden="true"></i>
+                            {{Support::show($itemBranchSystemProvince,'name')}}
+                        </p>
+                        <ul class="list-branch mb-4 last:mb-0 ml-4">
+                            @foreach ($itemBranchSystemProvince->branchSystem as $itemBranchSystem)
+                                <li class="mb-4 text-white last:mb-0">{{Support::show($itemBranchSystem,'full_address')}}</li>
+                            @endforeach
+                        </ul>
+                    @endforeach
                 </div>
                 <div class="col-span-1 lg:pt-12">
                     <p class="title-footer w-fit relative after:h-[2px] after:w-full after:bg-[#f7d274] after:block after:mt-2 font-semibold text-[#f7d274] uppercase 2xl:mb-6 mb-4">Kết nối với chúng tôi</p>

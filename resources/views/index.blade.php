@@ -38,7 +38,6 @@
     <script src="theme/frontend/tech5s_js/libraries/Tech.js" defer></script>
     <script src="theme/frontend/tech5s_js/libraries/BackToTop.js" defer></script>
     <script src="theme/frontend/js/wow.min.js" defer></script>
-    <script src="theme/frontend/js/fslightbox.js" defer></script>
     <script src="theme/frontend/js/swiper-bundle.min.js" defer></script>
     <script src="theme/frontend/js/slider.js" defer></script>
     @yield('js')

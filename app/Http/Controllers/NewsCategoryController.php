@@ -1,64 +1,27 @@
 <?php
-
 namespace App\Http\Controllers;
-
-
-
-use Illuminate\Http\Request;
-
 use App\Models\{NewsCategory,News};
-
-use Support;
-
-
-
 class NewsCategoryController extends Controller
-
 {
-
     public function all($request, $route, $link)
-
     {
-
         $currentItem = \vanhenry\manager\model\VRoute::find($route->id);
-
         $listCateChild = NewsCategory::act()->where('type_slug',1)->ord()->get()->all();
-
-        return view('news_categories.all',compact('currentItem','listCateChild')); 
-
+        $listHotNews = News::act()->where('hot',1)->publish()->orderBy('time_published','desc')->limit(3)->get();
+        return view('news_categories.all',compact('currentItem','listCateChild','listHotNews')); 
     }
-
-    public function allInstruct($request, $route, $link)
-
+    public function allNews($request, $route, $link)
     {
-
         $currentItem = \vanhenry\manager\model\VRoute::find($route->id);
-
-        $listCateChild = NewsCategory::act()->where('type_slug',2)->ord()->get()->all();
-
-        return view('news_categories.all',compact('currentItem','listCateChild')); 
-
+        $listItems = News::act()->orderBy('time_published','desc')->paginate(10);
+        return view('news_categories.all_news',compact('currentItem','listItems')); 
     }
-
     public function view($request, $route, $link){
-
         $currentItem = NewsCategory::slug($link)->act()->first();
-
         if ($currentItem == null) {
-
             abort(404);
-
         }
-
-        $listCateChild = NewsCategory::where('parent',$currentItem->id)->act()->get();
-
-        $listCateChildShow = NewsCategory::where('parent',$currentItem->id)->act()->Ord()->get();
-
-        $listItems = $currentItem->news()->act()->orderBy('time_published','desc')->paginate(12);
-
-        return view('news_categories.view', compact('currentItem','listItems','listCateChild','listCateChildShow'));
-
+        $listItems = $currentItem->news()->act()->orderBy('time_published','desc')->paginate(10);
+        return view('news_categories.view', compact('currentItem','listItems'));
     }
-
 }
-

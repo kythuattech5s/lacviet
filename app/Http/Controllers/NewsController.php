@@ -16,13 +16,14 @@ class NewsController extends Controller
         $currentItem->count_view = (int)$currentItem->count_view + 1;
         $currentItem->save();
         $parent = $currentItem->category()->act()->orderBy('id','desc')->first();
-        $tags = $currentItem->tags()->act()->get()->all();
-        $newsRelateds = $currentItem->getRelatesCollection()->all();
+        $tags = $currentItem->tags()->act()->get();
+        $newsRelateds = $currentItem->getRelatesCollection();
         $listIdNewSelect = explode(',',$currentItem->same_topic);
         array_push($listIdNewSelect,-1);
         $listNewsSelect = News::whereIn('id',$listIdNewSelect)->act()->publish()->get()->all();
-        $videoRelate = VideoGallery::find($currentItem->video_id);
         $dataContent = \Support::createdTocContent($currentItem->content);
-        return view('news.view',compact('currentItem','tags','newsRelateds','parent','tags','dataContent','videoRelate','listNewsSelect'));
+        $listMostViewNews = News::act()->where('id','!=',$currentItem->id)->publish()->orderBy('count_view','desc')->limit(5)->get();
+        $listHotNews = News::act()->where('hot',1)->publish()->orderBy('time_published','desc')->limit(2)->get();
+        return view('news.view',compact('currentItem','tags','newsRelateds','parent','tags','dataContent','listNewsSelect','listMostViewNews','listHotNews'));
     }
 }

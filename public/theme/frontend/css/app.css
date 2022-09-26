@@ -17,3 +17,58 @@ html[lang='en'] .btn-change-lang-en {
 html[lang='vi'] .btn-change-lang-vi,html[lang='auto'] .btn-change-lang-vi{
     filter: grayscale(0);
 }
+#toc_container {
+    background: #edf9ff;
+    border: 1px solid #eeeeee;
+    padding: 10px;
+    width: 100%;
+    font-size: 15px;
+    border-radius: 10px;
+}
+#toc_container .toc-header {
+    font-size: 18px;
+    position: relative;
+}
+#toc_container .toc-header .icon {
+    display: inline-block;
+    margin-right: 5px;
+}
+#toc_container .toc_list {
+    margin-top: 10px;
+}
+#toc_container .toc-header .toggle-content-toc.active {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+#toc_container .toc-header .toggle-content-toc {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    position: absolute;
+    width: 27px;
+    height: 27px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+#toc_container ul li {
+    font-size: 15px;
+    margin-top: 0.5em;
+}
+#toc_container ul li a {
+    font-weight: normal!important;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
