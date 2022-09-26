@@ -10,6 +10,7 @@
     <link href="theme/frontend/css/animate.min.css" type="text/css" rel="stylesheet" />
     <link href="theme/frontend/css/swiper-bundle.min.css" type="text/css" rel="stylesheet" />
     <link href="theme/frontend/css/lightbox.css" type="text/css" rel="stylesheet" />
+    <link href="theme/frontend/asset/css/toastify.css" type="text/css" rel="stylesheet" />
     @yield('cssl')
     <link href="theme/frontend/css/app.css" type="text/css" rel="stylesheet" />
     <link href="theme/frontend/css/output.css" type="text/css" rel="stylesheet" />
@@ -34,6 +35,10 @@
     @include('gg_js')
     {[CMS_FOOTER]}
     @yield('jsl')
+    <script src="theme/frontend/asset/js/base.js" defer></script>
+    <script src="theme/frontend/asset/js/toastify.js" defer></script>
+    <script src="theme/frontend/asset/js/validator.js" defer></script>
+    <script src="theme/frontend/asset/js/xhr.js" defer></script>
     <script src="theme/frontend/tech5s_js/tech5s_base.min.js" defer></script>
     <script src="theme/frontend/tech5s_js/libraries/Tech.js" defer></script>
     <script src="theme/frontend/tech5s_js/libraries/BackToTop.js" defer></script>

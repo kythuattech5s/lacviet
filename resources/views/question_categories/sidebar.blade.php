@@ -1,5 +1,7 @@
 @php
-    $listCate = \App\Models\QuestionCategory::act()->get();
+    $listCate = \App\Models\QuestionCategory::act()->where('parent',0)->with(['child'=>function($q){
+                                                        $q->act();
+                                                    }])->get();
 @endphp
 @if (count($listCate) > 0)
     <div class="nav-category">
@@ -9,6 +11,15 @@
             @foreach ($listCate as $itemCate)
                 <li>
                     <a href="{{Support::show($itemCate,'slug')}}" title="{{Support::show($itemCate,'name')}}" class="block py-2 font-bold text-[#028cde] 2xl:text-[1.375rem] lg:text[1.125rem] text-[0.875rem]">{{Support::show($itemCate,'name')}}</a>
+                    @if (count($itemCate->child) > 0)
+                        <ul>
+                            @foreach ($itemCate->child as $itemCateChild)
+                                <li>
+                                    <a href="{{Support::show($itemCateChild,'slug')}}" title="{{Support::show($itemCateChild,'name')}}" class="block py-2 font-semibold text-[#7e7e7e] 2xl:text-[1.125rem]">{{Support::show($itemCateChild,'name')}}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
                 </li>
             @endforeach
         </ul>

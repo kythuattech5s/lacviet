@@ -44,33 +44,7 @@
 
         Chụp CT và MRI có gì khác nhau?
     </a>
-    <a href="#" title=""
-        class="question-related relative  font-semibold block text-[#131313] text-[0.875rem] mb-5 last:mb-0 pl-10">
-        <span
-            class="stt min-w-[26px] h-[26px] text-[0.625rem] text-white inline-flex items-center justify-center bg-[#028cde] absolute top-0 left-0">2</span>
-
-        Chỉ số CA 125 vượt ngưỡng thì có nguy cơ mắc
-    </a>
-    <a href="#" title=""
-        class="question-related relative  font-semibold block text-[#131313] text-[0.875rem] mb-5 last:mb-0 pl-10">
-        <span
-            class="stt min-w-[26px] h-[26px] text-[0.625rem] text-white inline-flex items-center justify-center bg-[#028cde] absolute top-0 left-0">3</span>
-
-        Vảy tai kèm theo ngứa tai là biểu hiện của bệnh gì?
-    </a>
-    <a href="#" title=""
-        class="question-related relative  font-semibold block text-[#131313] text-[0.875rem] mb-5 last:mb-0 pl-10">
-        <span
-            class="stt min-w-[26px] h-[26px] text-[0.625rem] text-white inline-flex items-center justify-center bg-[#028cde] absolute top-0 left-0">4</span>
-
-        Nội soi dạ dày đại tràng có được bảo hiểm y tế chi trả không?
-    </a>
-    <a href="#" title=""
-        class="question-related relative  font-semibold block text-[#131313] text-[0.875rem] mb-5 last:mb-0 pl-10">
-        <span
-            class="stt min-w-[26px] h-[26px] text-[0.625rem] text-white inline-flex items-center justify-center bg-[#028cde] absolute top-0 left-0">5</span>
-        Điều trị viêm đại tràng như thế nào?
-    </a>
+    
 </div>
 <p class="head-title__sidebar text-center font-semibold uppercase py-1 px-3 text-white bg-[#028cde] 2xl:text-[1.5rem] lg:text-[1.25rem] text-[1rem]">
     Đăng ký tư vấn

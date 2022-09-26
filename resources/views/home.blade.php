@@ -2,10 +2,14 @@
 @section('content')
 <div class="swiper-container slide-banner__index">
     <div class="swiper-wrapper">
-        @foreach ($listBanner as $itemBanner)
+        @foreach ($listBanner as $key => $itemBanner)
             <div class="swiper-slide">
                 <a href="{{$itemBanner->link != '' ? $itemBanner->link:'javascript:void(0)'}}" {!!Support::showNofollow($itemBanner)!!} title="{{$itemBanner->name}}" class="link-banner">
-                    @include('image_loader.all',['itemImage'=>$itemBanner,'key'=>'img'])
+                    @if ($key == 0)
+                        @include('image_loader.all',['itemImage'=>$itemBanner,'key'=>'img','noLazyLoad'=>1])
+                    @else
+                        @include('image_loader.all',['itemImage'=>$itemBanner,'key'=>'img'])
+                    @endif
                 </a>
             </div>
         @endforeach
@@ -49,86 +53,55 @@
         </div>
     </div>
 </section>
-<section class="section-faq__index 2xl:py-10 py-6 bg-no-repeat bg-cover" style="background-image: url({Ibg_frequent_question_home.imgI});">
-    <div class="container">
-        <div class="grid grid-cols-1 lg:grid-cols-5 2xl:gap-6 gap-4">
-            <div class="col-span-1 lg:col-span-3 wow fadeInLeft">
-                <div class="item-new__main">
-                    <a href="#" title=""
-                        class="img img__ block c-img 2xl:pt-[66%] pt-[55%] rounded-2xl overflow-hidden 2xl:mb-4 mb-2">
-                        <img src="theme/frontend/images/news-main.jpg" alt="">
-                    </a>
-                    <h3>
-                        <a href="#" title=""
-                            class="title text-white font-bold lg:text-[1.125rem] uppercase line-clamp-2 2xl:mb-4 mb-2">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                        </a>
-                    </h3>
-                    <div class="short_content text-white line-clamp-2 2xl:mb-4 mb-2">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic nemo delectus optio aut nam
-                        deleniti beatae,
-                        reiciendis a dolor ut. At quidem iure dolores nihil distinctio earum, esse dolore quos.
-                    </div>
-                    <a href="#" title="Xem thêm"
-                        class="btn-white inline-flex items-center justify-center lg:text-[0.875rem] py-3 px-4 rounded-3xl text-[#262626] bg-white transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
-                        Xem thêm
-                        <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i>
-                    </a>
+@if (count($listQuestion) > 0)
+    <section class="section-faq__index 2xl:py-10 py-6 bg-no-repeat bg-cover" style="background-image: url({Ibg_frequent_question_home.imgI});">
+        <div class="container">
+            @php
+                $bigItemQuestion = $listQuestion->first();
+            @endphp
+            <div class="grid grid-cols-1 lg:grid-cols-5 2xl:gap-6 gap-4">
+                <div class="col-span-1 lg:col-span-3 wow fadeInLeft">
+                    @if (isset($bigItemQuestion))
+                        <div class="item-new__main">
+                            <a href="{{Support::show($bigItemQuestion,'slug')}}" title="{{Support::show($bigItemQuestion,'name')}}" class="img img__ block c-img 2xl:pt-[66%] pt-[55%] rounded-2xl overflow-hidden 2xl:mb-4 mb-2">
+                                @include('image_loader.all',['itemImage'=>$bigItemQuestion,'key'=>'img'])
+                            </a>
+                            <h3>
+                                <a href="{{Support::show($bigItemQuestion,'slug')}}" title="{{Support::show($bigItemQuestion,'name')}}" class="title text-white font-bold lg:text-[1.125rem] uppercase line-clamp-2 2xl:mb-4 mb-2">{{Support::show($bigItemQuestion,'name')}}</a>
+                            </h3>
+                            <div class="short_content text-white line-clamp-2 2xl:mb-4 mb-2">{{Support::show($bigItemQuestion,'question')}}</div>
+                            <a href="{{Support::show($bigItemQuestion,'slug')}}" title="Xem thêm" class="btn-white inline-flex items-center justify-center lg:text-[0.875rem] py-3 px-4 rounded-3xl text-[#262626] bg-white transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
+                                Xem thêm
+                                <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    @endif
                 </div>
-            </div>
-            <div class="col-span-1 lg:col-span-2 wow fadeInRight">
-                <p class="title-all relative lg:before:absolute lg:before:left-0 lg:before:w-1 lg:before:h-[80%] lg:before:top-1/2 lg:before:-translate-y-1/2 lg:before:bg-white uppercase 2xl:text-[2rem] lg:text-[1.5rem] text-[1.25rem] text-white font-semibold 2xl:mb-8 mb-4 lg:pl-3 text-center lg:text-left">{[title_frequent_question_home]}</p>
-                <div class="module-faq 2xl:max-h-[530px] lg:max-h-[415px] lg:overflow-y-auto">
-                    <div class="item-faq 2xl:mb-5 last:mb-0 mb-4">
-                        <p class="question text-white 2xl:text-[1.125rem] mb-3">
-                            Lorem ipsum dolor sit amet, consectetur adipiscingiultrices gravida. Risus commodo viverra
-                            maecenas
-                            accumsan
-                        </p>
-                        <p class="time font-medium italic text-[0.813rem] mb-4 text-white">
-                            <i class="fa fa-calendar mr-2" aria-hidden="true"></i> 0707/2022
-                        </p>
-                        <a href="#" title="Xem thêm"
-                            class="btn-white inline-flex items-center justify-center lg:text-[0.875rem] py-2 px-6 rounded-3xl text-[#262626] bg-white transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
-                            Trả lời
-                            <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                    <div class="item-faq 2xl:mb-5 last:mb-0 mb-4">
-                        <p class="question text-white 2xl:text-[1.125rem] mb-3">
-                            Lorem ipsum dolor sit amet, consectetur adipiscingiultrices gravida. Risus commodo viverra
-                            maecenas
-                            accumsan
-                        </p>
-                        <p class="time font-medium italic text-[0.813rem] mb-4 text-white">
-                            <i class="fa fa-calendar mr-2" aria-hidden="true"></i> 0707/2022
-                        </p>
-                        <a href="#" title="Xem thêm"
-                            class="btn-white inline-flex items-center justify-center lg:text-[0.875rem] py-2 px-6 rounded-3xl text-[#262626] bg-white transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
-                            Trả lời
-                            <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                    <div class="item-faq 2xl:mb-5 last:mb-0 mb-4">
-                        <p class="question text-white 2xl:text-[1.125rem] mb-3">
-                            Lorem ipsum dolor sit amet, consectetur adipiscingiultrices gravida. Risus commodo viverra
-                            maecenas
-                            accumsan
-                        </p>
-                        <p class="time font-medium italic text-[0.813rem] mb-4 text-white">
-                            <i class="fa fa-calendar mr-2" aria-hidden="true"></i> 0707/2022
-                        </p>
-                        <a href="#" title="Xem thêm"
-                            class="btn-white inline-flex items-center justify-center lg:text-[0.875rem] py-2 px-6 rounded-3xl text-[#262626] bg-white transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
-                            Trả lời
-                            <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i>
-                        </a>
+                <div class="col-span-1 lg:col-span-2 wow fadeInRight">
+                    <p class="title-all relative lg:before:absolute lg:before:left-0 lg:before:w-1 lg:before:h-[80%] lg:before:top-1/2 lg:before:-translate-y-1/2 lg:before:bg-white uppercase 2xl:text-[2rem] lg:text-[1.5rem] text-[1.25rem] text-white font-semibold 2xl:mb-8 mb-4 lg:pl-3 text-center lg:text-left">{[title_frequent_question_home]}</p>
+                    <div class="module-faq 2xl:max-h-[530px] lg:max-h-[415px] lg:overflow-y-auto">
+                        @foreach ($listQuestion as $key => $itemSmallQuestion)
+                            @if ($key > 0)
+                                <div class="item-faq 2xl:mb-5 last:mb-0 mb-4">
+                                    <p class="question text-white 2xl:text-[1.125rem] mb-3">
+                                        {{Support::show($itemSmallQuestion,'question')}}
+                                    </p>
+                                    <p class="time font-medium italic text-[0.813rem] mb-4 text-white">
+                                        <i class="fa fa-calendar mr-2" aria-hidden="true"></i> 0707/2022
+                                    </p>
+                                    <a href="{{Support::show($itemSmallQuestion,'slug')}}" title="Xem thêm" class="btn-white inline-flex items-center justify-center lg:text-[0.875rem] py-2 px-6 rounded-3xl text-[#262626] bg-white transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
+                                        Trả lời
+                                        <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+@endif
 <section class="section-system 2xl:py-10 py-6">
     <div class="container">
         <p class="title-all text-center uppercase 2xl:text-[2rem] lg:text-[1.5rem] text-[1.25rem] text-[#0557ac] font-semibold 2xl:mb-10 mb-6">{[title_base_system_home]}</p>
@@ -185,20 +158,20 @@
         <div class="container">
             <h2 class="title-all text-center uppercase 2xl:text-[2rem] lg:text-[1.5rem] text-[1.25rem] text-[#0557ac] font-semibold 2xl:mb-10 mb-6">{[title_new_home]}</h2>
             @php
-                $bigItem = $listHomeNews->first();
+                $bigItemNews = $listHomeNews->first();
             @endphp
             <div class="grid grid-cols-2 2xl:gap-6 gap-4 module-new__index">
-                @if (isset($bigItem))
+                @if (isset($bigItemNews))
                     <div class="col-span-1 wow fadeInLeft">
                         <div class="item-new__main">
-                            <a href="{{Support::show($bigItem,'slug')}}" title="{{Support::show($bigItem,'name')}}" class="img img__ block c-img pt-[54%] rounded-2xl overflow-hidden 2xl:mb-4 mb-2">
-                                @include('image_loader.all',['itemImage'=>$bigItem,'key'=>'img'])
+                            <a href="{{Support::show($bigItemNews,'slug')}}" title="{{Support::show($bigItemNews,'name')}}" class="img img__ block c-img pt-[54%] rounded-2xl overflow-hidden 2xl:mb-4 mb-2">
+                                @include('image_loader.all',['itemImage'=>$bigItemNews,'key'=>'img'])
                             </a>
                             <h3>
-                                <a href="{{Support::show($bigItem,'slug')}}" title="{{Support::show($bigItem,'name')}}" class="title text-[#262626] font-bold lg:text-[1.125rem] line-clamp-2 2xl:mb-4 mb-2">{{Support::show($bigItem,'name')}}</a>
+                                <a href="{{Support::show($bigItemNews,'slug')}}" title="{{Support::show($bigItemNews,'name')}}" class="title text-[#262626] font-bold lg:text-[1.125rem] line-clamp-2 2xl:mb-4 mb-2">{{Support::show($bigItemNews,'name')}}</a>
                             </h3>
-                            <div class="short_content line-clamp-2 2xl:mb-4 mb-2">{{Support::show($bigItem,'short_content')}}</div>
-                            <a href="{{Support::show($bigItem,'slug')}}" title="Xem thêm"
+                            <div class="short_content line-clamp-2 2xl:mb-4 mb-2">{{Support::show($bigItemNews,'short_content')}}</div>
+                            <a href="{{Support::show($bigItemNews,'slug')}}" title="Xem thêm"
                                 class="btn-white inline-flex items-center justify-center lg:text-[0.875rem] py-2 px-6 rounded-3xl text-[#262626] bg-white border-[1px] border-solid border-[#028cde] transition-all duration-300 hover:bg-[#028cde] hover:text-white shadow-[0_6px_8px_rgba(0,0,0,.17)]">
                                 Xem thêm
                                 <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i>

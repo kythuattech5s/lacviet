@@ -1,6 +1,6 @@
 @if ($paginator->hasPages())
 
-    <div class="pagination wow fadeInUp">
+    <div class="pagination">
 
         {{-- Previous Page Link --}}
 

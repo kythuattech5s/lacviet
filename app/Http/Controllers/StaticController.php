@@ -272,8 +272,9 @@ class StaticController extends Controller
         ]);
     }
     public function makeQuestion($request, $route, $link){
+        $listSpecialistAll = \App\Models\Specialist::act()->get();
         $currentItem = \vanhenry\manager\model\VRoute::find($route->id);
-        return View::make('static.make_question',compact('currentItem'));
+        return View::make('static.make_question',compact('currentItem','listSpecialistAll'));
     }
     public function orderExaminationSchedule($request, $route, $link){
         $currentItem = \vanhenry\manager\model\VRoute::find($route->id);
@@ -330,34 +331,28 @@ class StaticController extends Controller
     {
         return Validator::make($data, [
             'fullname' => ['required'],
-            'age' => ['required'],
             'phone' => ['required'],
             'email' => ['required','email'],
-            'specialists' => ['required','min:1'],
+            'specialists' => ['exists:specialists,id'],
             'title' => ['required'],
-            'g-recaptcha-response' => ['required','captcha'],
         ],[
             'required' => 'Vui lòng nhập/chọn :attribute',
             'email' => 'Vui lòng nhập Email đúng định dạng',
-            'g-recaptcha-response.required' => 'Vui lòng xác nhận mã Captcha.',
-            'g-recaptcha-response.captcha' => 'Captcha bị lỗi. Vui lòng thử lại sau hoặc liên hệ với Admin.',
+            'exists' => 'Không tìm thấy thông tin :attribute',
         ],[
             'fullname' => 'Họ và tên',  
-            'age' => 'Tuổi',
             'phone' => 'Số điện thoại',
             'email' => 'Email',
             'specialists' => 'Chuyên khoa',
             'title' => 'Tiêu đề câu hỏi',
-            'g-recaptcha-response' => 'Mã Captcha',
         ]);
     }
-    public function sendQuestion($request, $route, $link){
+    public function sendQuestion($request){
         $validator = $this->validatorSendQuestion($request->all());
         if ($validator->fails()) {
             return \Support::response([
                 'code' => 100,
                 'message' => $validator->errors()->first(),
-                'redirect' => url()->previous()
             ]);
         }
         $question = new Question;
@@ -387,7 +382,8 @@ class StaticController extends Controller
         \DB::table('v_routes')->insert($dataRoutes);
         return \Support::response([
             'code' => 200,
-            'message' => 'Gửi câu hỏi thành công'
+            'message' => 'Gửi câu hỏi thành công',
+            'redirect_url' => 'gui-cau-hoi-thanh-cong'
         ]);
     }
     public function successfulAppointmentBooking($request, $route, $link)

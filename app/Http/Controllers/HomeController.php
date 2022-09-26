@@ -7,6 +7,7 @@ use App\Helpers\Utm;
 use App\Helpers\TwoLevelSlug;
 use App\Models\BranchSystem;
 use App\Models\News;
+use App\Models\Question;
 use App\Models\ReasonChoose;
 use App\Models\Services;
 
@@ -70,6 +71,7 @@ class HomeController extends Controller
         $listHotService = Services::act()->where('hot',1)->ord()->get();
         $listBranchSystem = BranchSystem::act()->ord()->get();
         $listHomeNews = News::act()->where('home',1)->publish()->orderBy('time_published','desc')->limit(4)->get();
-        return view('home', compact('listBanner','isHome','listReasonChoose','listHotService','listBranchSystem','listHomeNews'));
+        $listQuestion = Question::act()->orderBy('id','desc')->limit(4)->get();
+        return view('home', compact('listBanner','isHome','listReasonChoose','listHotService','listBranchSystem','listHomeNews','listQuestion'));
     }
 }
