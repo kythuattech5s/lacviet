@@ -46,7 +46,7 @@ class News extends BaseModel
     }
     public function getRelatesCollection(){
         $relate = $this->getRelates();
-        return $relate?$relate->act()->orderBy('time_published','desc')->take(2)->get():collect();
+        return $relate?$relate->act()->where('id','!=',$this->id)->orderBy('time_published','desc')->take(6)->get():collect();
     }
     public function ratings()
     {

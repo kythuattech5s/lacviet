@@ -32,12 +32,10 @@
                         <span class="phone font-bold text-[#f53632] 2xl:text-[1.125rem]">{[hotline]}</span>
                     </p>
                 </a>
-                <a href="#" title="Đăng ký khám"
-                    class="btn-red inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-2 px-4 rounded-3xl text-white bg-[#fb2317] transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
+                <a href="{{VRoute::get('orderExaminationSchedule')}}" title="Đăng ký khám" class="btn-red inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-2 px-4 rounded-3xl text-white bg-[#fb2317] transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
                     Đăng ký khám
                 </a>
-                <a href="#" title="Tra cứu bệnh án"
-                    class="btn-blue inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-2 px-4 rounded-3xl text-white bg-[#028cde] transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
+                <a href="{{VRoute::get('medicalRecordLookup')}}" title="Tra cứu bệnh án" class="btn-blue inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-2 px-4 rounded-3xl text-white bg-[#028cde] transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
                     Tra cứu bệnh án
                 </a>
             </div>
@@ -82,5 +80,17 @@
             <input type="text" name="q" placeholder="Nhập từ khóa..." id="input-search-header" class="form-control bg-transparent text-white placeholder:text-white p-3 outline-none border-b-[1px] border-solid border-white flex-1">
             <button type="submit" class="btn-search text-white text-[1.25rem]"><i class="fa fa-search" aria-hidden="true"></i></button>
         </form>
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "url": "{{url()->to('/')}}",
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "{{url()->to(\VRoute::get("search"))}}?q={query}",
+                  "query": "required"
+                }
+            }
+        </script>
     </div>
 </header>

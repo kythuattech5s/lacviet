@@ -3,16 +3,7 @@
         @include('image_loader.big',['itemImage'=>$item,'key'=>'img'])
     </a>
     <a href="{{Support::show($item,'slug')}}" title="{{Support::show($item,'name')}}" class="title text-center font-bold text-[#028cde] uppercase lg:text-[1.125rem] mb-2 line-clamp-2">{{Support::show($item,'name')}}</a>
-    @php
-        $listAdvantages = Support::extractJson($item->advantages);
-    @endphp
-    @if (count($listAdvantages) > 0)
-        <div class="s-content s-content__service">
-            <ul>
-                @foreach ($listAdvantages as $itemAdvantages)
-                    <li>{{Support::show($itemAdvantages,'title')}}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    <div class="s-content s-content__service">
+        {!!Support::show($item,'advantages')!!}
+    </div>
 </div>

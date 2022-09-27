@@ -5,7 +5,7 @@ use Carbon\Carbon;
 use App\Models\Menu;
 use App\Models\MenuSitemap;
 use App\Models\MenuCategory;
-use App\Helpers\{Media,TwoLevelSlug};
+use App\Helpers\{Currency as HelpersCurrency, Media,TwoLevelSlug};
 use App\Models\Comment;
 use App\Models\Province;
 use App\Models\District;
@@ -135,7 +135,7 @@ class Support
 			case 'price_step':
 			case 'subtotal':
 			case 'priceTotal':
-				return Currency::showMoney($value);
+				return HelpersCurrency::showMoney($value);
 				break;
 			case 'slug':
 				if (method_exists($object,'getTable')) {
@@ -1124,9 +1124,8 @@ class Support
 		$toc = '<div id="toc_container" class="no_bullets">';
 		$last_level = 0;
 		$i = 0;
-		// $headings = $html->find('h2,h3,h4,h5');
-		$headings = $html->find('h2');
-		$toc .= '<div class="toc-header"><span class="icon"><i class="fa fa-list-ol" aria-hidden="true"></i></span>Nội dung chính <span class="toggle-content-toc active"><i class="fa fa-angle-right" aria-hidden="true"></i></span></div>';
+		$headings = $html->find('h2,h3,h4,h5');
+		$toc .= '<div class="toc-header">NỘI DUNG BÀI VIẾT <span class="toggle-content-toc"><i class="fa fa-bars" aria-hidden="true"></i></span></div>';
 		foreach($headings != null ? $headings : [] as $h){
 			$innerTEXT = trim($h->innertext);
 			$text = $h->plaintext;
@@ -1135,7 +1134,7 @@ class Support
 	        $h->id= $id;
 	        $level = intval($h->tag[1]);
 	        if($level > $last_level)
-	        $toc .= "<ul".($i == 0 ? ' class="toc_list"' : '').">";
+	        $toc .= "<ul".($i == 0 ? ' class="toc_list" style="display: none;"' : '').">";
 	        else{
 	        $toc .= str_repeat('</li></ul>', $last_level - $level);
 	        $toc .= '</li>';

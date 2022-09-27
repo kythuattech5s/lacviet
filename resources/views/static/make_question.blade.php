@@ -19,9 +19,9 @@
                     <h1 class="title text-center uppercase 2xl:text-[1.62rem] lg:text-[1.25rem] text-[0.875rem] text-[#028cde] font-bold mb-4">{{$currentItem->vi_name}}</h1>
                     <form action="{{VRoute::get('send-question')}}" method="post" class="form-make-question formValidation" absolute data-success="NOTIFICATION.toastrMessageRedirect" accept-charset="utf8">
                         @csrf
-                        <select name="specialists" class="form-control bg-white p-3 rounded-xl w-full border-[1px] border-solid border-[#e0eaf0] mb-4" rules="required">
+                        <select name="parent" class="form-control bg-white p-3 rounded-xl w-full border-[1px] border-solid border-[#e0eaf0] mb-4" rules="required">
                             <option value="">Chọn chuyên khoa (*)</option>
-                            @foreach ($listSpecialistAll as $item)
+                            @foreach ($listQuestionCategory as $item)
                                 <option value="{{$item->id}}">{{$item->name}}</option>
                             @endforeach
                         </select>

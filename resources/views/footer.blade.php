@@ -52,6 +52,9 @@
                 </div>
                 <div class="col-span-1 lg:pt-12">
                     <p class="title-footer w-fit relative after:h-[2px] after:w-full after:bg-[#f7d274] after:block after:mt-2 font-semibold text-[#f7d274] uppercase 2xl:mb-6 mb-4">Kết nối với chúng tôi</p>
+                    <div class="mb-6">
+                        <div class="fb-page" data-href="{[facebook]}" data-tabs="timeline" data-width="" data-height="120" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="{[facebook]}" class="fb-xfbml-parse-ignore"><a href="{[facebook]}">Facebook</a></blockquote></div>
+                    </div>
                     <ul class="social-footer">
                         <li class="inline-block mr-5 last:mr-0">
                             <a href="{[facebook]}" title="Youtube" target="_blank" rel="noopener" class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-lg bg-white text-[#044da8] lg:text-[1.875rem] text-[1.25rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>

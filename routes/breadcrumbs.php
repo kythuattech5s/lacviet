@@ -110,7 +110,7 @@ Breadcrumbs::for('question_category', function ($trail, $currentItem, $level = 0
 		$trail->push('Hỏi đáp chuyên gia',VRoute::get('hoi-dap-chuyen-gia'));
 	}
 	if ($currentItem->parent > 0) {
-		$parent = App\Models\QuestionCategory::where('question_category.id', $currentItem->parent)->first();
+		$parent = App\Models\QuestionCategory::where('id', $currentItem->parent)->first();
 	    if ($parent != null) {
     		$trail->parent('question_category', $parent, $level += 1);
 	    }	
@@ -213,6 +213,10 @@ Breadcrumbs::for('disease_lookups', function ($trail, $currentItem) {
 	$trail->push($currentItem->name, \Support::show($currentItem, 'slug'));
 });
 Breadcrumbs::for('news_tag', function ($trail, $currentItem) {
+	$trail->parent('home');
+	$trail->push($currentItem->name);
+});
+Breadcrumbs::for('page_statics', function ($trail, $currentItem) {
 	$trail->parent('home');
 	$trail->push($currentItem->name);
 });

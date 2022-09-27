@@ -2,7 +2,7 @@
 @section('content')
 <div class="main-breadcrumb 2xl:my-9 lg:my-6 my-4 py-3 border-t-[1px] border-b-[1px] border-solid border-[#3286be]">
     <div class="container">
-        {{\Breadcrumbs::render('static',$currentItem->vi_name,$currentItem->vi_link)}}
+        {{\Breadcrumbs::render('question_category',$currentItem)}}
     </div>
 </div>
 <section class="section-qa 2xl:py-10 py-6 bg-[#fcfcfc]">
@@ -14,7 +14,7 @@
             </div>
             <div class="col-span-1 lg:col-span-2">
                 <div class="box-content bg-white border-[1px] border-solid border-[#ebebeb] 2xl:pt-12 lg:py-8 py-4">
-                    <h1 class="title-qa text-center font-bold 2xl:text-[2rem] lg:text-[1.5rem] text-[1.125rem] text-[#767676]">{{$currentItem->vi_name}}</h1>
+                    <h1 class="title-qa text-center font-bold 2xl:text-[2rem] lg:text-[1.5rem] text-[1.125rem] text-[#767676]">{{$currentItem->name}}</h1>
                     @if (count($listItems) > 0)
                         <div class="module-content">
                             @foreach ($listItems as $item)

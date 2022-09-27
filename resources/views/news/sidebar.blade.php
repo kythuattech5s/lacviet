@@ -35,17 +35,20 @@
         @endforeach
     </div>
 @endif
-<p class="head-title__sidebar text-center font-semibold uppercase py-1 px-3 text-white bg-[#028cde] 2xl:text-[1.5rem] lg:text-[1.25rem] text-[1rem]">Câu hỏi liên quan</p>
-<div class="border-box border-[1px] border-solid border-[#028cde] 2xl:p-7 p-4 mb-6">
-    <a href="#" title=""
-        class="question-related relative font-semibold block text-[#131313] text-[0.875rem] mb-5 last:mb-0 pl-10">
-        <span
-            class="stt min-w-[26px] h-[26px] text-[0.625rem] text-white inline-flex items-center justify-center bg-[#028cde] absolute top-0 left-0">1</span>
-
-        Chụp CT và MRI có gì khác nhau?
-    </a>
-    
-</div>
+@php
+    $listFrequentQuestion = \App\Models\Question::act()->orderBy('id','desc')->limit(5)->get();
+@endphp
+@if (count($listFrequentQuestion) > 0)
+    <p class="head-title__sidebar text-center font-semibold uppercase py-1 px-3 text-white bg-[#028cde] 2xl:text-[1.5rem] lg:text-[1.25rem] text-[1rem]">Câu hỏi liên quan</p>
+    <div class="border-box border-[1px] border-solid border-[#028cde] 2xl:p-7 p-4 mb-6">
+        @foreach ($listFrequentQuestion as $key => $itemFrequentQuestion)
+            <a href="{{Support::show($itemFrequentQuestion,'slug')}}" title="{{Support::show($itemFrequentQuestion,'name')}}" class="question-related relative font-semibold block text-[#131313] text-[0.875rem] mb-5 last:mb-0 pl-10">
+                <span class="stt min-w-[26px] h-[26px] text-[0.625rem] text-white inline-flex items-center justify-center bg-[#028cde] absolute top-0 left-0">{{$key + 1}}</span>
+                {{Support::show($itemFrequentQuestion,'name')}}
+            </a>
+        @endforeach
+    </div>
+@endif
 <p class="head-title__sidebar text-center font-semibold uppercase py-1 px-3 text-white bg-[#028cde] 2xl:text-[1.5rem] lg:text-[1.25rem] text-[1rem]">
     Đăng ký tư vấn
 </p>
@@ -54,21 +57,15 @@
         Vui lòng để lại thông tin và nhu cầu
         của Quý khách để được nhận tư vấn
     </p>
-    <form action="" method="" class="form-regis-sidebar">
-        <input type="text" name="" placeholder="Họ và tên (*)"
-            class="form-control text-[#888] placeholder:text-[#888] w-full p-3 rounded-md outline-none border-[1px] border-solid border-[#bce0f6] mb-4">
-        <input type="text" name="" placeholder="Số điện thoại (*)"
-            class="form-control text-[#888] placeholder:text-[#888] w-full p-3 rounded-md outline-none border-[1px] border-solid border-[#bce0f6] mb-4">
-        <input type="text" name="" placeholder="Nơi đăng ký khám"
-            class="form-control text-[#888] placeholder:text-[#888] w-full p-3 rounded-md outline-none border-[1px] border-solid border-[#bce0f6] mb-4">
-        <input type="text" name="" placeholder="Email"
-            class="form-control text-[#888] placeholder:text-[#888] w-full p-3 rounded-md outline-none border-[1px] border-solid border-[#bce0f6] mb-4">
-        <textarea name="" placeholder="Triệu chứng:"
-            class="form-control resize-none text-[#888] placeholder:text-[#888] w-full h-24 p-3 rounded-md outline-none border-[1px] border-solid border-[#bce0f6] mb-4"></textarea>
-        <button
-            class="btn-red flex w-fit mx-auto items-center justify-center lg:text-[0.875rem] uppercase py-3 px-4 rounded-3xl text-white bg-[#fb2317] transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
-            Đăng ký ngay
-        </button>
+    <form action="{{VRoute::get('resgisterAdvise')}}" method="post" class="form-regis-sidebar formValidation" absolute data-success="NOTIFICATION.toastrMessageRedirect" accept-charset="utf8">
+        @csrf
+        <input type="hidden" name="type" value="1">
+        <input type="text" name="fullname" placeholder="Họ và tên (*)" class="form-control text-[#888] placeholder:text-[#888] w-full p-3 rounded-md outline-none border-[1px] border-solid border-[#bce0f6] mb-4" rules="required">
+        <input type="text" name="phone" placeholder="Số điện thoại (*)" class="form-control text-[#888] placeholder:text-[#888] w-full p-3 rounded-md outline-none border-[1px] border-solid border-[#bce0f6] mb-4" rules="required||phone">
+        <input type="text" name="register_address" placeholder="Nơi đăng ký khám" class="form-control text-[#888] placeholder:text-[#888] w-full p-3 rounded-md outline-none border-[1px] border-solid border-[#bce0f6] mb-4">
+        <input type="text" name="email" placeholder="Email" class="form-control text-[#888] placeholder:text-[#888] w-full p-3 rounded-md outline-none border-[1px] border-solid border-[#bce0f6] mb-4">
+        <textarea name="note" placeholder="Triệu chứng:" class="form-control resize-none text-[#888] placeholder:text-[#888] w-full h-24 p-3 rounded-md outline-none border-[1px] border-solid border-[#bce0f6] mb-4"></textarea>
+        <button type="submit" class="btn-red flex w-fit mx-auto items-center justify-center lg:text-[0.875rem] uppercase py-3 px-4 rounded-3xl text-white bg-[#fb2317] transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">Đăng ký ngay</button>
     </form>
 </div>
 @php
