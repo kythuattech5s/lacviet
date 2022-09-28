@@ -17643,6 +17643,28 @@
      
 }
 
+    namespace Roniejisa\Comment\Helpers { 
+            /**
+     * 
+     *
+     */ 
+        class Helper {
+         
+    }
+     
+}
+
+    namespace Roniejisa\Helpers { 
+            /**
+     * 
+     *
+     */ 
+        class RSCustom {
+         
+    }
+     
+}
+
     namespace Illuminate\Http { 
             /**
      * 
@@ -21189,6 +21211,8 @@ namespace  {
             class Image extends \Intervention\Image\Facades\Image {}
             class LaravelLocalization extends \Mcamara\LaravelLocalization\Facades\LaravelLocalization {}
             class FFMpeg extends \ProtoneMedia\LaravelFFMpeg\Support\FFMpeg {}
+            class CommentHelper extends \Roniejisa\Comment\Helpers\Helper {}
+            class RSCustom extends \Roniejisa\Helpers\RSCustom {}
      
 }
 

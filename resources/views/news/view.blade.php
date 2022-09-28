@@ -1,4 +1,10 @@
 @extends('index')
+@section('cssl')
+    <link rel="stylesheet" href="{{asset('assets/comment/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/comment/css/star.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/comment/css/selectStar.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/comment/style/app.css')}}">
+@endsection
 @section('css')
     <link href="theme/frontend/asset/css/jquery.fancybox.min.css" type="text/css" rel="stylesheet" />
 @endsection
@@ -144,6 +150,12 @@
                         </div>
                     </div>
                 @endif
+                <div class="comment-box">
+                    @php
+                        $comments = Roniejisa\Comment\Models\Comment::where('act', 1)->with('childs')->whereNull('comment_id')->orderBy('id','DESC')->paginate(5);
+                    @endphp
+                    @include('commentRS::comment_box',['map_table'=>'news'])
+                </div>
                 @if (count($newsRelateds) > 0)
                     <p class="title-new__pages relative 2xl:after:h-1 after:h-[2px] after:w-20 after:bg-[#ed9f09] after:block after:mt-2 mb-4 uppercase font-bold text-[#028cde] 2xl:text-[1.25rem] text-[1rem]">Tin cùng chủ đề</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 2xl:gap-8 lg:gap-6 gap-4 mb-6">
@@ -201,5 +213,7 @@
     <script src="theme/frontend/asset/js/jquery.fancybox.min.js" defer></script>
 @endsection
 @section('js')
+    <script src="{{asset('assets/js/ValidateForm.js')}}" defer></script>
+    <script src="{{asset('assets/comment/js/comment.js')}}" defer></script>
     <script src="theme/frontend/asset/js/script.js" defer></script>
 @endsection

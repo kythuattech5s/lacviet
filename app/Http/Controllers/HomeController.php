@@ -34,7 +34,8 @@ class HomeController extends Controller
         if ($route == null) {
             abort(404);
         }
-        if ($route->table == 'pages') {
+
+        if (in_array($route->vi_link, ['landing', 'gia-trong-rang-ham-bao-nhieu-lua-chon-nha-khoa-trong-rang-chat-luong-gia-tot'])) {
             $controllers = explode('@', $route->controller);
             $controller = $controllers[0];
             $method = $controllers[1];

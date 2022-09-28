@@ -9,19 +9,23 @@ class Comment extends Model
 {
     use HasFactory;
 
-    public function user(){
-        return $this->belongsTo(User::class,'user_id');
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function childs(){
-        return $this->hasMany(Comment::class,'parent')->where('act',1);
+    public function childs()
+    {
+        return $this->hasMany(Comment::class, 'comment_id')->where('act', 1);
     }
 
-    public function rating(){
-        return $this->hasOne(Rating::class,'comment_id');
+    public function rating()
+    {
+        return $this->hasOne(Rating::class, 'comment_id');
     }
 
-    public function news(){
+    public function news()
+    {
         return $this->belongsTo(News::class, 'map_id');
     }
 }

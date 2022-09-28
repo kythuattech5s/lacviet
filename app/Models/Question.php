@@ -1,14 +1,17 @@
 <?php
+
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\BaseModel;
+
 class Question extends BaseModel
 {
-	use HasFactory;
-	public function category()
-	{
-		return $this->hasOne(QuestionCategory::class, 'id', 'parent');
-	}
+    use HasFactory;
+    public function category()
+    {
+        return $this->hasOne(QuestionCategory::class, 'id', 'parent');
+    }
     public function scopeAct($q)
     {
         if (!\Auth::guard('h_users')->check()) {
@@ -17,9 +20,9 @@ class Question extends BaseModel
     }
     public function specialist()
     {
-        return $this->belongsTo(Specialist::class,'specialists_id','id');
+        return $this->belongsTo(Specialist::class, 'specialists_id', 'id');
     }
-	public function getRelates()
+    public function getRelates()
     {
         $category = $this->category()->act()->first();
         if ($category == null) {
@@ -27,18 +30,23 @@ class Question extends BaseModel
         }
         return $category->question();
     }
-    public function getRelatesCollection(){
+    public function getRelatesCollection()
+    {
         $relate = $this->getRelates();
-        return $relate?$relate->act()->where('id','!=',$this->id)->ord()->take(3)->get():collect();
+        return $relate ? $relate->act()->where('id', '!=', $this->id)->ord()->take(3)->get() : collect();
     }
     public function ratings()
     {
         return $this->hasMany(Rating::class, 'map_id', 'id')->where('map_table', 'questions');
     }
-    public function comments(){
-        return $this->hasMany(Comment::class,'map_id','id')->where('map_table','questions')->whereNull('parent')->where('act',1);
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'map_id', 'id')->where('map_table', 'questions')->whereNull('comment_id')->where('act', 1);
     }
-    public function getRating(String $type = 'main'){
+
+    public function getRating(String $type = 'main')
+    {
         $ratings = $this->ratings;
         $oneStar = 0;
         $twoStar = 0;
@@ -53,8 +61,8 @@ class Question extends BaseModel
         $totalRating = $ratings->count();
         $percentAll = 0;
         $scoreAll = 0;
-        if($totalRating == 0){
-            if($type == 'main'){
+        if ($totalRating == 0) {
+            if ($type == 'main') {
                 return [
                     'percentAll' => 0,
                     'scoreAll' => 0,
@@ -77,39 +85,39 @@ class Question extends BaseModel
                 'scoreAll' => 0,
             ];
         }
-        $oneStar = $ratings->filter(function($value,$key){
+        $oneStar = $ratings->filter(function ($value, $key) {
             return (int) $value->rating === 1;
         })->count();
-        $twoStar = $ratings->filter(function($value,$key){
+        $twoStar = $ratings->filter(function ($value, $key) {
             return (int) $value->rating === 2;
         })->count();
-        $threeStar = $ratings->filter(function($value,$key){
+        $threeStar = $ratings->filter(function ($value, $key) {
             return (int) $value->rating === 3;
         })->count();
-        $fourStar = $ratings->filter(function($value,$key){
+        $fourStar = $ratings->filter(function ($value, $key) {
             return (int) $value->rating === 4;
         })->count();
-        $fiveStar = $ratings->filter(function($value,$key){
+        $fiveStar = $ratings->filter(function ($value, $key) {
             return (int) $value->rating === 5;
         })->count();
-        $percentAll = round(($oneStar + $twoStar * 2 + $threeStar * 3 + $fourStar * 4 + $fiveStar * 5)/($totalRating*5)*100);
-        
-        $scoreAll = round($percentAll / 20,2);
-        if($type == 'main'){
+        $percentAll = round(($oneStar + $twoStar * 2 + $threeStar * 3 + $fourStar * 4 + $fiveStar * 5) / ($totalRating * 5) * 100);
+
+        $scoreAll = round($percentAll / 20, 2);
+        if ($type == 'main') {
             return [
                 'percentAll' => $percentAll,
                 'scoreAll' => $scoreAll,
                 'totalRating' => $totalRating
             ];
         }
-        
+
         $percentOneStar   = round($oneStar  / $totalRating * 100);
         $percentTwoStar   = round($twoStar  / $totalRating * 100);
-        $percentThreeStar = round($threeStar/ $totalRating * 100);
+        $percentThreeStar = round($threeStar / $totalRating * 100);
         $percentFourStar  = round($fourStar / $totalRating * 100);
         $percentFiveStar  = round($fiveStar / $totalRating * 100);
-        
-        
+
+
         return [
             'oneStar' => $oneStar,
             'twoStar' => $twoStar,

@@ -17,7 +17,6 @@
         "intervention/image": "^2.5",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
-        "matthiasmullie/minify": "^1.3",
         "mcamara/laravel-localization": "^1.6",
         "pbmedia/laravel-ffmpeg": "^7.5",
         "pusher/pusher-php-server": "^7.0",
@@ -45,7 +44,9 @@
             "vanhenry\\slug\\": "packages/vanhenry/slug/src",
             "vanhenry\\search\\": "packages/vanhenry/search/src",
             "vanhenry\\mail\\": "packages/vanhenry/mail/src",
-            "vanhenry\\minify\\": "packages/vanhenry/minify/src"
+            "vanhenry\\minify\\": "packages/vanhenry/minify/src",
+            "Roniejisa\\Helpers\\": "packages/roniejisa/helpers/src",
+            "Roniejisa\\Comment\\": "packages/roniejisa/comment/src"
         }
     },
     "repositories": [

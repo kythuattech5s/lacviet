@@ -1,5 +1,7 @@
 <?php
 
+use Roniejisa\Comment\Providers\CommentServiceProvider;
+
 return [
 
     /*
@@ -184,6 +186,7 @@ return [
         vanhenry\search\SearchServiceProvider::class,
         vanhenry\mail\CustomMailServiceProvider::class,
         vanhenry\minify\MinifyServiceProvider::class,
+        CommentServiceProvider::class,
         /*
          * Application Service Providers...
          */
