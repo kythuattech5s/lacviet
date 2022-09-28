@@ -80,17 +80,5 @@
             <input type="text" name="q" placeholder="Nhập từ khóa..." id="input-search-header" class="form-control bg-transparent text-white placeholder:text-white p-3 outline-none border-b-[1px] border-solid border-white flex-1">
             <button type="submit" class="btn-search text-white text-[1.25rem]"><i class="fa fa-search" aria-hidden="true"></i></button>
         </form>
-        <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "WebSite",
-                "url": "{{url()->to('/')}}",
-                "potentialAction": {
-                  "@type": "SearchAction",
-                  "target": "{{url()->to(\VRoute::get("search"))}}?q={query}",
-                  "query": "required"
-                }
-            }
-        </script>
     </div>
 </header>
