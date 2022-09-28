@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\Banner;
 use App\Models\RedirectLink;
 use Illuminate\Http\Request;
@@ -21,44 +19,32 @@ class HomeController extends Controller
         $link  = \Support::getSegment($request, 1);
         $baseUrl = url()->to('');
         /* Check link chuyển hướng */
-        $linkRedirect = RedirectLink::where('root_link', trim($_SERVER['REQUEST_URI'], '/'))->orWhere('root_link', trim($_SERVER['REQUEST_URI'], '/') . '/')->first();
-
+        $linkRedirect = RedirectLink::where('root_link', trim($_SERVER['REQUEST_URI'],'/'))->orWhere('root_link', trim($_SERVER['REQUEST_URI'],'/').'/')->first();
+        
         if (isset($linkRedirect) && (int)$linkRedirect->type) {
-            return \Redirect::to($baseUrl . '/' . trim($linkRedirect->redirect_link, '/') . '/', $linkRedirect->type);
+            return \Redirect::to($baseUrl.'/'.trim($linkRedirect->redirect_link, '/').'/', $linkRedirect->type);
         }
         /* End check link chuyển hướng */
         $listTableTwoLevelSlug = TwoLevelSlug::getArrTable();
         list($link, $tableAccess) = TwoLevelSlug::checkLinkSegmentBeforGetRoutest($link);
-        $route = \DB::table('v_routes')->select('*')->where($lang . '_link', $link)->first();
-
+        $route = \DB::table('v_routes')->select('*')->where($lang.'_link', $link)->first();
         if ($route == null) {
             abort(404);
         }
-
-        if (in_array($route->vi_link, ['landing', 'gia-trong-rang-ham-bao-nhieu-lua-chon-nha-khoa-trong-rang-chat-luong-gia-tot'])) {
-            $controllers = explode('@', $route->controller);
-            $controller = $controllers[0];
-            $method = $controllers[1];
-            return (new $controller)->$method($request, $route, $link);
-        }
-
         if (!($tableAccess == 'doctors' && $route->table == 'specialists')) {
             if (isset($tableAccess) && $route->is_static == 0 && $tableAccess != $route->table) {
                 abort(404);
             }
         }
-
         if ($tableAccess == 'doctors' && $route->is_static == 1) {
-            return \Redirect::to($baseUrl . '/' . $link . '/', 301);
+            return \Redirect::to($baseUrl.'/'.$link.'/', 301);
         }
         if (!isset($tableAccess) && isset($listTableTwoLevelSlug[$route->table])) {
-            return \Redirect::to($baseUrl . TwoLevelSlug::convertSlugRoutes($route, $link), 301);
+            return \Redirect::to($baseUrl.TwoLevelSlug::convertSlugRoutes($route, $link), 301);
         }
-
         /* Check link đuôi có dấu / */
-
         if (substr($_SERVER['REDIRECT_URL'], -1) != '/') {
-            $newUrl = $baseUrl . $_SERVER['REDIRECT_URL'] . '/' . ($_SERVER['QUERY_STRING'] != '' ? '?' . $_SERVER['QUERY_STRING'] : '');
+            $newUrl = $baseUrl.$_SERVER['REDIRECT_URL'].'/'.($_SERVER['QUERY_STRING'] != '' ? '?'.$_SERVER['QUERY_STRING'] : '');
             return \Redirect::to($newUrl, 301);
         }
         /* End check link đuôi có dấu / */
@@ -70,7 +56,6 @@ class HomeController extends Controller
         if (count($request->segments()) > $maxSegment) {
             abort(404);
         }
-
         Utm::check();
         $controllers = explode('@', $route->controller);
         $controller = $controllers[0];
@@ -81,12 +66,12 @@ class HomeController extends Controller
     {
         Utm::check();
         $isHome = 1;
-        $listBanner = Banner::act()->where('time_show', '>', new \DateTime())->where('time_public', '<', new \DateTime())->ord()->get();
+        $listBanner = Banner::act()->where('time_show','>',new \DateTime())->where('time_public','<',new \DateTime())->ord()->get();
         $listReasonChoose = ReasonChoose::act()->ord()->get();
-        $listHotService = Services::act()->where('hot', 1)->ord()->get();
+        $listHotService = Services::act()->where('hot',1)->ord()->get();
         $listBranchSystem = BranchSystem::act()->ord()->get();
-        $listHomeNews = News::act()->where('home', 1)->publish()->orderBy('time_published', 'desc')->limit(4)->get();
-        $listQuestion = Question::act()->orderBy('id', 'desc')->limit(4)->get();
-        return view('home', compact('listBanner', 'isHome', 'listReasonChoose', 'listHotService', 'listBranchSystem', 'listHomeNews', 'listQuestion'));
+        $listHomeNews = News::act()->where('home',1)->publish()->orderBy('time_published','desc')->limit(4)->get();
+        $listQuestion = Question::act()->orderBy('id','desc')->limit(4)->get();
+        return view('home', compact('listBanner','isHome','listReasonChoose','listHotService','listBranchSystem','listHomeNews','listQuestion'));
     }
 }
