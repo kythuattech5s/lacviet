@@ -13,6 +13,30 @@
         }
     }
 </script>
+@php
+    $listFaqs = \DB::table('faqs')->where('act',1)->get();
+@endphp
+@if (count($listFaqs) > 0)
+    <script type="application/ld+json">
+        /*<![CDATA[*/{
+            "@context":"https://schema.org",
+            "@type":"FAQPage",
+            "Name":"{[site_name]} - Câu hỏi thường gặp",
+            "mainEntity":[
+                @foreach ($listFaqs as $key => $itemFaq)
+                {"@type":"Question",
+                    "name":"{{$itemFaq->name}}",
+                    "answerCount":{{$key+1}},
+                    "acceptedAnswer":{
+                        "@type":"Answer",
+                        "text":"{{strip_tags($itemFaq->answer)}}"
+                    }
+                }{{$key < count($listFaqs) - 1 ? ',':''}}
+                @endforeach
+            ]
+        }/*]]>*/
+    </script>
+@endif
 @if (isset($currentItem) && is_object($currentItem) && method_exists($currentItem,'getTable'))
     @if ($currentItem->getTable() == 'news')
         <script type="application/ld+json">
@@ -46,16 +70,16 @@
         </script>
     @endif
 @endif
-{{-- <script type="application/ld+json">
+<script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "LocalBusiness",
         "@id":"{{url()->to('/')}}",
         "priceRange":"$$",
-        "brand":"Bệnh viện Đa khoa Phương Đông",
+        "brand":"{[site_name]}",
         "image":"{{url()->to('/').'/'}}{Ilogo.imgI}",
-        "name" : "Bệnh viện Đa khoa Phương Đông",
-        "description":"Bệnh viện đa khoa Phương Đông xây dựng theo mô hình Bệnh viện Khách sạn. Hội tụ đội ngũ chuyên gia, bác sĩ đầu ngành giàu kinh nghiệm hướng tới mục tiêu chăm sóc sức khỏe toàn diện và hảo hảo.",
+        "name" : "{[site_name]}",
+        "description":"{[seo_des]}",
         "telephone": "+84{[hotline]}",
         "address": {
             "@type": "PostalAddress",
@@ -64,7 +88,7 @@
             "addressRegion": "Vietnam"
         }
     }
-</script> --}}
+</script>
 <script type="application/ld+json">{
     "@context": "http://schema.org",
     "@type": "Hospital",
