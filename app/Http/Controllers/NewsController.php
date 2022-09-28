@@ -1,9 +1,8 @@
 <?php
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
 use App\Models\News;
-use App\Models\VideoGallery;
-use App\Models\NewsCategory;
+use App\Models\Services;
+
 class NewsController extends Controller
 {	
     public function view($request, $route, $link){
@@ -23,7 +22,9 @@ class NewsController extends Controller
         $listNewsSelect = News::whereIn('id',$listIdNewSelect)->act()->publish()->get()->all();
         $dataContent = \Support::createdTocContent($currentItem->content);
         $listMostViewNews = News::act()->where('id','!=',$currentItem->id)->publish()->orderBy('count_view','desc')->limit(5)->get();
-        $listHotNews = News::act()->where('hot',1)->publish()->orderBy('time_published','desc')->limit(2)->get();
-        return view('news.view',compact('currentItem','tags','newsRelateds','parent','tags','dataContent','listNewsSelect','listMostViewNews','listHotNews'));
+        $listHotNews = News::act()->where('hot',1)->where('id','!=',$currentItem->id)->publish()->orderBy('time_published','desc')->limit(6)->get();
+        $saleSevice = Services::act()->where('sale',1)->orderBy('id','desc')->first();
+        $author = $currentItem->getAuthor('create_by');
+        return view('news.view',compact('currentItem','tags','newsRelateds','parent','dataContent','listNewsSelect','listMostViewNews','listHotNews','saleSevice','author'));
     }
 }

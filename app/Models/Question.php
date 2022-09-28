@@ -1,7 +1,6 @@
 <?php
 namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use App\Models\BaseModel;
 class Question extends BaseModel
 {
@@ -30,7 +29,7 @@ class Question extends BaseModel
     }
     public function getRelatesCollection(){
         $relate = $this->getRelates();
-        return $relate?$relate->act()->ord()->take(5)->get():collect();
+        return $relate?$relate->act()->where('id','!=',$this->id)->ord()->take(3)->get():collect();
     }
     public function ratings()
     {

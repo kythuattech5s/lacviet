@@ -54,39 +54,39 @@ class HlsSync
 		if ((int)$itemBookApointment->sync_status == 2 || $itemBookApointment->status != 3) {
 			return true;
 		}
-		$arrDataPush = [];
-		$arrDataPush['BranchName'] = "APPOINTMENT";
-	    $arrDataPush['BranchCode'] ="6qwjO783bb";
-		$arrDataPush['HoTen'] = $itemBookApointment->fullname != '' ? $itemBookApointment->fullname:'Không xác định';
-		$arrDataPush['Code'] = "";
-		$arrDataPush['GioiTinh'] = in_array((int)$itemBookApointment->gender,[1,2]) ? (int)$itemBookApointment->gender:1;
-		$arrDataPush['NgaySinh'] = now()->subYears((int)$itemBookApointment->age)->format('Y-m-d');
-		$arrDataPush['SoDienThoai'] = $itemBookApointment->phone;
-		$arrDataPush['Email'] = $itemBookApointment->email;
-		$ngayHen = "";
-		try {
-			$ngayHen = \Carbon\Carbon::createFromFormat('d/m/Y',$itemBookApointment->day_book)->format('Y-m-d');
-		} catch (\Exception $e) {
-			$ngayHen = now()->addDays(1)->format('Y-m-d');
-		}
-		$arrDataPush['NgayHen'] = $ngayHen;
-		$timePickInfo = explode('->',$itemBookApointment->time_pick_text);
-		$textTime = is_array($timePickInfo) && isset($timePickInfo[0]) ? trim($timePickInfo[0]):'7:30';
-		$arrDataPush['ThoiGianHen'] = $arrDataPush['NgayHen'].' '.$textTime;
-		$arrDataPush['VanDeNB'] = $itemBookApointment->note;
-		$arrDataPush['TrangThai'] = (int)$itemBookApointment->status - 1;
-		$res = static::exeCurl('http://123.25.10.12:1552/api/BVPD/Appointment','POST',json_encode($arrDataPush));
-		if ($res['status'] == 200) {
-			$resInfo = json_decode($res['res'],true);
-			if (is_array($resInfo) && isset($resInfo['GuiId'])) {
-				$itemBookApointment->code = $resInfo['GuiId'];
-			}
-			$itemBookApointment->sync_status = 2;
-			$itemBookApointment->save();
-		}else {
-			$itemBookApointment->sync_status = 1;
-			$itemBookApointment->save();
-		}
-		return true;
+		// $arrDataPush = [];
+		// $arrDataPush['BranchName'] = "APPOINTMENT";
+	    // $arrDataPush['BranchCode'] ="6qwjO783bb";
+		// $arrDataPush['HoTen'] = $itemBookApointment->fullname != '' ? $itemBookApointment->fullname:'Không xác định';
+		// $arrDataPush['Code'] = "";
+		// $arrDataPush['GioiTinh'] = in_array((int)$itemBookApointment->gender,[1,2]) ? (int)$itemBookApointment->gender:1;
+		// $arrDataPush['NgaySinh'] = now()->subYears((int)$itemBookApointment->age)->format('Y-m-d');
+		// $arrDataPush['SoDienThoai'] = $itemBookApointment->phone;
+		// $arrDataPush['Email'] = $itemBookApointment->email;
+		// $ngayHen = "";
+		// try {
+		// 	$ngayHen = \Carbon\Carbon::createFromFormat('d/m/Y',$itemBookApointment->day_book)->format('Y-m-d');
+		// } catch (\Exception $e) {
+		// 	$ngayHen = now()->addDays(1)->format('Y-m-d');
+		// }
+		// $arrDataPush['NgayHen'] = $ngayHen;
+		// $timePickInfo = explode('->',$itemBookApointment->time_pick_text);
+		// $textTime = is_array($timePickInfo) && isset($timePickInfo[0]) ? trim($timePickInfo[0]):'7:30';
+		// $arrDataPush['ThoiGianHen'] = $arrDataPush['NgayHen'].' '.$textTime;
+		// $arrDataPush['VanDeNB'] = $itemBookApointment->note;
+		// $arrDataPush['TrangThai'] = (int)$itemBookApointment->status - 1;
+		// $res = static::exeCurl('http://123.25.10.12:1552/api/BVPD/Appointment','POST',json_encode($arrDataPush));
+		// if ($res['status'] == 200) {
+		// 	$resInfo = json_decode($res['res'],true);
+		// 	if (is_array($resInfo) && isset($resInfo['GuiId'])) {
+		// 		$itemBookApointment->code = $resInfo['GuiId'];
+		// 	}
+		// 	$itemBookApointment->sync_status = 2;
+		// 	$itemBookApointment->save();
+		// }else {
+		// 	$itemBookApointment->sync_status = 1;
+		// 	$itemBookApointment->save();
+		// }
+		// return true;
 	}
 }

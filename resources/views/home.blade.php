@@ -28,13 +28,13 @@
         <p class="title-all text-center uppercase 2xl:text-[2rem] lg:text-[1.5rem] text-[1.25rem] text-[#0557ac] font-semibold 2xl:mb-10 mb-6">{[title_reson_choose_home]}</p>
         <div class="grid grid-cols-2 md:grid-cols-4 sm:gap-4 gap-2">
             @foreach ($listReasonChoose as $key => $itemReasonChoose)
-                <div class="col-span-1 wow flipInY" data-wow-delay="{{($key + 1)*0.02}}s">
+                <div class="col-span-1 wow flipInY" data-wow-delay="{{($key + 1)*0.1}}s">
                     <div class="item-reason">
                         <span class="img img__ block c-img pt-[80%] 2xl:mb-4 mb-2 rounded-2xl overflow-hidden">
                             @include('image_loader.big',['itemImage'=>$itemReasonChoose,'key'=>'img'])
                         </span>
                         <p class="title text-center font-bold text-[#000] uppercase lg:text-[1.125rem] mb-2">{{Support::show($itemReasonChoose,'name')}}</p>
-                        <div class="s-content text-justify">{{Support::show($itemReasonChoose,'content')}}</div>
+                        <div class="s-content text-justify">{!!Support::show($itemReasonChoose,'content')!!}</div>
                     </div>
                 </div>
             @endforeach
@@ -46,7 +46,7 @@
         <p class="title-all text-center uppercase 2xl:text-[2rem] lg:text-[1.5rem] text-[1.25rem] text-[#0557ac] font-semibold lg:mb-24 mb-6">{[title_service_home]}</p>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             @foreach ($listHotService as $key => $item)
-                <div class="col-span-1 wow fadeInUp" data-wow-delay="{{($key + 1)*0.02}}s">
+                <div class="col-span-1 wow fadeInUp" data-wow-delay="{{($key + 1)*0.1}}s">
                     @include('services.item')
                 </div>
             @endforeach
@@ -84,7 +84,7 @@
                             @if ($key > 0)
                                 <div class="item-faq 2xl:mb-5 last:mb-0 mb-4">
                                     <p class="question text-white 2xl:text-[1.125rem] mb-3">
-                                        {{Support::show($itemSmallQuestion,'question')}}
+                                        {{Support::show($itemSmallQuestion,'name')}}
                                     </p>
                                     <p class="time font-medium italic text-[0.813rem] mb-4 text-white">
                                         <i class="fa fa-calendar mr-2" aria-hidden="true"></i> 0707/2022

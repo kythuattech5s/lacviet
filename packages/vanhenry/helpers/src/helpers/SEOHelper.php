@@ -114,6 +114,9 @@ class SEOHelper{
 		}
 		$share_title_facebook = htmlspecialchars(static::getFieldSeoSocial('share_title_facebook',$dataitem,''));
 		$share_description_facebook = htmlspecialchars(static::getFieldSeoSocial('share_description_facebook',$dataitem,''));
+		$share_title_facebook = $share_title_facebook != '' ? $share_title_facebook:$seo_title;
+		$share_description_facebook = $share_description_facebook != '' ? $share_description_facebook:$desSEO.$extra;
+
 		$ret .= '<title>'.$seo_title.'</title>';
 	    $ret .= vsprintf('<meta name="description" content="%s">',[$desSEO.$extra]);
 	    $ret .= '<meta name="keywords" content="'.$keySEO.'">';

@@ -34,6 +34,8 @@
     @endif
     @include('gg_js')
     {[CMS_FOOTER]}
+    <div id="fb-root"></div>
+	<script defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v14.0&appId=480194903000973&autoLogAppEvents=1" nonce="sBHfRLsS"></script>
     @yield('jsl')
     <script src="theme/frontend/asset/js/base.js" defer></script>
     <script src="theme/frontend/asset/js/toastify.js" defer></script>

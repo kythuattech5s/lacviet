@@ -38,15 +38,31 @@
                 <div class="s-content mb-4">
                     {!!Support::showContentHasGallery($dataContent['content'],$currentItem->imgs_template)!!}
                 </div>
-                <ul class="author-new text-right lg:text-[0.875rem] text-[#373737]">
-                    <li class="inline-block lg:mr-5 mr-3 last:mr-0">
-                        Tác giả: <span class="text-[#028cde]">Minh Anh</span>
-                    </li>
+                <ul class="author-new text-right lg:text-[0.875rem] mt-6 text-[#373737]">
+                    @if (isset($author))
+                        <li class="inline-block lg:mr-5 mr-3 last:mr-0">
+                            Tác giả: <span class="text-[#028cde]">{{Support::show($author,'name')}}</span>
+                        </li>
+                    @endif
                     <li class="inline-block lg:mr-5 mr-3 last:mr-0">
                         <i class="fa fa-clock-o" aria-hidden="true"></i>
                         Cập nhật ngày: {{Support::showDateTime($currentItem->time_published,'d/m/Y')}}
                     </li>
                 </ul>
+                <div class="text-right mt-2">
+                    <div class="fb-like" data-href="{{url()->current()}}" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="true"></div>
+                </div>
+                @if (count($tags) > 0)
+                    <div class="news-tag-header lg:text-[1.25rem] text-[1rem] mt-4">
+                        <span class="icon text-[#028cde]"><i class="fa fa-tags" aria-hidden="true"></i></span>
+                        <span class="font-semibold">Từ khóa: </span>
+                    </div>
+                    <div class="list-news-tag">
+                        @foreach ($tags as $item)
+                            <a href="{{Support::show($item, 'slug')}}" {{Support::showNofollow($item)}} class="item-tag mb-2 me-2" title="{{$item->name}}">{{$item->name}}</a>
+                        @endforeach
+                    </div>
+                @endif
                 @php
                     $doctor = $currentItem->getDoctor();
                 @endphp
@@ -77,58 +93,44 @@
                         </div>
                     </div>
                 @endif
-                <div
-                    class="box-endow p-4 2xl:my-20 lg:my-8 my-6 bg-[#f6f7f8] border-[1px] border-dashed border-[#f45654]">
-                    <p
-                        class="head text-center w-fit mx-auto uppercase text-[#f43d3b] 2xl:text-[1.5rem] lg:text-[1.25rem] text-[1rem] font-bold mb-4">
-                        Ưu đãi dịch vụ chỉnh nha/trồng răng
-                    </p>
-                    <p class="text-center font-medium italic lg:text-[0.875rem] text-[#373737] mb-4">(Áp dụng cho 50
-                        KH đăng ký đầu tiên)</p>
-                    <p
-                        class="head-table-endow text-center uppercase text-white bg-[#028cde] 2xl:text-[1.125rem] text-[1rem] p-3">
-                        Ưu đãi dịch vụ chỉnh nha/trồng răng</p>
-                    <div class="table-endow border-[1px] border-solid border-[#c5c5c5] 2xl:mb-6 mb-4">
-                        <div
-                            class="tr-endow grid grid-cols-2 border-b-[1px] border-solid border-[#c5c5c5] last:border-none">
-                            <div
-                                class="col-span-1 td-endow lg:px-4 px-2 py-2 border-r-[1px] border-solid border-[#c5c5c5]">
-                                <span
-                                    class="text font-bold text-[#373737] 2xl:text-[1.125rem] lg:text-[1rem] uppercase">
-                                    Giá gốc</span>
+                @if (isset($saleSevice))
+                    <div class="box-endow p-4 2xl:my-20 lg:my-8 my-6 bg-[#f6f7f8] border-[1px] border-dashed border-[#f45654]">
+                        <p class="head text-center w-fit mx-auto uppercase text-[#f43d3b] 2xl:text-[1.5rem] lg:text-[1.25rem] text-[1rem] font-bold mb-4">
+                            Ưu đãi dịch vụ {{Support::show($saleSevice,'name')}}
+                        </p>
+                        <p class="text-center font-medium italic lg:text-[0.875rem] text-[#373737] mb-4">{{Support::show($saleSevice,'sale_title')}}</p>
+                        <p class="head-table-endow text-center uppercase text-white bg-[#028cde] 2xl:text-[1.125rem] text-[1rem] p-3">
+                            Ưu đãi dịch vụ {{Support::show($saleSevice,'name')}}</p>
+                        <div class="table-endow border-[1px] border-solid border-[#c5c5c5] 2xl:mb-6 mb-4">
+                            <div class="tr-endow grid grid-cols-2 border-b-[1px] border-solid border-[#c5c5c5] last:border-none">
+                                <div class="col-span-1 td-endow lg:px-4 px-2 py-2 border-r-[1px] border-solid border-[#c5c5c5]">
+                                    <span class="text font-bold text-[#373737] 2xl:text-[1.125rem] lg:text-[1rem] uppercase">Giá gốc</span>
+                                </div>
+                                <div class="col-span-1 td-endow lg:px-4 px-2 py-2">
+                                    <span class="text font-bold text-[#373737] 2xl:text-[1.125rem] lg:text-[1rem] uppercase">Giá ưu đãi</span>
+                                </div>
                             </div>
-                            <div class="col-span-1 td-endow lg:px-4 px-2 py-2">
-                                <span
-                                    class="text font-bold text-[#373737] 2xl:text-[1.125rem] lg:text-[1rem] uppercase">
-                                    Giá ưu đãi</span>
-                            </div>
-                        </div>
-                        <div
-                            class="tr-endow grid grid-cols-2 border-b-[1px] border-solid border-[#c5c5c5] last:border-none">
-                            <div
-                                class="col-span-1 td-endow lg:px-4 px-2 py-2 border-r-[1px] border-solid border-[#c5c5c5]">
-                                <span
-                                    class="text text-[#373737] 2xl:text-[1.125rem] lg:text-[1rem] uppercase">5.000.000
-                                    vnđ</span>
-                            </div>
-                            <div class="col-span-1 td-endow lg:px-4 px-2 py-2">
-                                <a href="#" title="Click NGay để nhận ưu đãi"
-                                    class="text text-[#f43d3b] 2xl:text-[1.125rem] lg:text-[1rem] uppercase"> Click
-                                    NGay để nhận ưu đãi</a>
+                            <div class="tr-endow grid grid-cols-2 border-b-[1px] border-solid border-[#c5c5c5] last:border-none">
+                                <div class="col-span-1 td-endow lg:px-4 px-2 py-2 border-r-[1px] border-solid border-[#c5c5c5]">
+                                    <span class="text text-[#373737] 2xl:text-[1.125rem] lg:text-[1rem] uppercase">{{Support::show($saleSevice,'price')}}</span>
+                                </div>
+                                <div class="col-span-1 td-endow lg:px-4 px-2 py-2">
+                                    <a href="{{Support::show($saleSevice,'link')}}" title="Click NGay để nhận ưu đãi" class="text text-[#f43d3b] 2xl:text-[1.125rem] lg:text-[1rem] uppercase"> Click ngay để nhận ưu đãi</a>
+                                </div>
                             </div>
                         </div>
+                        <div class="flex items-center justify-center gap-4 flex-wrap">
+                            <a href="{{VRoute::get('orderExaminationSchedule')}}?service={{$saleSevice->id}}" title="Đăng ký ngay"
+                                class="btn-red w-[200px] lg:min-w-[268px] inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-3 px-4 rounded-2xl text-white bg-[#f43d3b] transition-all duration-300">
+                                Đăng ký ngay
+                            </a>
+                            <a href="tel:{[hotline]}" title="Đăng ký ngay"
+                                class="btn-yellow w-[200px] lg:min-w-[268px] inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-3 px-4 rounded-2xl text-white bg-[#ed9f09] transition-all duration-300">
+                                {[hotline]}
+                            </a>
+                        </div>
                     </div>
-                    <div class="flex items-center justify-center gap-4 flex-wrap">
-                        <a href="#" title="Đăng ký ngay"
-                            class="btn-red w-[200px] lg:min-w-[268px] inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-3 px-4 rounded-2xl text-white bg-[#f43d3b] transition-all duration-300">
-                            Đăng ký ngay
-                        </a>
-                        <a href="tel:{[hotline]}" title="Đăng ký ngay"
-                            class="btn-yellow w-[200px] lg:min-w-[268px] inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-3 px-4 rounded-2xl text-white bg-[#ed9f09] transition-all duration-300">
-                            {[hotline]}
-                        </a>
-                    </div>
-                </div>
+                @endif
                 @if (count($listMostViewNews) > 0)
                     <div class="box-new__hot 2xl:my-20 lg:my-8 my-6 rounded-3xl overflow-hidden">
                         <p class="head text-center 2xl:text-[1.5rem] lg:text-[1.25rem] text-[1rem] uppercase bg-[#028cde] text-white 2xl:p-5 p-3">Những bài viết đang được nhiều người quan tâm</p>

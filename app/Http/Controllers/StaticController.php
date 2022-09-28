@@ -15,24 +15,26 @@ class StaticController extends Controller
     }
     public function search($request, $route, $link)
     {
-    	if ($request->isMethod('post')) {
-    		$val = $request->input('val');
-			if (!isset($val)) return '';
-			$listNews = News::publish()->act()->FullTextSearch('name',$val)->ord()->get()->take(4)->all();
-			$listServices = ServiceCategory::act()->FullTextSearch('name',$val)->ord()->get()->take(4)->all();
-			$listSpecialist = Specialist::act()->FullTextSearch('name',$val)->ord()->get()->take(4)->all();
-			$listDoctor = Doctor::act()->FullTextSearch('name',$val)->ord()->get()->take(4)->all();
-            $listQuestion = Question::act()->FullTextSearch('name',$val)->ord()->get()->take(4)->all();
-            $listDiseaseLookup = DiseaseLookup::act()->FullTextSearch('name',$val)->ord()->get()->take(4)->all();
-            $listBodyLookup = BodyLookup::act()->FullTextSearch('name',$val)->ord()->get()->take(4)->all();
-            $listDrugLookup = DrugLookup::act()->FullTextSearch('name',$val)->ord()->get()->take(4)->all();
-			return view('search.autocomplete_search_result',compact('listNews','listQuestion','listServices','listSpecialist','listDoctor','listDiseaseLookup','listBodyLookup','listDrugLookup','val'));
-    	}
-    	if ($request->isMethod('get')) {
+    	// if ($request->isMethod('post')) {
+    	// 	$val = $request->input('val');
+		// 	if (!isset($val)) return '';
+		// 	$listNews = News::publish()->act()->FullTextSearch('name',$val)->ord()->get()->take(4)->all();
+		// 	$listServices = ServiceCategory::act()->FullTextSearch('name',$val)->ord()->get()->take(4)->all();
+		// 	$listSpecialist = Specialist::act()->FullTextSearch('name',$val)->ord()->get()->take(4)->all();
+		// 	$listDoctor = Doctor::act()->FullTextSearch('name',$val)->ord()->get()->take(4)->all();
+        //     $listQuestion = Question::act()->FullTextSearch('name',$val)->ord()->get()->take(4)->all();
+        //     $listDiseaseLookup = DiseaseLookup::act()->FullTextSearch('name',$val)->ord()->get()->take(4)->all();
+        //     $listBodyLookup = BodyLookup::act()->FullTextSearch('name',$val)->ord()->get()->take(4)->all();
+        //     $listDrugLookup = DrugLookup::act()->FullTextSearch('name',$val)->ord()->get()->take(4)->all();
+		// 	return view('search.autocomplete_search_result',compact('listNews','listQuestion','listServices','listSpecialist','listDoctor','listDiseaseLookup','listBodyLookup','listDrugLookup','val'));
+    	// }
+    	// if ($request->isMethod('get')) {
     		$val = $request->input('q');
             $currentItem = \vanhenry\manager\model\VRoute::find($route->id);
-    		return view('search.view',compact('val','currentItem'));
-    	}
+            $listItems = News::publish()->act()->FullTextSearch('name',$val)->ord()->paginate(5);
+            $listHotNews = News::act()->where('hot',1)->publish()->orderBy('time_published','desc')->limit(5)->get();
+    		return view('search.basic_view',compact('val','currentItem','listItems','listHotNews'));
+    	// }
     }
     public function searchItem($request, $route, $link){
     	$q = $request->input('q');
@@ -96,15 +98,11 @@ class StaticController extends Controller
         return Validator::make($data, [
             'fullname' => ['required'],
             'phone' => ['required'],
-            'g-recaptcha-response' => ['required','captcha'],
         ],[
             'required' => 'Vui lòng nhập/chọn :attribute',
-            'g-recaptcha-response.required' => 'Vui lòng xác nhận mã Captcha.',
-            'g-recaptcha-response.captcha' => 'Captcha bị lỗi. Vui lòng thử lại sau hoặc liên hệ với Admin.',
         ],[
             'fullname' => 'Họ và tên',
             'phone' => 'Số điện thoại',
-            'g-recaptcha-response' => 'Mã Captcha',
         ]);
     }
     public function bookApointment ($request, $route, $link)
@@ -114,7 +112,6 @@ class StaticController extends Controller
             return \Support::response([
                 'code' => 100,
                 'message' => $validator->errors()->first(),
-                'redirect' => url()->previous()
             ]);
         }
         $itemTimePick = TimePick::find($request->input('time_pick'));
@@ -122,19 +119,12 @@ class StaticController extends Controller
         $data = [
             'fullname'  => $request->input('fullname'),
             'service_id'=> (int)$request->input('service'),
-            'specialists_id'=> (int)$request->input('specialist'),
-            'age'       => $request->input('age'),
             'phone'     => $request->input('phone'),
             'email'     => $request->input('email'),
-            'day_book'  => $request->input('day_book'),
-            'age'  => $request->input('age'),
-            'time_pick' => $request->input('time_pick'),
-            'time_pick_text' => $timePickText,
             'status' => 1,
             'created_at' => new \DateTime,
             'updated_at' => new \DateTime,
             'note' => $request->input('note'),
-            'doctor_id' => (int)$request->input('doctor')
         ];
         $utmInfo = Utm::get();
         $dataCreate = array_merge($data,$utmInfo);
@@ -142,7 +132,8 @@ class StaticController extends Controller
         $this->sendEmailNoficationContact($dataCreate,'bookApointment');
         return \Support::response([
             'code' => 200,
-            'message' => 'Đặt lịch khám thành công'
+            'message' => 'Đặt lịch khám thành công',
+            'redirect_url' => 'dat-lich-kham-thanh-cong'
         ]);
     }
     protected function validatorSendResgisterAdvise(array $data)
@@ -150,16 +141,11 @@ class StaticController extends Controller
         return Validator::make($data, [
             'fullname' => ['required'],
             'phone' => ['required'],
-            'g-recaptcha-response' => ['required','captcha']
         ],[
             'required' => 'Vui lòng nhập/chọn :attribute',
-            'email' => 'Vui lòng nhập Email đúng định dạng',
-            'g-recaptcha-response.required' => 'Vui lòng xác nhận mã Captcha.',
-            'g-recaptcha-response.captcha' => 'Captcha bị lỗi. Vui lòng thử lại sau hoặc liên hệ với Admin.',
         ],[
             'fullname' => 'Họ và tên',  
             'phone' => 'Số điện thoại',
-            'g-recaptcha-response' => 'Mã Captcha',
         ]);
     }
     public function resgisterAdvise($request, $route, $link){
@@ -168,7 +154,6 @@ class StaticController extends Controller
             return \Support::response([
                 'code' => 100,
                 'message' => $validator->errors()->first(),
-                'redirect' => url()->previous()
             ]);
         }
         $type = (int)$request->input('type');
@@ -176,9 +161,6 @@ class StaticController extends Controller
         switch ($type) {
             case 1:
                 $title = 'Đăng ký tư vấn';
-                break;
-            case 2:
-                $title = 'Đăng ký gói thai sản';
                 break;
             default:
                 $title = 'Đăng ký tư vấn';
@@ -189,6 +171,7 @@ class StaticController extends Controller
             'fullname'  => $request->input('fullname'),
             'phone'     => $request->input('phone'),
             'email'     => $request->input('email'),
+            'register_address'     => $request->input('register_address'),
             'act' => 0,
             'created_at' => new \DateTime,
             'updated_at' => new \DateTime,
@@ -200,49 +183,50 @@ class StaticController extends Controller
         $this->sendEmailNoficationContact($dataCreate,'resgisterAdvise');
         return \Support::response([
             'code' => 200,
-            'message' => 'Đăng ký thành công'
+            'message' => 'Đăng ký thành công',
+            'redirect_url' => 'dang-ky-tu-van-thanh-cong'
         ]);
     }
     public function sendEmailNoficationContact($data,$type){
-        switch ($type) {
-            case 'bookApointment':
-                $title = $_SERVER['SERVER_NAME'].' Khách hàng gửi thông tin đặt lịch khám.';
-                $content = view('queue_emails.book_apointment',compact('data'))->render();
-                $listEmail = \DB::table('email_receive_informations')->whereRaw("FIND_IN_SET(1,group_email)")->get()->all();
-                break;
-            case 'resgisterAdvise':
-                $title = $_SERVER['SERVER_NAME'].' Khách hàng gửi thông tin đăng ký tư vấn.';
-                $content = view('queue_emails.resgister_advise',compact('data'))->render();
-                $listEmail = \DB::table('email_receive_informations')->whereRaw("FIND_IN_SET(2,group_email)")->get()->all();
-                break;
-            default:
-                return true;
-                break;
-        }
-        if (count($listEmail) > 0) {
-            $mainEmail = $listEmail[0]->email;
-            $arrEmailCc = [];
-            if (count($listEmail) > 1) {
-                foreach ($listEmail as $key => $emailInfo) {
-                    if ($key > 0) {
-                        array_push($arrEmailCc, $emailInfo->email);
-                    }
-                }
-            }
-            $listEmailCc = count($arrEmailCc) > 0 ? json_encode($arrEmailCc):'';
-            $dataCreate = [
-                "title"         => $title,
-                "content"       => $content,
-                "to"            => $mainEmail,
-                "created_at"    => new \DateTime,
-                "updated_at"    => new \DateTime,
-                "status"        => 0,
-                "count_error"   => 0,
-                "is_sms"        => 0,
-                "cc"            => $listEmailCc
-            ];
-            // QueueEmail::insert($dataCreate);
-        }
+        // switch ($type) {
+        //     case 'bookApointment':
+        //         $title = $_SERVER['SERVER_NAME'].' Khách hàng gửi thông tin đặt lịch khám.';
+        //         $content = view('queue_emails.book_apointment',compact('data'))->render();
+        //         $listEmail = \DB::table('email_receive_informations')->whereRaw("FIND_IN_SET(1,group_email)")->get()->all();
+        //         break;
+        //     case 'resgisterAdvise':
+        //         $title = $_SERVER['SERVER_NAME'].' Khách hàng gửi thông tin đăng ký tư vấn.';
+        //         $content = view('queue_emails.resgister_advise',compact('data'))->render();
+        //         $listEmail = \DB::table('email_receive_informations')->whereRaw("FIND_IN_SET(2,group_email)")->get()->all();
+        //         break;
+        //     default:
+        //         return true;
+        //         break;
+        // }
+        // if (count($listEmail) > 0) {
+        //     $mainEmail = $listEmail[0]->email;
+        //     $arrEmailCc = [];
+        //     if (count($listEmail) > 1) {
+        //         foreach ($listEmail as $key => $emailInfo) {
+        //             if ($key > 0) {
+        //                 array_push($arrEmailCc, $emailInfo->email);
+        //             }
+        //         }
+        //     }
+        //     $listEmailCc = count($arrEmailCc) > 0 ? json_encode($arrEmailCc):'';
+        //     $dataCreate = [
+        //         "title"         => $title,
+        //         "content"       => $content,
+        //         "to"            => $mainEmail,
+        //         "created_at"    => new \DateTime,
+        //         "updated_at"    => new \DateTime,
+        //         "status"        => 0,
+        //         "count_error"   => 0,
+        //         "is_sms"        => 0,
+        //         "cc"            => $listEmailCc
+        //     ];
+        //     QueueEmail::insert($dataCreate);
+        // }
         return true;
     }
     public function ratingUsefulNews($request, $route, $link){
@@ -272,9 +256,9 @@ class StaticController extends Controller
         ]);
     }
     public function makeQuestion($request, $route, $link){
-        $listSpecialistAll = \App\Models\Specialist::act()->get();
+        $listQuestionCategory = \App\Models\QuestionCategory::act()->get();
         $currentItem = \vanhenry\manager\model\VRoute::find($route->id);
-        return View::make('static.make_question',compact('currentItem','listSpecialistAll'));
+        return View::make('static.make_question',compact('currentItem','listQuestionCategory'));
     }
     public function orderExaminationSchedule($request, $route, $link){
         $currentItem = \vanhenry\manager\model\VRoute::find($route->id);
@@ -333,7 +317,7 @@ class StaticController extends Controller
             'fullname' => ['required'],
             'phone' => ['required'],
             'email' => ['required','email'],
-            'specialists' => ['exists:specialists,id'],
+            'parent' => ['exists:questions_categories,id'],
             'title' => ['required'],
         ],[
             'required' => 'Vui lòng nhập/chọn :attribute',
@@ -343,7 +327,7 @@ class StaticController extends Controller
             'fullname' => 'Họ và tên',  
             'phone' => 'Số điện thoại',
             'email' => 'Email',
-            'specialists' => 'Chuyên khoa',
+            'parent' => 'Chuyên khoa',
             'title' => 'Tiêu đề câu hỏi',
         ]);
     }
@@ -361,7 +345,7 @@ class StaticController extends Controller
         $question->phone = $request->input('phone');
         $question->email = $request->input('email');
         $question->customer_name = $request->input('fullname');
-        $question->specialists_id = (int)$request->input('specialists');
+        $question->parent = (int)$request->input('parent');
         $question->act = 0;
         $question->question = $request->input('note');
         $question->created_at = new \DateTime;
@@ -426,5 +410,9 @@ class StaticController extends Controller
     public function resgisterAdviseView($request,$route){
         $currentItem = \vanhenry\manager\model\VRoute::find($route->id);
         return View::make('static.register_advise_form',compact('currentItem'));
+    }
+    public function medicalRecordLookup($request,$route){
+        $currentItem = \vanhenry\manager\model\VRoute::find($route->id);
+        return View::make('static.medical_record_lookup',compact('currentItem'));
     }
 }

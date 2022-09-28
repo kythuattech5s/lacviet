@@ -14,7 +14,8 @@ class QuestionCategoryController extends Controller
     {
     	$currentItem = QuestionCategory::slug($link)->act()->first();
         if ($currentItem == null) { abort(404); }
-        $listItems = $currentItem->question()->act()->orderBy('time_ask','desc')->paginate(12);
+        $listIdCateChild = QuestionCategory::getListCateChildId($currentItem->id);
+        $listItems = Question::whereIn('parent',$listIdCateChild)->act()->orderBy('time_ask','desc')->paginate(12);
         return view('question_categories.view',compact('currentItem','listItems'));
     }
 }

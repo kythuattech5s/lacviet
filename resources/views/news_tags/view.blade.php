@@ -2,7 +2,7 @@
 @section('content')
 <div class="main-breadcrumb 2xl:my-9 lg:my-6 my-4 py-3 border-t-[1px] border-b-[1px] border-solid border-[#3286be]">
     <div class="container">
-        {{\Breadcrumbs::render('news_category',$currentItem)}}
+        {{\Breadcrumbs::render('news_tag',$currentItem)}}
     </div>
 </div>
 <section class="section-new__category 2xl:py-10 py-6">
