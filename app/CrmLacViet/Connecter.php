@@ -28,6 +28,27 @@ class Connecter
         $dataReqeust = $this->buildDataReqeust($dataAction);
         return $this->connect($dataReqeust);
     }
+	public function getBranch()
+    {
+        $dataAction = [];
+        $dataAction['Action'] = 'danh_sach_chi_nhanh';
+        $dataReqeust = $this->buildDataReqeust($dataAction);
+        return $this->connect($dataReqeust);
+    }
+	public function getService()
+    {
+        $dataAction = [];
+        $dataAction['Action'] = 'danh_sach_dich_vu';
+        $dataReqeust = $this->buildDataReqeust($dataAction);
+        return $this->connect($dataReqeust);
+    }
+	public function getDoctor()
+    {
+        $dataAction = [];
+        $dataAction['Action'] = 'danh_sach_bac_sy';
+        $dataReqeust = $this->buildDataReqeust($dataAction);
+        return $this->connect($dataReqeust);
+    }
     protected function connect($dataReqeust)
     {
         return Support::extractJson($this->exeCurl($this->urlConnect,'POST',$dataReqeust,['Content-Type: application/json']));

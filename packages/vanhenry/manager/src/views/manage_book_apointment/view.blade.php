@@ -86,6 +86,9 @@
         border-radius: 5px;
         padding: 0px 10px;
     }
+    .select2-container--default .select2-selection--single{
+        border: 1px solid #aaa !important;
+    }
 </style>
 <div class="header-top aclr">
 	<div class="breadc pull-left">
@@ -172,14 +175,15 @@
 	    		</table>
 	    	</div>
             <div class="col-lg-8" style="margin-top: 20px;padding-bottom: 100px;">
-                <p class="title text-center">Đồng bộ thông tin</p>
+                <p class="title text-center">Đặt lịch khám</p>
                 <form class="form-sync-crm" method="post" action="esystem/manage-book-apointments/action/sync-crm" accept-charset="utf8">
+                    @csrf
                     <input type="hidden" name="id" value="{{Support::show($bookApointment,'id')}}">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="item-input">
-                                <p class="item-title">Tên bệnh nhân (<span class="text-danger">*</span>)</p>
-                                <input type="text" name="TenBenhNhan" placeholder="Tên bệnh nhân (*)" value="{{Support::show($bookApointment,'fullname')}}">
+                                <p class="item-title">Tên khách hàng (<span class="text-danger">*</span>)</p>
+                                <input type="text" name="TenBenhNhan" placeholder="Tên khách hàng (*)" value="{{Support::show($bookApointment,'fullname')}}">
                             </div>
                             <div class="item-input">
                                 <p class="item-title">Số điện thoại đặt lịch (<span class="text-danger">*</span>)</p>
@@ -187,7 +191,7 @@
                             </div>
                             <div class="item-input">
                                 <p class="item-title">Giới tính (<span class="text-danger">*</span>)</p>
-                                <select name="MaGioiTinh">
+                                <select name="MaGioiTinh" class="select2">
                                     <option value="">Vui lòng chọn giới tính</option>
                                     <option value="NA">Nam</option>
                                     <option value="N">Nữ</option>
@@ -199,7 +203,12 @@
                             </div>
                             <div class="item-input">
                                 <p class="item-title">Chi nhánh (<span class="text-danger">*</span>)</p>
-                                <input type="text" name="MaChiNhanh" placeholder="Nội dung đặt lịch (*)">
+                                <select name="MaChiNhanh" class="select2">
+                                    <option value="">Vui lòng chọn chi nhánh</option>
+                                    @foreach ($listBranch as $itemBranch)
+                                        <option value="{{Support::show($itemBranch,'MaChiNhanh')}}">{{Support::show($itemBranch,'TenChiNhanh')}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="item-input">
                                 <p class="item-title">Ngày đặt lịch (<span class="text-danger">*</span>)</p>
@@ -225,16 +234,25 @@
                             </div>
                             <div class="item-input">
                                 <p class="item-title">Dịch vụ khám</p>
-                                <input type="text" name="DichVuKham" placeholder="Dịch vụ khám">
+                                <select name="DichVuKham[]" class="select2" multiple="multiple">
+                                    @foreach ($listService as $itemService)
+                                        <option value="{{Support::show($itemService,'MaNhomDichVu')}}">{{Support::show($itemService,'TenNhomDichVu')}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="item-input">
-                                <p class="item-title">Mã bác sĩ</p>
-                                <input type="text" name="MaBacSy" placeholder="Mã bác sĩ">
+                                <p class="item-title">Bác sĩ</p>
+                                <select name="MaBacSy" class="select2">
+                                    <option value="">Vui lòng chọn bác sĩ</option>
+                                    @foreach ($listDoctor as $itemDoctor)
+                                        <option value="{{Support::show($itemDoctor,'MaBacSy')}}">{{Support::show($itemDoctor,'TenBacSy')}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                     </div>
                     <div class="text-center" style="margin-top: 20px;">
-                        <button type="submit" class="btn btn-info">Xác nhận đồng bộ</button>
+                        <button type="submit" class="btn btn-info">Xác nhận đặt lịch</button>
                     </div>
                 </form>
             </div>
@@ -256,6 +274,28 @@
             .done(function(data) {
                 alert(data.message);
                 window.location.reload();
+            })
+        });
+        $('.form-sync-crm').submit(function(e){
+            e.preventDefault();
+            var _this = $(this);
+            _this.find('button').addClass('hidden');
+            $.ajax({
+                url: $(this).attr('action'),
+                type: 'POST',
+                dataType: 'json',
+                data: $(this).serialize()
+            })
+            .done(function(data) {
+                if (data.code == 200) {
+                    $.simplyToast(data.message, 'success');
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1500);
+                }else{
+                    $.simplyToast(data.message, 'danger');
+                    _this.find('button').removeClass('hidden');
+                }
             })
         });
     });
