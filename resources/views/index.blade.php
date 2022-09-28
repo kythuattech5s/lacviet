@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     {!!\vanhenry\helpers\helpers\SEOHelper::HEADER_SEO(@$currentItem?$currentItem:NULL)!!}
     <base href="{{url('/')}}">
+    <link rel="alternate" href="{{url()->current()}}" hreflang="vi-vn" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="theme/frontend/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
     <link href="theme/frontend/css/animate.min.css" type="text/css" rel="stylesheet" />

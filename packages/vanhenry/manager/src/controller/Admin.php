@@ -973,31 +973,4 @@ class Admin extends BaseAdminController
         }
         return $result;
     }
-
-     public function generalSlug(Request $request){
-        $slug = \Str::random(8);
-        $link = \DB::table('v_routes')->where('vi_link',$slug)->first();
-        while(!is_null($link)){
-            $slug = \Str::random(8);
-            $link = \DB::table('v_routes')->where('vi_link',$slug)->first();
-        }
-        return $slug;
-    }
-    
-    public function checkFieldDuplicated($table)
-    {   
-        $request = request();
-        $field = $request->name;
-        $val = $request->value;
-        $dataFile = DB::table($table)->where($field, \Str::of($val)->trim())->first();
-        if (($dataFile != null && isset($request->id) && $dataFile->id == $request->id) || $dataFile == null) {
-            return response([
-                'code' => 200
-            ]);
-        } else {
-            return response([
-                'code' => 100
-            ]);
-        }
-    }
 }

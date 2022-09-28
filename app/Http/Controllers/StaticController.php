@@ -31,7 +31,7 @@ class StaticController extends Controller
     	// if ($request->isMethod('get')) {
     		$val = $request->input('q');
             $currentItem = \vanhenry\manager\model\VRoute::find($route->id);
-            $listItems = News::publish()->act()->FullTextSearch('name',$val)->ord()->paginate(5);
+            $listItems = News::publish()->act()->FullTextSearch('name',$val)->orderBy('time_published','desc')->paginate(5);
             $listHotNews = News::act()->where('hot',1)->publish()->orderBy('time_published','desc')->limit(5)->get();
     		return view('search.basic_view',compact('val','currentItem','listItems','listHotNews'));
     	// }
@@ -410,9 +410,5 @@ class StaticController extends Controller
     public function resgisterAdviseView($request,$route){
         $currentItem = \vanhenry\manager\model\VRoute::find($route->id);
         return View::make('static.register_advise_form',compact('currentItem'));
-    }
-    public function medicalRecordLookup($request,$route){
-        $currentItem = \vanhenry\manager\model\VRoute::find($route->id);
-        return View::make('static.medical_record_lookup',compact('currentItem'));
     }
 }
