@@ -95,7 +95,7 @@ class SEOHelper{
 		}
 		return isset($dataitem->$key) && !StringHelper::isNull($dataitem->$key) ? $dataitem->$key : $def;
 	}
-	public static function HEADER_SEO($dataitem){
+	public static function HEADER_SEO($dataitem, $defaultLink = null){
 		$ret=  "<base href='".asset('/')."'/>";
 		$tmp = SettingHelper::getSetting('seo_title');
 		$extra = isset($_GET['page'])?" - trang ".$_GET['page']:"";
@@ -122,8 +122,12 @@ class SEOHelper{
 	    $ret .= '<meta name="keywords" content="'.$keySEO.'">';
 	    $tmp = SettingHelper::getSetting('site_name');
 		$ret .= '<meta property="og:site_name" content="'.(StringHelper::isNull($tmp)?$titleSEO:$tmp).'">';
-		$addUrl = url()->to('') == request()->url() ? '':'/';
-		$ret .= '<meta property="og:url" content="'.request()->url().$addUrl.'">';
+        if($defaultLink == null){
+            $addUrl = url()->to('') == request()->url() ? '':'/';
+            $ret .= '<meta property="og:url" content="'.request()->url().$addUrl.'">';
+        }else{
+		    $ret .= '<meta property="og:url" content="'.$defaultLink.'">';
+        }
 		$ret .= '<meta property="og:type" content="article">';
 		$ret .= '<meta property="og:title" content="'.addslashes($share_title_facebook).'">';
 		$ret .= '<meta property="og:description" content="'.addslashes($share_description_facebook).'">';
@@ -188,7 +192,11 @@ class SEOHelper{
 		if('value'!=$fbappid){
 			$ret .= '<meta property="fb:app_id" content="'.$fbappid.'">';
 		}
-		$ret .='<link rel="canonical" href="'.request()->url().'/">';
+        if($defaultLink == null){
+		    $ret .='<link rel="canonical" href="'.request()->url().'/">';
+        }else{
+		    $ret .='<link rel="canonical" href="'.$defaultLink.'/">';
+        }
 		$fav =json_decode(SettingHelper::getSetting('favicon'),true);
 		$fav = @$fav ?asset('/').$fav["path"].$fav["file_name"]:"";
 		$ret .= '<link rel="shortcut icon" href="'.$fav.'">';
@@ -224,57 +232,64 @@ class SEOHelper{
 		if($pos === FALSE) $val = asset('/').$val;
 		return $val;
 	}
-	public static function loadCss($files, $file="theme/frontend/style.min.css"){
-		// $before = microtime(true);
-		$minifyTime = 0;
-		$needMinify = false;
-		if(file_exists($file) ){
-			$minifyTime = filemtime ($file);
-			foreach ($files as $key => $value) {
-				
-				if(filemtime ($value)>$minifyTime){
-					$needMinify = true;
-					break;
-				}
-			}
-		}
-		else{
-			$needMinify =true;
-		}
-		if($needMinify){
-			$minifier = new \MatthiasMullie\Minify\CSS();
-			foreach ($files as $key => $value) {
-				$minifier->add($value);
-				$minifier->minify($file);
-			}
-		}
-		echo '<style type="text/css">'.file_get_contents($file).'</style>';
-		// $after = microtime(true);
-		// echo ($after-$before);die;
-	}
-	public static function loadJs($files, $file="theme/frontend/script.min.js"){
-		set_time_limit(0);
-		$minifyTime = 0;
-		$needMinify = false;
-		if(file_exists($file) ){
-			$minifyTime = filemtime ($file);
-			foreach ($files as $key => $value) {
-				if(filemtime ($file)>$minifyTime){
-					$needMinify = true;
-					break;
-				}
-			}
-		}
-		else{
-			$needMinify =true;
-		}
-		if($needMinify){
-			$minifier = new \MatthiasMullie\Minify\JS();
-			foreach ($files as $key => $value) {
-				$minifier->add($value);
-				$minifier->minify($file);
-			}
-		}
-		echo '<script src="'.$file.'" defer></script>';
-	}
+	
+    public static function loadCss($files, $file = "theme/frontend/css/style_chunk.min.css", $isInline = false)
+    {
+        set_time_limit(0);
+        $minifyTime = 0;
+        $needMinify = false;
+        if (file_exists(public_path($file))) {
+            $minifyTime = filemtime(public_path($file));
+            foreach ($files as $key => $value) {
+                if (filemtime(public_path($value)) > $minifyTime) {
+                    $needMinify = true;
+                    break;
+                }
+            }
+        } else {
+            $needMinify = true;
+        }
+        if ($needMinify) {
+            $minifier = new \MatthiasMullie\Minify\CSS();
+            foreach ($files as $key => $value) {
+                $minifier->add(public_path($value));
+                $minifier->minify(public_path($file));
+            }
+        }
+        if ($isInline) {
+            echo '<style type="text/css">' . file_get_contents(public_path($file)) . '</style>';
+        } else {
+            echo '<link rel="stylesheet" type="text/css" href="' . asset($file) . '">';
+        }
+    }
+
+    public static function loadJs($files, $file = "theme/frontend/js/script_chunk.min.js", $isInline = false)
+    {
+        set_time_limit(0);
+        $minifyTime = 0;
+        $needMinify = false;
+        if (file_exists(public_path($file))) {
+            $minifyTime = filemtime(public_path($file));
+            foreach ($files as $key => $value) {
+                if (filemtime(public_path($value)) > $minifyTime) {
+                    $needMinify = true;
+                    break;
+                }
+            }
+        } else {
+            $needMinify = true;
+        }
+        if ($needMinify) {
+            $minifier = new \MatthiasMullie\Minify\JS();
+            foreach ($files as $key => $value) {
+                $minifier->add(public_path($value));
+                $minifier->minify(public_path($file));
+            }
+        }
+         if ($isInline) {
+            echo '<script defer>'.file_get_contents(asset($file)).'</script>';
+        } else {
+            echo '<script src="' . asset($file) . '" defer></script>';
+        }
+    }
 }

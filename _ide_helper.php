@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.83.23.
+ * Generated for Laravel 8.83.24.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -2167,6 +2167,17 @@
         {
                         /** @var \Illuminate\Auth\SessionGuard $instance */
                         return $instance->setRequest($request);
+        }
+                    /**
+         * Get the timebox instance used by the guard.
+         *
+         * @return \Illuminate\Support\Timebox 
+         * @static 
+         */ 
+        public static function getTimebox()
+        {
+                        /** @var \Illuminate\Auth\SessionGuard $instance */
+                        return $instance->getTimebox();
         }
                     /**
          * Determine if the current user is authenticated. If not, throw an exception.
@@ -17595,6 +17606,43 @@
      
 }
 
+    namespace ProtoneMedia\LaravelFFMpeg\Support { 
+            /**
+     * 
+     *
+     * @method static \ProtoneMedia\LaravelFFMpeg\MediaOpener fromDisk($disk)
+     * @method static \ProtoneMedia\LaravelFFMpeg\MediaOpener fromFilesystem(\Illuminate\Contracts\Filesystem\Filesystem $filesystem)
+     * @method static \ProtoneMedia\LaravelFFMpeg\MediaOpener open($path)
+     * @method static \ProtoneMedia\LaravelFFMpeg\MediaOpener openUrl($path, array $headers)
+     * @method static \ProtoneMedia\LaravelFFMpeg\MediaOpener cleanupTemporaryFiles()
+     * @see \ProtoneMedia\LaravelFFMpeg\MediaOpener
+     */ 
+        class FFMpeg {
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function new()
+        {
+                        /** @var \ProtoneMedia\LaravelFFMpeg\Support\MediaOpenerFactory $instance */
+                        return $instance->new();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function dynamicHLSPlaylist()
+        {
+                        /** @var \ProtoneMedia\LaravelFFMpeg\Support\MediaOpenerFactory $instance */
+                        return $instance->dynamicHLSPlaylist();
+        }
+         
+    }
+     
+}
+
     namespace Illuminate\Http { 
             /**
      * 
@@ -21140,6 +21188,7 @@ namespace  {
             class Flare extends \Facade\Ignition\Facades\Flare {}
             class Image extends \Intervention\Image\Facades\Image {}
             class LaravelLocalization extends \Mcamara\LaravelLocalization\Facades\LaravelLocalization {}
+            class FFMpeg extends \ProtoneMedia\LaravelFFMpeg\Support\FFMpeg {}
      
 }
 
