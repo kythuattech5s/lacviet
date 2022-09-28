@@ -1,0 +1,232 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+    --bg-main: #2e3037;
+    --color-hover: #60a5fa;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.sidenav.show {
+    transform: translateX(0%);
+}
+
+.nav .nav-items {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.nav .nav-items button {
+    width: 100%;
+}
+
+.nav {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.nav-link {
+    color: black;
+}
+
+.nav-link:hover {
+    color: var(--color-hover);
+}
+
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover {
+    border-color: transparent;
+}
+
+.nav-tabs .nav-link:hover {
+    color: var(--color-hover);
+}
+
+.nav-tabs .nav-link {
+    color: white;
+    border-bottom: 1px solid var(--color-hover);
+}
+
+.main-content {
+    position: relative;
+    width: 100%;
+}
+
+.main-content #block {
+    height: 100%;
+}
+
+.main-content #block #blocks {
+    height: 100%;
+}
+
+.gjs-pn-panel {
+    position: relative;
+}
+
+.gjs-pn-views-container {
+    position: fixed;
+    left: 0;
+    opacity: 0;
+    padding: 0;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    z-index: 1000;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
+.gjs-pn-views-container.show {
+    opacity: 1;
+    -webkit-transform: initial;
+    transform: initial;
+}
+
+.gjs-cv-canvas {
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+.gjs-pn-panel.gjs-pn-devices-c.gjs-one-bg.gjs-two-color {
+    display: none;
+}
+
+.gjs-pn-panel-classess {
+    display: none;
+}
+
+.gjs-one-bg {
+    background-color: var(--bg-main);
+    color: white;
+}
+
+.gjs-two-bg {
+    color: #9ca8bb;
+}
+
+.gjs-three-bg {
+    background-color: #005380;
+    color: #fff;
+}
+
+.gjs-category-title,
+.gjs-layer-title,
+.gjs-block-category .gjs-title,
+.gjs-sm-sector-title {
+    color: white;
+}
+
+.gjs-four-color {
+    color: #60a5fa;
+}
+
+.gjs-four-color-h:hover {
+    color: #56fdc0;
+}
+
+.gjs-asset-manager {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.gjs-am-file-uploader {
+    width: 100%;
+}
+
+.gjs-am-file-uploader > form {
+    margin-bottom: 0;
+    border-radius: 5px;
+    border: 1px solid #979797;
+}
+
+.gjs-am-file-uploader #gjs-am-title {
+    padding: 15px;
+}
+
+.gjs-am-file-uploader > form #gjs-am-uploadFile {
+    padding: 15px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.gjs-am-assets-cont {
+    width: 100%;
+    background-color: transparent;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.gjs-am-assets-header {
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.gjs-am-assets {
+    height: 270px;
+}
+
+.gjs-am-asset {
+    border: none;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+.gjs-field {
+    border: 1px solid #979797;
+    background-color: transparent;
+}
+
+.gjs-am-add-asset .gjs-am-add-field {
+    width: 74%;
+    border-radius: 5px;
+}
+
+.gjs-am-add-asset button {
+    border: 1px solid #979797;
+    border-radius: 5px;
+}
+
+.gjs-toolbar > div {
+    display: flex;
+    align-items: center;
+}
+
+.show-tab {
+    @apply bg-blue-400;
+}
+
+.gjs-layer-no-chld > .gjs-layer-title-inn > .gjs-layer-caret {
+    display: inherit !important;
+}
+
+.gjs-layer-caret {
+    top: 50%;
+    transition: all 200ms;
+    transform: rotate(90deg) translateX(-50%);
+    left: -30px;
+}
+
+.gjs-layer-caret.gjs-layer-open {
+    transform: rotate(180deg) translateX(-50%);
+}

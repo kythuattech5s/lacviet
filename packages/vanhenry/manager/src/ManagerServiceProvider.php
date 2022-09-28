@@ -14,11 +14,11 @@ class ManagerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->initRoutes();
+        $this->initConfig();
         $this->publicViews();
         $this->initHelper();
         $this->initLanguage();
-        $this->initConfig();
+        $this->initRoutes();
     }
     
     public function register()

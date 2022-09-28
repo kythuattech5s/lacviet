@@ -1,60 +1,54 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 							<url>
-															<loc>https://lacviet.test/</loc>
+															<loc>https://lacviet.roniejisa.com/</loc>
 													<lastmod>2022-09-09T18:20:08+07:00</lastmod>
 				<changefreq>daily</changefreq>
 				<priority>0.9</priority>
 			</url>
 										<url>
-															<loc>https://lacviet.test/lien-he/</loc>
+															<loc>https://lacviet.roniejisa.com/tat-ca-tin-tuc/</loc>
 													<lastmod>2022-09-09T18:20:08+07:00</lastmod>
 				<changefreq>daily</changefreq>
 				<priority>0.9</priority>
 			</url>
 										<url>
-															<loc>https://lacviet.test/dich-vu/</loc>
+															<loc>https://lacviet.roniejisa.com/lien-he/</loc>
 													<lastmod>2022-09-09T18:20:08+07:00</lastmod>
 				<changefreq>daily</changefreq>
 				<priority>0.9</priority>
 			</url>
 										<url>
-															<loc>https://lacviet.test/tim-kiem/</loc>
+															<loc>https://lacviet.roniejisa.com/dich-vu/</loc>
 													<lastmod>2022-09-09T18:20:08+07:00</lastmod>
 				<changefreq>daily</changefreq>
 				<priority>0.9</priority>
 			</url>
 										<url>
-															<loc>https://lacviet.test/hoi-dap-chuyen-gia/</loc>
+															<loc>https://lacviet.roniejisa.com/tim-kiem/</loc>
 													<lastmod>2022-09-09T18:20:08+07:00</lastmod>
 				<changefreq>daily</changefreq>
 				<priority>0.9</priority>
 			</url>
 										<url>
-															<loc>https://lacviet.test/dat-cau-hoi/</loc>
+															<loc>https://lacviet.roniejisa.com/hoi-dap-chuyen-gia/</loc>
 													<lastmod>2022-09-09T18:20:08+07:00</lastmod>
 				<changefreq>daily</changefreq>
 				<priority>0.9</priority>
 			</url>
 										<url>
-															<loc>https://lacviet.test/dat-lich-kham/</loc>
+															<loc>https://lacviet.roniejisa.com/dat-cau-hoi/</loc>
 													<lastmod>2022-09-09T18:20:08+07:00</lastmod>
 				<changefreq>daily</changefreq>
 				<priority>0.9</priority>
 			</url>
 										<url>
-															<loc>https://lacviet.test/gioi-thieu/</loc>
+															<loc>https://lacviet.roniejisa.com/dat-lich-kham/</loc>
 													<lastmod>2022-09-09T18:20:08+07:00</lastmod>
 				<changefreq>daily</changefreq>
 				<priority>0.9</priority>
 			</url>
 										<url>
-															<loc>https://lacviet.test/tin-tuc/</loc>
-													<lastmod>2022-09-09T18:20:08+07:00</lastmod>
-				<changefreq>daily</changefreq>
-				<priority>0.9</priority>
-			</url>
-										<url>
-															<loc>https://lacviet.test/nhung-cau-hoi-thuong-gap/</loc>
+															<loc>https://lacviet.roniejisa.com/tin-tuc/</loc>
 													<lastmod>2022-09-09T18:20:08+07:00</lastmod>
 				<changefreq>daily</changefreq>
 				<priority>0.9</priority>

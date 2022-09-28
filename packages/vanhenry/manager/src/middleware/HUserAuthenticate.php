@@ -1,4 +1,5 @@
 <?php
+
 namespace vanhenry\manager\middleware;
 
 use Closure;
@@ -22,7 +23,7 @@ class HUserAuthenticate
         $admincp = \Config::get('manager.admincp');
         $gu = Auth::guard($guard);
         if (!$gu->check()) {
-            return redirect($admincp.'/login');
+            return redirect($admincp . '/login');
         }
         if (isset($request->table)) {
             $table = $request->table;
@@ -31,30 +32,30 @@ class HUserAuthenticate
                 return redirect()->route('404');
             }
             $ret =  $this->checkPermission($table, $action);
-            if ($ret ==1) {
+            if ($ret == 1) {
                 if ($request->ajax()) {
                     return JsonHelper::echoJson(400, trans('db::NO_PERMISSION'));
                 } else {
                     return redirect()->route('no_permission');
                 }
-            } elseif ($ret ==2) {
+            } elseif ($ret == 2) {
                 return redirect()->route('404');
             }
             $transTable = \FCHelper::getTranslationTable($table);
             view()->share('transTable', $transTable);
         } else {
             $isMedia = $request->segment(2, "");
-            if ($isMedia=="media") {
+            if ($isMedia == "media") {
                 $table = "media";
-                $action =$request->segment(3, "");
+                $action = $request->segment(3, "");
                 $ret = $this->checkPermissionMedia($table, $action);
-                if ($ret ==1) {
+                if ($ret == 1) {
                     if ($request->ajax()) {
                         return JsonHelper::echoJson(400, trans('db::NO_PERMISSION'));
                     } else {
                         return redirect()->route('no_permission');
                     }
-                } elseif ($ret ==2) {
+                } elseif ($ret == 2) {
                     return redirect()->route('404');
                 }
             }
@@ -77,24 +78,24 @@ class HUserAuthenticate
             case "getDetailFile":
             case "manager":
             case "view":
-                $_action="view";
-            break;
+                $_action = "view";
+                break;
             case "saveDetailFile":
             case "moveFile":
             case "rename":
-                $_action="update";
-            break;
+                $_action = "update";
+                break;
             case "deleteFolder":
             case "deleteFile":
             case "deleteAll":
-                $_action="delete";
-            break;
+                $_action = "delete";
+                break;
             case "copyFile":
-                $_action="copy";
-            break;
+                $_action = "copy";
+                break;
             default:
-                $_action="view";
-            break;
+                $_action = "view";
+                break;
         }
         $ret =  $this->checkPermission($table, $_action);
         return $ret;
@@ -107,6 +108,8 @@ class HUserAuthenticate
         }
         $_action = "";
         switch ($action) {
+            case 'general-slug':
+            case 'check-duplicate-field':
             case 'view':
             case 'search':
             case 'history':
@@ -139,23 +142,24 @@ class HUserAuthenticate
             case 'trash':
             case 'backtrash':
             case 'do_assign':
-                $_action ='update';
+                $_action = 'update';
                 break;
             case 'insert':
             case 'store':
             case 'storeAjax':
             case 'do_import':
-                $_action='insert';
+                $_action = 'insert';
                 break;
+
             case 'copy':
-                $_action='copy';
+                $_action = 'copy';
                 break;
         }
         $fil = collect($ar['module']);
-        $fil= $fil->filter(function ($item) use ($table, $_action) {
-            return $item->table_map== $table && $item->name == $_action;
+        $fil = $fil->filter(function ($item) use ($table, $_action) {
+            return $item->table_map == $table && $item->name == $_action;
         });
-        if ($fil->count()<=0) { //No permmission
+        if ($fil->count() <= 0) { //No permmission
             return 1;
         }
         return 200;
