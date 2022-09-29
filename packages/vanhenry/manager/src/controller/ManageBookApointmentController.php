@@ -93,7 +93,12 @@ class ManageBookApointmentController extends BaseAdminController
                 'message' => 'Không tìm thấy thông tin đăng ký khám'
             ]);
         }
-
+        if ($bookApointment->sync_status == 1) {
+            return response()->json([
+                'code' => 100,
+                'message' => 'Lịch khám đã đồng bộ rồi.'
+            ]);
+        }
         $validator = $this->validatorSyncCrmBookApointment($request->all());
         if ($validator->fails()) {
             return response()->json([
@@ -111,6 +116,37 @@ class ManageBookApointmentController extends BaseAdminController
             ]);
         }
 
+        $dataBook = [];
+        $dataBook['TenBenhNhan'] = $request->TenBenhNhan ?? '';
+        $dataBook['SoDienThoai'] = $request->SoDienThoai ?? '';
+        $dataBook['MaGioiTinh'] = $request->MaGioiTinh ?? '';
+        $dataBook['TieuDe'] = $request->TieuDe ?? '';
+        $dataBook['MaChiNhanh'] = $request->MaChiNhanh ?? '';
+        $dataBook['NgayDatLich'] = $timeDatLich->format('Y-m-d H:i:s');
+        $dataBook['MaBenhNhan'] = $request->MaBenhNhan ?? '';
+        $dataBook['NgayThang'] = $request->NgayThang ?? '';
+        $dataBook['NamSinh'] = $request->NamSinh ?? '';
+        $dataBook['SoLuongKhach'] = $request->SoLuongKhach ?? '';
+        $dataBook['DichVuKham'] = isset($request->DichVuKham) && is_array($request->DichVuKham) ? implode($request->DichVuKham,','):'';
+        $dataBook['MaBacSy'] = $request->MaBacSy ?? '';
+        
+        $crmConnecter = new Connecter;
+        $dataRes = $crmConnecter->bookApointment($dataBook);
+        if (!isset($dataRes['code']) || $dataRes['code'] != 1) {
+            return response()->json([
+                'code' => 100,
+                'message' => $dataRes['msg'] ?? 'Không thể đặt lịch vui lòng thử lại sau.'
+            ]);
+        }
+        if (!isset($dataRes['data0'])) {
+            return response()->json([
+                'code' => 100,
+                'message' => $dataRes['msg'] ?? 'Không tìm thấy dữ liệu đặt lịch.'
+            ]);
+        }
+
+        $bookApointment->sync_status = 1;
+        $bookApointment->CrmResponse = json_encode($dataRes);
         $bookApointment->TenBenhNhan = $request->TenBenhNhan ?? '';
         $bookApointment->SoDienThoai = $request->SoDienThoai ?? '';
         $bookApointment->MaGioiTinh = $request->MaGioiTinh ?? '';
@@ -125,19 +161,9 @@ class ManageBookApointmentController extends BaseAdminController
         $bookApointment->MaBacSy = $request->MaBacSy ?? '';
         $bookApointment->save();
 
-        $dataBook = [];
-        $dataBook['TenBenhNhan'] = $request->TenBenhNhan ?? '';
-        $dataBook['SoDienThoai'] = $request->SoDienThoai ?? '';
-        $dataBook['MaGioiTinh'] = $request->MaGioiTinh ?? '';
-        $dataBook['TieuDe'] = $request->TieuDe ?? '';
-        $dataBook['MaChiNhanh'] = $request->MaChiNhanh ?? '';
-        $dataBook['NgayDatLich'] = $timeDatLich->format('Y-m-d H:i:s');
-        $dataBook['MaBenhNhan'] = $request->MaBenhNhan ?? '';
-        $dataBook['NgayThang'] = $request->NgayThang ?? '';
-        $dataBook['NamSinh'] = $request->NamSinh ?? '';
-        $dataBook['SoLuongKhach'] = $request->SoLuongKhach ?? '';
-        $dataBook['DichVuKham'] = isset($request->DichVuKham) && is_array($request->DichVuKham) ? implode($request->DichVuKham,','):'';
-        $dataBook['MaBacSy'] = $request->MaBacSy ?? '';
-        dd('Có bao nhiêu đôi ngôn tình');
+        return response()->json([
+            'code' => 200,
+            'message' => 'Đặt lịch thành công'
+        ]);
     }
 }

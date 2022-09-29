@@ -23,7 +23,7 @@ class Connecter
     public function getHistoryTreatment($patientCode)
     {
         $dataAction = [];
-        $dataAction['Action'] = 'danh_sach_lich_hen';
+        $dataAction['Action'] = 'lich_su_qua_trinh_dieu_tri';
         $dataAction['MaBenhNhan'] = $patientCode;
         $dataReqeust = $this->buildDataReqeust($dataAction);
         return $this->connect($dataReqeust);
@@ -46,6 +46,12 @@ class Connecter
     {
         $dataAction = [];
         $dataAction['Action'] = 'danh_sach_bac_sy';
+        $dataReqeust = $this->buildDataReqeust($dataAction);
+        return $this->connect($dataReqeust);
+    }
+    public function bookApointment($dataAction)
+    {
+        $dataAction['Action'] = 'dat_lich_hen';
         $dataReqeust = $this->buildDataReqeust($dataAction);
         return $this->connect($dataReqeust);
     }

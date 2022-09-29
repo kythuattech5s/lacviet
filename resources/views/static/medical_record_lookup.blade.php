@@ -19,7 +19,7 @@
                                 <span class="text whitespace-nowrap text-[#373737] 2xl:text-[1.125rem]">
                                     Mã bệnh nhân:
                                 </span>
-                                <input type="text" name="patient_code" required class="form-control flex-1">
+                                <input type="text" name="patient_code" required class="form-control flex-1" value="{{$patientCode}}">
                             </div>
                             <button type="submit" class="btn-red whitespace-nowrap inline-flex h-9 mx-auto font-semibold items-center justify-center lg:text-[0.875rem] uppercase py-2 px-10 rounded-lg text-white bg-[#fb2317] transition-all duration-300">Tra cứu</button>
                         </form>
@@ -42,65 +42,31 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="content-table">
-                                        <div class="grid grid-cols-3 border-t-[1px] border-solid border-[#ebebeb]">
-                                            <div class="col-span-1">
-                                                <div class="item-table text-center 2xl:p-4 p-2 font-medium lg:text-[0.875rem] border-r-[1px] border-solid border-[#ebebeb]">
-                                                    10/02/2022
+                                    @foreach (array_reverse($listLichKham) as $item)
+                                        @if ($item['NgayChiDinh'] != '')
+                                            <div class="grid grid-cols-3 border-t-[1px] border-solid border-[#ebebeb]">
+                                                <div class="col-span-1">
+                                                    <div class="item-table text-center 2xl:p-4 p-2 font-medium lg:text-[0.875rem] border-r-[1px] border-solid border-[#ebebeb]">
+                                                        {{Str::substr(Support::show($item,'NgayChiDinh'),0,10)}}
+                                                    </div>
+                                                </div>
+                                                <div class="col-span-2">
+                                                    <div class="item-table 2xl:p-4 p-2 font-medium lg:text-[0.875rem]">
+                                                        {{Support::show($item,'TenDichVu')}}
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-span-2">
-                                                <div class="item-table 2xl:p-4 p-2 font-medium lg:text-[0.875rem]">
-                                                    Cấy ghép A)dqaf khau chỉ không tiêu đơn thuốc
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="grid grid-cols-3 border-t-[1px] border-solid border-[#ebebeb]">
-                                            <div class="col-span-1">
-                                                <div class="item-table text-center 2xl:p-4 p-2 font-medium lg:text-[0.875rem] border-r-[1px] border-solid border-[#ebebeb]">
-                                                    10/02/2022
-                                                </div>
-                                            </div>
-                                            <div class="col-span-2">
-                                                <div class="item-table 2xl:p-4 p-2 font-medium lg:text-[0.875rem]">
-                                                    Cấy ghép A)dqaf khau chỉ không tiêu đơn thuốc
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="grid grid-cols-3 border-t-[1px] border-solid border-[#ebebeb]">
-                                            <div class="col-span-1">
-                                                <div class="item-table text-center 2xl:p-4 p-2 font-medium lg:text-[0.875rem] border-r-[1px] border-solid border-[#ebebeb]">
-                                                    10/02/2022
-                                                </div>
-                                            </div>
-                                            <div class="col-span-2">
-                                                <div class="item-table 2xl:p-4 p-2 font-medium lg:text-[0.875rem]">
-                                                    Cấy ghép A)dqaf khau chỉ không tiêu đơn thuốc
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="grid grid-cols-3 border-t-[1px] border-solid border-[#ebebeb]">
-                                            <div class="col-span-1">
-                                                <div class="item-table text-center 2xl:p-4 p-2 font-medium lg:text-[0.875rem] border-r-[1px] border-solid border-[#ebebeb]">
-                                                    10/02/2022
-                                                </div>
-                                            </div>
-                                            <div class="col-span-2">
-                                                <div class="item-table 2xl:p-4 p-2 font-medium lg:text-[0.875rem]">
-                                                    Cấy ghép A)dqaf khau chỉ không tiêu đơn thuốc
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
-                        <div class="bg-[#f8fbfe] border-[1px] border-solid border-[#d7ecfa] 2xl:p-4 p-2 text-[0.875rem] appointment 2xl:mb-8 mb-6">
+                        {{-- <div class="bg-[#f8fbfe] border-[1px] border-solid border-[#d7ecfa] 2xl:p-4 p-2 text-[0.875rem] appointment 2xl:mb-8 mb-6">
                             Lịch hẹn: <strong class="font-bold">25/08/2022</strong>
                         </div>
                         <a href="#" title="Đổi lịch hẹn" class="btn-red flex w-fit mx-auto items-center justify-center lg:text-[0.875rem] uppercase py-3 px-8 rounded-xl text-white bg-[#fb2317] transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
                         Đổi lịch hẹn
-                        </a>
+                        </a> --}}
                     </div>
                 </div>
             </div>
