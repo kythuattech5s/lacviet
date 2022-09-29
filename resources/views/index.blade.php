@@ -16,6 +16,25 @@
     @yield('cssl')
     <link href="theme/frontend/css/app.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('./css/app.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'Gilroy': ['"Gilroy"'],
+                        'Every': ['"Every"'],
+                        'Pleasent': ['"Pleasent"'],
+                    },
+                   
+                    container: {
+                        center: true,
+                    },
+                }
+            }
+        }
+    </script>
     <link href="theme/frontend/css/main.css" type="text/css" rel="stylesheet" />
     @yield('css')
     <script type="text/javascript">

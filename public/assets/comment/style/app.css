@@ -601,9 +601,6 @@ video {
 .top-\[4px\] {
   top: 4px;
 }
-.left-4 {
-  left: 1rem;
-}
 .right-4 {
   right: 1rem;
 }
@@ -1550,6 +1547,16 @@ video {
   --tw-gradient-to: rgb(244 67 54 / 0);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
+.from-\[\#FF6B69\] {
+  --tw-gradient-from: #FF6B69;
+  --tw-gradient-to: rgb(255 107 105 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.from-\[\#28B1FF\] {
+  --tw-gradient-from: #28B1FF;
+  --tw-gradient-to: rgb(40 177 255 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
 .to-\[\#E57709\] {
   --tw-gradient-to: #E57709;
 }
@@ -1567,6 +1574,12 @@ video {
 }
 .to-\[\#C62828\] {
   --tw-gradient-to: #C62828;
+}
+.to-\[\#E20200\] {
+  --tw-gradient-to: #E20200;
+}
+.to-\[\#008EDF\] {
+  --tw-gradient-to: #008EDF;
 }
 .bg-cover {
   background-size: cover;
@@ -2132,6 +2145,16 @@ video {
 .shadow-sm {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.shadow-\[0_6px_20px_rgba\(246\2c 57\2c 55\2c \.4\)\] {
+  --tw-shadow: 0 6px 20px rgba(246,57,55,.4);
+  --tw-shadow-colored: 0 6px 20px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.shadow-\[0_6px_20px_rgba\(0\2c 142\2c 223\2c \.4\)\] {
+  --tw-shadow: 0 6px 20px rgba(0,142,223,.4);
+  --tw-shadow-colored: 0 6px 20px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 .outline-none {
@@ -3191,16 +3214,20 @@ video {
     right: -60px;
   }
 
-  .\32xl\:left-\[5\%\] {
-    left: 5%;
-  }
-
   .\32xl\:left-\[-180px\] {
     left: -180px;
   }
 
   .\32xl\:right-\[-180px\] {
     right: -180px;
+  }
+
+  .\32xl\:left-\[-100px\] {
+    left: -100px;
+  }
+
+  .\32xl\:right-\[-100px\] {
+    right: -100px;
   }
 
   .\32xl\:mx-20 {

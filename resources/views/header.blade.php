@@ -3,7 +3,7 @@
         <h1 class="hidden">{[site_name]}</h1>
     @endif
     <div class="header-top bg-white relative 2xl:py-6 lg:py-4 py-2">
-        <div class="h-lang hidden lg:flex items-center absolute top-1/2 2xl:left-[5%] left-4 -translate-y-1/2">
+        <div class="h-lang hidden lg:flex items-center absolute top-1/2 right-4 -translate-y-1/2">
             <a href="javascript:void(0)" class="btn-change-lang-en" onclick="doGTranslate('vi|en');return false;" title="Tiếng anh">
                 <img src="theme/frontend/images/en.png" alt="En icon">
             </a>
@@ -19,7 +19,7 @@
                 @include('image_loader.config.tiny',['config_key'=>'logo','noLazyLoad'=>1])
             </a>
             <form action="{{\VRoute::get("search")}}" method="get" class="form-search-header hidden lg:block relative flex-1" accept-charset="utf8">
-                <input type="text" placeholder="Bạn cần tìm gì?" name="q" class="form-control lg:py-3 lg:px-7 px-5 py-2 w-full bg-white rounded-3xl border-[1px] border-[#a2a2a2] border-solid">
+                <input type="text" placeholder="Bạn cần tìm gì?" name="q" class="form-control lg:py-3 lg:px-7 px-5 py-2 w-full bg-[#f5f5f5] rounded-3xl border-solid">
                 <button type="submit" class="btn-search absolute top-1/2 right-4 -translate-y-1/2 z-[1]">
                     <img src="theme/frontend/images/icon-search.png" alt="search">
                 </button>
@@ -32,10 +32,10 @@
                         <span class="phone font-bold text-[#f53632] 2xl:text-[1.125rem]">{[hotline]}</span>
                     </p>
                 </a>
-                <a href="{{VRoute::get('orderExaminationSchedule')}}" title="Đăng ký khám" class="btn-red inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-2 px-4 rounded-3xl text-white bg-[#fb2317] transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
+                <a href="{{VRoute::get('orderExaminationSchedule')}}" title="Đăng ký khám" class=" inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-2 px-4 rounded-3xl text-white bg-gradient-to-b from-[#FF6B69] to-[#E20200] shadow-[0_6px_20px_rgba(246,57,55,.4)] transition-all duration-300">
                     Đăng ký khám
                 </a>
-                <a href="{{VRoute::get('medicalRecordLookup')}}" title="Tra cứu bệnh án" class="btn-blue inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-2 px-4 rounded-3xl text-white bg-[#028cde] transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
+                <a href="{{VRoute::get('medicalRecordLookup')}}" title="Tra cứu bệnh án" class=" inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-2 px-4 rounded-3xl text-white bg-gradient-to-b from-[#28B1FF] to-[#008EDF] transition-all duration-300 shadow-[0_6px_20px_rgba(0,142,223,.4)]">
                     Tra cứu bệnh án
                 </a>
             </div>

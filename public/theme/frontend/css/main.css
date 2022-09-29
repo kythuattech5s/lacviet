@@ -34,7 +34,16 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-thumb {
   background: #028cde;
 }
-
+b, strong{
+  font-weight: bold !important;
+}
+.line-clamp-2{
+  overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
 .s-content ol {
   list-style: decimal;
   margin-left: 15px;
@@ -288,8 +297,11 @@ a:hover, a:focus {
   font-weight: 600;
 }
 .breadcrumb li a {
-  color: #0557ac;
+  color: #888;
   position: relative;
+}
+.breadcrumb li span{
+  color: #008EDF;
 }
 .breadcrumb li a::after {
   content: "\f105";
@@ -580,7 +592,10 @@ input, select, textarea {
   -o-object-fit: scale-down;
      object-fit: scale-down;
 }
-
+.main-breadcrumb {
+  margin-top: 0 !important;
+  border: none !important;
+}
 @media (min-width: 992px) {
   .container {
     max-width: 992px;
@@ -680,7 +695,7 @@ input, select, textarea {
 }
 @media (min-width: 1280px) {
   .container {
-    max-width: 1200px;
+    max-width: 1200px !important;
   }
 }
 @media (min-width: 1536px) {

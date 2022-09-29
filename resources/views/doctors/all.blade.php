@@ -15,7 +15,7 @@
                 @endphp
                 <div class="head-flex flex items-center justify-between 2xl:mb-6 mb-4">
                     <h2 class="title-all text-center 2xl:text-[2rem] lg:text-[1.5rem] text-[1.25rem] text-[#000] font-semibold">{{Support::show($itemSpecialist,'name')}}</h2>
-                    <a href="{{Support::show($itemSpecialist,'slug')}}" title="Xem thêm" class="readmore font-medium italic 2xl:text-[1.125rem] text-[#028cde]">Xem thêm <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i></a>
+                    <a href="{{Support::show($itemSpecialist,'slug')}}" title="Xem thêm" class="readmore font-medium 2xl:text-[1.125rem] text-[#008EDF]">Xem thêm <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i></a>
                 </div>
                 <div class="boxslide relative">
                     <div class="swiper-container slide-experts">
