@@ -1,5 +1,7 @@
 {
     "/_grapes/js/root.js": "/_grapes/js/root.js",
+    "/assets/comment/js/tinymce.js": "/assets/comment/js/tinymce.js",
+    "/css/app.css": "/css/app.css",
     "/assets/comment/style/app.css": "/assets/comment/style/app.css",
     "/_grapes/css/app.css": "/_grapes/css/app.css",
     "/_grapes/plugins/grapesjs/css/grapes.min.css": "/_grapes/plugins/grapesjs/css/grapes.min.css",

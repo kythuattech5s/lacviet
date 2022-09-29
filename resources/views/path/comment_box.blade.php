@@ -1,6 +1,6 @@
 <div class="comment-box__content">
     <div class="comment-box__form">
-        <form action="binh-luan/" method="POST" clear class="formValidation overflow-hidden" parent=".form-group" data-success="COMMENT.receivedComment" absolute>
+        <form action="binh-luan/" method="POST" clear class="form-validate overflow-hidden" parent=".form-group" data-success="COMMENT.receivedComment" absolute>
             @csrf
             <input type="hidden" value="{{ $map_table }}" name="map_table">
             <input type="hidden" value="{{ Support::show($currentItem, 'id') }}" name="map_id">
