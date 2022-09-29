@@ -1,8 +1,10 @@
 <?php
 namespace vanhenry\manager\controller;
 
+use App\CrmLacViet\Connecter;
 use App\Models\BookApointment;
 use App\Models\StatusBookApointment;
+use Illuminate\Support\Facades\Validator;
 
 class ManageBookApointmentController extends BaseAdminController
 {
@@ -20,14 +22,24 @@ class ManageBookApointmentController extends BaseAdminController
         }
         $listStatusBookApointment = StatusBookApointment::get();
         $table = 'book_apointments';
-        return view('vh::manage_book_apointment.view',compact('bookApointment','table','listStatusBookApointment'));
+        $crmConnecter = new Connecter;
+        $dataBranch = $crmConnecter->getBranch();
+        $listBranch = $dataBranch['data0'] ?? [];
+        $dataService = $crmConnecter->getService();
+        $listService = $dataService['data0'] ?? [];
+        $dataDoctor = $crmConnecter->getDoctor();
+        $listDoctor = $dataDoctor['data0'] ?? [];
+        return view('vh::manage_book_apointment.view',compact('bookApointment','table','listStatusBookApointment','listBranch','listDoctor','listService'));
     }
     public function manageBookApointmentAction ($action)
     {
         $request = request();
         switch ($action) {
             case 'change-status':
-                return $this->changeBookApointmentActionStatus($request);
+                return $this->changeBookApointmentStatus($request);
+                break;
+            case 'sync-crm':
+                return $this->syncCrmBookApointment($request);
                 break;
             default:
                 return response()->json([
@@ -37,7 +49,7 @@ class ManageBookApointmentController extends BaseAdminController
                 break;
         }
     }
-    protected function changeBookApointmentActionStatus($request){
+    protected function changeBookApointmentStatus($request){
         $bookApointment = BookApointment::find($request->id);
         if (!isset($bookApointment)) {
             return response()->json([
@@ -50,6 +62,108 @@ class ManageBookApointmentController extends BaseAdminController
         return response()->json([
             'code' => 200,
             'message' => 'Thay đổi trạng thái thành công'
+        ]);
+    }
+    protected function validatorSyncCrmBookApointment(array $data)
+    {
+        return Validator::make($data, [
+            'TenBenhNhan' => ['required'],
+            'SoDienThoai' => ['required'],
+            'MaGioiTinh' => ['required'],
+            'TieuDe' => ['required'],
+            'MaChiNhanh' => ['required'],
+            'NgayDatLich' => ['required'],
+        ], [
+            'required' => 'Vui lòng chọn/nhập :attribute',
+        ], [
+            'TenBenhNhan' => 'Tên khách hàng',
+            'SoDienThoai' => 'Số điện thoại đặt lịch',
+            'MaGioiTinh' => 'Giới tính',
+            'TieuDe' => 'Nội dung đặt lịch',
+            'MaChiNhanh' => 'Chi nhánh',
+            'NgayDatLich' => 'Ngày đặt lịch',
+        ]);
+    }
+    protected function syncCrmBookApointment($request)
+    {
+        $bookApointment = BookApointment::find($request->id);
+        if (!isset($bookApointment)) {
+            return response()->json([
+                'code' => 100,
+                'message' => 'Không tìm thấy thông tin đăng ký khám'
+            ]);
+        }
+        if ($bookApointment->sync_status == 1) {
+            return response()->json([
+                'code' => 100,
+                'message' => 'Lịch khám đã đồng bộ rồi.'
+            ]);
+        }
+        $validator = $this->validatorSyncCrmBookApointment($request->all());
+        if ($validator->fails()) {
+            return response()->json([
+                'code' => 100,
+                'message' => $validator->errors()->first()
+            ]);
+        }
+
+        try {
+            $timeDatLich = now()->createFromFormat('d/m/Y H:i:s',$request->NgayDatLich);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'code' => 100,
+                'message' => 'Không thể đặt lịch. Đinh dạng thời gian không chính xác.'
+            ]);
+        }
+
+        $dataBook = [];
+        $dataBook['TenBenhNhan'] = $request->TenBenhNhan ?? '';
+        $dataBook['SoDienThoai'] = $request->SoDienThoai ?? '';
+        $dataBook['MaGioiTinh'] = $request->MaGioiTinh ?? '';
+        $dataBook['TieuDe'] = $request->TieuDe ?? '';
+        $dataBook['MaChiNhanh'] = $request->MaChiNhanh ?? '';
+        $dataBook['NgayDatLich'] = $timeDatLich->format('Y-m-d H:i:s');
+        $dataBook['MaBenhNhan'] = $request->MaBenhNhan ?? '';
+        $dataBook['NgayThang'] = $request->NgayThang ?? '';
+        $dataBook['NamSinh'] = $request->NamSinh ?? '';
+        $dataBook['SoLuongKhach'] = $request->SoLuongKhach ?? '';
+        $dataBook['DichVuKham'] = isset($request->DichVuKham) && is_array($request->DichVuKham) ? implode($request->DichVuKham,','):'';
+        $dataBook['MaBacSy'] = $request->MaBacSy ?? '';
+        
+        $crmConnecter = new Connecter;
+        $dataRes = $crmConnecter->bookApointment($dataBook);
+        if (!isset($dataRes['code']) || $dataRes['code'] != 1) {
+            return response()->json([
+                'code' => 100,
+                'message' => $dataRes['msg'] ?? 'Không thể đặt lịch vui lòng thử lại sau.'
+            ]);
+        }
+        if (!isset($dataRes['data0'])) {
+            return response()->json([
+                'code' => 100,
+                'message' => $dataRes['msg'] ?? 'Không tìm thấy dữ liệu đặt lịch.'
+            ]);
+        }
+
+        $bookApointment->sync_status = 1;
+        $bookApointment->CrmResponse = json_encode($dataRes);
+        $bookApointment->TenBenhNhan = $request->TenBenhNhan ?? '';
+        $bookApointment->SoDienThoai = $request->SoDienThoai ?? '';
+        $bookApointment->MaGioiTinh = $request->MaGioiTinh ?? '';
+        $bookApointment->TieuDe = $request->TieuDe ?? '';
+        $bookApointment->MaChiNhanh = $request->MaChiNhanh ?? '';
+        $bookApointment->NgayDatLich = $timeDatLich;
+        $bookApointment->MaBenhNhan = $request->MaBenhNhan ?? '';
+        $bookApointment->NgayThang = $request->NgayThang ?? '';
+        $bookApointment->NamSinh = $request->NamSinh ?? '';
+        $bookApointment->SoLuongKhach = $request->SoLuongKhach ?? '';
+        $bookApointment->DichVuKham = isset($request->DichVuKham) && is_array($request->DichVuKham) ? implode($request->DichVuKham,','):'';
+        $bookApointment->MaBacSy = $request->MaBacSy ?? '';
+        $bookApointment->save();
+
+        return response()->json([
+            'code' => 200,
+            'message' => 'Đặt lịch thành công'
         ]);
     }
 }

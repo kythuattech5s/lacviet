@@ -86,6 +86,34 @@
         border-radius: 5px;
         padding: 0px 10px;
     }
+    .select2-container--default .select2-selection--single{
+        border: 1px solid #aaa !important;
+    }
+    .info-book-box .item-input{
+        padding: 8px 0px;
+        border-bottom: solid 1px #aaa;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 15px;
+    }
+    .info-book-box .item-input .item-title{
+        width: 155px;
+        display: inline-block;
+        position: relative;
+        margin-right: 3px;
+    }
+    .info-book-box .item-input .item-title::after{
+        content: ':';
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .info-book-box .item-input strong{
+        display: inline-block;
+    }
+    .info-book-box .item-input strong:not(:last-child)::after{
+        content: ',';
+    }
 </style>
 <div class="header-top aclr">
 	<div class="breadc pull-left">
@@ -172,71 +200,161 @@
 	    		</table>
 	    	</div>
             <div class="col-lg-8" style="margin-top: 20px;padding-bottom: 100px;">
-                <p class="title text-center">Đồng bộ thông tin</p>
-                <form class="form-sync-crm" method="post" action="esystem/manage-book-apointments/action/sync-crm" accept-charset="utf8">
-                    <input type="hidden" name="id" value="{{Support::show($bookApointment,'id')}}">
-                    <div class="row">
+                @if ($bookApointment->sync_status != 1)
+                    <p class="title text-center">Đặt lịch khám</p>
+                    <form class="form-sync-crm" method="post" action="esystem/manage-book-apointments/action/sync-crm" accept-charset="utf8">
+                        @csrf
+                        <input type="hidden" name="id" value="{{Support::show($bookApointment,'id')}}">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="item-input">
+                                    <p class="item-title">Tên khách hàng (<span class="text-danger">*</span>)</p>
+                                    <input type="text" name="TenBenhNhan" placeholder="Tên khách hàng (*)" value="{{Support::show($bookApointment,'fullname')}}">
+                                </div>
+                                <div class="item-input">
+                                    <p class="item-title">Số điện thoại đặt lịch (<span class="text-danger">*</span>)</p>
+                                    <input type="text" name="SoDienThoai" placeholder="Số điện thoại đặt lịch (*)" value="{{Support::show($bookApointment,'phone')}}">
+                                </div>
+                                <div class="item-input">
+                                    <p class="item-title">Giới tính (<span class="text-danger">*</span>)</p>
+                                    <select name="MaGioiTinh" class="select2">
+                                        <option value="">Vui lòng chọn giới tính</option>
+                                        <option value="NA">Nam</option>
+                                        <option value="N">Nữ</option>
+                                    </select>
+                                </div>
+                                <div class="item-input">
+                                    <p class="item-title">Nội dung đặt lịch (<span class="text-danger">*</span>)</p>
+                                    <input type="text" name="TieuDe" placeholder="Nội dung đặt lịch (*)">
+                                </div>
+                                <div class="item-input">
+                                    <p class="item-title">Chi nhánh (<span class="text-danger">*</span>)</p>
+                                    <select name="MaChiNhanh" class="select2">
+                                        <option value="">Vui lòng chọn chi nhánh</option>
+                                        @foreach ($listBranch as $itemBranch)
+                                            <option value="{{Support::show($itemBranch,'MaChiNhanh')}}">{{Support::show($itemBranch,'TenChiNhanh')}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="item-input">
+                                    <p class="item-title">Ngày đặt lịch (<span class="text-danger">*</span>)</p>
+                                    <input type="text" class="datepicker" name="NgayDatLich" placeholder="Ngày đặt lịch (*)">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="item-input">
+                                    <p class="item-title">Mã bệnh nhân (Nếu có)</p>
+                                    <input type="text" name="MaBenhNhan" placeholder="Nhập mã bệnh nhân (Nếu có)">
+                                </div>
+                                <div class="item-input">
+                                    <p class="item-title">Ngày tháng sinh</p>
+                                    <input type="text" name="NgayThang" placeholder="Ngày tháng sinh. Vd: 01/01">
+                                </div>
+                                <div class="item-input">
+                                    <p class="item-title">Năm sinh</p>
+                                    <input type="number" name="NamSinh" placeholder="Năm sinh">
+                                </div>
+                                <div class="item-input">
+                                    <p class="item-title">Số lượng khách</p>
+                                    <input type="text" name="SoLuongKhach" placeholder="Số lượng khách">
+                                </div>
+                                <div class="item-input">
+                                    <p class="item-title">Dịch vụ khám</p>
+                                    <select name="DichVuKham[]" class="select2" multiple="multiple">
+                                        @foreach ($listService as $itemService)
+                                            <option value="{{Support::show($itemService,'MaNhomDichVu')}}">{{Support::show($itemService,'TenNhomDichVu')}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="item-input">
+                                    <p class="item-title">Bác sĩ</p>
+                                    <select name="MaBacSy" class="select2">
+                                        <option value="">Vui lòng chọn bác sĩ</option>
+                                        @foreach ($listDoctor as $itemDoctor)
+                                            <option value="{{Support::show($itemDoctor,'MaBacSy')}}">{{Support::show($itemDoctor,'TenBacSy')}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center" style="margin-top: 20px;">
+                            <button type="submit" class="btn btn-info">Xác nhận đặt lịch</button>
+                        </div>
+                    </form>
+                @else
+                    <p class="title text-center">Thông tin đặt lịch khám</p>
+                    <div class="row info-book-box">
                         <div class="col-lg-6">
                             <div class="item-input">
-                                <p class="item-title">Tên bệnh nhân (<span class="text-danger">*</span>)</p>
-                                <input type="text" name="TenBenhNhan" placeholder="Tên bệnh nhân (*)" value="{{Support::show($bookApointment,'fullname')}}">
+                                <span class="item-title">Tên khách hàng</span>
+                                <strong>{{Support::show($bookApointment,'TenBenhNhan')}}</strong>
                             </div>
                             <div class="item-input">
-                                <p class="item-title">Số điện thoại đặt lịch (<span class="text-danger">*</span>)</p>
-                                <input type="text" name="SoDienThoai" placeholder="Số điện thoại đặt lịch (*)" value="{{Support::show($bookApointment,'phone')}}">
+                                <span class="item-title">Số điện thoại đặt lịch</span>
+                                <strong>{{Support::show($bookApointment,'SoDienThoai')}}</strong>
                             </div>
                             <div class="item-input">
-                                <p class="item-title">Giới tính (<span class="text-danger">*</span>)</p>
-                                <select name="MaGioiTinh">
-                                    <option value="">Vui lòng chọn giới tính</option>
-                                    <option value="NA">Nam</option>
-                                    <option value="N">Nữ</option>
-                                </select>
+                                <span class="item-title">Giới tính</span>
+                                <strong>
+                                    @if ($bookApointment->MaGioiTinh == 'NA') Nam @endif
+                                    @if ($bookApointment->MaGioiTinh == 'N') Nữ @endif
+                                </strong>
                             </div>
                             <div class="item-input">
-                                <p class="item-title">Nội dung đặt lịch (<span class="text-danger">*</span>)</p>
-                                <input type="text" name="TieuDe" placeholder="Nội dung đặt lịch (*)">
+                                <span class="item-title">Nội dung đặt lịch</span>
+                                <strong>{{Support::show($bookApointment,'TieuDe')}}</strong>
                             </div>
                             <div class="item-input">
-                                <p class="item-title">Chi nhánh (<span class="text-danger">*</span>)</p>
-                                <input type="text" name="MaChiNhanh" placeholder="Nội dung đặt lịch (*)">
+                                <span class="item-title">Chi nhánh</span>
+                                @foreach ($listBranch as $itemBranch)
+                                    @if ($itemBranch['MaChiNhanh'] == $bookApointment->MaChiNhanh)
+                                        <strong>{{Support::show($itemBranch,'TenChiNhanh')}}</strong>
+                                    @endif
+                                @endforeach
                             </div>
                             <div class="item-input">
-                                <p class="item-title">Ngày đặt lịch (<span class="text-danger">*</span>)</p>
-                                <input type="text" class="datepicker" name="NgayDatLich" placeholder="Ngày đặt lịch (*)">
+                                <span class="item-title">Ngày đặt lịch</span>
+                                <strong>{{Support::show($bookApointment,'NgayDatLich')}}</strong>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="item-input">
-                                <p class="item-title">Mã bệnh nhân (Nếu có)</p>
-                                <input type="text" name="MaBenhNhan" placeholder="Nhập mã bệnh nhân (Nếu có)">
+                                <span class="item-title">Mã bệnh nhân</span>
+                                <strong>{{Support::show($bookApointment,'MaBenhNhan')}}</strong>
                             </div>
                             <div class="item-input">
-                                <p class="item-title">Ngày tháng sinh</p>
-                                <input type="text" name="NgayThang" placeholder="Ngày tháng sinh. Vd: 01/01">
+                                <span class="item-title">Ngày tháng sinh</span>
+                                <strong>{{Support::show($bookApointment,'NgayThang')}}</strong>
                             </div>
                             <div class="item-input">
-                                <p class="item-title">Năm sinh</p>
-                                <input type="number" name="NamSinh" placeholder="Năm sinh">
+                                <span class="item-title">Năm sinh</span>
+                                <strong>{{Support::show($bookApointment,'NamSinh')}}</strong>
                             </div>
                             <div class="item-input">
-                                <p class="item-title">Số lượng khách</p>
-                                <input type="text" name="SoLuongKhach" placeholder="Số lượng khách">
+                                <span class="item-title">Số lượng khách</span>
+                                <strong>{{Support::show($bookApointment,'SoLuongKhach')}}</strong>
                             </div>
                             <div class="item-input">
-                                <p class="item-title">Dịch vụ khám</p>
-                                <input type="text" name="DichVuKham" placeholder="Dịch vụ khám">
+                                <span class="item-title">Dịch vụ khám</span>
+                                <div>
+                                    @foreach ($listService as $itemService)
+                                        @if (in_array($itemService['MaNhomDichVu'],explode(',',$bookApointment->DichVuKham)))
+                                            <strong>{{Support::show($itemService,'TenNhomDichVu')}}</strong>
+                                        @endif
+                                    @endforeach
+                                </div>
                             </div>
                             <div class="item-input">
-                                <p class="item-title">Mã bác sĩ</p>
-                                <input type="text" name="MaBacSy" placeholder="Mã bác sĩ">
+                                <span class="item-title">Bác sỹ</span>
+                                @foreach ($listDoctor as $itemDoctor)
+                                    @if ($itemDoctor['MaBacSy'] == $bookApointment->MaBacSy)
+                                        <strong>{{Support::show($itemDoctor,'TenBacSy')}}</strong>
+                                    @endif
+                                @endforeach
                             </div>
                         </div>
                     </div>
-                    <div class="text-center" style="margin-top: 20px;">
-                        <button type="submit" class="btn btn-info">Xác nhận đồng bộ</button>
-                    </div>
-                </form>
+                @endif
             </div>
         </div>
     </div>
@@ -256,6 +374,28 @@
             .done(function(data) {
                 alert(data.message);
                 window.location.reload();
+            })
+        });
+        $('.form-sync-crm').submit(function(e){
+            e.preventDefault();
+            var _this = $(this);
+            _this.find('button').addClass('hidden');
+            $.ajax({
+                url: $(this).attr('action'),
+                type: 'POST',
+                dataType: 'json',
+                data: $(this).serialize()
+            })
+            .done(function(data) {
+                if (data.code == 200) {
+                    $.simplyToast(data.message, 'success');
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1500);
+                }else{
+                    $.simplyToast(data.message, 'danger');
+                    _this.find('button').removeClass('hidden');
+                }
             })
         });
     });

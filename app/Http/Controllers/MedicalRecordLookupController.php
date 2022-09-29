@@ -6,10 +6,12 @@ use Support;
 class MedicalRecordLookupController extends Controller
 {
     public function medicalRecordLookup($request,$route){
+        $currentItem = \vanhenry\manager\model\VRoute::find($route->id);
         if ($request->isMethod('post')) {
             if (!isset($request->patient_code) || $request->patient_code == '') {
                 return Support::response(['code'=>100,'message'=>'Vui lòng nhập mã bệnh nhân','redirect'=>\VRoute::get("medicalRecordLookup")]);
             }
+            $patientCode = $request->patient_code;
             $connecter = new Connecter;
             $dataRes = $connecter->getHistoryTreatment($request->patient_code);
             if (!isset($dataRes['code']) || $dataRes['code'] != 1) {
@@ -18,10 +20,9 @@ class MedicalRecordLookupController extends Controller
             if (!isset($dataRes['data0'])) {
                 return Support::response(['code'=>100,'message'=>'Không có dữ liệu nào được tìm thấy','redirect'=>\VRoute::get("medicalRecordLookup")]);
             }
-            $listLichKham = collect($dataRes['data0']);
-            dd($listLichKham);
+            $listLichKham = $dataRes['data0'];
+            return view('static.medical_record_lookup',compact('currentItem','listLichKham','patientCode'));
         }
-        $currentItem = \vanhenry\manager\model\VRoute::find($route->id);
         return view('static.medical_record_lookup',compact('currentItem'));
     }
 }
