@@ -1,9 +1,4 @@
 /******/ (() => { // webpackBootstrap
-<<<<<<< HEAD
-/******/ 	"use strict";
-/******/ 	
-/******/ 	
-=======
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./packages/roniejisa/scripts/assets/plugins/tinymce/icons/default/icons.min.js":
@@ -46906,6 +46901,5 @@ window.addEventListener("DOMContentLoaded", function () {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TINY);
 })();
 
->>>>>>> 9afb41ce5c9dd45877b571f75cd27b0da6537d77
 /******/ })()
 ;
