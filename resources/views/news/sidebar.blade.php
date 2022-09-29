@@ -57,7 +57,7 @@
         Vui lòng để lại thông tin và nhu cầu
         của Quý khách để được nhận tư vấn
     </p>
-    <form action="{{VRoute::get('resgisterAdvise')}}" method="post" class="form-regis-sidebar formValidation" absolute data-success="NOTIFICATION.toastrMessageRedirect" accept-charset="utf8">
+    <form action="{{VRoute::get('resgisterAdvise')}}" method="post" class="form-regis-sidebar form-validate" absolute data-success="NOTIFICATION.toastrMessageRedirect" accept-charset="utf8">
         @csrf
         <input type="hidden" name="type" value="1">
         <input type="text" name="fullname" placeholder="Họ và tên (*)" class="form-control text-[#888] placeholder:text-[#888] w-full p-3 rounded-md outline-none border-[1px] border-solid border-[#bce0f6] mb-4" rules="required">

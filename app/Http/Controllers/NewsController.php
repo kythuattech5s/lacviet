@@ -25,6 +25,7 @@ class NewsController extends Controller
         $listHotNews = News::act()->where('hot',1)->where('id','!=',$currentItem->id)->publish()->orderBy('time_published','desc')->limit(6)->get();
         $saleSevice = Services::act()->where('sale',1)->orderBy('id','desc')->first();
         $author = $currentItem->getAuthor('create_by');
-        return view('news.view',compact('currentItem','tags','newsRelateds','parent','dataContent','listNewsSelect','listMostViewNews','listHotNews','saleSevice','author'));
+        $comments = $currentItem->comments()->with(['rating','childs'])->paginate(5); 
+        return view('news.view',compact('comments','currentItem','tags','newsRelateds','parent','dataContent','listNewsSelect','listMostViewNews','listHotNews','saleSevice','author'));
     }
 }

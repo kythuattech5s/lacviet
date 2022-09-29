@@ -34,7 +34,7 @@
                 </div>
             @endif
             <div class="comment-item__content" comment-skeleton>
-                {-comment.content-}
+                {!! Support::show($comment, 'content') !!}
             </div>
             <div class="comment-item__imgs">
                 @php

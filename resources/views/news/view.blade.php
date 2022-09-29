@@ -151,9 +151,6 @@
                     </div>
                 @endif
                 <div class="comment-box">
-                    @php
-                        $comments = Roniejisa\Comment\Models\Comment::where('act', 1)->with('childs')->whereNull('comment_id')->orderBy('id','DESC')->paginate(5);
-                    @endphp
                     @include('commentRS::comment_box',['map_table'=>'news'])
                 </div>
                 @if (count($newsRelateds) > 0)
@@ -213,7 +210,6 @@
     <script src="theme/frontend/asset/js/jquery.fancybox.min.js" defer></script>
 @endsection
 @section('js')
-    <script src="{{asset('assets/js/ValidateForm.js')}}" defer></script>
     <script src="{{asset('assets/comment/js/comment.js')}}" defer></script>
     <script src="theme/frontend/asset/js/script.js" defer></script>
 @endsection

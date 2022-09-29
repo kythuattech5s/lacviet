@@ -12,7 +12,7 @@
             Vui lòng để lại thông tin, nha khoa sẽ liên hệ tư vấn trong thời gian sớm nhất
         </p>
         <div class="box-content max-w-[1028px] mx-auto bg-[#e0f3ff] 2xl:p-16 lg:p-8 p-4 lg:rounded-3xl rounded-xl">
-            <form action="{{VRoute::get('bookApointment')}}" method="post" class="form-booking formValidation" absolute data-success="NOTIFICATION.toastrMessageRedirect" accept-charset="utf8">
+            <form action="{{VRoute::get('bookApointment')}}" method="post" class="form-booking form-validate" absolute data-success="NOTIFICATION.toastrMessageRedirect" accept-charset="utf8">
                 @csrf
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
                     <div class="col-span-1 md:col-span-3">

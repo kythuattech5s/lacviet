@@ -5,9 +5,19 @@ module.exports = {
         "./packages/pages/**/*.js",
         "./packages/roniejisa/comment/**/*.js",
         "./packages/roniejisa/comment/**/*.blade.php",
+        "./resources/**/*.blade.php",
     ],
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                Gilroy: ['"Gilroy"'],
+                Every: ['"Every"'],
+                Pleasent: ['"Pleasent"'],
+            },
+            container: {
+                center: true,
+            },
+        },
     },
     plugins: [],
 };
