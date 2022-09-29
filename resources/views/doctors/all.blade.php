@@ -28,11 +28,11 @@
                         </div>
                     </div>
                     <div
-                        class="button-circle button-circle__prev experts_prev bg-white 2xl:w-20 2xl:h-20 lg:h-14 lg:w-14 h-10 w-10 rounded-full flex items-center justify-center absolute top-1/2 -translate-y-1/2 z-[1] cursor-pointer 2xl:left-[-180px] lg:left-[-28px] left-[-1.25rem] text-[2.5rem] text-[#0557ac] transition-all duration-300 shadow-[0_0_8px_rgba(216,229,251,.8)] hover:bg-[#0557ac] hover:text-white">
+                        class="button-circle button-circle__prev experts_prev bg-white 2xl:w-12 2xl:h-12 h-8 w-8 rounded-full flex items-center justify-center absolute top-1/2 -translate-y-1/2 z-[1] cursor-pointer 2xl:left-[-80px] lg:left-[-28px] left-[-1.25rem] text-[2.5rem] text-[#888] transition-all duration-300 hover:bg-[#0557ac] hover:text-white border-[1px] border-solid border-[#888] hover:border-[#0557ac]">
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
                     </div>
                     <div
-                        class="button-circle button-circle__next experts_next bg-white 2xl:w-20 2xl:h-20 lg:h-14 lg:w-14 h-10 w-10 rounded-full flex items-center justify-center absolute top-1/2 -translate-y-1/2 z-[1] cursor-pointer 2xl:right-[-180px] lg:right-[-28px] right-[-1.25rem] text-[2.5rem] text-[#0557ac] transition-all duration-300  shadow-[0_0_8px_rgba(216,229,251,.8)] hover:bg-[#0557ac] hover:text-white">
+                        class="button-circle button-circle__next experts_next bg-white 2xl:w-12 2xl:h-12 h-8 w-8 rounded-full flex items-center justify-center absolute top-1/2 -translate-y-1/2 z-[1] cursor-pointer 2xl:right-[-80px] lg:right-[-28px] right-[-1.25rem] text-[2.5rem] text-[#888] transition-all duration-300  hover:bg-[#0557ac] hover:text-white border-[1px] border-solid border-[#888] hover:border-[#0557ac]">
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </div>
                 </div>

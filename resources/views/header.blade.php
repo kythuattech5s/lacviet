@@ -1,6 +1,6 @@
 <header class="header">
     @if (isset($isHome) && $isHome == 1)
-        <h1 class="hidden">{[site_name]}</h1>
+    <h1 class="hidden">{[site_name]}</h1>
     @endif
     <div class="header-top bg-white relative 2xl:py-6 lg:py-4 py-2">
         <div class="h-lang hidden lg:flex items-center absolute top-1/2 right-4 -translate-y-1/2">
@@ -21,7 +21,11 @@
             <form action="{{\VRoute::get("search")}}" method="get" class="form-search-header hidden lg:block relative flex-1" accept-charset="utf8">
                 <input type="text" placeholder="Bạn cần tìm gì?" name="q" class="form-control lg:py-3 lg:px-7 px-5 py-2 w-full bg-[#f5f5f5] rounded-3xl border-solid">
                 <button type="submit" class="btn-search absolute top-1/2 right-4 -translate-y-1/2 z-[1]">
-                    <img src="theme/frontend/images/icon-search.png" alt="search">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="#008EDF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M21.0004 20.9999L16.6504 16.6499" stroke="#008EDF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+
                 </button>
             </form>
             <div class="head-action hidden lg:flex items-center justify-end gap-x-4">
@@ -59,7 +63,7 @@
                     @include('image_loader.config.tiny',['config_key'=>'logo','noLazyLoad'=>1])
                 </a>
                 @php
-                    $menus = Support::getMenuRecursive(1);
+                $menus = Support::getMenuRecursive(1);
                 @endphp
                 {{Support::showMenuRecursive($menus,0)}}
                 <div class="h-lang flex lg:hidden mt-3 items-center px-4">

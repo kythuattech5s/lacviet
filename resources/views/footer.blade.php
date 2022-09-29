@@ -57,10 +57,10 @@
                     </div>
                     <ul class="social-footer">
                         <li class="inline-block mr-5 last:mr-0">
-                            <a href="{[facebook]}" title="Youtube" target="_blank" rel="noopener" class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-lg bg-white text-[#044da8] lg:text-[1.875rem] text-[1.25rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                            <a href="{[facebook]}" title="Youtube" target="_blank" rel="noopener" class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-full bg-white text-[#044da8] lg:text-[1.25rem] text-[1rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
                         </li>
                         <li class="inline-block mr-5 last:mr-0">
-                            <a href="{[youtube]}" title="Facebook" target="_blank" rel="noopener" class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-lg bg-white text-[#044da8] lg:text-[1.875rem] text-[1.25rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="{[youtube]}" title="Facebook" target="_blank" rel="noopener" class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-full bg-white text-[#044da8] lg:text-[1.25rem] text-[1rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                         </li>
                     </ul>
                     @if (SettingHelper::getSetting('link_dky_bct') != '')

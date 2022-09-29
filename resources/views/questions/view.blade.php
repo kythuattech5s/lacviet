@@ -30,10 +30,10 @@
                                     </span>
                                     <div class="head-qa flex flex-wrap items-center justify-between gap-x-4">
                                         <div class="info mb-2 flex flex-wrap items-center gap-4 lg:mb-4">
-                                            <span class="name text-[0.875rem] font-semibold text-[#40b5ff] lg:text-[1rem] 2xl:text-[1.25rem]">{{ Support::show($currentItem, 'customer_name') }}</span>
+                                            <span class="name text-[0.875rem] font-semibold text-[#252525] lg:text-[1rem] 2xl:text-[1.25rem]">{{ Support::show($currentItem, 'customer_name') }}</span>
                                             <span class="examined rounded bg-[#028cde] p-1 text-[0.75rem] font-semibold text-white">{{ Support::show($parent, 'name') }}</span>
                                         </div>
-                                        <p class="time mb-2 text-[0.75rem] lg:mb-4">Đã hỏi: <span class="font-semibold text-[#40b5ff]">Ngày {{ Support::showDateTime($currentItem->time_ask, 'd/m/Y') }}</span></p>
+                                        <p class="time mb-2 text-[0.75rem] lg:mb-4 text-[#888]">Đã hỏi: <span class="font-semibold text-[#40b5ff]">Ngày {{ Support::showDateTime($currentItem->time_ask, 'd/m/Y') }}</span></p>
                                     </div>
                                     <p class="title-qa mb-4 text-[1.125rem] font-bold text-[#767676] lg:text-[1.5rem] 2xl:text-[2rem]">{{ Support::show($currentItem, 'name') }}</p>
                                     <div class="question-content mb-4 lg:text-[0.875rem]">{{ Support::show($currentItem, 'question') }}</div>
