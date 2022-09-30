@@ -74,9 +74,9 @@
                 @endphp
                 @if (isset($doctor))
                     <div class="box-info-author 2xl:my-20 lg:my-8 my-6 shadow-[0_0_8px_rgba(216,229,251,.8)] bg-white">
-                        <p class="head text-center font-medium uppercase p-4 text-white bg-[#028cde]">
+                        <!-- <p class="head text-center font-medium uppercase p-4 text-white bg-[#028cde]">
                             Bài viết được tư vấn chuyên môn bởi {{Support::show($doctor,'academic_rank')}} {{Support::show($doctor,'name')}}
-                        </p>
+                        </p> -->
                         <div class="content p-4 flex flex-col sm:flex-row 2xl:gap-8 lg:gap-6 gap-4">
                             <span class="img block shrink-0 w-[290px] h-auto">
                                 @include('image_loader.all',['itemImage'=>$doctor,'key'=>'img'])
