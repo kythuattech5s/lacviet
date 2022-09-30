@@ -33,7 +33,7 @@
                     </select>
                 </div>
                 <textarea class="form-control bg-white p-3 rounded-xl w-full border-[1px] border-solid border-[#e0eaf0] min-h-[100px] resize-none mb-4" name="note" placeholder="Ghi chú"></textarea>
-                <button type="submit" class="btn-red flex w-fit mx-auto font-semibold items-center justify-center lg:text-[0.875rem] uppercase py-3 px-4 rounded-2xl text-white bg-[#fb2317] transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)] mb-4">Đăng ký ngay</button>
+                <button type="submit" class="btn-red flex w-fit mx-auto font-semibold items-center justify-center lg:text-[0.875rem] uppercase py-3 px-4 rounded-2xl text-white bg-gradient-to-b from-[#28B1FF] to-[#008EDF] transition-all duration-300 mb-4">Đăng ký ngay</button>
                 <p class="text-note text-center text-[#fc0c0f] italic font-semibold">
                     Tư vấn trực tiếp 24/7: <a href="tel:{[hotline]}" title="Hotline">{[hotline]}</a>
                 </p>
