@@ -582,75 +582,11 @@ var COMMENT = (function () {
                     code: 100,
                     message: "Bạn đã đánh giá cho bài viết này rồi!",
                 });
-                return false;
+                return true;
             }
-            return true;
+            return false;
         },
     };
-})();
-
-var onlyRating = function () {
-    var rating = function () {
-        const els = document.getElementsByClassName('star[name="rate"]');
-        els.forEach(function (el, id) {
-            el.onchange = function (e) {
-                el.pre;
-                els.forEach(function (elo, key) {
-                    if (key !== id) {
-                        elo.disabled = true;
-                    }
-                });
-                const options = {
-                    method: "POST",
-                    url: "danh-gia/",
-                    data: {
-                        rate: el.value,
-                        map_id: el.closest(".rating-now").dataset.id,
-                        map_table: el.closest(".rating-now").dataset.table,
-                    },
-                };
-
-                XHR.send(options).then(function (res) {
-                    COMMENT.notification(res);
-                });
-            };
-        });
-    };
-    return {
-        init: function () {
-            rating();
-        },
-    };
-};
-
-var Tiny = (function () {
-    const textarea = document.querySelector("#comment");
-    if (typeof tinymce == "undefined") {
-        return;
-    }
-
-    tinymce.init({
-        selector: "#comment",
-        menubar: false,
-        statusbar: false,
-        toolbar_location: "bottom",
-        setup: function (editor) {
-            editor.on("input", function (e) {
-                tinyMCE.triggerSave();
-                textarea.dispatchEvent(new Event("change"));
-            }),
-                editor.on("keyup", function (e) {
-                    tinyMCE.triggerSave();
-                    textarea.dispatchEvent(new Event("change"));
-                });
-        },
-    });
-
-    textarea.addEventListener("change", function () {
-        if (textarea.value.trim == "") {
-            tinyMCE.activeEditor.setContent("");
-        }
-    });
 })();
 
 window.addEventListener("DOMContentLoaded", function () {

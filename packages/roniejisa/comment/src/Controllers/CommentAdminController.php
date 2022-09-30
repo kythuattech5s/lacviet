@@ -2,8 +2,6 @@
 
 namespace CommentRS\Controllers;
 
-use CommentRS\Helpers\Helper;
-use CommentRS\Models\Comment;
 use Illuminate\Http\Request;
 use vanhenry\manager\controller\BaseAdminController;
 
@@ -21,14 +19,15 @@ class CommentAdminController extends BaseAdminController
         $parent_field = $request->input('parentField');
         $nameTable = $request->input('nameTable');
         $id = $request->input('id');
-        $comment = $model::find($id);
-        if ($comment->parent != 0) {
-            $comment = $model::find($comment->$parent_field);
+        $data = $model::find($id);
+        if ($data->$parent_field != null) {
+            $data = $model::find($data->$parent_field);
         }
-        if ($comment == null) {
+        if ($data == null) {
             return redirect()->back()->with(['typeNotify' => 'danger', 'messageNotify' => $nameTable . ' này hiện tại đã bị xóa']);
         }
-        return view('commentRS::comments.detail_comment', compact('comment'));
+        $view = request()->input('view');
+        return view($view, compact('data'));
     }
     public function repComment(Request $request)
     {
@@ -67,13 +66,13 @@ class CommentAdminController extends BaseAdminController
     public function fetchComment($id)
     {
         $models = request()->input('model');
-        $comment = $models::find($id);
+        $data = $models::find($id);
         $field_parent = request()->input('field_parent');
-        if ($comment->$field_parent != 0) {
-            $comment = $models::find($comment->$field_parent);
+        if ($data->$field_parent != 0) {
+            $comment = $models::find($data->$field_parent);
         }
         $viewInput = request()->input('view');
-        $view = view($viewInput, compact('comment'))->render();
+        $view = view($viewInput, compact('data'))->render();
         return response()->json(['view' => $view]);
     }
     public function changeAct(Request $request, $id)
@@ -93,7 +92,7 @@ class CommentAdminController extends BaseAdminController
         } else {
             $data = ['code' => 100, 'message' => 'Đã ẩn'];
         }
-        Helper::buildDataRating($comment->map_table, $comment->map_id);
+        // Helper::buildDataRating($comment->map_table, $comment->map_id);
         return response()->json($data);
     }
 }

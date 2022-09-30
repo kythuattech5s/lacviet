@@ -945,14 +945,12 @@ var VALIDATE_FORM = ((options = {}) => {
                     event.preventDefault();
                     var isValid = true;
                     var isValidCheck = true;
-                    if (
-                        !(
-                            hasFuncBefore != null &&
-                            (await callFunction(hasFuncBefore, []))
-                        )
-                    ) {
+
+
+                    if (hasFuncBefore != null && await callFunction(hasFuncBefore, [])) {
                         return false;
                     }
+                    
                     for (var selector of elements) {
                         if (!handleSubmitValidate({ target: selector })) {
                             isValid = false;

@@ -53,7 +53,7 @@ class News extends BaseModel
         return $this->hasMany(Rating::class, 'map_id', 'id')->where('map_table', 'news');
     }
     public function comments(){
-        return $this->hasMany(Comment::class,'map_id','id')->where('map_table','news')->where('parent',0);
+        return $this->hasMany(Comment::class,'map_id','id')->where('map_table','news')->whereNull('comment_id');
     }
     public function getRating(String $type = 'main'){
         $ratings = $this->ratings;

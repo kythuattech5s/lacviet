@@ -198,6 +198,8 @@ namespace App\Models{
  * @property int|null $is_read Đã đọc
  * @property int|null $sync_status Đã đọc
  * @property int|null $gender Đã xử lý
+ * @property-read \App\Models\Services|null $service
+ * @property-read \App\Models\StatusBookApointment|null $statusBookApointment
  * @method static \Illuminate\Database\Eloquent\Builder|BookApointment newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BookApointment newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BookApointment query()
@@ -2334,6 +2336,28 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|SpecialistCategory whereYoastScore($value)
  */
 	class SpecialistCategory extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\StatusBookApointment
+ *
+ * @property int $id
+ * @property string|null $name Tên
+ * @property-read mixed $slug
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseModel act()
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseModel draft()
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseModel fullTextSearch($columns, $term)
+ * @method static \Illuminate\Database\Eloquent\Builder|StatusBookApointment newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|StatusBookApointment newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseModel ord()
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseModel publish()
+ * @method static \Illuminate\Database\Eloquent\Builder|StatusBookApointment query()
+ * @method static \Illuminate\Database\Eloquent\Builder|BaseModel slug($slug, $table = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|StatusBookApointment whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|StatusBookApointment whereName($value)
+ */
+	class StatusBookApointment extends \Eloquent {}
 }
 
 namespace App\Models{

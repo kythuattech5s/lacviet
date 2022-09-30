@@ -151,11 +151,11 @@ class Helper
 
     public static function checkOrderDone($product_id)
     {
-        $course = Course::where('id', $product_id)->first();
-        if ($course == null) {
-            return false;
-        }
-        return $course->isOwn(Auth::user());
+        // $course = Course::where('id', $product_id)->first();
+        // if ($course == null) {
+        //     return false;
+        // }
+        // return $course->isOwn(Auth::user());
         // $check = Order::where('user_id', \Auth::id())->whereHas('orderProducts', function ($q) use ($product) {
         //     if ($product->variants->count() > 0) {
         //         $q->whereIn('order_products.product_id', $product->variants->pluck('id'));
@@ -213,7 +213,7 @@ class Helper
             $comment = new Comment;
             $comment->map_table = $request->input('map_table');
             $comment->map_id = $id;
-            $comment->content = self::noRunScript($request->content[$key]);
+            $comment->content = self::strip_all_tags($request->content[$key]);
             $comment->user_id = $user->id;
             $comment->order_id = $order_id;
             $comment->comment_id = $request->input('comment_id');
@@ -433,7 +433,7 @@ class Helper
 
     public static function noRunScript($string)
     {
-        return htmlentities($string);
+        return htmlspecialchars_decode($string);
     }
     // FIX ERROR SCRIPT TAGS
     public static function strip_all_tags($string, $remove_breaks = false)
