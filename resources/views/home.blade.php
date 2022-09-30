@@ -179,10 +179,10 @@
                 <div class="pagination-all pagination-system"></div>
             </div>
             <div class="button-circle button-circle__prev system_prev 2xl:w-10 2xl:h-10  h-8 w-8 rounded-full lg:flex hidden items-center justify-center absolute top-1/2 -translate-y-1/2 z-[1] cursor-pointer 2xl:-left-14 lg:left-[-28px] border-[1px] border-solid border-[#0557ac] text-[1.5rem] text-[#0557ac] transition-all duration-300 hover:bg-[#0557ac] hover:text-white">
-                <i class="fa fa-angle-left" aria-hidden="true"></i>
+                <i class="fa fa-angle-left relative top-[-2px]" aria-hidden="true"></i>
             </div>
             <div class="button-circle button-circle__next system_next 2xl:w-10 2xl:h-10  h-8 w-8 rounded-full lg:flex hidden items-center justify-center absolute top-1/2 -translate-y-1/2 z-[1] cursor-pointer 2xl:-right-14 lg:right-[-28px] border-[1px] border-solid border-[#0557ac] text-[1.5rem] text-[#0557ac] transition-all duration-300 hover:bg-[#0557ac] hover:text-white">
-                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                <i class="fa fa-angle-right relative top-[-2px]" aria-hidden="true"></i>
             </div>
         </div>
     </div>
