@@ -15,7 +15,7 @@ $listNewNews = \App\Models\News::act()->publish()->orderBy('time_published','des
 @endphp
 @if (count($listNewNews) > 0)
 <div class="box overflow-hidden bg-white rounded-lg shadow-[6px_8px_48px_rgba(0,0,0,.08)] mb-6">
-    <p class="head-title__sidebar text-center font-semibold uppercase py-2 px-3 text-white bg-[#028cde] 2xl:text-[1.25rem] text-[1rem] 2xl:mb-6 mb-4">Tin tức mới</p>
+    <p class="head-title__sidebar text-center font-semibold uppercase py-2 px-3 text-white bg-[#028cde] 2xl:text-[1.25rem] text-[1rem]">Tin tức mới</p>
     <div class="list-new__side grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 2xl:p-4 p-2">
         @foreach ($listNewNews as $itemNewNews)
         <div class="col-span-1">
