@@ -601,6 +601,19 @@ input, select, textarea {
   height: 100%;
   object-fit: scale-down;
 }
+.header{
+  transition: all .3s;
+}
+.header.fixed{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+body{
+  padding-top: 184px;
+}
 @media (min-width: 992px) {
   .container {
     max-width: 992px;
@@ -719,7 +732,18 @@ input, select, textarea {
     font-size: 1.5rem;
   }
 }
-@media (max-width: 1534px) {
+@media (max-width: 1535px) {
+  .h-lang a{
+    width: 30px;
+    height: 30px;
+  }
+  .h-lang a img{
+    width: 19px;
+    height: 10px;
+  }
+  body{
+    padding-top: 143px;
+  }
   .logo-header img {
     max-width: 220px;
   }
@@ -737,6 +761,9 @@ input, select, textarea {
   }
 }
 @media (max-width: 1023px) {
+  body{
+    padding-top: 62px;
+  }
   .item-new__hot::before {
     display: none;
   }
@@ -886,6 +913,9 @@ input, select, textarea {
   }
 }
 @media (max-width: 575px) {
+  body{
+    padding-top: 57px;
+  }
   .img-certifi img {
     max-width: 100px;
   }

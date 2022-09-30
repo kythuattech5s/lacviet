@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header fixed top-0 left-0 w-full z-50">
     @if (isset($isHome) && $isHome == 1)
     <h1 class="hidden">{[site_name]}</h1>
     @endif
@@ -37,9 +37,30 @@
                     </p>
                 </a>
                 <a href="{{VRoute::get('orderExaminationSchedule')}}" title="Đăng ký khám" class=" inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-2 px-4 rounded-3xl text-white bg-gradient-to-b from-[#FF6B69] to-[#E20200] shadow-[0_6px_20px_rgba(246,57,55,.4)] transition-all duration-300">
+                    <svg width="25" height="24" class="mr-1" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.0005 13.0005H16.5019" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M13.0005 13.0005H17.5024" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <rect x="3.49658" y="2.99634" width="18.0075" height="18.0075" rx="3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M21.5041 7.9985H3.49658" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M7.49826 1.99585V3.99668" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M17.5022 1.99585V3.99668" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M7.49805 12.7265L8.41743 13.5549L10.2682 11.8882" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M13.0005 17.0022H17.5024" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M7.49805 16.728L8.41743 17.5563L10.2692 15.8896" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+
                     Đăng ký khám
                 </a>
                 <a href="{{VRoute::get('medicalRecordLookup')}}" title="Tra cứu bệnh án" class=" inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-2 px-4 rounded-3xl text-white bg-gradient-to-b from-[#28B1FF] to-[#008EDF] transition-all duration-300 shadow-[0_6px_20px_rgba(0,142,223,.4)]">
+                    <svg width="24" height="24" class="mr-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.0037 8.99884V4.99717C20.0037 3.89214 19.1079 2.99634 18.0028 2.99634H4.99742C3.89239 2.99634 2.99658 3.89214 2.99658 4.99717V19.003C2.99658 20.108 3.89239 21.0038 4.99742 21.0038H9.9995" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M6.99805 6.99801H16.0018" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M6.99805 10.9997H12.0001" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M6.99805 15.0014H9.9993" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M21.0039 21.0039L19.3643 19.3643" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M16.726 13.0005C18.7836 13.0005 20.4516 14.6685 20.4516 16.726C20.4516 18.7836 18.7836 20.4516 16.726 20.4516C14.6685 20.4516 13.0005 18.7836 13.0005 16.726C13.0006 14.6685 14.6685 13.0006 16.726 13.0005" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+
                     Tra cứu bệnh án
                 </a>
             </div>
@@ -54,8 +75,8 @@
         </div>
     </div>
     <div class="header-nav bg-[#028cde]">
-        <div class="container flex items-center justify-between">
-            <a href="{{\VRoute::get("home")}}" title="Trang chủ" class="go-home hidden lg:block text-white text-[1.875rem] lg:mr-10">
+        <div class="container flex justify-between">
+            <a href="{{\VRoute::get("home")}}" title="Trang chủ" class="go-home hidden lg:flex items-center justify-center text-white text-[1.875rem] w-[53px] bg-[#0557AC] lg:mr-10">
                 <i class="fa fa-home" aria-hidden="true"></i>
             </a>
             <div class="menu">
