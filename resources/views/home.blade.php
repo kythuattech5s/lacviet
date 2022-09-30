@@ -14,14 +14,14 @@
         </div>
         @endforeach
     </div>
-    <div class="pagination-all pagination__index justify-center my-0 absolute bottom-2 left-0 z-[1] flex lg:hidden w-full">
+    <!-- <div class="pagination-all pagination__index justify-center my-0 absolute bottom-2 left-0 z-[1] flex lg:hidden w-full">
     </div>
-    <div class="button-banner banner-prev 2xl:w-20 2xl:h-20 lg:h-14 lg:w-14 h-10 w-10 rounded-full hidden lg:flex items-center justify-center absolute top-1/2 -translate-y-1/2 z-[1] cursor-pointer left-[5%] border-[1px] border-solid border-[#fff] text-[2.5rem] text-white transition-all duration-300 hover:bg-white hover:text-[#252525]">
+    <div class="button-banner banner-prev lg:h-14 lg:w-14 h-10 w-10 rounded-full hidden lg:flex items-center justify-center absolute top-1/2 -translate-y-1/2 z-[1] cursor-pointer left-[5%] border-[1px] border-solid border-[#fff] text-[1.5rem] text-white transition-all duration-300 hover:bg-white hover:text-[#252525]">
         <i class="fa fa-angle-left" aria-hidden="true"></i>
     </div>
-    <div class="button-banner banner-next 2xl:w-20 2xl:h-20 lg:h-14 lg:w-14 h-10 w-10 rounded-full hidden lg:flex items-center justify-center absolute top-1/2 -translate-y-1/2 z-[1] cursor-pointer right-[5%] border-[1px] border-solid border-[#fff] text-[2.5rem] text-white transition-all duration-300 hover:bg-white hover:text-[#252525]">
+    <div class="button-banner banner-next lg:h-14 lg:w-14 h-10 w-10 rounded-full hidden lg:flex items-center justify-center absolute top-1/2 -translate-y-1/2 z-[1] cursor-pointer right-[5%] border-[1px] border-solid border-[#fff] text-[1.5rem] text-white transition-all duration-300 hover:bg-white hover:text-[#252525]">
         <i class="fa fa-angle-right" aria-hidden="true"></i>
-    </div>
+    </div> -->
 </div>
 <section class="2xl:py-10 py-6">
     <div class="container">
@@ -29,8 +29,8 @@
         <div class="grid grid-cols-2 md:grid-cols-4 sm:gap-4 gap-2">
             @foreach ($listReasonChoose as $key => $itemReasonChoose)
             <div class="col-span-1 wow flipInY" data-wow-delay="{{($key + 1)*0.1}}s">
-                <div class="item-reason text-center">
-                    <span class="img 2xl:w-20 2xl:h-20 xl:w-14 xl:h-14 w-10 h-10 block mx-auto mb-2">
+                <div class="item-reason text-center p-2 rounded transition-all duration-300 hover:shadow-[0_4px_10px_rgba(0,0,0,.3)]">
+                    <span class="img xl:w-14 xl:h-14 w-10 h-10 block mx-auto xl:mb-4 mb-2">
                         @include('image_loader.big',['itemImage'=>$itemReasonChoose,'key'=>'img'])
                     </span>
                     <p class="title text-center font-bold text-[#000] uppercase lg:text-[1.125rem] mb-2">{{Support::show($itemReasonChoose,'name')}}</p>
@@ -69,11 +69,14 @@
                     <h3>
                         <a href="{{Support::show($bigItemQuestion,'slug')}}" title="{{Support::show($bigItemQuestion,'name')}}" class="title text-white font-bold lg:text-[1.125rem] uppercase line-clamp-2 2xl:mb-4 mb-2">{{Support::show($bigItemQuestion,'name')}}</a>
                     </h3>
-                    <div class="short_content text-white line-clamp-2 2xl:mb-4 mb-2">{{Support::show($bigItemQuestion,'question')}}</div>
-                    <a href="{{Support::show($bigItemQuestion,'slug')}}" title="Xem thêm" class="btn-white inline-flex items-center justify-center lg:text-[0.875rem] py-3 px-4 rounded-3xl text-[#262626] bg-white transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
-                        Xem thêm
-                        <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i>
-                    </a>
+                    <div class="flex gap-4 ">
+                        <div class="short_content text-white line-clamp-2 flex-1">{{Support::show($bigItemQuestion,'question')}}</div>
+                        <a href="{{Support::show($bigItemQuestion,'slug')}}" title="Xem thêm" class="btn-white inline-flex items-center justify-center lg:text-[0.875rem] py-2 px-4 rounded-3xl text-[#008EDF] bg-white transition-all duration-300 border-[1px] border-solid border-[#008EDF] hover:shadow-[0_4px_10px_rgba(0,0,0,.3)]">
+                            Xem thêm
+                            <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
                 </div>
                 @endif
             </div>
@@ -87,10 +90,10 @@
                             {{Support::show($itemSmallQuestion,'name')}}
                         </p>
                         <div class="flex items-center gap-4 flex-wrap justify-between">
-                            <p class="time font-medium italic text-[0.813rem] text-white">
+                            <p class="time font-medium text-[0.813rem] text-white">
                                 <i class="fa fa-calendar mr-2" aria-hidden="true"></i> 0707/2022
                             </p>
-                            <a href="{{Support::show($itemSmallQuestion,'slug')}}" title="Xem thêm" class="btn-white inline-flex items-center justify-center lg:text-[0.875rem] py-2 px-6 rounded-3xl text-[#008EDF] bg-white transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
+                            <a href="{{Support::show($itemSmallQuestion,'slug')}}" title="Xem thêm" class="btn-white inline-flex items-center justify-center lg:text-[0.875rem] py-2 px-6 rounded-3xl text-[#008EDF] bg-white transition-all duration-300 hover:shadow-[0_4px_10px_rgba(0,0,0,.3)]">
                                 Trả lời
                                 <i class="fa fa-angle-double-right ml-2 relative top-[-1px]" aria-hidden="true"></i>
                             </a>
@@ -118,7 +121,7 @@
                                 @include('image_loader.big',['itemImage'=>$itemBranchSystem,'key'=>'img'])
                             </span>
                             <div class="system-info p-2">
-                                <p class="item relative pl-6 mb-2 last:mb-0">
+                                <p class="item relative pl-7 mb-3 last:mb-0">
                                     <svg width="24" height="24" class="absolute top-0 left-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M9.116 14.187C5.562 14.655 3 15.96 3 17.5C3 19.433 7.029 21 12 21C16.971 21 21 19.433 21 17.5C21 15.96 18.438 14.655 14.884 14.187" stroke="#008EDF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M18 7.833C18 4.612 15.314 2 12 2C8.686 2 6 4.612 6 7.833C6 12.208 12 17 12 17C12 17 18 12.208 18 7.833Z" fill="white" stroke="#008EDF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -128,7 +131,7 @@
 
                                     <span class="text text-[#252525] font-bold">{{Support::show($itemBranchSystem,'full_address')}}</span>
                                 </p>
-                                <p class="item relative pl-6 mb-2 last:mb-0">
+                                <p class="item relative pl-7 mb-3 last:mb-0">
                                     <svg width="24" height="24" class="absolute top-0 left-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M18.9645 16.61L17.7915 15.437C17.2055 14.851 16.2555 14.851 15.6705 15.437L14.7485 16.359C14.5425 16.565 14.2305 16.634 13.9645 16.517C12.6285 15.932 11.3085 15.045 10.1315 13.868C8.95954 12.696 8.07554 11.382 7.48954 10.051C7.36754 9.77597 7.43854 9.45297 7.65154 9.23997L8.47754 8.41397C9.14854 7.74297 9.14854 6.79397 8.56254 6.20797L7.38954 5.03497C6.60854 4.25397 5.34254 4.25397 4.56154 5.03497L3.90954 5.68597C3.16854 6.42697 2.85954 7.49597 3.05954 8.55597C3.55354 11.169 5.07154 14.03 7.52054 16.479C9.96954 18.928 12.8305 20.446 15.4435 20.94C16.5035 21.14 17.5725 20.831 18.3135 20.09L18.9645 19.439C19.7455 18.658 19.7455 17.392 18.9645 16.61V16.61Z" fill="white" stroke="#008EDF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                         <path d="M13 6.99097C14.031 6.97697 15.067 7.35897 15.854 8.14597" stroke="#008EDF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -139,7 +142,7 @@
 
                                     <a href="tel:{{Support::show($itemBranchSystem,'phone')}}" title="hotline" class="text font-bold text-[#252525] font-bold">{{Support::show($itemBranchSystem,'phone')}}</a>
                                 </p>
-                                <p class="item relative pl-6 mb-2 last:mb-0">
+                                <p class="item relative pl-7 mb-3 last:mb-0">
                                     <svg width="24" height="24" class="absolute top-0 left-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M13.6004 20H10.4004" stroke="#008EDF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M17 10.032V10V10C17 7.239 14.761 5 12 5V5C9.239 5 7 7.239 7 10V10V10.032V12.504C7 12.828 6.817 13.123 6.528 13.268L6.025 13.519C5.397 13.834 5 14.476 5 15.178V15.178C5 16.202 5.83 17.032 6.854 17.032H17.146C18.17 17.032 19 16.202 19 15.178V15.178C19 14.476 18.603 13.834 17.975 13.52L17.472 13.269C17.183 13.123 17 12.828 17 12.504V10.032Z" fill="white" stroke="#008EDF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -151,7 +154,7 @@
                                         Giờ mở cửa: <strong class="font-bold ">{{Support::show($itemBranchSystem,'open_time')}}</strong>
                                     </span>
                                 </p>
-                                <p class="item relative pl-6 mb-2 last:mb-0">
+                                <p class="item relative pl-7 mb-3 last:mb-0">
                                     <svg width="24" height="24" class="absolute top-0 left-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M12.5 13.0005H16.0015" stroke="#008EDF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                         <path d="M12.5 13.0005H17.0019" stroke="#008EDF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -175,10 +178,10 @@
                 </div>
                 <div class="pagination-all pagination-system"></div>
             </div>
-            <div class="button-circle button-circle__prev system_prev 2xl:w-14 2xl:h-14  h-10 w-10 rounded-full lg:flex hidden items-center justify-center absolute top-1/2 -translate-y-1/2 z-[1] cursor-pointer 2xl:left-[-100px] lg:left-[-28px] border-[1px] border-solid border-[#0557ac] text-[2.5rem] text-[#0557ac] transition-all duration-300 hover:bg-[#0557ac] hover:text-white">
+            <div class="button-circle button-circle__prev system_prev 2xl:w-10 2xl:h-10  h-8 w-8 rounded-full lg:flex hidden items-center justify-center absolute top-1/2 -translate-y-1/2 z-[1] cursor-pointer 2xl:-left-14 lg:left-[-28px] border-[1px] border-solid border-[#0557ac] text-[1.5rem] text-[#0557ac] transition-all duration-300 hover:bg-[#0557ac] hover:text-white">
                 <i class="fa fa-angle-left" aria-hidden="true"></i>
             </div>
-            <div class="button-circle button-circle__next system_next 2xl:w-14 2xl:h-14  h-10 w-10 rounded-full lg:flex hidden items-center justify-center absolute top-1/2 -translate-y-1/2 z-[1] cursor-pointer 2xl:right-[-100px] lg:right-[-28px] border-[1px] border-solid border-[#0557ac] text-[2.5rem] text-[#0557ac] transition-all duration-300 hover:bg-[#0557ac] hover:text-white">
+            <div class="button-circle button-circle__next system_next 2xl:w-10 2xl:h-10  h-8 w-8 rounded-full lg:flex hidden items-center justify-center absolute top-1/2 -translate-y-1/2 z-[1] cursor-pointer 2xl:-right-14 lg:right-[-28px] border-[1px] border-solid border-[#0557ac] text-[1.5rem] text-[#0557ac] transition-all duration-300 hover:bg-[#0557ac] hover:text-white">
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
             </div>
         </div>

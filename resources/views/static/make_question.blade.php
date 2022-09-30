@@ -37,7 +37,7 @@
                         <input type="email" name="email" placeholder="Email" class="form-control bg-white p-3 rounded-xl w-full border-[1px] border-solid border-[#e0eaf0] mb-4">
                         <input type="text" name="title" placeholder="Tiêu đề (*)" class="form-control bg-white p-3 rounded-xl w-full border-[1px] border-solid border-[#e0eaf0] mb-4" rules="required">
                         <textarea class="form-control bg-white p-3 rounded-xl w-full border-[1px] border-solid border-[#e0eaf0] min-h-[100px] resize-none mb-4" name="note" placeholder="Nội dung (*)" rules="required"></textarea>
-                        <button type="submit" class="btn-red flex w-fit mx-auto font-semibold items-center justify-center lg:text-[0.875rem] uppercase py-3 px-7 rounded-2xl text-white bg-gradient-to-b from-[#28B1FF] to-[#008EDF] transition-all duration-300">Gửi câu hỏi</button>
+                        <button type="submit" class=" flex w-fit mx-auto font-semibold items-center justify-center lg:text-[0.875rem] uppercase py-3 px-7 rounded-2xl text-white bg-gradient-to-b from-[#28B1FF] to-[#008EDF] transition-all duration-300">Gửi câu hỏi</button>
                     </form>
                 </div>
             </div>

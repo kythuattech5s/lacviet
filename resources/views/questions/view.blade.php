@@ -13,7 +13,7 @@
     </div>
     <section class="section-qa bg-[#fcfcfc] py-6 2xl:py-10">
         <div class="container">
-            <span class="show-category mb-4 inline-block cursor-pointer rounded-md bg-[#fb2317] p-2 text-white lg:hidden">Câu hỏi theo chủ đề</span>
+            <span class="show-category mb-4 inline-block cursor-pointer rounded-md bg-gradient-to-b from-[#28B1FF] to-[#008EDF] p-2 text-white lg:hidden">Câu hỏi theo chủ đề</span>
             <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 2xl:gap-8">
                 <div class="col-span-1">
                     @include('question_categories.sidebar')
@@ -100,7 +100,7 @@
                                     <input type="text" class="col-span-1 rounded-md border p-2" name="plus_phone" placeholder="Số điện thoại" rules="required">
                                     <input type="text" class="col-span-1 rounded-md border p-2" name="plus_email" placeholder="Email" rules="required">
                                 </div>
-                                <button type="submit" class="btn-red mt-2 inline-flex items-center justify-center rounded-3xl bg-[#fb2317] py-3 px-8 uppercase text-white shadow-[0_6px_8px_rgba(0,0,0,.17)] transition-all duration-300 lg:text-[0.875rem]">
+                                <button type="submit" class="mt-2 inline-flex items-center justify-center rounded-3xl py-2 px-8 uppercase text-white bg-gradient-to-b from-[#28B1FF] to-[#008EDF] transition-all duration-300 lg:text-[0.875rem]">
                                     Bình luận ngay
                                 </button>
                             </form>

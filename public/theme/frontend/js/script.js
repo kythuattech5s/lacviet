@@ -31,16 +31,16 @@ var CLICK = {
         var lastScrollTop = 0;
         window.addEventListener("scroll", function () {
             var st = window.pageYOffset || document.documentElement.scrollTop;
-            if(width_ > 1023){
-                if (st > lastScrollTop) {
-                    if (lastScrollTop > headerHeight) {
-                        header.css("top", `-` + headerTop + `px`);
-                    }
-                } else {
-                    header.css("top", "0px");
+            // if(width_ > 1023){
+            //     if (st > lastScrollTop) {
+            //         if (lastScrollTop > headerHeight) {
+            //             header.css("top", `-` + (headerTop + 1) + `px`);
+            //         }
+            //     } else {
+            //         header.css("top", "0px");
     
-                }
-            }
+            //     }
+            // }
          
           
 

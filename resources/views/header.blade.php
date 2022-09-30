@@ -2,7 +2,7 @@
     @if (isset($isHome) && $isHome == 1)
     <h1 class="hidden">{[site_name]}</h1>
     @endif
-    <div class="header-top bg-white relative 2xl:py-6 lg:py-4 py-2">
+    <div class="header-top bg-white relative py-2">
         <div class="h-lang hidden lg:flex items-center absolute top-1/2 right-4 -translate-y-1/2">
             <a href="javascript:void(0)" class="btn-change-lang-en" onclick="doGTranslate('vi|en');return false;" title="Tiếng anh">
                 <img src="theme/frontend/images/en.png" alt="En icon">
@@ -36,7 +36,7 @@
                         <span class="phone font-bold text-[#f53632] 2xl:text-[1.125rem]">{[hotline]}</span>
                     </p>
                 </a>
-                <a href="{{VRoute::get('orderExaminationSchedule')}}" title="Đăng ký khám" class=" inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-2 px-4 rounded-3xl text-white bg-gradient-to-b from-[#FF6B69] to-[#E20200] shadow-[0_6px_20px_rgba(246,57,55,.4)] transition-all duration-300">
+                <a href="{{VRoute::get('orderExaminationSchedule')}}" title="Đăng ký khám" class=" inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-2 px-4 rounded-3xl text-white bg-gradient-to-b from-[#FF6B69] to-[#E20200] shadow-[0_6px_20px_rgba(246,57,55,.4)] transition-all duration-300 hover:text-white">
                     <svg width="25" height="24" class="mr-1" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M13.0005 13.0005H16.5019" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         <path d="M13.0005 13.0005H17.5024" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -51,7 +51,7 @@
 
                     Đăng ký khám
                 </a>
-                <a href="{{VRoute::get('medicalRecordLookup')}}" title="Tra cứu bệnh án" class=" inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-2 px-4 rounded-3xl text-white bg-gradient-to-b from-[#28B1FF] to-[#008EDF] transition-all duration-300 shadow-[0_6px_20px_rgba(0,142,223,.4)]">
+                <a href="{{VRoute::get('medicalRecordLookup')}}" title="Tra cứu bệnh án" class=" inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-2 px-4 rounded-3xl text-white bg-gradient-to-b from-[#28B1FF] to-[#008EDF] transition-all duration-300 shadow-[0_6px_20px_rgba(0,142,223,.4)] hover:text-white">
                     <svg width="24" height="24" class="mr-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.0037 8.99884V4.99717C20.0037 3.89214 19.1079 2.99634 18.0028 2.99634H4.99742C3.89239 2.99634 2.99658 3.89214 2.99658 4.99717V19.003C2.99658 20.108 3.89239 21.0038 4.99742 21.0038H9.9995" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         <path d="M6.99805 6.99801H16.0018" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />

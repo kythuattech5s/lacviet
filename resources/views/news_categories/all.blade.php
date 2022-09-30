@@ -28,7 +28,7 @@
                                 </span>
                             </div>
                             <h3>
-                                <a href="{{Support::show($itemNewsHotBig,'slug')}}" title="{{Support::show($itemNewsHotBig,'name')}}" class="title line-clamp-2 text-[#7b7b7b] font-bold 2xl:text-[1.25rem] mb-2">{{Support::show($itemNewsHotBig,'name')}}</a>
+                                <a href="{{Support::show($itemNewsHotBig,'slug')}}" title="{{Support::show($itemNewsHotBig,'name')}}" class="title line-clamp-2 text-[#7b7b7b] font-bold 2xl:text-[1.125rem] mb-2">{{Support::show($itemNewsHotBig,'name')}}</a>
                             </h3>
                             <div class="short_content line-clamp-2">{{Support::show($itemNewsHotBig,'short_content')}}</div>
 
@@ -51,7 +51,7 @@
                                             </span>
                                         </div>
                                         <h3>
-                                            <a href="{{Support::show($itemHotNews,'slug')}}" title="{{Support::show($itemHotNews,'name')}}" class="title line-clamp-2 text-[#7b7b7b] font-bold 2xl:text-[1.25rem] mb-2">{{Support::show($itemHotNews,'name')}}</a>
+                                            <a href="{{Support::show($itemHotNews,'slug')}}" title="{{Support::show($itemHotNews,'name')}}" class="title line-clamp-2 text-[#7b7b7b] font-bold 2xl:text-[1.125rem] mb-2">{{Support::show($itemHotNews,'name')}}</a>
                                         </h3>
                                         <div class="short_content line-clamp-2">{{Support::show($itemHotNews,'short_content')}}</div>
                                     </div>

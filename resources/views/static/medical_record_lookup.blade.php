@@ -21,7 +21,7 @@
                                 </span>
                                 <input type="text" name="patient_code" required class="form-control flex-1" value="{{$patientCode}}">
                             </div>
-                            <button type="submit" class="btn-red whitespace-nowrap inline-flex h-9 mx-auto font-semibold items-center justify-center lg:text-[0.875rem] uppercase py-2 px-10 rounded-lg text-white bg-[#fb2317] transition-all duration-300">Tra cứu</button>
+                            <button type="submit" class="btn-red whitespace-nowrap inline-flex h-9 mx-auto font-semibold items-center justify-center lg:text-[0.875rem] uppercase py-2 px-10 rounded-lg text-white bg-gradient-to-b from-[#28B1FF] to-[#008EDF] transition-all duration-300">Tra cứu</button>
                         </form>
                         <p class="title font-bold text-center uppercase 2xl:text-[1.5rem] lg:text-[1.25rem] text-[0.875rem] text-[#028cde] 2xl:mb-6 mb-4">Kết quả tra cứu bệnh án</p>
                         <div class="button-tabs tabs-search flex gap-4 mb-4">

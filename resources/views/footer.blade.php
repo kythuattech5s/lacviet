@@ -3,7 +3,7 @@
         <div class="container">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:gap-12 gap-4">
                 <div class="col-span-1 md:col-span-2 lg:col-span-1">
-                    <a href="{{\VRoute::get("home")}}" title="Trang chủ" class="logo-footer block 2xl:mb-12 mb-6">
+                    <a href="{{\VRoute::get("home")}}" title="Trang chủ" class="logo-footer max-w-[300px] block 2xl:mb-12 mb-6">
                         @include('image_loader.config.all',['config_key'=>'logo_footer','noLazyLoad'=>1])
                     </a>
                     <div class="content-footer text-white mb-4 text-justify">{[footer_content]}</div>
