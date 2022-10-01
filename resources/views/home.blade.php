@@ -202,7 +202,7 @@
                         @include('image_loader.all',['itemImage'=>$bigItemNews,'key'=>'img'])
                     </a>
                     <h3>
-                        <a href="{{Support::show($bigItemNews,'slug')}}" title="{{Support::show($bigItemNews,'name')}}" class="title text-[#262626] font-bold lg:text-[1.125rem] line-clamp-2 2xl:mb-4 mb-2">{{Support::show($bigItemNews,'name')}}</a>
+                        <a href="{{Support::show($bigItemNews,'slug')}}" title="{{Support::show($bigItemNews,'name')}}" class="title uppercase text-[#262626] font-bold lg:text-[1.125rem] line-clamp-2 2xl:mb-4 mb-2">{{Support::show($bigItemNews,'name')}}</a>
                     </h3>
                     <div class="short_content line-clamp-2">{{Support::show($bigItemNews,'short_content')}}</div>
 

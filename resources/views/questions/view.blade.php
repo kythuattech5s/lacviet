@@ -13,7 +13,7 @@
     </div>
     <section class="section-qa bg-[#fcfcfc] py-6 2xl:py-10">
         <div class="container">
-            <span class="show-category mb-4 inline-block cursor-pointer rounded-md bg-[#fb2317] p-2 text-white lg:hidden">Câu hỏi theo chủ đề</span>
+            <span class="show-category mb-4 inline-block cursor-pointer rounded-md bg-gradient-to-b from-[#28B1FF] to-[#008EDF] p-2 text-white lg:hidden">Câu hỏi theo chủ đề</span>
             <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 2xl:gap-8">
                 <div class="col-span-1">
                     @include('question_categories.sidebar')
@@ -30,10 +30,10 @@
                                     </span>
                                     <div class="head-qa flex flex-wrap items-center justify-between gap-x-4">
                                         <div class="info mb-2 flex flex-wrap items-center gap-4 lg:mb-4">
-                                            <span class="name text-[0.875rem] font-semibold text-[#40b5ff] lg:text-[1rem] 2xl:text-[1.25rem]">{{ Support::show($currentItem, 'customer_name') }}</span>
+                                            <span class="name text-[0.875rem] font-semibold text-[#252525] lg:text-[1rem] 2xl:text-[1.25rem]">{{ Support::show($currentItem, 'customer_name') }}</span>
                                             <span class="examined rounded bg-[#028cde] p-1 text-[0.75rem] font-semibold text-white">{{ Support::show($parent, 'name') }}</span>
                                         </div>
-                                        <p class="time mb-2 text-[0.75rem] lg:mb-4">Đã hỏi: <span class="font-semibold text-[#40b5ff]">Ngày {{ Support::showDateTime($currentItem->time_ask, 'd/m/Y') }}</span></p>
+                                        <p class="time mb-2 text-[0.75rem] lg:mb-4 text-[#888]">Đã hỏi: <span class="font-semibold text-[#40b5ff]">Ngày {{ Support::showDateTime($currentItem->time_ask, 'd/m/Y') }}</span></p>
                                     </div>
                                     <p class="title-qa mb-4 text-[1.125rem] font-bold text-[#767676] lg:text-[1.5rem] 2xl:text-[2rem]">{{ Support::show($currentItem, 'name') }}</p>
                                     <div class="question-content mb-4 lg:text-[0.875rem]">{{ Support::show($currentItem, 'question') }}</div>
@@ -98,7 +98,7 @@
                                     <input type="text" class="col-span-1 rounded-md border p-2" name="plus_phone" placeholder="Số điện thoại" rules="required">
                                     <input type="text" class="col-span-1 rounded-md border p-2" name="plus_email" placeholder="Email" rules="required">
                                 </div>
-                                <button type="submit" class="btn-red mt-2 inline-flex items-center justify-center rounded-3xl bg-[#fb2317] py-3 px-8 uppercase text-white shadow-[0_6px_8px_rgba(0,0,0,.17)] transition-all duration-300 lg:text-[0.875rem]">
+                                <button type="submit" class="mt-2 inline-flex items-center justify-center rounded-3xl py-2 px-8 uppercase text-white bg-gradient-to-b from-[#28B1FF] to-[#008EDF] transition-all duration-300 lg:text-[0.875rem]">
                                     Bình luận ngay
                                 </button>
                             </form>

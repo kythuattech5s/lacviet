@@ -27,6 +27,7 @@
                         'Every': ['"Every"'],
                         'Pleasent': ['"Pleasent"'],
                     },
+                   
                     container: {
                         center: true,
                     },

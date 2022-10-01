@@ -28,7 +28,7 @@
                                 </span>
                             </div>
                             <h3>
-                                <a href="{{Support::show($itemNewsHotBig,'slug')}}" title="{{Support::show($itemNewsHotBig,'name')}}" class="title line-clamp-2 text-[#7b7b7b] font-bold 2xl:text-[1.625rem] lg:text-[1.3rem] text-[1rem] mb-2">{{Support::show($itemNewsHotBig,'name')}}</a>
+                                <a href="{{Support::show($itemNewsHotBig,'slug')}}" title="{{Support::show($itemNewsHotBig,'name')}}" class="title line-clamp-2 text-[#7b7b7b] font-bold 2xl:text-[1.125rem] mb-2">{{Support::show($itemNewsHotBig,'name')}}</a>
                             </h3>
                             <div class="short_content line-clamp-2">{{Support::show($itemNewsHotBig,'short_content')}}</div>
 
@@ -51,7 +51,7 @@
                                             </span>
                                         </div>
                                         <h3>
-                                            <a href="{{Support::show($itemHotNews,'slug')}}" title="{{Support::show($itemHotNews,'name')}}" class="title line-clamp-2 text-[#7b7b7b] font-bold 2xl:text-[1.625rem] lg:text-[1.3rem] text-[1rem] mb-2">{{Support::show($itemHotNews,'name')}}</a>
+                                            <a href="{{Support::show($itemHotNews,'slug')}}" title="{{Support::show($itemHotNews,'name')}}" class="title line-clamp-2 text-[#7b7b7b] font-bold 2xl:text-[1.125rem] mb-2">{{Support::show($itemHotNews,'name')}}</a>
                                         </h3>
                                         <div class="short_content line-clamp-2">{{Support::show($itemHotNews,'short_content')}}</div>
                                     </div>
@@ -69,8 +69,11 @@
                         $listItemNews = $itemCateChild->news()->act()->orderBy('time_published','desc')->limit(5)->get();
                         $bigItem = $listItemNews->first();
                     @endphp
-                    <div class="module-new__category 2xl:pt-14 lg:pt-10 lg:pb-7 py-5 border-b-[3px] border-solid border-[#028cde]">
-                        <h2 class="title-all uppercase 2xl:text-[1.75rem] lg:text-[1.4rem] text-[1rem] text-[#028cde] font-semibold 2xl:mb-6 mb-4">{{Support::show($itemCateChild,'name')}}</h2>
+                    <div class="module-new__category 2xl:pt-14 lg:pt-10 lg:pb-7 py-5 border-b-[1px] border-solid border-[#ebebeb]">
+                        <div class="flex items-center justify-between gap-4 2xl:mb-6 mb-4">
+                            <h2 class="title-all uppercase 2xl:text-[1.75rem] lg:text-[1.4rem] text-[1rem] text-[#252525] font-semibold !mb-0">{{Support::show($itemCateChild,'name')}}</h2>
+                            <a href="{{Support::show($itemCateChild,'slug')}}" title="Xem thêm" class="readmore hidden lg:block font-bold text-[#008EDF]">Xem thêm <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i></a>
+                        </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             @if (isset($bigItem))
                                 <div class="col-span-1">
@@ -81,7 +84,7 @@
                                             </a>
                                         </div>
                                         <h3>
-                                            <a href="{{Support::show($bigItem,'slug')}}" title="{{Support::show($bigItem,'name')}}" class="title line-clamp-2 text-[#7b7b7b] font-bold 2xl:text-[1.625rem] lg:text-[1.3rem] text-[1rem] mb-2">{{Support::show($bigItem,'name')}}</a>
+                                            <a href="{{Support::show($bigItem,'slug')}}" title="{{Support::show($bigItem,'name')}}" class="title line-clamp-2 text-[#7b7b7b] font-bold 2xl:text-[1.25rem] text-[1rem] mb-2">{{Support::show($bigItem,'name')}}</a>
                                         </h3>
                                         <div class="short_content lg:line-clamp-4 line-clamp-2 2xl:mb-6 mb-3">{{Support::show($bigItem,'short_content')}}</div>
                                         <span class="date-time font-semibold text-[0.75rem] text-[#b2b2b2] italic">
@@ -113,7 +116,7 @@
                                         @endif
                                     @endforeach
                                 </div>
-                                <a href="{{Support::show($itemCateChild,'slug')}}" title="Xem thêm" class="btn-readmore flex w-fit ml-auto mr-0 items-center justify-center lg:text-[0.875rem] py-3 px-4 rounded-3xl bg-transparent transition-all duration-300 border-[1px] border-solid border-[#028cde] hover:bg-[#028cde] hover:text-white">
+                                <a href="{{Support::show($itemCateChild,'slug')}}" title="Xem thêm" class="btn-readmore flex lg:hidden w-fit ml-auto mr-0 items-center justify-center lg:text-[0.875rem] py-3 px-4 rounded-3xl bg-transparent transition-all duration-300 border-[1px] border-solid border-[#028cde] hover:bg-[#028cde] hover:text-white">
                                     Xem thêm <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i>
                                 </a>
                             </div>
