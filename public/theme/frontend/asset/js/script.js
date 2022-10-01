@@ -1,3 +1,8 @@
+$.ajaxSetup({
+    headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+    },
+});
 var NEW_GUI = (function () {
     var slideDetailEditor = function () {
         var boxSlides = $(".slide_detail_editor");
@@ -51,6 +56,56 @@ var NEW_GUI = (function () {
         },
     };
 })();
+var QUESTION_GUI = (function () {
+    var initReplyButton = function () {
+        $(".btn-reply-comment-question").click(function () {
+            $("html, body").animate(
+                {
+                    scrollTop:
+                        $(".form-comment__box").offset().top -
+                        $("header").height(),
+                },
+                300
+            );
+        });
+    };
+    var initFavouriteButton = function () {
+        $(".btn-favourite-question").click(function () {
+            if ($(this).hasClass("inited")) {
+                NOTIFICATION.showNotify(
+                    200,
+                    "Bạn đã đánh giá rồi. Cảm ơn đánh giá của bạn."
+                );
+                return;
+            }
+            var _this = $(this);
+            $.ajax({
+                url: "favourite-question/",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    id: $(this).data("id"),
+                    type: $(this).data("type"),
+                },
+            }).done(function (data) {
+                NOTIFICATION.toastrMessage(data);
+                if (data.code == 200) {
+                    _this.addClass("active");
+                    $(".like-count").html(data.countLike);
+                    $(".unlike-count").html(data.countUnLike);
+                    $(".btn-favourite-question").addClass("inited");
+                }
+            });
+        });
+    };
+    return {
+        _: function () {
+            initReplyButton();
+            initFavouriteButton();
+        },
+    };
+})();
 $(document).ready(function () {
     NEW_GUI._();
+    QUESTION_GUI._();
 });
