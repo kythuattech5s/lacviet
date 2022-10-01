@@ -615,6 +615,12 @@ body{
 #input-search-header{
   border-radius:0;
 }
+.btn-favourite.like.active{
+  color: #0969ae;
+}
+.btn-favourite.un-like.active{
+  color: red;
+}
 @media (min-width: 992px) {
   .container {
     max-width: 992px;
