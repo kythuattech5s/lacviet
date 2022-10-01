@@ -79,15 +79,12 @@
             <a href="{{\VRoute::get("home")}}" title="Trang chủ" class="go-home hidden lg:flex items-center justify-center text-white text-[1.875rem] w-[53px] bg-[#0557AC] lg:mr-10">
                 <i class="fa fa-home" aria-hidden="true"></i>
             </a>
+         
             <div class="menu">
                 <a href="{{\VRoute::get("home")}}" title="Trang chủ" class="logo-mobile block lg:hidden mb-6">
                     @include('image_loader.config.tiny',['config_key'=>'logo','noLazyLoad'=>1])
                 </a>
-                @php
-                $menus = Support::getMenuRecursive(1);
-                @endphp
-                {{Support::showMenuRecursive($menus,0)}}
-                <div class="h-lang flex lg:hidden mt-3 items-center px-4">
+                <div class="h-lang flex justify-center lg:hidden mb-3 items-center px-4">
                     <a href="javascript:void(0)" class="btn-change-lang-en" onclick="doGTranslate('vi|en');return false;" title="Tiếng anh">
                         <img src="theme/frontend/images/en.png" alt="En icon">
                     </a>
@@ -95,6 +92,24 @@
                         <img src="theme/frontend/images/vn.png" alt="Vi icon">
                     </a>
                 </div>
+                @php
+                $menus = Support::getMenuRecursive(1);
+                @endphp
+                {{Support::showMenuRecursive($menus,0)}}
+                <div class="flex lg:hidden items-center gap-4 px-4 mt-6">
+                
+                    <a href="{{VRoute::get('orderExaminationSchedule')}}" title="Đăng ký khám" class="flex-1 inline-flex items-center justify-center lg:text-[0.875rem] py-2 px-4 rounded-3xl text-white bg-gradient-to-b from-[#FF6B69] to-[#E20200] shadow-[0_6px_20px_rgba(246,57,55,.4)] transition-all duration-300 hover:text-white">
+                     
+
+                        Đăng ký khám
+                    </a>
+                    <a href="{{VRoute::get('medicalRecordLookup')}}" title="Tra cứu bệnh án" class="flex-1 inline-flex items-center justify-center lg:text-[0.875rem] py-2 px-4 rounded-3xl text-white bg-gradient-to-b from-[#28B1FF] to-[#008EDF] transition-all duration-300 shadow-[0_6px_20px_rgba(0,142,223,.4)] hover:text-white">
+                 
+
+                    Tra cứu bệnh án
+                </a>
+                </div>
+              
             </div>
             <div class="over-lay block lg:hidden fixed top-0 right-[-100%] transition-all duration-300 bg-[rgba(0,0,0,.6)] w-full h-full"></div>
         </div>

@@ -612,6 +612,9 @@ body{
 .swiper-button-disabled{
   opacity: .3;
 }
+#input-search-header{
+  border-radius:0;
+}
 @media (min-width: 992px) {
   .container {
     max-width: 992px;
