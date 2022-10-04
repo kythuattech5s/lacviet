@@ -151,12 +151,50 @@ var SLIDER = {
 		}
 
 	},
+	slideService: function () {
+		if (typeof Tech.$('.slide-service__mobile') === 'undefined') return;
+		const swiperBanner = new Swiper('.slide-service__mobile', {
+			slidesPerView: 1.2,
+			disableOnInteraction: true,
+			speed: 600,
+			spaceBetween: 20,
+			loop:true,
+			centeredSlides: true,
+			navigation: {
+				nextEl: ".service-next",
+				prevEl: ".service-prev",
+			},
+			// pagination: {
+			// 	el: ".pagination-system",
+			// 	clickable: true,
+			// },
+			breakpoints: {
+				576: {
+					slidesPerView: 1.2,
+					spaceBetween: 15
+				},
+				768: {
+					slidesPerView: 1.5,
+					spaceBetween: 15
+				},
+				992: {
+					slidesPerView: 1.5,
+					spaceBetween: 30
+				},
 
+			
+
+
+			}
+
+		});
+	},
 
 	init: function () {
 		SLIDER.slideBannerHome();
 		SLIDER.slideSystem();
 		SLIDER.slideExperts();
+		SLIDER.slideService();
 
 	},
 }

@@ -766,6 +766,9 @@ body{
   }
 }
 @media (max-width: 1023px) {
+  .module-new__category .item-new__sidebar .short_content {
+    display: none;
+  }
   body{
     padding-top: 62px;
   }

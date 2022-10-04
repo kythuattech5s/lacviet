@@ -4,13 +4,17 @@
     <div class="swiper-wrapper">
         @foreach ($listBanner as $key => $itemBanner)
         <div class="swiper-slide">
-            <a href="{{$itemBanner->link != '' ? $itemBanner->link:'javascript:void(0)'}}" {!!Support::showNofollow($itemBanner)!!} title="{{$itemBanner->name}}" class="link-banner">
+        <a href="{{$itemBanner->link != '' ? $itemBanner->link:'javascript:void(0)'}}" {!!Support::showNofollow($itemBanner)!!} title="{{$itemBanner->name}}" class="link-banner hidden lg:block">
                 @if ($key == 0)
                 @include('image_loader.all',['itemImage'=>$itemBanner,'key'=>'img','noLazyLoad'=>1])
                 @else
                 @include('image_loader.all',['itemImage'=>$itemBanner,'key'=>'img'])
                 @endif
             </a>
+        <a href="#" title="" class="link-banner block lg:hidden">
+            <img src="theme/frontend/images/banner-mb.jpg" alt="">
+        </a>
+    
         </div>
         @endforeach
     </div>
@@ -44,12 +48,28 @@
 <section class="section-service__index 2xl:py-10 py-6 bg-no-repeat bg-cover relative after:bg-[rgba(255,255,255,.5)] after:absolute after:top-0 after:left-0 after:w-full after:h-full" style="background-image: url({Ibg_service_home.imgI});">
     <div class="container relative z-[1]">
         <p class="title-all text-center uppercase 2xl:text-[2rem] lg:text-[1.5rem] text-[1.25rem] text-[#252525] font-semibold lg:mb-24 mb-6">{[title_service_home]}</p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="hidden lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             @foreach ($listHotService as $key => $item)
             <div class="col-span-1 wow fadeInUp" data-wow-delay="{{($key + 1)*0.1}}s">
                 @include('services.item')
             </div>
             @endforeach
+        </div>
+        <div class="swiper-container slide-service__mobile block lg:hidden">
+            <div class="swiper-wrapper">
+                @foreach ($listHotService as $key => $item)
+                <div class="swiper-slide">
+                    @include('services.item')
+                </div>
+                @endforeach
+
+            </div>
+            <div class="button-banner service-prev lg:h-14 lg:w-14 h-10 w-10 rounded-full flex items-center justify-center absolute top-1/2 -translate-y-1/2 z-[1] cursor-pointer left-[5%] border-[1px] border-solid border-[#74a6cb] text-[1.5rem] text-[#74a6cb] transition-all duration-300 hover:bg-[#74a6cb] hover:text-white">
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+            </div>
+            <div class="button-banner service-next lg:h-14 lg:w-14 h-10 w-10 rounded-full flex items-center justify-center absolute top-1/2 -translate-y-1/2 z-[1] cursor-pointer right-[5%] border-[1px] border-solid border-[#74a6cb] text-[1.5rem] text-[#74a6cb] transition-all duration-300 hover:bg-[#74a6cb] hover:text-white">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </div>
         </div>
     </div>
 </section>

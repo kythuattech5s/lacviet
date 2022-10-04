@@ -116,7 +116,7 @@
                                         @endif
                                     @endforeach
                                 </div>
-                                <a href="{{Support::show($itemCateChild,'slug')}}" title="Xem thêm" class="btn-readmore flex lg:hidden w-fit ml-auto mr-0 items-center justify-center lg:text-[0.875rem] py-3 px-4 rounded-3xl bg-transparent transition-all duration-300 border-[1px] border-solid border-[#028cde] hover:bg-[#028cde] hover:text-white">
+                                <a href="{{Support::show($itemCateChild,'slug')}}" title="Xem thêm" class="btn-readmore mt-4 flex lg:hidden w-fit ml-auto mr-auto lg:mr-0 items-center justify-center lg:text-[0.875rem] py-3 px-4 rounded-3xl bg-transparent transition-all duration-300 border-[1px] border-solid border-[#028cde] hover:bg-[#028cde] hover:text-white">
                                     Xem thêm <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i>
                                 </a>
                             </div>
