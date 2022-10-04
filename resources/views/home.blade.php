@@ -36,10 +36,11 @@
         <div class="grid grid-cols-2 gap-2 sm:gap-4 md:grid-cols-4">
             @foreach ($listReasonChoose as $key => $itemReasonChoose)
             <div class="wow flipInY col-span-1" data-wow-delay="{{ ($key + 1) * 0.1 }}s">
-                <div class="item-reason rounded p-2 text-center transition-all duration-300 hover:shadow-[0_4px_10px_rgba(0,0,0,.3)]">
-                    <span class="img mx-auto mb-2 block h-10 w-10 xl:mb-4 xl:h-14 xl:w-14">
+                <div class="item-reason rounded text-center ">
+                    <span class="img img__ block c-img pt-[80%] 2xl:mb-4 mb-2 rounded-2xl overflow-hidden">
                         @include('image_loader.big', ['itemImage' => $itemReasonChoose, 'key' => 'img'])
                     </span>
+
                     <p class="title mb-2 text-center font-bold uppercase text-[#000] lg:text-[1.125rem]">{{ Support::show($itemReasonChoose, 'name') }}</p>
                     <div class="s-content text-justify">{!! Support::show($itemReasonChoose, 'content') !!}</div>
                 </div>
