@@ -163,7 +163,7 @@ class Admin extends BaseAdminController
             $filterShow = DetailTableHelper::filterDataShow($tableDetailData, $force);
             $fieldSelect = array();
             $filterShow = $filterShow->filter(function ($v, $k) {
-                return !\Str::startsWith($v->name, 'pivot_');
+                return !\Str::startsWith($v->name, 'pivot_') || !\Str::startsWith($v->name, 'form_contact');
             });
             foreach ($filterShow as $key => $value) {
                 array_push($fieldSelect, $value->parent_name.'.'.$value->name);

@@ -1,6 +1,5 @@
 var GALLERY_CONTROL_JSON_FIELD = function(clazz){
 	this.targetClazz = clazz;
-	console.log(clazz);
 	this.currrentClazz = '.gallery_ul_'+clazz;
 	this.currentGallery = $(this.currrentClazz);
 	this.uniqueID = function () {
@@ -78,7 +77,6 @@ var GALLERY_CONTROL_JSON_FIELD = function(clazz){
 	}
 	this.initSortable = function (){
 		var tmpClazz = this.targetClazz;
-		console.log(this.currentGallery);
 		this.currentGallery.sortable({
 		    tolerance: 'pointer',
 		    items: "> li",

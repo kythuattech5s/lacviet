@@ -42,7 +42,7 @@
                     {!!$dataContent['toc']!!}
                 </div> 
                 <div class="s-content mb-4">
-                    {!!Support::showContentHasGallery($dataContent['content'],$currentItem->imgs_template)!!}
+                    {!!Support::showContentHasForm(Support::showContentHasGallery($dataContent['content'],$currentItem->imgs_template), 'news', $currentItem->id)!!}
                 </div>
                 <ul class="author-new text-right lg:text-[0.875rem] mt-6 text-[#373737]">
                     @if (isset($author))

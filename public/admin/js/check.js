@@ -30,7 +30,6 @@ var MAIN = (function () {
                     tab_time: timeTab,
                 },
                 success: function () {
-                    console.log(new Date());
                     timeExit = setTimeout(() => {
                         ajaxEditing();
                     }, 5000);
