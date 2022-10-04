@@ -3,7 +3,7 @@
         <div class="container">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:gap-12 gap-4">
                 <div class="col-span-1 md:col-span-2 lg:col-span-1">
-                    <a href="{{\VRoute::get("home")}}" title="Trang chủ" class="logo-footer block 2xl:mb-12 mb-6">
+                    <a href="{{\VRoute::get("home")}}" title="Trang chủ" class="logo-footer max-w-[300px] block 2xl:mb-12 mb-6">
                         @include('image_loader.config.all',['config_key'=>'logo_footer','noLazyLoad'=>1])
                     </a>
                     <div class="content-footer text-white mb-4 text-justify">{[footer_content]}</div>
@@ -92,3 +92,17 @@
         </div>
     </div>
 </footer>
+    <div class="nav-mobile flex lg:hidden gap-2 fixed bottom-0 left-0 w-full z-20">
+        <a href="{{VRoute::get('medicalRecordLookup')}}" title="Tra cứu bệnh án" class="link leading-[1.1] inline-flex items-center justify-center flex-1 text-white rounded-t-xl py-2 px-4 bg-[#f43d3b]">
+            <img src="theme/frontend/images/list-search.svg" class="inline-block mr-1 w-5 h-5 object-contain brightnes-[100]" alt="icon">
+            Tra cứu bệnh án
+        </a>
+        <a href="{{VRoute::get('orderExaminationSchedule')}}" title="Đặt lịch khám" class="link leading-[1.1] inline-flex items-center justify-center flex-1 text-white rounded-t-xl py-2 px-4 bg-[#ed9f09]">
+            <img src="theme/frontend/images/Calendar.svg" class="inline-block mr-1 w-5 h-5 object-contain brightnes-[100]" alt="icon">
+            Đặt lịch
+        </a>
+        <a href="#" title="" class="link leading-[1.1] inline-flex items-center justify-center flex-1 text-white rounded-t-xl py-2 px-4 bg-[#028cde]">
+            <img src="theme/frontend/images/icon-3.png" class="inline-block mr-1 w-5 h-5 object-contain brightnes-[100]" alt="icon">
+            Chat ngay
+        </a>
+    </div>

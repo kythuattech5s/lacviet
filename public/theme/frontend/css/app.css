@@ -88,3 +88,6 @@ html[lang='vi'] .btn-change-lang-vi,html[lang='auto'] .btn-change-lang-vi{
     background-color: #eee;
     font-size: 14px;
 }
+.tox-statusbar{
+    display: none!important;
+}

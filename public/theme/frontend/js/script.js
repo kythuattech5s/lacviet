@@ -22,17 +22,7 @@ var CLICK = {
         // var _width = window.innerWidth;
         var bodyPage = Tech.$("body");
         var width_ = window.innerWidth;
-        if (width_ > 1023) {
-            Tech.$("body").css("padding-top", headerTop + `px`);
-            if(typeof Tech.$('.section-banner__index') !=='undefined'){
-
-                Tech.$(".section-banner__index").css("padding-top", headerNavHeight + `px`);
-            }
-        } else {
-            Tech.$("body").css("padding-top", headerHeight + `px`);
-
-        }
-        header.addClass("fixed");
+            // Tech.$("body").css("padding-top", headerHeight + `px`);
 
         /* Function phụ trợ */
 
@@ -41,20 +31,18 @@ var CLICK = {
         var lastScrollTop = 0;
         window.addEventListener("scroll", function () {
             var st = window.pageYOffset || document.documentElement.scrollTop;
-            if (st > lastScrollTop) {
-                if (lastScrollTop > headerHeight) {
-                    header.css("top", `-` + headerTop + `px`);
-                }
-            } else {
-                header.css("top", "0px");
-
-            }
-            if(st > headerHeight){
-                header.addClass('scroll');
-            }else{
-                header.removeClass('scroll');
-
-            }
+            // if(width_ > 1023){
+            //     if (st > lastScrollTop) {
+            //         if (lastScrollTop > headerHeight) {
+            //             header.css("top", `-` + (headerTop + 1) + `px`);
+            //         }
+            //     } else {
+            //         header.css("top", "0px");
+    
+            //     }
+            // }
+         
+          
 
             lastScrollTop = st <= 0 ? 0 : st;
         }, );
@@ -161,6 +149,7 @@ var CLICK = {
         CLICK.initAnimation();
         CLICK.showCategory();
         CLICK.moduleSearch();
+        CLICK.fixedMenu();
    
 
     },

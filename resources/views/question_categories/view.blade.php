@@ -7,7 +7,13 @@
 </div>
 <section class="section-qa 2xl:py-10 py-6 bg-[#fcfcfc]">
     <div class="container">
-        <span class="show-category inline-block lg:hidden p-2 rounded-md bg-[#fb2317] cursor-pointer mb-4 text-white">Danh mục</span>
+        <!-- <span class="show-category inline-block lg:hidden p-2 rounded-md bg-[#fb2317] cursor-pointer mb-4 text-white">Danh mục</span> -->
+        <div class="box relative">
+        <i class="fa fa-sort absolute top-1/2 right-4 -translate-y-1/2" aria-hidden="true"></i>
+            <select class="rounded bg-[#f5f5f5] w-full py-2 px-4 appearance-none">
+                <option>Tất cả</option>
+            </select>
+        </div>
         <div class="grid grid-cols-1 lg:grid-cols-4 2xl:gap-8 gap-4">
             <div class="col-span-1">
                 @include('question_categories.sidebar')

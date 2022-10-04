@@ -15,7 +15,7 @@ $listNewNews = \App\Models\News::act()->publish()->orderBy('time_published','des
 @endphp
 @if (count($listNewNews) > 0)
 <div class="box overflow-hidden bg-white rounded-lg shadow-[6px_8px_48px_rgba(0,0,0,.08)] mb-6">
-    <p class="head-title__sidebar text-center font-semibold uppercase py-2 px-3 text-white bg-[#028cde] 2xl:text-[1.25rem] text-[1rem] 2xl:mb-6 mb-4">Tin tức mới</p>
+    <p class="head-title__sidebar text-center font-semibold uppercase py-2 px-3 text-white bg-[#028cde] 2xl:text-[1.25rem] text-[1rem]">Tin tức mới</p>
     <div class="list-new__side grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 2xl:p-4 p-2">
         @foreach ($listNewNews as $itemNewNews)
         <div class="col-span-1">
@@ -29,7 +29,7 @@ $listNewNews = \App\Models\News::act()->publish()->orderBy('time_published','des
                     <h3>
                         <a href="{{Support::show($itemNewNews,'slug')}}" title="{{Support::show($itemNewNews,'name')}}" class="title line-clamp-2 font-semibold uppercase text-[0.75rem] mb-2">{{Support::show($itemNewNews,'name')}}</a>
                     </h3>
-                    <p class="count text-[0.625rem] italic">Lượt xem: {{Support::show($itemNewNews,'count_view')}}</p>
+                    <p class="count text-[0.625rem]">Lượt xem: {{Support::show($itemNewNews,'count_view')}}</p>
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@ $listFrequentQuestion = \App\Models\Question::act()->orderBy('id','desc')->limit
 <div class="box overflow-hidden bg-white rounded-lg shadow-[6px_8px_48px_rgba(0,0,0,.08)] mb-6">
 
 <p class="head-title__sidebar text-center font-semibold uppercase py-2 px-3 text-white bg-[#028cde] 2xl:text-[1.25rem] text-[1rem]">Câu hỏi liên quan</p>
-<div class="border-box border-[1px] border-solid border-[#028cde] 2xl:p-7 p-4">
+<div class="border-box 2xl:p-7 p-4">
     @foreach ($listFrequentQuestion as $key => $itemFrequentQuestion)
     <a href="{{Support::show($itemFrequentQuestion,'slug')}}" title="{{Support::show($itemFrequentQuestion,'name')}}" class="question-related relative font-semibold block text-[#131313] text-[0.875rem] mb-5 last:mb-0 pl-10">
         <span class="stt min-w-[26px] h-[26px] text-[0.625rem] text-white inline-flex items-center justify-center bg-[#028cde] absolute top-0 left-0">{{$key + 1}}</span>
@@ -60,7 +60,7 @@ $listFrequentQuestion = \App\Models\Question::act()->orderBy('id','desc')->limit
 <p class="head-title__sidebar text-center font-semibold uppercase py-2 px-3 text-white bg-[#028cde] 2xl:text-[1.25] text-[1rem]">
     Đăng ký tư vấn
 </p>
-<div class="border-box border-[1px] border-solid border-[#028cde] p-4">
+<div class="border-box p-4">
     <p class="text-center md:text-[0.875rem] 2xl:mb-6 mb-4">
         Vui lòng để lại thông tin và nhu cầu
         của Quý khách để được nhận tư vấn

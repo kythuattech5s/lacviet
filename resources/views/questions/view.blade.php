@@ -13,7 +13,7 @@
     </div>
     <section class="section-qa bg-[#fcfcfc] py-6 2xl:py-10">
         <div class="container">
-            <span class="show-category mb-4 inline-block cursor-pointer rounded-md bg-[#fb2317] p-2 text-white lg:hidden">Câu hỏi theo chủ đề</span>
+            <span class="show-category mb-4 inline-block cursor-pointer rounded-md bg-gradient-to-b from-[#28B1FF] to-[#008EDF] p-2 text-white lg:hidden">Câu hỏi theo chủ đề</span>
             <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 2xl:gap-8">
                 <div class="col-span-1">
                     @include('question_categories.sidebar')
@@ -63,22 +63,20 @@
                                         </div>
                                         <div class="answer-content s-content mb-4 lg:text-[0.875rem]">{!! Support::show($currentItem, 'answer') !!}</div>
                                         <div class="favourite flex items-center justify-between">
-                                            <a href="" title="Trả lời" class="reply font-medium text-[#9c9c9c]"><i class="fa fa-reply mr-1" aria-hidden="true"></i> Trả lời</a>
+                                            <a href="javascript:void(0)" title="Trả lời" class="reply btn-reply-comment-question font-medium text-[#9c9c9c]"><i class="fa fa-reply mr-1" aria-hidden="true"></i> Trả lời</a>
                                             <div class="favourite-action flex items-center gap-x-2">
-                                                <a href="" title="" class="btn-favourite rounded border-[1px] border-solid border-[#ebebeb] py-1 px-2 text-[#767676] lg:text-[0.875rem]">
+                                                <a href="javascript:void(0)" title="Hữu ích" class="btn-favourite like btn-favourite-question rounded border-[1px] border-solid border-[#ebebeb] py-1 px-2 text-[#767676] lg:text-[0.875rem]" data-type="like" data-id="{{Support::show($currentItem,'id')}}">
                                                     <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-                                                    <span class="count ml-2 border-l-[1px] border-solid border-[#7b7b7b] pl-2">20</span>
+                                                    <span class="count ml-2 border-l-[1px] border-solid border-[#7b7b7b] pl-2 like-count">{{Support::show($currentItem,'like')}}</span>
                                                 </a>
-                                                <a href="" title="" class="btn-favourite rounded border-[1px] border-solid border-[#ebebeb] py-1 px-2 text-[#767676] lg:text-[0.875rem]">
+                                                <a href="javascript:void(0)" title="Không hữu ích" class="btn-favourite un-like btn-favourite-question rounded border-[1px] border-solid border-[#ebebeb] py-1 px-2 text-[#767676] lg:text-[0.875rem]" data-type="unlike" data-id="{{Support::show($currentItem,'id')}}">
                                                     <i class="fa fa-thumbs-down" aria-hidden="true"></i>
-                                                    <span class="count ml-2 border-l-[1px] border-solid border-[#7b7b7b] pl-2">0</span>
+                                                    <span class="count ml-2 border-l-[1px] border-solid border-[#7b7b7b] pl-2 unlike-count">{{Support::show($currentItem,'unlike')}}</span>
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
-
                             </div>
                         </div>
                         <hr class="mb-4 h-[2px] border-[#ebebeb] opacity-100 2xl:mb-7">
@@ -100,7 +98,7 @@
                                     <input type="text" class="col-span-1 rounded-md border p-2" name="plus_phone" placeholder="Số điện thoại" rules="required">
                                     <input type="text" class="col-span-1 rounded-md border p-2" name="plus_email" placeholder="Email" rules="required">
                                 </div>
-                                <button type="submit" class="btn-red mt-2 inline-flex items-center justify-center rounded-3xl bg-[#fb2317] py-3 px-8 uppercase text-white shadow-[0_6px_8px_rgba(0,0,0,.17)] transition-all duration-300 lg:text-[0.875rem]">
+                                <button type="submit" class="mt-2 inline-flex items-center justify-center rounded-3xl py-2 px-8 uppercase text-white bg-gradient-to-b from-[#28B1FF] to-[#008EDF] transition-all duration-300 lg:text-[0.875rem]">
                                     Bình luận ngay
                                 </button>
                             </form>
@@ -131,7 +129,11 @@
         </div>
     </section>
 @endsection
+@section('jsl')
+    <script src="theme/frontend/asset/js/jquery-3.4.0.min.js" defer></script>
+@endsection
 @section('js')
     <script type="module" src="{{ asset('assets/comment/js/tinymce.js') }}" defer></script>
     <script src="{{ asset('assets/comment/js/comment.js') }}" defer></script>
+    <script src="theme/frontend/asset/js/script.js" defer></script>
 @endsection
