@@ -77,17 +77,17 @@
                     <!-- <p class="head text-center font-medium uppercase p-4 text-white bg-[#028cde]">
                             Bài viết được tư vấn chuyên môn bởi {{Support::show($doctor,'academic_rank')}} {{Support::show($doctor,'name')}}
                         </p> -->
-                    <div class="content p-4 flex flex-col sm:flex-row 2xl:gap-8 lg:gap-6 gap-4">
-                        <span class="img block shrink-0 w-[290px] h-auto">
+                    <div class="content sm:p-4 p-2 flex 2xl:gap-8 lg:gap-6 sm:gap-4 gap-2">
+                        <span class="img block shrink-0 w-[50%] md:w-[290px] h-auto">
                             @include('image_loader.all',['itemImage'=>$doctor,'key'=>'img'])
                         </span>
                         <div class="info-expert">
-                            <p class="name 2xl:text-[2rem] lg:text-[1.5rem] text-[1.25rem] text-[#0557ac] font-bold 2xl:mb-4 mb-2">{{Support::show($doctor,'name')}}</p>
+                            <p class="name 2xl:text-[2rem] lg:text-[1.5rem] md:text-[1.25rem] text-[0.875rem] text-[#0557ac] font-bold 2xl:mb-4 mb-2">{{Support::show($doctor,'name')}}</p>
                             <p class="role 2xl:text-[1.125rem] 2xl:mb-4 mb-2">{{Support::show($doctor,'academic_rank')}}</p>
                             @if (isset($doctor->specialist))
                             <a href="{{Support::show($doctor->specialist,'slug')}}" class="inline-block text-[#008EDF] 2xl:mb-4 mb-2" title="{{Support::show($doctor->specialist,'name')}}">{{Support::show($doctor->specialist,'name')}}</a>
                             @endif
-                            <div class="flex items-center flex-wrap gap-4">
+                            <div class="flex items-center flex-wrap sm:gap-4 gap-2">
                                 <a href="tel: {[hotline]}" title="Đăng ký khám" class="btn-border__blue inline-flex items-center justify-center lg:text-[0.875rem] py-3 px-4 text-[#F63937] bg-transparent transition-all duration-300 border-[1px] border-solid border-[#F63937] rounded">
                                     <svg width="22" height="22" class="mr-1" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_1_2021)">
@@ -105,7 +105,7 @@
                                     </svg>
                                     <strong class="font-bold">{[hotline]}</strong>
                                 </a>
-                                <a href="{{Support::show($doctor,'slug')}}" title="Xem thêm thông tin bác sĩ" class="btn-border__yellow font-bold inline-flex items-center justify-center lg:text-[0.875rem] py-3 px-4 text-[#008EDF] bg-transparent transition-all duration-300 border-[1px] border-solid border-[#008EDF] hover:bg-[#008EDF] hover:text-white">Xem thêm thông tin bác sĩ</a>
+                                <a href="{{Support::show($doctor,'slug')}}" title="Xem thêm thông tin bác sĩ" class="btn-border__yellow font-bold inline-flex items-center justify-center lg:text-[0.875rem] sm:py-3 sm:px-4 p-2 sm:text-[0.75rem] text-[0.625rem] text-[#008EDF] bg-transparent transition-all duration-300 border-[1px] border-solid border-[#008EDF] hover:bg-[#008EDF] hover:text-white">Xem thêm thông tin bác sĩ</a>
                             </div>
                         </div>
                     </div>

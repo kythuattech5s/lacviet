@@ -1013,6 +1013,9 @@ video {
 .w-6 {
   width: 1.5rem;
 }
+.w-\[50\%\] {
+  width: 50%;
+}
 .min-w-\[26px\] {
   min-width: 26px;
 }
@@ -2567,6 +2570,10 @@ video {
     margin-right: 1rem;
   }
 
+  .sm\:block {
+    display: block;
+  }
+
   .sm\:flex {
     display: flex;
   }
@@ -2631,12 +2638,26 @@ video {
     padding: 1rem;
   }
 
+  .sm\:py-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .sm\:px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .sm\:text-\[1rem\] {
     font-size: 1rem;
   }
 
   .sm\:text-\[14px\] {
     font-size: 14px;
+  }
+
+  .sm\:text-\[0\.75rem\] {
+    font-size: 0.75rem;
   }
 }
 @media (min-width: 768px) {
@@ -2665,6 +2686,10 @@ video {
     display: none;
   }
 
+  .md\:w-\[290px\] {
+    width: 290px;
+  }
+
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2677,6 +2702,10 @@ video {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
+  .md\:gap-4 {
+    gap: 1rem;
+  }
+
   .md\:px-16 {
     padding-left: 4rem;
     padding-right: 4rem;
@@ -2684,6 +2713,10 @@ video {
 
   .md\:text-\[0\.875rem\] {
     font-size: 0.875rem;
+  }
+
+  .md\:text-\[1\.25rem\] {
+    font-size: 1.25rem;
   }
 }
 @media (min-width: 1024px) {

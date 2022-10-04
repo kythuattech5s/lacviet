@@ -12,13 +12,13 @@
     <div class="container">
         <div class="grid grid-cols-1 lg:grid-cols-4 2xl:gap-8 gap-4">
             <div class="col-span-1 lg:col-span-3">
-                <div class="box-info-author my-6  bg-white">
-                    <div class="content p-4 flex flex-col sm:flex-row 2xl:gap-8 lg:gap-6 gap-4">
-                        <span class="img block shrink-0 w-[290px] h-auto shadow-[0_0_8px_rgba(216,229,251,.8)] p-2 rounded-lg overflow-hidden">
+                <div class="box-info-author lg:my-6 my-2  bg-white">
+                    <div class="content sm:p-4 flex 2xl:gap-8 lg:gap-6 md:gap-4 gap-2">
+                        <span class="img block shrink-0 w-[50%] md:w-[290px] h-auto shadow-[0_0_8px_rgba(216,229,251,.8)] p-2 rounded-lg overflow-hidden">
                             @include('image_loader.big',['itemImage'=>$currentItem,'key'=>'img'])
                         </span>
                         <div class="info-expert">
-                            <h1 class="name 2xl:text-[2rem] lg:text-[1.5rem] text-[1.25rem] text-[#0557ac] font-bold 2xl:mb-4 mb-2">{{Support::show($currentItem,'name')}}</h1>
+                            <h1 class="name 2xl:text-[2rem] lg:text-[1.5rem] md:text-[1.25rem] text-[0.875rem] text-[#0557ac] font-bold 2xl:mb-4 mb-2">{{Support::show($currentItem,'name')}}</h1>
                             <p class="role text-[#888] 2xl:text-[1.125rem] 2xl:mb-4 mb-2">{{Support::show($currentItem,'academic_rank')}} 
 
                             @if (isset($currentItem->specialist))
