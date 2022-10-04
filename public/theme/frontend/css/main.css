@@ -839,6 +839,9 @@ body{
   }
 }
 @media (max-width: 1023px) {
+  .footer-bottom {
+    padding-bottom: 50px !important;
+  }
   .widget li a{
     animation: lac 1s linear infinite;
   }

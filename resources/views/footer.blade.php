@@ -108,7 +108,6 @@
         Chat ngay
     </a>
 </div>
-@if(isset($_GET ['test']))
 <ul class="widget fixed bottom-[10%] right-[2%] z-10 block lg:hidden">
     <li class="mb-2 last:mb-0">
         <a href="" title="" target="_blank " class="block w-10 h-10 rounded-full overflow-hidden shadow-[0_4px_10px_rgba(0,0,0,.3)]">
@@ -126,4 +125,3 @@
         </a>
     </li>
 </ul>
-@endif

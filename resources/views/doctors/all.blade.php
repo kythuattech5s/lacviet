@@ -17,7 +17,16 @@
             <h2 class="title-all text-center 2xl:text-[2rem] lg:text-[1.5rem] text-[1.25rem] text-[#000] font-semibold !mb-0">{{Support::show($itemSpecialist,'name')}}</h2>
             <a href="{{Support::show($itemSpecialist,'slug')}}" title="Xem thêm" class="readmore font-medium 2xl:text-[1.125rem] text-[#008EDF]">Xem thêm <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i></a>
         </div>
-        <div class="boxslide relative hidden sm:block">
+        @if (Support::isMobile())
+        <div class="grid grid-cols-2 gap-2">
+            @foreach ($listDoctor as $item)
+            <div class="col-span-1">
+                @include('doctors.item_doctor')
+            </div>
+            @endforeach
+        </div>
+        @else
+        <div class="boxslide relative">
             <div class="swiper-container slide-experts">
                 <div class="swiper-wrapper">
                     @foreach ($listDoctor as $item)
@@ -34,13 +43,8 @@
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
             </div>
         </div>
-        <div class="grid sm:hidden grid-cols-2 gap-2">
-            @foreach ($listDoctor as $item)
-            <div class="col-span-1">
-                @include('doctors.item_doctor')
-            </div>
-            @endforeach
-        </div>
+        @endif
+     
        
         <hr class="line-experts opacity-100 w-full h-[1px] border-[#898989] 2xl:my-10 my-6">
         @endforeach

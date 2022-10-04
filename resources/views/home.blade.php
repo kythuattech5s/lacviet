@@ -4,7 +4,7 @@
         <div class="swiper-wrapper">
             @foreach ($listBanner as $key => $itemBanner)
                 <div class="swiper-slide">
-                    <a href="{{ $itemBanner->link != '' ? $itemBanner->link : 'javascript:void(0)' }}" {!! Support::showNofollow($itemBanner) !!} title="{{ $itemBanner->name }}" class="link-banner hidden lg:block">
+                    <a href="{{ $itemBanner->link != '' ? $itemBanner->link : 'javascript:void(0)' }}" {!! Support::showNofollow($itemBanner) !!} title="{{ $itemBanner->name }}" class="link-banner">
                         @if (Support::isMobile())
                             @if ($key == 0)
                                 @include('image_loader.big', ['itemImage' => $itemBanner, 'key' => 'img_mobile', 'noLazyLoad' => 1])
@@ -22,14 +22,7 @@
                 </div>
             @endforeach
         </div>
-        <!-- <div class="pagination-all pagination__index absolute bottom-2 left-0 z-[1] my-0 flex w-full justify-center lg:hidden">
-            </div>
-            <div class="button-banner banner-prev absolute top-1/2 left-[5%] z-[1] hidden h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-[1px] border-solid border-[#fff] text-[1.5rem] text-white transition-all duration-300 hover:bg-white hover:text-[#252525] lg:flex lg:h-14 lg:w-14">
-                <i class="fa fa-angle-left" aria-hidden="true"></i>
-            </div>
-            <div class="button-banner banner-next absolute top-1/2 right-[5%] z-[1] hidden h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-[1px] border-solid border-[#fff] text-[1.5rem] text-white transition-all duration-300 hover:bg-white hover:text-[#252525] lg:flex lg:h-14 lg:w-14">
-                <i class="fa fa-angle-right" aria-hidden="true"></i>
-            </div> -->
+
     </div>
     <section class="py-6 2xl:py-10">
         <div class="container">
@@ -52,14 +45,9 @@
     <section class="section-service__index relative bg-cover bg-no-repeat py-6 after:absolute after:top-0 after:left-0 after:h-full after:w-full after:bg-[rgba(255,255,255,.5)] 2xl:py-10" style="background-image: url({Ibg_service_home.imgI});">
         <div class="container relative z-[1]">
             <p class="title-all mb-6 text-center text-[1.25rem] font-semibold uppercase text-[#252525] lg:mb-24 lg:text-[1.5rem] 2xl:text-[2rem]">{[title_service_home]}</p>
-            <div class="hidden grid-cols-1 gap-4 sm:grid-cols-2 lg:grid lg:grid-cols-4">
-                @foreach ($listHotService as $key => $item)
-                    <div class="wow fadeInUp col-span-1" data-wow-delay="{{ ($key + 1) * 0.1 }}s">
-                        @include('services.item')
-                    </div>
-                @endforeach
-            </div>
-            <div class="swiper-container slide-service__mobile block lg:hidden">
+           
+            @if (Support::isMobile())
+            <div class="swiper-container slide-service__mobile">
                 <div class="swiper-wrapper">
                     @foreach ($listHotService as $key => $item)
                         <div class="swiper-slide">
@@ -75,6 +63,15 @@
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
                 </div>
             </div>
+            @else
+            <div class=" grid-cols-1 gap-4 sm:grid-cols-2 grid lg:grid-cols-4">
+                @foreach ($listHotService as $key => $item)
+                    <div class="wow fadeInUp col-span-1" data-wow-delay="{{ ($key + 1) * 0.1 }}s">
+                        @include('services.item')
+                    </div>
+                @endforeach
+            </div>
+            @endif
         </div>
     </section>
     @if (count($listQuestion) > 0)
