@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers;
-use App\Models\{Doctor,Specialist};
+use App\Models\{Doctor};
 class DoctorController extends Controller
 {
     public function view($request, $route, $link)
@@ -11,7 +11,9 @@ class DoctorController extends Controller
         $currentItem->save();
         $listRelateDoctor = Doctor::where('id','!=',$currentItem->id)->inRandomOrder()->act()->limit(10)->get();
         $dataContent = \Support::createdTocContent($currentItem->content);
-        $listDoctorNews = $currentItem->news()->limit(3)->get();
-        return view('doctors.view',compact('currentItem','dataContent','listRelateDoctor','listDoctorNews'));
+        $listDoctorNews = $currentItem->news()->act()->publish()->limit(3)->get();
+        $listNewCustomer = $currentItem->getListNewCustomer();
+        $listNewMagazine = $currentItem->getListNewMagazine();
+        return view('doctors.view',compact('currentItem','dataContent','listRelateDoctor','listDoctorNews','listNewCustomer','listNewMagazine'));
     }
 }

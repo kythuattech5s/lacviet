@@ -49,6 +49,26 @@
                         @endforeach
                     </ul>
                 @endif
+                @if (count($listNewCustomer) > 0)
+                    <p class="title-new__pages relative 2xl:after:h-1 after:h-[2px] after:w-14 after:bg-[#ed9f09] after:block after:mt-2 mb-4 uppercase font-bold text-[#028cde] 2xl:text-[1.25rem] text-[1rem]">Khách hàng nói gì về bác sĩ</p>
+                    <ul class="list-new__experts list-disc mb-6">
+                        @foreach ($listNewCustomer as $itemDoctorNews)
+                            <li class="ml-4 lg:py-4 py-2 border-b-[1px] border-solid border-[#f6cf84]">
+                                <a href="{{Support::show($itemDoctorNews,'slug')}}" title="{{Support::show($itemDoctorNews,'name')}}" class="italic text-[#62a3ff] 2xl:text-[1.25rem]">{{Support::show($itemDoctorNews,'name')}}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif
+                @if (count($listNewMagazine) > 0)
+                    <p class="title-new__pages relative 2xl:after:h-1 after:h-[2px] after:w-14 after:bg-[#ed9f09] after:block after:mt-2 mb-4 uppercase font-bold text-[#028cde] 2xl:text-[1.25rem] text-[1rem]">Báo chi, truyền hình</p>
+                    <ul class="list-new__experts list-disc mb-6">
+                        @foreach ($listNewMagazine as $itemDoctorNews)
+                            <li class="ml-4 lg:py-4 py-2 border-b-[1px] border-solid border-[#f6cf84]">
+                                <a href="{{Support::show($itemDoctorNews,'slug')}}" title="{{Support::show($itemDoctorNews,'name')}}" class="italic text-[#62a3ff] 2xl:text-[1.25rem]">{{Support::show($itemDoctorNews,'name')}}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif
                 @if (count($listRelateDoctor) > 0)
                     <p class="title-all 2xl:text-[2rem] lg:text-[1.5rem] text-[1.25rem] text-[#000] font-semibold mb-6">Xem thêm chuyên gia</p>
                     <div class="boxslide relative">

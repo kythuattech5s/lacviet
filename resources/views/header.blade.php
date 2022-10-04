@@ -19,7 +19,7 @@
                 @include('image_loader.config.tiny',['config_key'=>'logo','noLazyLoad'=>1])
             </a>
             <form action="{{\VRoute::get("search")}}" method="get" class="form-search-header hidden lg:block relative flex-1" accept-charset="utf8">
-                <input type="text" placeholder="Bạn cần tìm gì?" name="q" class="form-control lg:py-3 lg:px-7 px-5 py-2 w-full bg-[#f5f5f5] rounded-3xl border-solid">
+                <input type="text" placeholder="Bạn cần tìm gì?" name="q" autocomplete="off" class="form-control lg:py-3 lg:px-7 px-5 py-2 w-full bg-[#f5f5f5] rounded-3xl border-solid">
                 <button type="submit" class="btn-search absolute top-1/2 right-4 -translate-y-1/2 z-[1]">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="#008EDF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -117,7 +117,7 @@
     <div class="form-search-mobile fixed lg:hidden top-[-100%] left-0 w-full h-full bg-[rgba(0,0,0,.7)] z-50 flex items-center justify-center">
         <span class="close-form-search block"></span>
         <form action="{{\VRoute::get("search")}}" method="get" class="form-search flex items-center" accept-charset="utf8">
-            <input type="text" name="q" placeholder="Nhập từ khóa..." id="input-search-header" class="form-control bg-transparent text-white placeholder:text-white p-3 outline-none border-b-[1px] border-solid border-white flex-1">
+            <input type="text" name="q" placeholder="Nhập từ khóa..." id="input-search-header" autocomplete="off" class="form-control bg-transparent text-white placeholder:text-white p-3 outline-none border-b-[1px] border-solid border-white flex-1">
             <button type="submit" class="btn-search text-white text-[1.25rem]"><i class="fa fa-search" aria-hidden="true"></i></button>
         </form>
     </div>
