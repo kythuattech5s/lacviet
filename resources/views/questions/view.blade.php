@@ -63,22 +63,20 @@
                                         </div>
                                         <div class="answer-content s-content mb-4 lg:text-[0.875rem]">{!! Support::show($currentItem, 'answer') !!}</div>
                                         <div class="favourite flex items-center justify-between">
-                                            <a href="" title="Trả lời" class="reply font-medium text-[#9c9c9c]"><i class="fa fa-reply mr-1" aria-hidden="true"></i> Trả lời</a>
+                                            <a href="javascript:void(0)" title="Trả lời" class="reply btn-reply-comment-question font-medium text-[#9c9c9c]"><i class="fa fa-reply mr-1" aria-hidden="true"></i> Trả lời</a>
                                             <div class="favourite-action flex items-center gap-x-2">
-                                                <a href="" title="" class="btn-favourite rounded border-[1px] border-solid border-[#ebebeb] py-1 px-2 text-[#767676] lg:text-[0.875rem]">
+                                                <a href="javascript:void(0)" title="Hữu ích" class="btn-favourite like btn-favourite-question rounded border-[1px] border-solid border-[#ebebeb] py-1 px-2 text-[#767676] lg:text-[0.875rem]" data-type="like" data-id="{{Support::show($currentItem,'id')}}">
                                                     <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-                                                    <span class="count ml-2 border-l-[1px] border-solid border-[#7b7b7b] pl-2">20</span>
+                                                    <span class="count ml-2 border-l-[1px] border-solid border-[#7b7b7b] pl-2 like-count">{{Support::show($currentItem,'like')}}</span>
                                                 </a>
-                                                <a href="" title="" class="btn-favourite rounded border-[1px] border-solid border-[#ebebeb] py-1 px-2 text-[#767676] lg:text-[0.875rem]">
+                                                <a href="javascript:void(0)" title="Không hữu ích" class="btn-favourite un-like btn-favourite-question rounded border-[1px] border-solid border-[#ebebeb] py-1 px-2 text-[#767676] lg:text-[0.875rem]" data-type="unlike" data-id="{{Support::show($currentItem,'id')}}">
                                                     <i class="fa fa-thumbs-down" aria-hidden="true"></i>
-                                                    <span class="count ml-2 border-l-[1px] border-solid border-[#7b7b7b] pl-2">0</span>
+                                                    <span class="count ml-2 border-l-[1px] border-solid border-[#7b7b7b] pl-2 unlike-count">{{Support::show($currentItem,'unlike')}}</span>
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
-
                             </div>
                         </div>
                         <hr class="mb-4 h-[2px] border-[#ebebeb] opacity-100 2xl:mb-7">
@@ -131,7 +129,11 @@
         </div>
     </section>
 @endsection
+@section('jsl')
+    <script src="theme/frontend/asset/js/jquery-3.4.0.min.js" defer></script>
+@endsection
 @section('js')
     <script type="module" src="{{ asset('assets/comment/js/tinymce.js') }}" defer></script>
     <script src="{{ asset('assets/comment/js/comment.js') }}" defer></script>
+    <script src="theme/frontend/asset/js/script.js" defer></script>
 @endsection
