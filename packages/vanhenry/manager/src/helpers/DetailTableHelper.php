@@ -155,5 +155,17 @@ class DetailTableHelper
 			}
 		
 	}
+
+     public static function getDataTable($table_name, $select = '*', $rules = []){
+        $data = \DB::table($table_name)->select($select);
+        foreach($rules as $rules){
+            switch ($rules) {
+                case 'no-parent':
+                    $data->whereNull('parent');
+                    break;
+            }
+        }
+        return $data->get();
+	}
 }
 ?>
