@@ -99,16 +99,16 @@ var CLICK = {
     },
     showCategory:function(){
         var btn=Tech.$('.show-category');
-        var btnClose=Tech.$('.close-category');
         if(typeof btn !=='undefined'){
             btn.onClick(function(){
-                Tech.$('.nav-category').addClass('active');
+                Tech.$(this).find('ul').toggleClass('active');
             })
-        }
-        if(typeof btnClose !=='undefined'){
-            btnClose.onClick(function(){
-                Tech.$('.nav-category').removeClass('active');
-            })
+            window.onclick = function(event) {
+                var ul = document.querySelector('.show-category ul');
+                if(event.target == ul){
+                    ul.classList.remove('active');
+                }
+            }
         }
     },
 
