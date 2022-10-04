@@ -49,7 +49,6 @@ var TECH5SYOAST = (function(){
 			"js-text-analysis": {
 		"": {}}});
 	   	}) .catch(function(error)  {
-        	console.log("OMG! Error:");
 	        console.log(error);
 	    });
 	}
@@ -193,12 +192,10 @@ var TECH5SYOAST = (function(){
 					console.log(arguments);
 				},*/
 				saveScores: function() {
-					console.log('saveScores');
 					// console.log(arguments);
 					saveContentScore(arguments[0]);
 				},
 				saveContentScore: function() {
-					console.log('saveContentScore');
 					saveScores(arguments[0]);
 				},
 			/*	updatedContentResults: function() {

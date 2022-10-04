@@ -92,3 +92,17 @@
         </div>
     </div>
 </footer>
+    <div class="nav-mobile flex lg:hidden gap-2 fixed bottom-0 left-0 w-full z-20">
+        <a href="{{VRoute::get('medicalRecordLookup')}}" title="Tra cứu bệnh án" class="link leading-[1.1] inline-flex items-center justify-center flex-1 text-white rounded-t-xl py-2 px-4 bg-[#f43d3b]">
+            <img src="theme/frontend/images/list-search.svg" class="inline-block mr-1 w-5 h-5 object-contain brightnes-[100]" alt="icon">
+            Tra cứu bệnh án
+        </a>
+        <a href="{{VRoute::get('orderExaminationSchedule')}}" title="Đặt lịch khám" class="link leading-[1.1] inline-flex items-center justify-center flex-1 text-white rounded-t-xl py-2 px-4 bg-[#ed9f09]">
+            <img src="theme/frontend/images/Calendar.svg" class="inline-block mr-1 w-5 h-5 object-contain brightnes-[100]" alt="icon">
+            Đặt lịch
+        </a>
+        <a href="#" title="" class="link leading-[1.1] inline-flex items-center justify-center flex-1 text-white rounded-t-xl py-2 px-4 bg-[#028cde]">
+            <img src="theme/frontend/images/icon-3.png" class="inline-block mr-1 w-5 h-5 object-contain brightnes-[100]" alt="icon">
+            Chat ngay
+        </a>
+    </div>

@@ -6,6 +6,7 @@ module.exports = {
         "./packages/roniejisa/comment/**/*.js",
         "./packages/roniejisa/comment/**/*.blade.php",
         "./resources/**/*.blade.php",
+        "./app/Helpers/Support.php",
     ],
     theme: {
         extend: {
