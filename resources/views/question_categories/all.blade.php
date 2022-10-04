@@ -17,7 +17,7 @@
         ])
         ->get();
         @endphp
-        <div class="box relative show-category">
+        <div class="box relative show-category block lg:hidden">
             <span class="block rounded bg-[#f5f5f5] py-2 px-4">Tất cả</span>
             <i class="fa fa-sort absolute top-2 right-4" aria-hidden="true"></i>
             <ul class="w-full rounded bg-[#f5f5f5] py-2 px-4 absolute top-[100%] left-[0] z-[1]">

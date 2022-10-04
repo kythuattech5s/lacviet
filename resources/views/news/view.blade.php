@@ -34,7 +34,13 @@
         @endif
         <div class="grid grid-cols-1 lg:grid-cols-4 2xl:gap-8 gap-4">
             <div class="col-span-1 lg:col-span-3">
-                <h1 class="title-new font-bold uppercase 2xl:text-[1.25rem] text-[1rem] 2xl:mb-6 mb-4 text-[#028cde]">{{Support::show($currentItem,'name')}}</h1>
+                <h1 class="title-new font-bold uppercase 2xl:text-[1.25rem] text-[1rem] mb-2 text-[#028cde]">{{Support::show($currentItem,'name')}}</h1>
+                <div class="flex items-center gap-4 2xl:mb-6 mb-2">
+                <p class="count ">Lượt xem: {{Support::show($currentItem,'count_view')}}</p>
+                <p class="text">   Cập nhật ngày: {{Support::showDateTime($currentItem->time_published,'d/m/Y')}}</p>
+
+                </div>
+
                 <div class="content-intro font-bold md:text-[0.875rem] s-content 2xl:p-5 lg:p-4 p-2 bg-[#e0f3ff] border-[1px] border-dashed border-[#a1a1a1] mb-6">
                     {{Support::show($currentItem,'short_content')}}
                 </div>
@@ -50,10 +56,7 @@
                         Tác giả: <span class="text-[#028cde]">{{Support::show($author,'name')}}</span>
                     </li>
                     @endif
-                    <li class="inline-block lg:mr-5 mr-3 last:mr-0">
-                        <i class="fa fa-clock-o" aria-hidden="true"></i>
-                        Cập nhật ngày: {{Support::showDateTime($currentItem->time_published,'d/m/Y')}}
-                    </li>
+                  
                 </ul>
                 <div class="text-right mt-2">
                     <div class="fb-like" data-href="{{url()->current()}}" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="true"></div>
@@ -169,7 +172,7 @@
                         @foreach ($listMostViewNews as $itemMostViewNews)
                         <div class="item-new__hot relative flex flex-col sm:flex-row sm:items-center justify-between sm:gap-4 gap-2 2xl:py-4 py-2 border-b-[1px] border-solid border-[#7cc1eb] last:border-dashed">
                             <a href="{{Support::show($itemMostViewNews,'slug')}}" title="{{Support::show($itemMostViewNews,'name')}}" class="title text-[#373737] uppercase 2xl:text-[1.125rem] lg:text-[1rem]">{{Support::show($itemMostViewNews,'name')}}</a>
-                            <span class="count lg:text-[0.875rem] italic">{{Support::show($itemMostViewNews,'count_view')}} lượt xem</span>
+                            <span class="count shrink-0 lg:text-[0.875rem] italic">{{Support::show($itemMostViewNews,'count_view')}} lượt xem</span>
                         </div>
                         @endforeach
                     </div>

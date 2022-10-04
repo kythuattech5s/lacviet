@@ -19,16 +19,16 @@
                         </span>
                         <div class="info-expert">
                             <h1 class="name 2xl:text-[2rem] lg:text-[1.5rem] md:text-[1.25rem] text-[0.875rem] text-[#0557ac] font-bold 2xl:mb-4 mb-2">{{Support::show($currentItem,'name')}}</h1>
-                            <p class="role text-[#888] 2xl:text-[1.125rem] 2xl:mb-4 mb-2">{{Support::show($currentItem,'academic_rank')}} 
-
-                            @if (isset($currentItem->specialist))
-                            / {{Support::show($currentItem->specialist,'name')}}
-                            @endif
-
+                            <p class="role text-[#373737] font-bold 2xl:text-[1.125rem] 2xl:mb-4 mb-2">{{Support::show($currentItem,'academic_rank')}} 
                             </p>
+                            @if (isset($currentItem->specialist))
+                            <span class="inline-block p-3 bg-[#f43d3b] text-white rounded 2xl:mb-4 mb-2">
+                            {{Support::show($currentItem->specialist,'name')}}
+                            </span>
+                            @endif
                             <div class="flex items-center flex-wrap gap-4">
                                 <a href="tel:{[hotline]}" title="Đăng ký khám"
-                                    class=" inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-2 px-4 rounded-3xl text-white bg-gradient-to-b from-[#28B1FF] to-[#008EDF] transition-all duration-300 shadow-[0_6px_20px_rgba(0,142,223,.4)]">
+                                    class=" btn-border__blue inline-flex items-center sm:min-w-[180px] justify-center lg:text-[0.875rem] py-3 px-4 text-[#333] bg-transparent transition-all duration-300 border-[1px] border-solid border-[#028cde]">
                                     Tổng đài: <strong class="font-bold">{[hotline]}</strong>
                                 </a>
                             </div>
