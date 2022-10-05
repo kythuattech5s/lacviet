@@ -207,10 +207,10 @@
                 <div class="pagination-all pagination-system hidden lg:block"></div>
             </div>
             <div class="button-circle button-circle__prev system_prev absolute top-1/2 z-[1] flex h-8 w-8 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-[1px] border-solid border-[#0557ac] text-[1.5rem] text-[#0557ac] transition-all duration-300 hover:bg-[#0557ac] hover:text-white lg:-left-14 lg:flex 2xl:-left-14 left-0 2xl:h-10 2xl:w-10">
-                <i class="fa fa-angle-left relative top-[-2px] left-[-1px]" aria-hidden="true"></i>
+                <i class="fa fa-angle-left relative left-[-1px]" aria-hidden="true"></i>
             </div>
             <div class="button-circle button-circle__next system_next absolute top-1/2 z-[1] flex h-8 w-8 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-[1px] border-solid border-[#0557ac] text-[1.5rem] text-[#0557ac] transition-all duration-300 hover:bg-[#0557ac] hover:text-white lg:-right-14 lg:flex 2xl:-right-14 right-0 2xl:h-10 2xl:w-10">
-                <i class="fa fa-angle-right relative top-[-2px] left-[1px]" aria-hidden="true"></i>
+                <i class="fa fa-angle-right relative left-[1px]" aria-hidden="true"></i>
             </div>
         </div>
     </div>

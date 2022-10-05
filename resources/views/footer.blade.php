@@ -57,12 +57,17 @@
                             <blockquote cite="{[facebook]}" class="fb-xfbml-parse-ignore"><a href="{[facebook]}">Facebook</a></blockquote>
                         </div>
                     </div>
-                    <ul class="social-footer">
+                    <ul class="social-footer flex items-center">
                         <li class="inline-block mr-5 last:mr-0">
                             <a href="{[facebook]}" title="Youtube" target="_blank" rel="noopener" class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-full bg-white text-[#044da8] lg:text-[1.25rem] text-[1rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
                         </li>
                         <li class="inline-block mr-5 last:mr-0">
                             <a href="{[youtube]}" title="Facebook" target="_blank" rel="noopener" class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-full bg-white text-[#044da8] lg:text-[1.25rem] text-[1rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="inline-block mr-5 last:mr-0">
+                            <a href="" title="Tiktok" target="_blank" rel="noopener" class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-full bg-white text-[#044da8] lg:text-[1.25rem] text-[1rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white group">
+                                <img src="theme/frontend/images/tiktok.svg" class="group-hover:brightness-[100] w-4 h-4 object-contain" alt="tiktok">
+                            </a>
                         </li>
                     </ul>
                     @if (SettingHelper::getSetting('link_dky_bct') != '')
@@ -124,4 +129,5 @@
             <img src="theme/frontend/images/zalo.png" class="w-full h-full" alt="zalo">
         </a>
     </li>
+
 </ul>
