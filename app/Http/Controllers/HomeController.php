@@ -10,6 +10,7 @@ use App\Models\News;
 use App\Models\Question;
 use App\Models\ReasonChoose;
 use App\Models\Services;
+use App\Models\Video;
 
 class HomeController extends Controller
 {
@@ -72,6 +73,7 @@ class HomeController extends Controller
         $listBranchSystem = BranchSystem::act()->ord()->get();
         $listHomeNews = News::act()->where('home',1)->publish()->orderBy('time_published','desc')->limit(4)->get();
         $listQuestion = Question::act()->orderBy('id','desc')->limit(4)->get();
-        return view('home', compact('listBanner','isHome','listReasonChoose','listHotService','listBranchSystem','listHomeNews','listQuestion'));
+        $videoHome = Video::act()->first();
+        return view('home', compact('listBanner','isHome','listReasonChoose','listHotService','listBranchSystem','listHomeNews','listQuestion','videoHome'));
     }
 }
