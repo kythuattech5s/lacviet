@@ -12,7 +12,7 @@
                 <h1 class="title-all uppercase 2xl:text-[1.75rem] lg:text-[1.4rem] text-[1rem] text-[#028cde] font-semibold 2xl:mb-6 mb-4">{{$currentItem->vi_name}}</h1>
                 @if (count($listItems) > 0)
                     @foreach ($listItems as $item)
-                        <div class="module-new__category py-5 border-b-[3px] border-solid border-[#028cde]">
+                        <div class="module-new__category lg:py-5 py-2 border-b-[3px] border-solid border-[#028cde]">
                             @include('news.item')
                         </div>
                     @endforeach
