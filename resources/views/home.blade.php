@@ -63,10 +63,10 @@
                 @endforeach
 
             </div>
-            <div class="button-banner service-prev absolute top-1/2 left-[5%] z-[1] flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-[1px] border-solid border-[#74a6cb] text-[1.5rem] text-[#74a6cb] transition-all duration-300 hover:bg-[#74a6cb] hover:text-white lg:h-14 lg:w-14">
+            <div class="button-banner service-prev absolute sm:top-1/2 top-[35%] sm:left-[5%] left-[7%] z-[1] flex md:h-10 md:w-10 w-8 h-8 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-[1px] border-solid border-[#74a6cb] text-[1.5rem] text-[#74a6cb] transition-all duration-300 hover:bg-[#74a6cb] hover:text-white lg:h-14 lg:w-14">
                 <i class="fa fa-angle-left" aria-hidden="true"></i>
             </div>
-            <div class="button-banner service-next absolute top-1/2 right-[5%] z-[1] flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-[1px] border-solid border-[#74a6cb] text-[1.5rem] text-[#74a6cb] transition-all duration-300 hover:bg-[#74a6cb] hover:text-white lg:h-14 lg:w-14">
+            <div class="button-banner service-next absolute sm:top-1/2 top-[35%] sm:right-[5%] right-[7%] z-[1] flex md:h-10 md:w-10 w-8 h-8 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-[1px] border-solid border-[#74a6cb] text-[1.5rem] text-[#74a6cb] transition-all duration-300 hover:bg-[#74a6cb] hover:text-white lg:h-14 lg:w-14">
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
             </div>
         </div>
@@ -82,7 +82,7 @@
     </div>
 </section>
 @if (count($listQuestion) > 0)
-<section class="section-faq__index bg-cover bg-no-repeat py-6 lg:py-14 2xl:py-20" style="background-image: url({Ibg_frequent_question_home.imgI});">
+<section class="section-faq__index bg-cover bg-no-repeat py-10 lg:py-14 2xl:py-20" style="background-image: url({Ibg_frequent_question_home.imgI});">
     <div class="container">
         @php
         $bigItemQuestion = $listQuestion->first();
@@ -134,8 +134,10 @@
 @endif
 <section class="section-system py-6 2xl:py-14">
     <div class="container">
-        <p class="title-all 2xl:mb-10 mb-6 text-center text-[1.25rem] font-semibold uppercase text-[#0557ac] lg:text-[1.5rem] 2xl:mb-10 2xl:text-[2rem]">{[title_base_system_home]}</p>
-        <div class="boxslide wow fadeInUp relative px-10 lg:px-0">
+
+        <p class="title-all 2xl:mb-10 mb-6 text-center text-[1.25rem] font-semibold uppercase text-[#0557ac] lg:text-[1.5rem] 2xl:text-[2rem]">{[title_base_system_home]}</p>
+        <div class="boxslide wow fadeInUp relative px-12 lg:px-0">
+
             <div class="swiper-container slide-system">
                 <div class="swiper-wrapper">
                     @foreach ($listBranchSystem as $itemBranchSystem)
@@ -202,10 +204,10 @@
                 </div>
                 <div class="pagination-all pagination-system hidden lg:block"></div>
             </div>
-            <div class="button-circle button-circle__prev system_prev absolute top-1/2 z-[1] flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-[1px] border-solid border-[#0557ac] text-[1.5rem] text-[#0557ac] transition-all duration-300 hover:bg-[#0557ac] hover:text-white lg:-left-14 lg:flex 2xl:-left-14 left-0">
+            <div class="button-circle button-circle__prev system_prev absolute sm:top-1/2 top-[35%] z-[1] flex md:h-10 md:w-10 w-8 h-8 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-[1px] border-solid border-[#0557ac] text-[1.5rem] text-[#0557ac] transition-all duration-300 hover:bg-[#0557ac] hover:text-white lg:-left-14 lg:flex 2xl:-left-14 left-0">
                 <i class="fa fa-angle-left relative left-[-1px] top-[-2px]" aria-hidden="true"></i>
             </div>
-            <div class="button-circle button-circle__next system_next absolute top-1/2 z-[1] flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-[1px] border-solid border-[#0557ac] text-[1.5rem] text-[#0557ac] transition-all duration-300 hover:bg-[#0557ac] hover:text-white lg:-right-14 lg:flex 2xl:-right-14 right-0">
+            <div class="button-circle button-circle__next system_next absolute sm:top-1/2 top-[35%] z-[1] flex md:h-10 md:w-10 w-8 h-8 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-[1px] border-solid border-[#0557ac] text-[1.5rem] text-[#0557ac] transition-all duration-300 hover:bg-[#0557ac] hover:text-white lg:-right-14 lg:flex 2xl:-right-14 right-0">
                 <i class="fa fa-angle-right relative left-[1px] top-[-2px]" aria-hidden="true"></i>
             </div>
         </div>
@@ -220,14 +222,15 @@
             @if (isset($videoHome))
             <div class="wow fadeInLeft col-span-1">
                 <div class="item-new__main">
-                    <a href="{{ Support::show($videoHome, 'link_video') }}" title="{{ Support::show($videoHome, 'name') }}" data-fslightbox="video" class="btn-play-video img img__ c-img mb-2 block overflow-hidden rounded-2xl pt-[54%] 2xl:mb-4">
+                    <a href="{{ Support::show($videoHome, 'link_video') }}" title="{{ Support::show($videoHome, 'name') }}" data-fslightbox="video" class="btn-play-video img img__ c-img mb-2 block overflow-hidden lg:rounded-2xl rounded-lg pt-[54%] 2xl:mb-4">
                         @include('image_loader.all', ['itemImage' => $videoHome, 'key' => 'img'])
                     </a>
                     <h3>
-                        <a href="{{ Support::show($videoHome, 'link_video') }}" title="{{ Support::show($videoHome, 'name') }}" class="title line-clamp-2 mb-2 font-bold uppercase text-[#262626] lg:text-[1.125rem] 2xl:mb-4">{{ Support::show($videoHome, 'name') }}</a>
+                        <a href="{{ Support::show($videoHome, 'link_video') }}" title="{{ Support::show($videoHome, 'name') }}" class="title line-clamp-2 mb-2 font-bold uppercase text-[#262626] lg:text-[1.25rem] text-[1rem] 2xl:mb-4">{{ Support::show($videoHome, 'name') }}</a>
                     </h3>
                     <div class="short_content line-clamp-2 mb-2">{{ Support::show($videoHome, 'content') }}</div>
-                    <a href="{{ Support::show($videoHome, 'link_video') }}" title="Xem thêm" class="btn-white inline-flex items-center justify-center lg:text-[0.875rem] py-2 px-6 rounded-3xl text-[#262626] bg-white border-[1px] border-solid border-[#028cde] transition-all duration-300 hover:bg-[#028cde] hover:text-white shadow-[0_6px_8px_rgba(0,0,0,.17)]">
+                    <a href="{{ Support::show($videoHome, 'link_video') }}" title="Xem thêm" class="btn-white inline-flex items-center justify-center lg:text-[0.875rem] lg:py-2 py-1 lg:px-6 px-3 rounded-3xl text-[#262626] bg-white border-[1px] border-solid border-[#028cde] transition-all duration-300 hover:bg-[#028cde] hover:text-white shadow-[0_6px_8px_rgba(0,0,0,.17)]">
+
                         Xem thêm
                         <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i>
                     </a>
@@ -237,16 +240,16 @@
             <div class="wow fadeInRight col-span-1">
                 @foreach ($listHomeNews as $key => $itemSmall)
                 <div class="list-new__item mb-4 flex gap-3 last:mb-0 2xl:mb-6">
-                    <a href="{{ Support::show($itemSmall, 'slug') }}" title="{{ Support::show($itemSmall, 'name') }}" class="img img__ block h-[60px] w-[100px] shrink-0 overflow-hidden rounded-lg sm:h-[100px] sm:w-[180px]">
+                    <a href="{{ Support::show($itemSmall, 'slug') }}" title="{{ Support::show($itemSmall, 'name') }}" class="img img__ block h-[70px] w-[125px] shrink-0 overflow-hidden lg:rounded-lg rounded sm:h-[100px] sm:w-[180px]">
                         @include('image_loader.big', ['itemImage' => $itemSmall, 'key' => 'img'])
                     </a>
                     <div class="new-content">
                         <h3>
-                            <a href="{{ Support::show($itemSmall, 'slug') }}" title="{{ Support::show($itemSmall, 'name') }}" class="title line-clamp-2 font-bold 2xl:text-[1.125rem]">{{ Support::show($itemSmall, 'name') }}</a>
+                            <a href="{{ Support::show($itemSmall, 'slug') }}" title="{{ Support::show($itemSmall, 'name') }}" class="title line-clamp-2 font-bold 2xl:text-[1.125rem] uppercase">{{ Support::show($itemSmall, 'name') }}</a>
                         </h3>
                         <div class="short_content line-clamp-2 mb-2">{{ Support::show($itemSmall, 'short_content') }}</div>
 
-                        <a href="{{ Support::show($itemSmall, 'slug') }}" title="Xem thêm" class="btn-white flex w-fit ml-auto mr-0 items-center justify-center lg:text-[0.875rem] py-2 px-6 rounded-3xl text-[#262626] bg-white border-[1px] border-solid border-[#028cde] transition-all duration-300 hover:bg-[#028cde] hover:text-white shadow-[0_6px_8px_rgba(0,0,0,.17)]">
+                        <a href="{{ Support::show($itemSmall, 'slug') }}" title="Xem thêm" class="btn-white flex w-fit ml-auto mr-0 items-center justify-center lg:text-[0.875rem] lg:py-2 py-1 lg:px-6 px-3 rounded-3xl text-[#262626] bg-white border-[1px] border-solid border-[#028cde] transition-all duration-300 hover:bg-[#028cde] hover:text-white shadow-[0_6px_8px_rgba(0,0,0,.17)]">
                             Xem thêm
                             <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i>
                         </a>
