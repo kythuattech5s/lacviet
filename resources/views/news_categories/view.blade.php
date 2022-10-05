@@ -9,7 +9,7 @@
     <div class="container">
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
             <div class="col-span-1 lg:col-span-3">
-                <h1 class="title-all uppercase 2xl:text-[1.75rem] lg:text-[1.4rem] text-[1rem] text-[#028cde] font-semibold 2xl:mb-6 mb-4">{{Support::show($currentItem,'name')}}</h1>
+                <h1 class="title-all hidden sm:block uppercase 2xl:text-[1.75rem] lg:text-[1.4rem] text-[1rem] text-[#028cde] font-semibold 2xl:mb-6 mb-4">{{Support::show($currentItem,'name')}}</h1>
                 @if (count($listItems) > 0)
                     @foreach ($listItems as $item)
                         <div class="module-new__category 2xl:py-5 py-2 border-b-[1px] lg:border-b-[2px] border-solid lg:border-[#028cde] border-[#ebebeb]">

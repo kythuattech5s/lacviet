@@ -1,5 +1,5 @@
 <div class="item-new__sidebar flex mb-4 last:mb-0">
-    <div class="image mr-4 shrink-0 w-[40%]">
+    <div class="image mr-4 shrink-0 sm:w-[40%] w-[120px]">
         <a href="{{Support::show($item,'slug')}}" title="{{Support::show($item,'name')}}" class="img img__ block c-img pt-[60%] rounded-lg overflow-hidden">
             @include('image_loader.big',['itemImage'=>$item,'key'=>'img'])
         </a>
