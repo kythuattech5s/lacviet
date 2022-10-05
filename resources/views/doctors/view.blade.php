@@ -22,13 +22,13 @@
                             <p class="role text-[#373737] font-bold 2xl:text-[1.125rem] 2xl:mb-4 mb-2">{{Support::show($currentItem,'academic_rank')}} 
                             </p>
                             @if (isset($currentItem->specialist))
-                            <span class="inline-block p-3 bg-[#f43d3b] text-white rounded 2xl:mb-4 mb-2">
+                            <span class="inline-block sm:p-3 p-1 bg-[#f43d3b] text-white sm:rounded rounded-sm 2xl:mb-4 mb-2">
                             {{Support::show($currentItem->specialist,'name')}}
                             </span>
                             @endif
                             <div class="flex items-center flex-wrap gap-4">
                                 <a href="tel:{[hotline]}" title="Đăng ký khám"
-                                    class=" btn-border__blue inline-flex items-center sm:min-w-[180px] justify-center lg:text-[0.875rem] py-3 px-4 text-[#333] bg-transparent transition-all duration-300 border-[1px] border-solid border-[#028cde]">
+                                    class=" btn-border__blue inline-flex items-center sm:min-w-[180px] justify-center lg:text-[0.875rem] lg:py-3 py-1 sm:px-4 px-3 text-[#333] bg-transparent transition-all duration-300 border-[1px] border-solid border-[#028cde]">
                                     Tổng đài: <strong class="font-bold">{[hotline]}</strong>
                                 </a>
                             </div>

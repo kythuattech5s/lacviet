@@ -19,25 +19,22 @@
                 @include('image_loader.config.tiny',['config_key'=>'logo','noLazyLoad'=>1])
             </a>
             <form action="{{\VRoute::get("search")}}" method="get" class="form-search-header hidden lg:block relative flex-1" accept-charset="utf8">
-                <input type="text" placeholder="Bạn cần tìm gì?" name="q" class="form-control lg:py-3 lg:px-7 px-5 py-2 w-full bg-[#f5f5f5] rounded-3xl border-solid">
+                <input type="text" placeholder="Bạn cần tìm gì?" name="q" class="form-control lg:px-7 px-5 py-2 w-full bg-white rounded-3xl border-[1px] border-[#a2a2a2] border-solid">
                 <button type="submit" class="btn-search absolute top-1/2 right-4 -translate-y-1/2 z-[1]">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="#008EDF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M21.0004 20.9999L16.6504 16.6499" stroke="#008EDF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
+                <img src="theme/frontend/images/icon-search.png" alt="search">
 
                 </button>
             </form>
             <div class="head-action hidden lg:flex items-center justify-end gap-x-4">
                 <a href="tel:{[hotline]}" class="h-hotline flex items-center" title="Hotline">
-                    <img src="theme/frontend/images/h-hotline.svg" class="w-10 h-10 object-contain mr-2" alt="hotline">
+                    <img src="theme/frontend/images/h-hotline.svg" class="w-12 h-12 object-contain mr-2" alt="hotline">
                     <p class="content">
                         <span class="title block font-semibold text-[#028cde] 2xl:text-[1.125rem]">Hotline</span>
                         <span class="phone font-bold text-[#f53632] 2xl:text-[1.125rem]">{[hotline]}</span>
                     </p>
                 </a>
-                <a href="{{VRoute::get('orderExaminationSchedule')}}" title="Đăng ký khám" class=" inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-2 px-4 rounded-3xl text-white bg-gradient-to-b from-[#FF6B69] to-[#E20200] shadow-[0_6px_20px_rgba(246,57,55,.4)] transition-all duration-300 hover:text-white">
-                    <svg width="25" height="24" class="mr-1" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <a href="{{VRoute::get('orderExaminationSchedule')}}" title="Đăng ký khám" class=" btn-red inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-2 px-4 rounded-3xl text-white bg-[#fb2317] transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
+                <svg width="25" height="24" class="mr-1" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M13.0005 13.0005H16.5019" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         <path d="M13.0005 13.0005H17.5024" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         <rect x="3.49658" y="2.99634" width="18.0075" height="18.0075" rx="3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -48,11 +45,10 @@
                         <path d="M13.0005 17.0022H17.5024" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         <path d="M7.49805 16.728L8.41743 17.5563L10.2692 15.8896" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
-
                     Đăng ký khám
                 </a>
-                <a href="{{VRoute::get('medicalRecordLookup')}}" title="Tra cứu bệnh án" class=" inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-2 px-4 rounded-3xl text-white bg-gradient-to-b from-[#28B1FF] to-[#008EDF] transition-all duration-300 shadow-[0_6px_20px_rgba(0,142,223,.4)] hover:text-white">
-                    <svg width="24" height="24" class="mr-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <a href="{{VRoute::get('medicalRecordLookup')}}" title="Tra cứu bệnh án" class=" btn-blue inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-2 px-4 rounded-3xl text-white bg-[#028cde] transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
+                <svg width="24" height="24" class="mr-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.0037 8.99884V4.99717C20.0037 3.89214 19.1079 2.99634 18.0028 2.99634H4.99742C3.89239 2.99634 2.99658 3.89214 2.99658 4.99717V19.003C2.99658 20.108 3.89239 21.0038 4.99742 21.0038H9.9995" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         <path d="M6.99805 6.99801H16.0018" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         <path d="M6.99805 10.9997H12.0001" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -60,7 +56,6 @@
                         <path d="M21.0039 21.0039L19.3643 19.3643" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         <path d="M16.726 13.0005C18.7836 13.0005 20.4516 14.6685 20.4516 16.726C20.4516 18.7836 18.7836 20.4516 16.726 20.4516C14.6685 20.4516 13.0005 18.7836 13.0005 16.726C13.0006 14.6685 14.6685 13.0006 16.726 13.0005" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
-
                     Tra cứu bệnh án
                 </a>
             </div>
@@ -76,7 +71,7 @@
     </div>
     <div class="header-nav bg-[#028cde]">
         <div class="container flex justify-between">
-            <a href="{{\VRoute::get("home")}}" title="Trang chủ" class="go-home hidden lg:flex items-center justify-center text-white text-[1.875rem] w-[53px] bg-[#0557AC] lg:mr-10">
+            <a href="{{\VRoute::get("home")}}" title="Trang chủ" class="go-home hidden lg:flex items-center justify-center text-white text-[1.875rem] w-[53px] lg:mr-10">
                 <i class="fa fa-home" aria-hidden="true"></i>
             </a>
          
@@ -89,7 +84,7 @@
                 $menus = Support::getMenuRecursive(1);
                 @endphp
                 {{Support::showMenuRecursive($menus,0)}}
-                <div class="h-lang flex lg:hidden mt-3 items-center px-4">
+                <div class="h-lang flex lg:hidden mt-5 items-center">
                     <a href="javascript:void(0)" class="btn-change-lang-en" onclick="doGTranslate('vi|en');return false;" title="Tiếng anh">
                         <img src="theme/frontend/images/en.png" alt="En icon">
                     </a>

@@ -73,7 +73,7 @@ $listFrequentQuestion = \App\Models\Question::act()->orderBy('id','desc')->limit
         <input type="text" name="register_address" placeholder="Nơi đăng ký khám" class="form-control text-[#888] placeholder:text-[#888] w-full p-3 rounded-md outline-none border-[1px] border-solid border-[#bce0f6] mb-4">
         <input type="text" name="email" placeholder="Email" class="form-control text-[#888] placeholder:text-[#888] w-full p-3 rounded-md outline-none border-[1px] border-solid border-[#bce0f6] mb-4">
         <textarea name="note" placeholder="Triệu chứng:" class="form-control resize-none text-[#888] placeholder:text-[#888] w-full h-24 p-3 rounded-md outline-none border-[1px] border-solid border-[#bce0f6] mb-4"></textarea>
-        <button type="submit" class=" btn-red flex w-fit mx-auto items-center justify-center lg:text-[0.875rem] uppercase py-3 px-4 rounded-3xl text-white bg-[#fb2317] transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">Đăng ký ngay</button>
+        <button type="submit" class=" btn-red flex w-fit mx-auto items-center justify-center lg:text-[0.875rem] uppercase lg:py-3 py-1 lg:px-6 px-3 rounded-3xl text-white bg-[#fb2317] transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">Đăng ký ngay</button>
     </form>
 </div>
 </div>

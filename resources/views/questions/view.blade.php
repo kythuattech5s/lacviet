@@ -13,7 +13,8 @@
     </div>
     <section class="section-qa bg-[#fcfcfc] py-6 2xl:py-10">
         <div class="container">
-            <span class="show-category mb-4 inline-block cursor-pointer rounded-md bg-gradient-to-b from-[#28B1FF] to-[#008EDF] p-2 text-white lg:hidden">Câu hỏi theo chủ đề</span>
+            @include('question_categories.select')
+
             <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 2xl:gap-8">
                 <div class="col-span-1">
                     @include('question_categories.sidebar')
@@ -21,7 +22,7 @@
                 <h1 class="hidden">{{ Support::show($currentItem, 'name') }}</h1>
                 <div class="col-span-1 lg:col-span-2">
                     <div class="box-content border-[1px] border-solid border-[#ebebeb] bg-white py-4 lg:py-8 2xl:pt-12">
-                        <p class="title-qa text-center text-[1.125rem] font-bold text-[#767676] lg:text-[1.5rem] 2xl:text-[2rem]">Hỏi đáp chuyên gia</p>
+                        <p class="title-qa text-center text-[1.3rem] font-bold text-[#028cde] sm:text-[#767676] lg:text-[1.5rem] 2xl:text-[2rem]">Hỏi đáp chuyên gia</p>
                         <div class="module-content">
                             <div class="module-qa relative border-b-[1px] border-solid border-[#ebebeb] p-4 last:border-none lg:p-6 2xl:p-8">
                                 <div class="relative pl-11 lg:pl-14">
@@ -121,7 +122,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-span-1">
+                <div class="col-span-1 px-8 sm:px-0">
                     <a href="{{ \VRoute::get('makeQuestion') }}" class="btn-blue d-block mb-5 rounded border-[1px] border-solid border-transparent bg-[#028cde] py-2 text-center text-[1.25rem] text-white" title="Đặt câu hỏi">Đặt câu hỏi</a>
                     @include('news.sidebar')
                 </div>
