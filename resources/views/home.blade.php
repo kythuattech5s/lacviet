@@ -82,7 +82,11 @@
     </div>
 </section>
 @if (count($listQuestion) > 0)
+<<<<<<< HEAD
 <section class="section-faq__index bg-cover bg-no-repeat py-10 lg:py-14 2xl:py-20" style="background-image: url({Ibg_frequent_question_home.imgI});">
+=======
+<section class="section-faq__index bg-cover bg-no-repeat py-6 lg:py-14 2xl:py-20" style="background-image: url({Ibg_frequent_question_home.imgI});">
+>>>>>>> 1d9edb7113380f0e187667ec4249d02d7b6220c0
     <div class="container">
         @php
         $bigItemQuestion = $listQuestion->first();
@@ -134,8 +138,10 @@
 @endif
 <section class="section-system py-6 2xl:py-14">
     <div class="container">
+
         <p class="title-all 2xl:mb-10 mb-6 text-center text-[1.25rem] font-semibold uppercase text-[#0557ac] lg:text-[1.5rem] 2xl:text-[2rem]">{[title_base_system_home]}</p>
         <div class="boxslide wow fadeInUp relative px-12 lg:px-0">
+
             <div class="swiper-container slide-system">
                 <div class="swiper-wrapper">
                     @foreach ($listBranchSystem as $itemBranchSystem)
@@ -228,6 +234,7 @@
                     </h3>
                     <div class="short_content line-clamp-2 mb-2">{{ Support::show($videoHome, 'content') }}</div>
                     <a href="{{ Support::show($videoHome, 'link_video') }}" title="Xem thêm" class="btn-white inline-flex items-center justify-center lg:text-[0.875rem] lg:py-2 py-1 lg:px-6 px-3 rounded-3xl text-[#262626] bg-white border-[1px] border-solid border-[#028cde] transition-all duration-300 hover:bg-[#028cde] hover:text-white shadow-[0_6px_8px_rgba(0,0,0,.17)]">
+
                         Xem thêm
                         <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i>
                     </a>
