@@ -17,7 +17,7 @@ if (!isset($listCate)) {
         <ul class="nav-service">
             @foreach ($listCate as $itemCate)
                 <li>
-                    <a href="{{ Support::show($itemCate, 'slug') }}" title="{{ Support::show($itemCate, 'name') }}" class="lg:text[1.125rem] block py-2 text-[0.875rem] font-bold text-[#028cde] 2xl:text-[1.375rem]">{{ Support::show($itemCate, 'name') }}</a>
+                    <a href="{{ Support::show($itemCate, 'slug') }}" title="{{ Support::show($itemCate, 'name') }}" class="2xl:text[1.6rem] text-[1rem] uppercase block py-2 font-bold text-[#028cde] 2xl:text-[1.375rem]">{{ Support::show($itemCate, 'name') }}</a>
                     @if (count($itemCate->child) > 0)
                         <ul class="">
                             @foreach ($itemCate->child as $itemCateChild)

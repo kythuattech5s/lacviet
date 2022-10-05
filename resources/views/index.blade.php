@@ -15,7 +15,7 @@
     <link href="theme/frontend/asset/css/toastify.css" type="text/css" rel="stylesheet" />
     @yield('cssl')
     <link href="theme/frontend/css/app.css" type="text/css" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('./css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('./css/app.css?v=1.3') }}">
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
@@ -35,7 +35,7 @@
             }
         }
     </script>
-    <link href="theme/frontend/css/main.css" type="text/css" rel="stylesheet" />
+    <link href="theme/frontend/css/main.css?v=1.5" type="text/css" rel="stylesheet" />
     @yield('css')
     <script type="text/javascript">
         var messageNotify = "{{ Session::get('messageNotify', '') }}";
@@ -45,7 +45,7 @@
     @include('schema_code')
 </head>
 
-<body class="wrapper mx-auto overflow-x-hidden font-['Gilroy',sans-serif] text-[12px] leading-snug text-[#262626] sm:text-[14px] 2xl:text-[16px]">
+<body class="wrapper mx-auto overflow-x-hidden font-['Gilroy',sans-serif] text-[12px] leading-normal text-[#262626] sm:text-[14px] 2xl:text-[16px]">
     {[CMS_BODY]}
     @if (!isset($onlyShowContent))
         @include('header')
@@ -67,6 +67,8 @@
     <script src="theme/frontend/tech5s_js/libraries/Tech.js" defer></script>
     <script src="theme/frontend/tech5s_js/libraries/BackToTop.js" defer></script>
     <script src="theme/frontend/js/wow.min.js" defer></script>
+    <script src="theme/frontend/js/fslightbox.js" defer></script>
+
     <script src="theme/frontend/js/swiper-bundle.min.js" defer></script>
     <script src="theme/frontend/js/slider.js" defer></script>
     @yield('js')

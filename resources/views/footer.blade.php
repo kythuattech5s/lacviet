@@ -59,13 +59,15 @@
                     </div>
                     <ul class="social-footer flex items-center">
                         <li class="inline-block mr-5 last:mr-0">
-                            <a href="{[facebook]}" title="Youtube" target="_blank" rel="noopener" class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-full bg-white text-[#044da8] lg:text-[1.25rem] text-[1rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                            <a href="{[facebook]}" title="Youtube" target="_blank" rel="noopener" class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-lg bg-white text-[#044da8] lg:text-[1.25rem] text-[1rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
                         </li>
                         <li class="inline-block mr-5 last:mr-0">
-                            <a href="{[youtube]}" title="Facebook" target="_blank" rel="noopener" class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-full bg-white text-[#044da8] lg:text-[1.25rem] text-[1rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="{[youtube]}" title="Facebook" target="_blank" rel="noopener" class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-lg bg-white text-[#044da8] lg:text-[1.25rem] text-[1rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                         </li>
                         <li class="inline-block mr-5 last:mr-0">
-                            <a href="{[tiktok]}" title="Tiktok" target="_blank" rel="noopener" class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-full bg-white text-[#044da8] lg:text-[1.25rem] text-[1rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white group">
+
+                            <a href="{[tiktok]}" title="Tiktok" target="_blank" rel="noopener" class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-lg bg-white text-[#044da8] lg:text-[1.25rem] text-[1rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white group">
+
                                 <img src="theme/frontend/images/tiktok.svg" class="group-hover:brightness-[100] w-4 h-4 object-contain" alt="tiktok">
                             </a>
                         </li>
@@ -100,15 +102,15 @@
     </div>
 </footer>
 <div class="nav-mobile flex lg:hidden gap-2 fixed bottom-0 left-0 w-full z-20">
-    <a href="{{VRoute::get('medicalRecordLookup')}}" title="Tra cứu bệnh án" class="link leading-[1.1] inline-flex items-center justify-center flex-1 text-white rounded-t-xl py-2 px-4 bg-[#f43d3b]">
+    <a href="{{VRoute::get('medicalRecordLookup')}}" title="Tra cứu bệnh án" class="link text-center leading-[1.1] inline-flex items-center justify-center flex-1 text-white rounded-t-xl py-2 px-4 bg-[#f43d3b]">
         <img src="theme/frontend/images/list-search.svg" class="inline-block mr-1 w-5 h-5 object-contain brightnes-[100]" alt="icon">
         Tra cứu bệnh án
     </a>
-    <a href="{{VRoute::get('orderExaminationSchedule')}}" title="Đặt lịch khám" class="link leading-[1.1] inline-flex items-center justify-center flex-1 text-white rounded-t-xl py-2 px-4 bg-[#ed9f09]">
+    <a href="{{VRoute::get('orderExaminationSchedule')}}" title="Đặt lịch khám" class="link text-center leading-[1.1] inline-flex items-center justify-center flex-1 text-white rounded-t-xl py-2 px-4 bg-[#ed9f09]">
         <img src="theme/frontend/images/Calendar.svg" class="inline-block mr-1 w-5 h-5 object-contain brightnes-[100]" alt="icon">
         Đặt lịch
     </a>
-    <a href="#" title="" class="link leading-[1.1] inline-flex items-center justify-center flex-1 text-white rounded-t-xl py-2 px-4 bg-[#028cde]">
+    <a href="#" title="" class="link text-center leading-[1.1] inline-flex items-center justify-center flex-1 text-white rounded-t-xl py-2 px-4 bg-[#028cde]">
         <img src="theme/frontend/images/icon-3.png" class="inline-block mr-1 w-5 h-5 object-contain brightnes-[100]" alt="icon">
         Chat ngay
     </a>

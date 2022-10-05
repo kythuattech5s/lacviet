@@ -78,7 +78,7 @@ var CLICK = {
         if (width_ < 1024) {
             listIitemLi.forEach(function (element, index) {
                 if (element.find(':scope > ul').length() > 0) {
-                    element.append(`<span class="btn-dropdown-menu"><i class="fa fa-angle-down" aria-hidden="true"></i></span>`);
+                    element.append(`<span class="btn-dropdown-menu"></span>`);
                 }
             });
             var listBtnDropdownMenu = Tech.$('.menu').find('.btn-dropdown-menu');

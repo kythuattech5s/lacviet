@@ -13,7 +13,7 @@
                     <p class="head text-center text-white uppercase 2xl:text-[1.5rem] lg:text-[1.25rem] text-[0.875rem] bg-[#028cde] p-3">
                         Tra cứu bệnh án</p>
                     <div class="content 2xl:p-14 lg:p-8 p-4">
-                        <form action="{{\VRoute::get("medicalRecordLookup")}}" method="post" class="form-search-doc sm:flex gap-4 items-center 2xl:mb-8 mb-6">
+                        <form action="{{\VRoute::get("medicalRecordLookup")}}" method="post" class="form-search-doc flex flex-wrap sm:gap-4 gap-2 items-center 2xl:mb-8 mb-6">
                             @csrf
                             <div class="wrapper-form flex gap-3 items-center flex-1 h-9 border-[1px] border-solid border-[#ebebeb] rounded-lg px-4 py-2 mb-2 sm:mb-0">
                                 <span class="text whitespace-nowrap text-[#373737] 2xl:text-[1.125rem]">
@@ -21,7 +21,7 @@
                                 </span>
                                 <input type="text" name="patient_code" required class="form-control flex-1" value="{{$patientCode ?? ''}}">
                             </div>
-                            <button type="submit" class="btn-red whitespace-nowrap inline-flex h-9 mx-auto font-semibold items-center justify-center lg:text-[0.875rem] uppercase py-2 px-10 rounded-lg text-white bg-gradient-to-b from-[#28B1FF] to-[#008EDF] transition-all duration-300">Tra cứu</button>
+                            <button type="submit" class="btn-red whitespace-nowrap inline-flex h-9 mx-auto font-semibold items-center justify-center lg:text-[0.875rem] uppercase py-2 px-10 rounded-lg text-white bg-[#fb2317] transition-all duration-300">Tra cứu</button>
                         </form>
                         @if (isset($listLichKham))
                             <p class="title font-bold text-center uppercase 2xl:text-[1.5rem] lg:text-[1.25rem] text-[0.875rem] text-[#028cde] 2xl:mb-6 mb-4">Kết quả tra cứu bệnh án</p>
