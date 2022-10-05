@@ -12,8 +12,8 @@
     <div class="container">
         <div class="grid grid-cols-1 lg:grid-cols-4 2xl:gap-8 gap-4">
             <div class="col-span-1 lg:col-span-3">
-                <div class="box-info-author lg:my-6 my-2  bg-white">
-                    <div class="content sm:p-4 flex 2xl:gap-8 lg:gap-6 md:gap-4 gap-2">
+                <div class="box-info-author lg:mb-6 mb-2  bg-white">
+                    <div class="content sm:p-4 !pt-0 flex 2xl:gap-8 lg:gap-6 md:gap-4 gap-2">
                         <span class="img block shrink-0 w-[50%] md:w-[290px] h-auto shadow-[0_0_8px_rgba(216,229,251,.8)] p-2 rounded-lg overflow-hidden">
                             @include('image_loader.big',['itemImage'=>$currentItem,'key'=>'img'])
                         </span>

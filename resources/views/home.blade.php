@@ -97,14 +97,12 @@
                     <h3>
                         <a href="{{ Support::show($bigItemQuestion, 'slug') }}" title="{{ Support::show($bigItemQuestion, 'name') }}" class="title line-clamp-2 mb-2 font-bold uppercase text-white lg:text-[1.125rem] 2xl:mb-4">{{ Support::show($bigItemQuestion, 'name') }}</a>
                     </h3>
-                    <div class="flex gap-4">
-                        <div class="short_content line-clamp-2 flex-1 text-white">{{ Support::show($bigItemQuestion, 'question') }}</div>
-                        <a href="{{ Support::show($bigItemQuestion, 'slug') }}" title="Xem thêm" class="btn-white inline-flex items-center justify-center rounded-3xl border-[1px] border-solid border-[#008EDF] bg-white py-2 px-4 text-[#008EDF] transition-all duration-300 hover:shadow-[0_4px_10px_rgba(0,0,0,.3)] lg:text-[0.875rem]">
-                            Xem thêm
-                            <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i>
-                        </a>
-                    </div>
+                    <div class="short_content line-clamp-2 flex-1 text-white 2xl:mb-4 mb-2">{{ Support::show($bigItemQuestion, 'question') }}</div>
 
+                    <a href="{{ Support::show($bigItemQuestion, 'slug') }}" title="Xem thêm" class="btn-white inline-flex items-center justify-center lg:text-[0.875rem] py-3 px-4 rounded-3xl text-[#262626] bg-white transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
+                        Xem thêm
+                        <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i>
+                    </a>
                 </div>
                 @endif
             </div>
@@ -117,16 +115,14 @@
                         <p class="question mb-3 text-white 2xl:text-[1.125rem]">
                             {{ Support::show($itemSmallQuestion, 'name') }}
                         </p>
-                        <div class="flex flex-wrap items-center justify-between gap-4">
-                            <p class="time text-[0.813rem] font-medium text-white">
-                                <i class="fa fa-calendar mr-2" aria-hidden="true"></i> 0707/2022
-                            </p>
-                            <a href="{{ Support::show($itemSmallQuestion, 'slug') }}" title="Xem thêm" class="btn-white inline-flex items-center justify-center rounded-3xl bg-white py-2 px-6 text-[#008EDF] transition-all duration-300 hover:shadow-[0_4px_10px_rgba(0,0,0,.3)] lg:text-[0.875rem]">
-                                Trả lời
-                                <i class="fa fa-angle-double-right relative top-[-1px] ml-2" aria-hidden="true"></i>
-                            </a>
-                        </div>
+                        <p class="time text-[0.813rem] font-medium italic text-white 2xl:mb-4 mb-2">
+                            <i class="fa fa-calendar mr-2" aria-hidden="true"></i> 0707/2022
+                        </p>
 
+                        <a href="{{ Support::show($itemSmallQuestion, 'slug') }}" title="Xem thêm" class="btn-white inline-flex items-center justify-center lg:text-[0.875rem] py-2 px-6 rounded-3xl text-[#262626] bg-white transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
+                            Trả lời
+                            <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i>
+                        </a>
                     </div>
                     @endif
                     @endforeach
@@ -206,17 +202,17 @@
                 </div>
                 <div class="pagination-all pagination-system hidden lg:block"></div>
             </div>
-            <div class="button-circle button-circle__prev system_prev absolute top-1/2 z-[1] flex h-8 w-8 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-[1px] border-solid border-[#0557ac] text-[1.5rem] text-[#0557ac] transition-all duration-300 hover:bg-[#0557ac] hover:text-white lg:-left-14 lg:flex 2xl:-left-14 left-0 2xl:h-10 2xl:w-10">
-                <i class="fa fa-angle-left relative left-[-1px]" aria-hidden="true"></i>
+            <div class="button-circle button-circle__prev system_prev absolute top-1/2 z-[1] flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-[1px] border-solid border-[#0557ac] text-[1.5rem] text-[#0557ac] transition-all duration-300 hover:bg-[#0557ac] hover:text-white lg:-left-14 lg:flex 2xl:-left-14 left-0">
+                <i class="fa fa-angle-left relative left-[-1px] top-[-2px]" aria-hidden="true"></i>
             </div>
-            <div class="button-circle button-circle__next system_next absolute top-1/2 z-[1] flex h-8 w-8 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-[1px] border-solid border-[#0557ac] text-[1.5rem] text-[#0557ac] transition-all duration-300 hover:bg-[#0557ac] hover:text-white lg:-right-14 lg:flex 2xl:-right-14 right-0 2xl:h-10 2xl:w-10">
-                <i class="fa fa-angle-right relative left-[1px]" aria-hidden="true"></i>
+            <div class="button-circle button-circle__next system_next absolute top-1/2 z-[1] flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-[1px] border-solid border-[#0557ac] text-[1.5rem] text-[#0557ac] transition-all duration-300 hover:bg-[#0557ac] hover:text-white lg:-right-14 lg:flex 2xl:-right-14 right-0">
+                <i class="fa fa-angle-right relative left-[1px] top-[-2px]" aria-hidden="true"></i>
             </div>
         </div>
     </div>
 </section>
 @if (count($listHomeNews) > 0)
-<section class="section-new__index bg-[#F5F5F5] py-6 2xl:py-10">
+<section class="section-new__index py-6 2xl:py-10">
     <div class="container">
         <h2 class="title-all mb-6 text-center text-[1.25rem] font-semibold uppercase text-[#0557ac] lg:text-[1.5rem] 2xl:mb-10 2xl:text-[2rem]">{[title_new_home]}</h2>
         @php
