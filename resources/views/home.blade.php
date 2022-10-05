@@ -215,22 +215,20 @@
 <section class="section-new__index py-6 2xl:py-10">
     <div class="container">
         <h2 class="title-all mb-6 text-center text-[1.25rem] font-semibold uppercase text-[#0557ac] lg:text-[1.5rem] 2xl:mb-10 2xl:text-[2rem]">{[title_new_home]}</h2>
-        @php
-        $bigItemNews = $listHomeNews->first();
-        @endphp
+
         <div class="module-new__index grid grid-cols-1 gap-4 lg:grid-cols-2 2xl:gap-6">
-            @if (isset($bigItemNews))
+            @if (isset($videoHome))
             <div class="wow fadeInLeft col-span-1">
                 <div class="item-new__main">
-                    <a href="{{ Support::show($bigItemNews, 'slug') }}" title="{{ Support::show($bigItemNews, 'name') }}" data-fslightbox="video" class="btn-play-video img img__ c-img mb-2 block overflow-hidden rounded-2xl pt-[54%] 2xl:mb-4">
-                        @include('image_loader.all', ['itemImage' => $bigItemNews, 'key' => 'img'])
+                    <a href="{{ Support::show($videoHome, 'link_video') }}" title="{{ Support::show($videoHome, 'name') }}" data-fslightbox="video" class="btn-play-video img img__ c-img mb-2 block overflow-hidden rounded-2xl pt-[54%] 2xl:mb-4">
+                        @include('image_loader.all', ['itemImage' => $videoHome, 'key' => 'img'])
                     </a>
                     <h3>
-                        <a href="{{ Support::show($bigItemNews, 'slug') }}" title="{{ Support::show($bigItemNews, 'name') }}" class="title line-clamp-2 mb-2 font-bold uppercase text-[#262626] lg:text-[1.125rem] 2xl:mb-4">{{ Support::show($bigItemNews, 'name') }}</a>
+                        <a href="{{ Support::show($videoHome, 'link_video') }}" title="{{ Support::show($videoHome, 'name') }}" class="title line-clamp-2 mb-2 font-bold uppercase text-[#262626] lg:text-[1.125rem] 2xl:mb-4">{{ Support::show($videoHome, 'name') }}</a>
                     </h3>
-                    <div class="short_content line-clamp-2 mb-2">{{ Support::show($bigItemNews, 'short_content') }}</div>
-                    <a href="{{ Support::show($bigItemNews, 'slug') }}" title="Xem thêm" class="btn-white inline-flex items-center justify-center lg:text-[0.875rem] py-2 px-6 rounded-3xl text-[#262626] bg-white border-[1px] border-solid border-[#028cde] transition-all duration-300 hover:bg-[#028cde] hover:text-white shadow-[0_6px_8px_rgba(0,0,0,.17)]">
-                        Xem thêm
+                    <div class="short_content line-clamp-2 mb-2">{{ Support::show($videoHome, 'content') }}</div>
+                    <a href="{{ Support::show($videoHome, 'link_video') }}" title="Xem thêm" class="btn-white inline-flex items-center justify-center lg:text-[0.875rem] py-2 px-6 rounded-3xl text-[#262626] bg-white border-[1px] border-solid border-[#028cde] transition-all duration-300 hover:bg-[#028cde] hover:text-white shadow-[0_6px_8px_rgba(0,0,0,.17)]">
+                        Xem video
                         <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i>
                     </a>
                 </div>
@@ -238,7 +236,6 @@
             @endif
             <div class="wow fadeInRight col-span-1">
                 @foreach ($listHomeNews as $key => $itemSmall)
-                @if ($key > 0)
                 <div class="list-new__item mb-4 flex gap-3 last:mb-0 2xl:mb-6">
                     <a href="{{ Support::show($itemSmall, 'slug') }}" title="{{ Support::show($itemSmall, 'name') }}" class="img img__ block h-[60px] w-[100px] shrink-0 overflow-hidden rounded-lg sm:h-[100px] sm:w-[180px]">
                         @include('image_loader.big', ['itemImage' => $itemSmall, 'key' => 'img'])
@@ -255,7 +252,6 @@
                         </a>
                     </div>
                 </div>
-                @endif
                 @endforeach
             </div>
         </div>
