@@ -175,7 +175,9 @@ class StaticController extends Controller
             'act' => 0,
             'created_at' => new \DateTime,
             'updated_at' => new \DateTime,
-            'note' => $request->input('note')
+            'note' => $request->input('note'),
+            'service' => $request->input('service'),
+            'time_register' => $request->input('time_register')
         ];
         $utmInfo = Utm::get();
         $dataCreate = array_merge($data,$utmInfo);
