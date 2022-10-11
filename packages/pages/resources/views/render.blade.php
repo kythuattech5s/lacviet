@@ -8,8 +8,8 @@
     {!! vanhenry\helpers\helpers\SEOHelper::HEADER_SEO($currentItem,url($currentItem->slug)) !!}
     <title>{{ $currentItem->name }}</title>
     @php
-        $styles = explode(PHP_EOL, $currentItem->styles);
-        $scripts = explode(PHP_EOL, $currentItem->scripts);
+        $styles = explode("\r\n", $currentItem->styles);
+        $scripts = explode("\r\n", $currentItem->scripts);
     @endphp
     @if (is_array($styles) && count($styles) > 0)
         @php

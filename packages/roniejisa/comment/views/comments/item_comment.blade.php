@@ -7,11 +7,7 @@
         </div>
         <div class="comment-item__info">
             <p class="comment-item__name">
-                @if($user != null)
-                    {{$user->name}}
-                @elseif(isset($comment->name) && $comment->name != null)
-                    {{$comment->name}}
-                @endif
+                {{ $user->name }}
                 <span class="comment-item__datetime">{{ RSCustom::showTime($comment->created_at) }}</span>
             </p>
             @if ($comment->rating !== null)
