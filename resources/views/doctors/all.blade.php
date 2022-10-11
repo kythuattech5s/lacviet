@@ -13,18 +13,20 @@
         @php
         $listDoctor = $itemSpecialist->doctor()->act()->limit(10)->get();
         @endphp
-        <div class="head-flex flex items-center justify-between 2xl:mb-6 mb-4">
+        <div class="head-flex flex items-end lg:items-center justify-between 2xl:mb-6 mb-4">
             <h2 class="title-all text-center 2xl:text-[2rem] lg:text-[1.5rem] text-[1.25rem] text-[#000] font-semibold !mb-0">{{Support::show($itemSpecialist,'name')}}</h2>
-            <a href="{{Support::show($itemSpecialist,'slug')}}" title="Xem thêm" class="readmore italic font-medium 2xl:text-[1.125rem] text-[#008EDF]">Xem thêm <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i></a>
+            <a href="{{Support::show($itemSpecialist,'slug')}}" title="Xem thêm" class="readmore italic font-medium 2xl:text-[1.125rem] text-[#008EDF]">Xem thêm <i class="fa fa-angle-double-right ml-1 lg:ml-2" aria-hidden="true"></i></a>
         </div>
         @if (Support::isMobile())
-        <div class="grid grid-cols-2 gap-2">
+        <div class="grid grid-cols-2 gap-2 mb-10">
             @foreach ($listDoctor as $item)
             <div class="col-span-1">
                 @include('doctors.item_doctor')
             </div>
             @endforeach
         </div>
+
+
         @else
         <div class="boxslide relative">
             <div class="swiper-container slide-experts">
@@ -44,14 +46,20 @@
             </div>
         </div>
         @endif
-     
-       
-        <hr class="line-experts opacity-100 w-full h-[1px] border-[#c0c0c0] 2xl:my-10 my-6">
+
+
+        <hr class="line-experts hidden lg:block opacity-100 w-full h-[1px] border-[#c0c0c0] 2xl:my-10 my-6">
         @endforeach
         @else
         <p>Tạm thời chưa có bác sĩ nào</p>
         @endif
+        <div class="mt-6 px-8 sm:px-0">
+            @if (Support::isMobile())
 
+            @include('news.sidebar')
+
+        </div>
+        @endif
     </div>
 </section>
 @endsection

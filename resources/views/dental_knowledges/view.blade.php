@@ -32,8 +32,8 @@
 
         </div>
         @endif
-        <div class="grid grid-cols-1 lg:grid-cols-4 2xl:gap-8 gap-4">
-            <div class="col-span-1 lg:col-span-3">
+        <div class="grid grid-cols-1 lg:grid-cols-4 2xl:gap-8 gap-4 lg:flex">
+            <div class="col-span-1 lg:col-span-3 lg:flex-1">
                 <h1 class="title-new font-bold uppercase 2xl:text-[1.25rem] text-[1rem] mb-2 text-[#028cde]">{{Support::show($currentItem,'name')}}</h1>
                 <div class="flex items-center gap-4 2xl:mb-6 mb-2">
                 <p class="count "><i class="fa fa-eye mr-1" aria-hidden="true"></i>Lượt xem: {{Support::show($currentItem,'count_view')}}</p>
@@ -41,7 +41,7 @@
 
                 </div>
 
-                <div class="content-intro font-bold md:text-[0.875rem] s-content 2xl:p-5 lg:p-4 p-2 bg-[#e0f3ff] border-[1px] border-dashed border-[#a1a1a1] mb-6">
+                <div class="content-intro font-bold md:text-[0.875rem] s-content 2xl:p-5 lg:p-4 p-2 bg-[#e0f3ff] border-[1px] border-dashed border-[#e0f3ff] mb-6">
                     {{Support::show($currentItem,'short_content')}}
                 </div>
                 <div class="mb-4 toc-wrapper">
@@ -104,7 +104,7 @@
                 </div>
                 @endif
                 @if (isset($saleSevice))
-                <div class="box-endow p-4 2xl:my-20 lg:my-8 my-6 bg-[#f6f7f8] border-[1px] border-dashed border-[#f45654]">
+                <div class="box-endow p-4 2xl:my-20 lg:my-8 my-6 bg-[#f6f7f8] border-[1px] border-dashed border-[#f45654] hidden">
                     <p class="head text-center w-fit mx-auto uppercase text-[#f43d3b] 2xl:text-[1.5rem] lg:text-[1.25rem] text-[1rem] font-bold mb-4">
                         Ưu đãi dịch vụ {{Support::show($saleSevice,'name')}}
                     </p>
@@ -168,7 +168,7 @@
                             </div>
                             <div class="new-content">
                                 <h3>
-                                    <a href="{{Support::show($itemRelated,'slug')}}" title="{{Support::show($itemRelated,'name')}}" class="title line-clamp-2 text-[#7b7b7b] font-bold mb-2">{{Support::show($itemRelated,'name')}}</a>
+                                    <a href="{{Support::show($itemRelated,'slug')}}" title="{{Support::show($itemRelated,'name')}}" class="title line-clamp-2 text-[#7b7b7b] font-semibold mb-2">{{Support::show($itemRelated,'name')}}</a>
                                 </h3>
                                 <div class="short_content lg:text-[0.875rem] line-clamp-2">{{Support::show($itemRelated,'short_content')}}</div>
                             </div>
@@ -190,7 +190,7 @@
                             </div>
                             <div class="new-content">
                                 <h3>
-                                    <a href="{{Support::show($itemHotNews,'slug')}}" title="{{Support::show($itemHotNews,'name')}}" class="title line-clamp-2 text-[#7b7b7b] font-bold mb-2">{{Support::show($itemHotNews,'name')}}</a>
+                                    <a href="{{Support::show($itemHotNews,'slug')}}" title="{{Support::show($itemHotNews,'name')}}" class="title line-clamp-2 text-[#7b7b7b] font-semibold mb-2">{{Support::show($itemHotNews,'name')}}</a>
                                 </h3>
                                 <div class="short_content lg:text-[0.875rem] line-clamp-2">{{Support::show($itemHotNews,'short_content')}}</div>
                             </div>
@@ -200,7 +200,7 @@
                 </div>
                 @endif
             </div>
-            <div class="col-span-1">
+            <div class="col-span-1 px-8 sm:px-0 lg:w-[330px]">
                 @include('news.sidebar')
             </div>
         </div>

@@ -36,7 +36,7 @@
                                 </span>
 
                     </div>
-                    <hr class="bg-[#c7ccce] h-1 opacity-100 2xl:mt-14 mb-0 lg:mt-7 hidden lg:block">
+                    <!-- <hr class="bg-[#c7ccce] h-1 opacity-100 2xl:mt-14 mb-0 lg:mt-7 hidden lg:block"> -->
                 </div>
                 @endif
                 <div class="col-span-1 new-small-list">
@@ -68,14 +68,14 @@
                         @endif
                         @endforeach
                     </div>
-                    <a href="{{\VRoute::get("allNews")}}" title="Xem thêm" class="btn-readmore mt-2 flex sm:none w-fit ml-auto mr-auto lg:mr-0 items-center justify-center lg:text-[0.875rem] py-1 px-3 rounded-3xl bg-transparent transition-all duration-300 border-[1px] border-solid border-[#028cde] hover:bg-[#028cde] hover:text-white">
+                    <a href="{{\VRoute::get("allNews")}}" title="Xem thêm" class="btn-readmore mt-2 flex sm:hidden w-fit ml-auto mr-auto lg:mr-0 items-center justify-center lg:text-[0.875rem] py-1 px-3 rounded-3xl bg-transparent transition-all duration-300 border-[1px] border-solid border-[#028cde] hover:bg-[#028cde] hover:text-white">
                                 Xem thêm <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i>
                             </a>
                 </div>
             </div>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
-            <div class="col-span-1 lg:col-span-3">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 lg:flex">
+            <div class="col-span-1 lg:col-span-3 lg:flex-1">
                 @foreach ($listCateChild as $itemCateChild)
                 @php
                 $listItemNews = $itemCateChild->news()->act()->orderBy('time_published','desc')->limit(5)->get();
@@ -95,7 +95,7 @@
                                     </a>
                                 </div>
                                 <h3>
-                                    <a href="{{Support::show($bigItem,'slug')}}" title="{{Support::show($bigItem,'name')}}" class="title line-clamp-2 text-[#373737] sm:text-[#7b7b7b] font-bold 2xl:text-[1.25rem] text-[1rem] mb-2">{{Support::show($bigItem,'name')}}</a>
+                                    <a href="{{Support::show($bigItem,'slug')}}" title="{{Support::show($bigItem,'name')}}" class="title line-clamp-2 text-[#373737] sm:text-[#7b7b7b] font-semibold 2xl:text-[1.25rem] text-[1rem] mb-2">{{Support::show($bigItem,'name')}}</a>
                                 </h3>
                                 <div class="short_content lg:line-clamp-4 line-clamp-2 2xl:mb-6 mb-3">{{Support::show($bigItem,'short_content')}}</div>
                                 <span class="date-time font-semibold text-[0.75rem] text-[#b2b2b2] italic">
@@ -116,7 +116,7 @@
                                     </div>
                                     <div class="new-content">
                                         <h3>
-                                            <a href="{{Support::show($itemSmall,'slug')}}" title="{{Support::show($itemSmall,'name')}}" class="title line-clamp-2 text-[#7b7b7b] font-bold 2xl:text-[1.125rem] mb-2">{{Support::show($itemSmall,'name')}}</a>
+                                            <a href="{{Support::show($itemSmall,'slug')}}" title="{{Support::show($itemSmall,'name')}}" class="title line-clamp-2 text-[#7b7b7b] font-semibold 2xl:text-[1.125rem] mb-2">{{Support::show($itemSmall,'name')}}</a>
                                         </h3>
                                         <span class="date-time font-semibold text-[0.75rem] text-[#b2b2b2] italic">
                                             <i class="fa fa-calendar mr-2" aria-hidden="true"></i> {{Support::showDateTime($itemSmall->time_published,'d/m/Y')}}
@@ -134,7 +134,7 @@
                 </div>
                 @endforeach
             </div>
-            <div class="col-span-1">
+            <div class="col-span-1 px-8 sm:px-0 lg:w-[330px]">
                 @include('news.sidebar')
             </div>
         </div>
