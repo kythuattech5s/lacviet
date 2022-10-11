@@ -7,8 +7,8 @@
 </div>
 <section class="section-new__category 2xl:py-10 py-6">
     <div class="container">
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
-            <div class="col-span-1 lg:col-span-3">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 lg:flex">
+            <div class="col-span-1 lg:col-span-3 lg:flex-1">
                 <h1 class="title-all hidden sm:block uppercase 2xl:text-[1.75rem] lg:text-[1.4rem] text-[1rem] text-[#028cde] font-semibold 2xl:mb-6 mb-4">{{Support::show($currentItem,'name')}}</h1>
                 @if (count($listItems) > 0)
                     @foreach ($listItems as $item)
@@ -21,7 +21,7 @@
                     <p>Tạm thời chưa có tin tức nào</p>
                 @endif
             </div>
-            <div class="col-span-1">
+            <div class="col-span-1 px-8 sm:px-0 lg:w-[330px]">
                 @include('news.sidebar')
             </div>
         </div>

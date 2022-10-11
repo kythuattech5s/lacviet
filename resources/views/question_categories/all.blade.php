@@ -38,7 +38,7 @@
             </div>
             <div class="col-span-1 lg:col-span-2">
                 <div class="box-content border-[1px] border-solid border-[#ebebeb] bg-white py-4 lg:py-8 2xl:pt-12">
-                    <h1 class="title-qa text-center text-[1.3rem] font-bold text-[#028cde] sm:text-[#767676] lg:text-[1.5rem] 2xl:text-[2rem]">{{ $currentItem->vi_name }}</h1>
+                    <h1 class="title-qa text-center text-[1.3rem] font-bold text-[#767676] lg:text-[1.5rem] 2xl:text-[2rem]">{{ $currentItem->vi_name }}</h1>
                     @if (count($listItems) > 0)
                     <div class="module-content">
                         @foreach ($listItems as $item)
