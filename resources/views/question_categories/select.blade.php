@@ -9,10 +9,11 @@ $listCate = \App\Models\QuestionCategory::act()
     ->get();
 @endphp
 <!-- <span class="show-category mb-4 inline-block cursor-pointer rounded-md bg-[#fb2317] p-2 text-white lg:hidden">Danh mục</span> -->
-<div class="box relative">
-    <i class="fa fa-sort absolute top-1/2 right-4 -translate-y-1/2" aria-hidden="true"></i>
-    <ul class="w-full appearance-none rounded bg-[#f5f5f5] py-2 px-4">
-        <li><a href="javascript:void(0)">Tất cả</a></li>
+<div class="box relative show-category block lg:hidden">
+    <span class="block rounded bg-[#f5f5f5] py-2 px-4">{{ $currentItem->name }}</span>
+    <i class="fa fa-sort absolute top-2 right-4" aria-hidden="true"></i>
+    <ul class="w-full rounded bg-[#f5f5f5] py-2 px-4 absolute top-[100%] left-[0] z-[1]">
+        <li><a href="hoi-dap-chuyen-gia">Tất cả</a></li>
         @foreach ($listCate as $itemCate)
             @if (count($itemCate->child) > 0)
                 @foreach ($itemCate->child as $itemCateChild)

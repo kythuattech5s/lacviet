@@ -9,39 +9,57 @@
 <section class="2xl:py-10 section-experts py-6">
     <div class="container">
         @if (count($listItems) > 0)
-            @foreach ($listItems as $itemSpecialist)
-                @php
-                    $listDoctor = $itemSpecialist->doctor()->act()->limit(10)->get();
-                @endphp
-                <div class="head-flex flex items-center justify-between 2xl:mb-6 mb-4">
-                    <h2 class="title-all text-center 2xl:text-[2rem] lg:text-[1.5rem] text-[1.25rem] text-[#000] font-semibold">{{Support::show($itemSpecialist,'name')}}</h2>
-                    <a href="{{Support::show($itemSpecialist,'slug')}}" title="Xem thêm" class="readmore font-medium 2xl:text-[1.125rem] text-[#008EDF]">Xem thêm <i class="fa fa-angle-double-right ml-2" aria-hidden="true"></i></a>
-                </div>
-                <div class="boxslide relative">
-                    <div class="swiper-container slide-experts">
-                        <div class="swiper-wrapper">
-                            @foreach ($listDoctor as $item)
-                                <div class="swiper-slide h-auto">
-                                    @include('doctors.item_doctor')
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div
-                        class="button-circle button-circle__prev experts_prev bg-white 2xl:w-12 2xl:h-12 h-8 w-8 rounded-full flex items-center justify-center absolute top-1/2 -translate-y-1/2 z-[1] cursor-pointer 2xl:left-[-80px] lg:left-[-28px] left-[-1.25rem] text-[2.5rem] text-[#888] transition-all duration-300 hover:bg-[#0557ac] hover:text-white border-[1px] border-solid border-[#888] hover:border-[#0557ac]">
-                        <i class="fa fa-angle-left" aria-hidden="true"></i>
-                    </div>
-                    <div
-                        class="button-circle button-circle__next experts_next bg-white 2xl:w-12 2xl:h-12 h-8 w-8 rounded-full flex items-center justify-center absolute top-1/2 -translate-y-1/2 z-[1] cursor-pointer 2xl:right-[-80px] lg:right-[-28px] right-[-1.25rem] text-[2.5rem] text-[#888] transition-all duration-300  hover:bg-[#0557ac] hover:text-white border-[1px] border-solid border-[#888] hover:border-[#0557ac]">
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </div>
-                </div>
-                <hr class="line-experts opacity-100 w-full h-[1px] border-[#898989] 2xl:my-10 my-6">
+        @foreach ($listItems as $itemSpecialist)
+        @php
+        $listDoctor = $itemSpecialist->doctor()->act()->limit(10)->get();
+        @endphp
+        <div class="head-flex flex items-end lg:items-center justify-between 2xl:mb-6 mb-4">
+            <h2 class="title-all text-center 2xl:text-[2rem] lg:text-[1.5rem] text-[1.25rem] text-[#000] font-semibold !mb-0">{{Support::show($itemSpecialist,'name')}}</h2>
+            <a href="{{Support::show($itemSpecialist,'slug')}}" title="Xem thêm" class="readmore italic font-medium 2xl:text-[1.125rem] text-[#008EDF]">Xem thêm <i class="fa fa-angle-double-right ml-1 lg:ml-2" aria-hidden="true"></i></a>
+        </div>
+        @if (Support::isMobile())
+        <div class="grid grid-cols-2 gap-2 mb-10">
+            @foreach ($listDoctor as $item)
+            <div class="col-span-1">
+                @include('doctors.item_doctor')
+            </div>
             @endforeach
+        </div>
+
+
         @else
-            <p>Tạm thời chưa có bác sĩ nào</p>
+        <div class="boxslide relative">
+            <div class="swiper-container slide-experts">
+                <div class="swiper-wrapper">
+                    @foreach ($listDoctor as $item)
+                    <div class="swiper-slide h-auto">
+                        @include('doctors.item_doctor')
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="button-circle button-circle__prev experts_prev bg-white 2xl:w-12 2xl:h-12 h-8 w-8 rounded-full flex items-center justify-center absolute top-1/2 -translate-y-1/2 z-[1] cursor-pointer 2xl:left-[-80px] lg:-left-12 left-[-1.25rem] text-[1.5rem] text-[#028cde] transition-all duration-300 hover:bg-[#0557ac] hover:text-white border-[1px] border-solid border-transparent shadow-[0_0_8px_rgba(216,229,251,.8)]">
+                <i class="fa fa-angle-left relative left-[-1px] top-[-2px]" aria-hidden="true"></i>
+            </div>
+            <div class="button-circle button-circle__next experts_next bg-white 2xl:w-12 2xl:h-12 h-8 w-8 rounded-full flex items-center justify-center absolute top-1/2 -translate-y-1/2 z-[1] cursor-pointer 2xl:right-[-80px] lg:-right-12 right-[-1.25rem] text-[1.5rem] text-[#028cde] transition-all duration-300  hover:bg-[#0557ac] hover:text-white border-[1px] border-solid border-transparent shadow-[0_0_8px_rgba(216,229,251,.8)]">
+                <i class="fa fa-angle-right relative left-[1px] top-[-2px]" aria-hidden="true"></i>
+            </div>
+        </div>
         @endif
-        
+
+
+        <hr class="line-experts hidden lg:block opacity-100 w-full h-[1px] border-[#c0c0c0] 2xl:my-10 my-6">
+        @endforeach
+        @else
+        <p>Tạm thời chưa có bác sĩ nào</p>
+        @endif
+        <div class="mt-6 px-8 sm:px-0">
+            @if (Support::isMobile())
+
+            @include('news.sidebar')
+
+        </div>
+        @endif
     </div>
 </section>
 @endsection

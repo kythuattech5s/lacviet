@@ -154,10 +154,10 @@ var SLIDER = {
 	slideService: function () {
 		if (typeof Tech.$('.slide-service__mobile') === 'undefined') return;
 		const swiperBanner = new Swiper('.slide-service__mobile', {
-			slidesPerView: 1.2,
+			slidesPerView: 1.5,
 			disableOnInteraction: true,
 			speed: 600,
-			spaceBetween: 20,
+			spaceBetween: 50,
 			loop:true,
 			centeredSlides: true,
 			navigation: {
@@ -170,7 +170,7 @@ var SLIDER = {
 			// },
 			breakpoints: {
 				576: {
-					slidesPerView: 1.2,
+					slidesPerView: 1.3,
 					spaceBetween: 15
 				},
 				768: {

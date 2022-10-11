@@ -38,7 +38,7 @@
                     @endforeach
                 @endif
             </div>
-            <div class="col-span-1">
+            <div class="col-span-1 px-8 sm:px-0">
                 @include('news.sidebar')
             </div>
         </div>
