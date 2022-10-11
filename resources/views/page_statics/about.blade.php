@@ -1,6 +1,6 @@
 @extends('index')
 @section('css')
-<link href="theme/frontend/asset/css/jquery.fancybox.min.css" type="text/css" rel="stylesheet" />
+    <link href="theme/frontend/asset/css/jquery.fancybox.min.css" type="text/css" rel="stylesheet" />
 @endsection
 @section('content')
 <div class="main-breadcrumb 2xl:my-9 lg:my-6 my-4 py-3 border-t-[1px] border-b-[1px] border-solid border-[#3286be]">
@@ -25,9 +25,9 @@
 </section>
 @endsection
 @section('jsl')
-<script src="theme/frontend/asset/js/jquery-3.4.0.min.js" defer></script>
-<script src="theme/frontend/asset/js/jquery.fancybox.min.js" defer></script>
+    <script src="theme/frontend/asset/js/jquery-3.4.0.min.js" defer></script>
+    <script src="theme/frontend/asset/js/jquery.fancybox.min.js" defer></script>
 @endsection
 @section('js')
-<script src="theme/frontend/asset/js/script.js" defer></script>
+    <script src="theme/frontend/asset/js/script.js" defer></script>
 @endsection

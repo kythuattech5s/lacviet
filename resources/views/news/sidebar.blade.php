@@ -29,7 +29,7 @@ $listNewNews = \App\Models\News::act()->publish()->orderBy('time_published','des
                     <h3>
                         <a href="{{Support::show($itemNewNews,'slug')}}" title="{{Support::show($itemNewNews,'name')}}" class="title text-[#262626] line-clamp-2 font-semibold uppercase text-[0.75rem] mb-2">{{Support::show($itemNewNews,'name')}}</a>
                     </h3>
-                    <p class="count text-[0.625rem] text-[#262626] italic">Lượt xem: {{Support::show($itemNewNews,'count_view')}}</p>
+                    <p class="count text-[0.625rem] text-[#888] italic">Lượt xem: {{Support::show($itemNewNews,'count_view')}}</p>
                 </div>
             </div>
         </div>
@@ -44,10 +44,10 @@ $listFrequentQuestion = \App\Models\Question::act()->orderBy('id','desc')->limit
 @if (count($listFrequentQuestion) > 0)
 <div class="box overflow-hidden bg-white mb-6">
 
-<p class="head-title__sidebar text-center font-semibold uppercase py-2 px-3 text-white bg-[#028cde] 2xl:text-[1.25rem] text-[1rem]">Câu hỏi liên quan</p>
+<p class="head-title__sidebar text-center font-semibold uppercase lg:py-2 py-1 px-3 text-white bg-[#028cde] 2xl:text-[1.25rem] text-[1rem]">Câu hỏi liên quan</p>
 <div class="border-box border-[1px] border-solid border-[#028cde] 2xl:p-7 p-4">
     @foreach ($listFrequentQuestion as $key => $itemFrequentQuestion)
-    <a href="{{Support::show($itemFrequentQuestion,'slug')}}" title="{{Support::show($itemFrequentQuestion,'name')}}" class="question-related relative font-semibold block text-[#131313] text-[0.875rem] mb-5 last:mb-0 pl-10">
+    <a href="{{Support::show($itemFrequentQuestion,'slug')}}" title="{{Support::show($itemFrequentQuestion,'name')}}" class="question-related relative block text-[#131313] text-[0.875rem] mb-5 last:mb-0 pl-10">
         <span class="stt min-w-[26px] h-[26px] text-[0.625rem] text-white inline-flex items-center justify-center bg-[#028cde] absolute top-0 left-0">{{$key + 1}}</span>
         {{Support::show($itemFrequentQuestion,'name')}}
     </a>
@@ -57,7 +57,7 @@ $listFrequentQuestion = \App\Models\Question::act()->orderBy('id','desc')->limit
 @endif
 <div class="box overflow-hidden bg-white mb-6">
 
-<p class="head-title__sidebar text-center font-semibold uppercase py-2 px-3 text-white bg-[#028cde] 2xl:text-[1.25rem] text-[1rem]">
+<p class="head-title__sidebar text-center font-semibold uppercase lg:py-2 py-1 px-3 text-white bg-[#028cde] 2xl:text-[1.25rem] text-[1rem]">
     Đăng ký tư vấn
 </p>
 <div class="border-box border-[1px] border-solid border-[#028cde] p-4">
@@ -73,7 +73,7 @@ $listFrequentQuestion = \App\Models\Question::act()->orderBy('id','desc')->limit
         <input type="text" name="register_address" placeholder="Nơi đăng ký khám" class="form-control text-[#888] placeholder:text-[#888] w-full p-3 rounded-md outline-none border-[1px] border-solid border-[#bce0f6] mb-4">
         <input type="text" name="email" placeholder="Email" class="form-control text-[#888] placeholder:text-[#888] w-full p-3 rounded-md outline-none border-[1px] border-solid border-[#bce0f6] mb-4">
         <textarea name="note" placeholder="Triệu chứng:" class="form-control resize-none text-[#888] placeholder:text-[#888] w-full h-24 p-3 rounded-md outline-none border-[1px] border-solid border-[#bce0f6] mb-4"></textarea>
-        <button type="submit" class=" btn-red flex w-fit mx-auto items-center justify-center lg:text-[0.875rem] uppercase lg:py-3 py-1 lg:px-6 px-3 rounded-3xl text-white bg-[#fb2317] transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">Đăng ký ngay</button>
+        <button type="submit" class=" btn-red flex min-w-[160px] lg:min-w-fit w-fit mx-auto items-center justify-center lg:text-[0.875rem] uppercase lg:py-3 py-2 lg:px-6 px-3 rounded-lg lg:rounded-3xl text-white bg-[#fb2317] transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">Đăng ký ngay</button>
     </form>
 </div>
 </div>
@@ -90,4 +90,5 @@ $bannerGdnSocialBottomSidebar = \App\Models\BannerGdn::where('group',3)->act()->
 </a>
 @endif
 @endforeach
+
 @endif

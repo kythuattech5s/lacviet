@@ -32,8 +32,8 @@
 
         </div>
         @endif
-        <div class="grid grid-cols-1 lg:grid-cols-4 2xl:gap-8 gap-4">
-            <div class="col-span-1 lg:col-span-3">
+        <div class="grid grid-cols-1 2xl:gap-8 gap-4 lg:flex">
+            <div class="col-span-1 lg:col-span-3 lg:flex-1">
                 <h1 class="title-new font-bold uppercase 2xl:text-[1.25rem] text-[1rem] mb-2 text-[#028cde]">{{Support::show($currentItem,'name')}}</h1>
                 <div class="flex items-center gap-4 2xl:mb-6 mb-2">
                 <p class="count "><i class="fa fa-eye mr-1" aria-hidden="true"></i>Lượt xem: {{Support::show($currentItem,'count_view')}}</p>
@@ -88,14 +88,14 @@
                             <p class="name 2xl:text-[2rem] lg:text-[1.5rem] md:text-[1.25rem] text-[0.875rem] text-[#0557ac] font-bold 2xl:mb-4 mb-2">{{Support::show($doctor,'name')}}</p>
                             <p class="role font-bold 2xl:text-[1.125rem] 2xl:mb-4 mb-2">{{Support::show($doctor,'academic_rank')}}</p>
                             @if (isset($doctor->specialist))
-                            <a href="{{Support::show($doctor->specialist,'slug')}}" class="inline-block lg:p-3 p-1 bg-[#f43d3b] text-white lg:rounded rounded-sm 2xl:mb-4 mb-2" title="{{Support::show($doctor->specialist,'name')}}">{{Support::show($doctor->specialist,'name')}}</a>
+                            <a href="{{Support::show($doctor->specialist,'slug')}}" class="inline-block lg:p-2 p-1 bg-[#f43d3b] text-white lg:rounded rounded-sm 2xl:mb-4 mb-2" title="{{Support::show($doctor->specialist,'name')}}">{{Support::show($doctor->specialist,'name')}}</a>
                             @endif
                             <div class="flex items-center flex-wrap sm:gap-4 gap-2">
                               
-                                <a href="tel: {[hotline]}" title="Đăng ký khám" class="btn-border__blue inline-flex items-center justify-center lg:text-[0.875rem] lg:py-3 py-1 px-4 text-[#333] bg-transparent transition-all duration-300 border-[1px] border-solid border-[#028cde]">
+                                <a href="tel: {[hotline]}" title="Đăng ký khám" class="btn-border__blue inline-flex items-center justify-center lg:text-[0.875rem] lg:py-2 py-1 px-4 text-[#333] bg-transparent transition-all duration-300 border-[1px] border-solid border-[#028cde]">
                                         Tổng đài: <strong class="font-bold">{[hotline]}</strong>
                                     </a>
-                                <a href="{{Support::show($doctor,'slug')}}" title="Xem thông tin bác sĩ" class="btn-border__yellow inline-flex items-center justify-center lg:text-[0.875rem] lg:py-3 py-1 px-4 text-[#333] bg-transparent transition-all duration-300 border-[1px] border-solid border-[#eea517] hover:bg-[#eea517] hover:text-white">
+                                <a href="{{Support::show($doctor,'slug')}}" title="Xem thông tin bác sĩ" class="btn-border__yellow inline-flex items-center justify-center lg:text-[0.875rem] lg:py-2 py-1 px-4 text-[#333] bg-transparent transition-all duration-300 border-[1px] border-solid border-[#eea517] hover:bg-[#eea517] hover:text-white">
                                         Xem thông tin bác sĩ
                                     </a>
                             </div>
@@ -104,7 +104,7 @@
                 </div>
                 @endif
                 @if (isset($saleSevice))
-                <div class="box-endow p-4 2xl:my-20 lg:my-8 my-6 bg-[#f6f7f8] border-[1px] border-dashed border-[#f45654]">
+                <div class="box-endow p-4 2xl:my-20 lg:my-8 my-6 bg-[#f6f7f8] border-[1px] border-dashed border-[#f45654] hidden">
                     <p class="head text-center w-fit mx-auto uppercase text-[#f43d3b] 2xl:text-[1.5rem] lg:text-[1.25rem] text-[1rem] font-bold mb-4">
                         Ưu đãi dịch vụ {{Support::show($saleSevice,'name')}}
                     </p>
@@ -162,13 +162,13 @@
                     <div class="col-span-1">
                         <div class="item-new__sidebar flex mb-4 last:mb-0">
                             <div class="image mr-4 shrink-0 lg:w-[150px] w-[120px]">
-                                <a href="{{Support::show($itemRelated,'slug')}}" title="{{Support::show($itemRelated,'name')}}" class="img img__ block c-img pt-[60%] rounded-lg overflow-hidden">
+                                <a href="{{Support::show($itemRelated,'slug')}}" title="{{Support::show($itemRelated,'name')}}" class="img img__ block c-img pt-[60%] rounded overflow-hidden">
                                     @include('image_loader.tiny',['itemImage'=>$itemRelated,'key'=>'img'])
                                 </a>
                             </div>
                             <div class="new-content">
                                 <h3>
-                                    <a href="{{Support::show($itemRelated,'slug')}}" title="{{Support::show($itemRelated,'name')}}" class="title line-clamp-2 text-[#028cde] font-bold mb-2">{{Support::show($itemRelated,'name')}}</a>
+                                    <a href="{{Support::show($itemRelated,'slug')}}" title="{{Support::show($itemRelated,'name')}}" class="title line-clamp-2 text-[#028cde] font-semibold mb-2">{{Support::show($itemRelated,'name')}}</a>
                                 </h3>
                                 <div class="short_content lg:text-[0.875rem] line-clamp-2">{{Support::show($itemRelated,'short_content')}}</div>
                             </div>
@@ -184,13 +184,13 @@
                     <div class="col-span-1">
                         <div class="item-new__sidebar flex mb-4 last:mb-0">
                             <div class="image mr-4 shrink-0 lg:w-[150px] w-[120px]">
-                                <a href="{{Support::show($itemHotNews,'slug')}}" title="{{Support::show($itemHotNews,'name')}}" class="img img__ block c-img pt-[60%] rounded-lg overflow-hidden">
+                                <a href="{{Support::show($itemHotNews,'slug')}}" title="{{Support::show($itemHotNews,'name')}}" class="img img__ block c-img pt-[60%] rounded overflow-hidden">
                                     @include('image_loader.tiny',['itemImage'=>$itemHotNews,'key'=>'img'])
                                 </a>
                             </div>
                             <div class="new-content">
                                 <h3>
-                                    <a href="{{Support::show($itemHotNews,'slug')}}" title="{{Support::show($itemHotNews,'name')}}" class="title line-clamp-2 text-[#028cde] font-bold mb-2">{{Support::show($itemHotNews,'name')}}</a>
+                                    <a href="{{Support::show($itemHotNews,'slug')}}" title="{{Support::show($itemHotNews,'name')}}" class="title line-clamp-2 text-[#028cde] font-semibold mb-2">{{Support::show($itemHotNews,'name')}}</a>
                                 </h3>
                                 <div class="short_content lg:text-[0.875rem] line-clamp-2">{{Support::show($itemHotNews,'short_content')}}</div>
                             </div>
@@ -200,7 +200,7 @@
                 </div>
                 @endif
             </div>
-            <div class="col-span-1">
+            <div class="col-span-1 px-8 sm:px-0 lg:w-[330px]">
                 @include('news.sidebar')
             </div>
         </div>
