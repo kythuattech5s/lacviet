@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content={{ csrf_token() }}>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {!! vanhenry\helpers\helpers\SEOHelper::HEADER_SEO($currentItem,url($currentItem->slug)) !!}
+    {!! vanhenry\helpers\helpers\SEOHelper::HEADER_SEO($currentItem, url($currentItem->slug)) !!}
     <title>{{ $currentItem->name }}</title>
     @php
         $styles = explode("\r\n", $currentItem->styles);
@@ -40,5 +41,11 @@
     @endphp
     {!! vanhenry\helpers\helpers\SEOHelper::loadJs($newScript, 'page-custom/' . $currentItem->url . '_script.js') !!}
 @endif
-
+<script>
+    window.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('form').forEach(form => {
+            form.querySelector('[name="_token"]').value = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        });
+    })
+</script>
 </html>
