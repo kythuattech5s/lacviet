@@ -140,7 +140,15 @@ var CLICK = {
         }
 
     },
-
+    showWidget:function(){
+        var btn=Tech.$('.show-widget');
+        if(typeof btn !=='undefined'){
+            btn.onClick(function(e){
+                e.preventDefault();
+                Tech.$('.widget').toggleClass('active');
+            })
+        }
+    },
 
 
  
@@ -150,6 +158,7 @@ var CLICK = {
         CLICK.showCategory();
         CLICK.moduleSearch();
         CLICK.fixedMenu();
+        CLICK.showWidget();
    
 
     },

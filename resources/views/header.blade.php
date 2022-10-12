@@ -98,8 +98,8 @@
                 $menus = Support::getMenuRecursive(1);
                 @endphp
                 {{Support::showMenuRecursive($menus,0)}}
-                <form action="" method="" class="form relative mt-5 block lg:hidden">
-                    <button class="btn-search absolute top-1/2 left-1 -translate-y-1/2">
+                <form action="{{VRoute::get('medicalRecordLookup')}}" method="GET" class="form relative mt-5 block lg:hidden">
+                    <button type="submit" class="btn-search absolute top-1/2 left-1 -translate-y-1/2">
                         <svg width="24" height="24" class="" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M20.0037 8.99884V4.99717C20.0037 3.89214 19.1079 2.99634 18.0028 2.99634H4.99742C3.89239 2.99634 2.99658 3.89214 2.99658 4.99717V19.003C2.99658 20.108 3.89239 21.0038 4.99742 21.0038H9.9995" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                             <path d="M6.99805 6.99801H16.0018" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -109,7 +109,7 @@
                             <path d="M16.726 13.0005C18.7836 13.0005 20.4516 14.6685 20.4516 16.726C20.4516 18.7836 18.7836 20.4516 16.726 20.4516C14.6685 20.4516 13.0005 18.7836 13.0005 16.726C13.0006 14.6685 14.6685 13.0006 16.726 13.0005" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                     </button>
-                    <input type="text" name="" placeholder="Tra cứu bệnh án" class="form-control pl-8 w-full p-1 border-[1px] border-solid border-[#c4c4c4] rounded">
+                    <input type="text" name="patient_code" placeholder="Tra cứu bệnh án" class="form-control pl-8 w-full p-1 border-[1px] border-solid border-[#c4c4c4] rounded">
                 </form>
                 <div class="h-lang flex lg:hidden mt-5 items-center">
                     <a href="javascript:void(0)" class="btn-change-lang-en" onclick="doGTranslate('vi|en');return false;" title="Tiếng anh">
@@ -138,17 +138,19 @@
         <!-- <buton class="btn-close absolute top-0 right-0 cursor-pointer z-[1] text-[1.25rem] text-white" data-modal-toggle="button_close_modal" button_close_modal="">
             <i class="fa fa-times" aria-hidden="true"></i>
         </buton> -->
-        <form action="" method="" class="bg-white rounded overflow-hidden shadow-[6px_8px_40px_rgba(0,0,0,.2)]">
+        <form action="{{VRoute::get('medicalRecordLookup')}}" method="POST" class="bg-white rounded overflow-hidden shadow-[6px_8px_40px_rgba(0,0,0,.2)] form-validate" absolute data-success="NOTIFICATION.callbackAjaxMedicalRecordLookup" accept-charset="utf8">
+            @csrf
             <p class="title text-center p-3 border-b-[1px] border-solid border-[#ebebeb] font-semibold uppercase text-[#0557ac] 2xl:text-[25px] lg:text-[20px] text-[16px]">
                 Tra cứu bệnh án
             </p>
             <div class="lg:p-8 p-4">
                 <div class="relative rounded overflow-hidden ">
-                    <input type="text" name="" placeholder="Mã bệnh án" class="form-control bg-[#f8fbfe] w-full border-[1px] border-solid border-[#dbeefa] p-3 rounded text-[#b1b1b1] placeholder:text-[#b1b1b1]">
-                    <button class="btn-search absolute top-0 right-0 h-full w-[50px] flex items-center justify-center text-white bg-[#028cde]" type="button" onclick="MORE_FUNCTION.showModal(this);" data-modal="modal_result"><i class="fa fa-search text-[1.25rem]" aria-hidden="true"></i></button>
+                    <input type="text" name="patient_code" placeholder="Mã bệnh án" class="form-control bg-[#f8fbfe] w-full border-[1px] border-solid border-[#dbeefa] p-3 rounded text-[#b1b1b1] placeholder:text-[#b1b1b1]">
+                    <button tyype="submit" class="btn-search absolute top-0 right-0 h-full w-[50px] flex items-center justify-center text-white bg-[#028cde]">
+                        <i class="fa fa-search text-[1.25rem]" aria-hidden="true"></i>
+                    </button>
                 </div>
             </div>
-
         </form>
     </div>
 </div>
@@ -162,27 +164,8 @@
                 Kết quả tra cứu
             </p>
             <div class="content py-6 lg:px-10">
-                <div class="box flex flex-wrap gap-1 border-[1px] border-solid border-[dceefb] rounded bg-[#f8fbfe] py-3 px-4 mb-2 ">
-                    <span class="title text-[0.875rem]">Họ và tên:</span>
-                    <span class="font-semibold text-[0.875rem] text-[#373737]">Nguyễn Văn A</span>
-                </div>
-                <div class="box flex flex-wrap gap-1 border-[1px] border-solid border-[dceefb] rounded bg-[#f8fbfe] py-3 px-4 mb-2 ">
-                    <span class="title text-[0.875rem]">Ngày tháng năm sinh:</span>
-                    <span class="font-semibold text-[0.875rem] text-[#373737]">19/05/1995</span>
-                </div>
-                <div class="box flex flex-wrap gap-1 border-[1px] border-solid border-[dceefb] rounded bg-[#f8fbfe] py-3 px-4 mb-2 ">
-                    <span class="title text-[0.875rem] whitespace-nowrap">Nội dung bệnh án:</span>
-                    <div class="result_detail img_full">
-                        <img src="theme/frontend/images/img-result-4.jpg" alt="">
-                    </div>
-                </div>
-                <div class="box flex flex-wrap gap-1 border-[1px] border-solid border-[dceefb] rounded bg-[#f8fbfe] py-3 px-4 mb-6 ">
-                    <span class="title text-[0.875rem]">Lịch hẹn</span>
-                    <span class="font-semibold text-[0.875rem] text-[#373737]">25/8/2022</span>
-                </div>
-                <a href="#" title="Đổi lịch hẹn" class=" btn-red font-bold 2xl:text-[20px] lg:text-[16px] flex w-fit mx-auto min-w-[200px] items-center justify-center  uppercase py-2 px-4 rounded-lg text-white bg-[#f43d3b] transition-all duration-300">Đổi lịch hẹn</a>
+                
             </div>
-
         </div>
     </div>
 </div>

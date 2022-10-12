@@ -33,7 +33,7 @@
                 <div class="s-content p-4 bg-[#e0f3ff] mb-6">
                     {!! Support::showContentHasGallery(Support::show($currentItem,'content'),$currentItem->imgs_template) !!}
                 </div>
-                <?php $listDevelopmentHistory = Support::jsonDecode(SettingHelper::getSetting('development_history')); ?>
+                <?php $listDevelopmentHistory = Support::jsonDecode( Support::show($currentItem,'development_history')); ?>
                 @if(count($listDevelopmentHistory) > 0)
                 <p class="title-all text-[1.25rem] font-semibold uppercase text-[#0557ac] lg:text-[1.5rem] mb-6 2xl:text-[2rem]">Lịch sử phát triển</p>
                 <div class="grid grid-cols-3 lg:gap-4 gap-2 px-10 mb-1">
@@ -49,10 +49,10 @@
                 </div>
                 @endif
                 <div class="img-map img_full mb-6">
-                    @include('image_loader.config.all',['config_key'=>'image_development_history'])
+                    @include('image_loader.all',['itemImage'=>$currentItem,'key'=>'image_development_history'])
                 </div>
                 <?php 
-                    $listContent = Support::jsonDecode(SettingHelper::getSetting('content_introduce'));
+                    $listContent = Support::jsonDecode(Support::show($currentItem,'content_introduce'));
                 ?>
                 @foreach($listContent as $item)
                 <p class="title-all text-[1.25rem] font-semibold uppercase text-[#0557ac] lg:text-[1.5rem] mb-4 2xl:text-[2rem]">{{Support::show($item,'title')}}</p>
