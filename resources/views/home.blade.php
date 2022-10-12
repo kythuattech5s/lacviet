@@ -246,9 +246,9 @@
         </span>
     </div>
 </a>
-<div id="modalRegis"  modal="" tabindex="-1" aria-hidden="true" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
+<div id="modalRegis"  modal="" tabindex="-1" aria-hidden="true" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full form-validate">
     <div class="w-full bg-white max-w-[370px] h-full md:h-auto mx-auto relative p-2 rounded-[1.25rem] border-[1px] border-solid border-[#5e8fea]">
-        <form action="" method="" class="bg-white rounded-[1.25rem] overflow-hidden shadow-[6px_8px_40px_rgba(0,0,0,.2)]">
+        <form action="{{VRoute::get('resgisterAdvise')}}" method="post" class="bg-white rounded-[1.25rem] overflow-hidden shadow-[6px_8px_40px_rgba(0,0,0,.2)] form-validate" absolute data-success="NOTIFICATION.toastrMessageRedirect" accept-charset="utf8">
             <div class="logo-modal text-center p-4">
                 <img src="theme/frontend/images/logo.png" class="inline-block" alt="">
             </div>
@@ -256,12 +256,19 @@
                 Đăng ký tư vấn
             </p>
             <div class="content py-3 px-4">
-                <input type="text" name="" placeholder="Họ tên*:" class="w-full p-3 bg-[#f2f2f2] text-[#767676] placeholder:text-[#767676] mb-2 outline-none">
-                <input type="text" name="" placeholder="Điện thoại*:" class="w-full p-3 bg-[#f2f2f2] text-[#767676] placeholder:text-[#767676] mb-2 outline-none">
-                <input type="text" name="" placeholder="Dịch vụ:" class="w-full p-3 bg-[#f2f2f2] text-[#767676] placeholder:text-[#767676] mb-2 outline-none">
-                <input type="text" name="" placeholder="Chọn khung giờ gọi lại:" class="w-full p-3 bg-[#f2f2f2] text-[#767676] placeholder:text-[#767676] mb-10 outline-none">
-
-                <button class=" btn-red inline-flex w-full items-center justify-center uppercase py-2 px-4 text-white bg-[#fb2317] transition-all duration-300 font-semibold lg:text-[22px] md:text-[18px] text-[14px] mb-3">Hoàn tất</button>
+                @csrf
+                <input type="hidden" name="type" value="1">
+                <input type="text" name="fullname" placeholder="Họ tên*:" rules="required" class="w-full p-3 bg-[#f2f2f2] text-[#767676] placeholder:text-[#767676] mb-2 outline-none">
+                <input type="text" name="phone" placeholder="Điện thoại*:" rules="required||phone" class="w-full p-3 bg-[#f2f2f2] text-[#767676] placeholder:text-[#767676] mb-2 outline-none">
+                <?php $services = App\Models\Services::act()->get(); ?>
+                <select name="service" class="w-full p-3 bg-[#f2f2f2] text-[#767676] placeholder:text-[#767676] mb-2 outline-none">
+                    <option value="">Chọn dịch vụ</option>
+                    @foreach($services as $itemService)
+                    <option value="{{Support::show($itemService,'name')}}">{{Support::show($itemService,'name')}}</option>
+                    @endforeach
+                </select>
+                <input type="text" name="time" placeholder="Nhập khung giờ gọi lại:" class="w-full p-3 bg-[#f2f2f2] text-[#767676] placeholder:text-[#767676] mb-10 outline-none">
+                <button type="submit" class=" btn-red inline-flex w-full items-center justify-center uppercase py-2 px-4 text-white bg-[#fb2317] transition-all duration-300 font-semibold lg:text-[22px] md:text-[18px] text-[14px] mb-3">Hoàn tất</button>
                 <p class="text-center font-semibold lg:text-[18px] text-[#028cde]">
                     Bác sĩ sẽ liên hệ ngay với bạn!
                 </p>

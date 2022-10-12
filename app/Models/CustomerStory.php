@@ -40,7 +40,7 @@ class CustomerStory extends BaseModel
         if ($category == null) {
             return null;
         }
-        return $category->dentalKnowledge();
+        return $category->customerStory();
     }
     public function getRelatesCollection(){
         $relate = $this->getRelates();

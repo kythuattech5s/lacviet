@@ -1218,6 +1218,7 @@ class Support
         preg_match_all('/\[(.+?)\]/', $content, $allKey);
         $allKey = $allKey[0] ?? [];
         $gallery = self::jsonDecode($gallery);
+        
         foreach ($allKey as $itemKey) {
             if (strpos($itemKey, 'gallery') !== false) {
                 $key = str_replace('[gallery=', '', $itemKey);
@@ -1248,6 +1249,21 @@ class Support
                 $listInputs = json_decode($data->content, true);
                 $form = view('path.form_detail', compact('data', 'listInputs', 'map_table', 'map_id'))->render();
                 $content = str_replace($itemKey, $form, $content);
+            }
+            if (strpos($itemKey, 'short_code') !== false) {
+                $key = str_replace('[short_code=', '', $itemKey);
+                $key = str_replace(']', '', $key);
+                $itemShortCode = DB::table('short_codes')->where('code', $key)->first();
+                $html = '';
+                if($itemShortCode != null){
+                    if(self::show($itemShortCode,'content') != ''){
+                        $html .= '<div class="content_short_code_html">'.self::show($itemShortCode,'content').'</div>';
+                    }
+                    if(self::show($itemShortCode,'content_text') != ''){
+                        $html .= '<div class="content_short_code_text">'.self::show($itemShortCode,'content_text').'</div>';
+                    }
+                }
+                $content = str_replace($itemKey, $html, $content);
             }
         }
         return $content;

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\{CustomerStory,CustomerStoryTag};
 
-class DentalKnowledgeTagController extends Controller
+class CustomerStoryTagController extends Controller
 {
     public function view($request, $route, $link)
     {
