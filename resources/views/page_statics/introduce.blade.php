@@ -31,7 +31,7 @@
                     </li>
                 </ul>
                 <div class="s-content p-4 bg-[#e0f3ff] mb-6">
-                    {!! Support::show($currentItem,'content') !!}
+                    {!! Support::showContentHasGallery(Support::show($currentItem,'content'),$currentItem->imgs_template) !!}
                 </div>
                 <?php $listDevelopmentHistory = Support::jsonDecode(SettingHelper::getSetting('development_history')); ?>
                 @if(count($listDevelopmentHistory) > 0)

@@ -1218,6 +1218,7 @@ class Support
         preg_match_all('/\[(.+?)\]/', $content, $allKey);
         $allKey = $allKey[0] ?? [];
         $gallery = self::jsonDecode($gallery);
+        
         foreach ($allKey as $itemKey) {
             if (strpos($itemKey, 'gallery') !== false) {
                 $key = str_replace('[gallery=', '', $itemKey);
