@@ -26,7 +26,6 @@ if ($lang == 'en') {
     $langSlug = '';
 }
 
-
 ?>
 
 <div class="form-group">

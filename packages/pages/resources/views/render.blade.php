@@ -18,6 +18,8 @@
             foreach ($styles as $style) {
                 $newStyle[] = '/_grapes/assets/' . $style;
             }
+            
+            $newStyle[] = '/assets/css/toastify.css';
         @endphp
         {!! vanhenry\helpers\helpers\SEOHelper::loadCSS($newStyle, 'page-custom/' . $currentItem->url . '_style.css') !!}
     @endif
@@ -28,7 +30,7 @@
 @if ($currentItem->use_header == 1)
     @include('header')
 @endif
-{!! $data['pagesHtml'][0]['html'] !!}
+{!! str_replace('__MAP_ID__', $currentItem->id, str_replace('__MAP_TABLE__', 'pages', $data['pagesHtml'][0]['html'])) !!}
 @if ($currentItem->use_footer == 1)
     @include('footer')
 @endif
@@ -38,14 +40,20 @@
         foreach ($scripts as $script) {
             $newScript[] = '/_grapes/assets/' . $script;
         }
+        $newScript[] = '/assets/js/ValidateForm.js';
+        $newScript[] = '/assets/js/toastify.js';
     @endphp
     {!! vanhenry\helpers\helpers\SEOHelper::loadJs($newScript, 'page-custom/' . $currentItem->url . '_script.js') !!}
 @endif
+<script src="/theme/frontend/asset/js/base.js" defer></script>
 <script>
     window.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('form').forEach(form => {
-            form.querySelector('[name="_token"]').value = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            if (form.querySelector('[name="_token"]')) {
+                form.querySelector('[name="_token"]').value = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            }
         });
     })
 </script>
+
 </html>
