@@ -64,6 +64,26 @@ trait InsertTrait
             return view('vh::edit.view' . $data['tableData']->get("type_show"), $data);
         }
     }
+
+    public function __insertCreateDataMapTable($id, $rs_create, $table)
+    {
+        if (!empty($rs_create) && count($rs_create) > 0) {
+            $data = request()->all();
+            $vdetail = VDetailTable::where(['parent_name' => $table, 'name' => array_key_first($rs_create)])->first();
+            $defaultData = json_decode($vdetail->default_data, true);
+            $dataCreate = [];
+            foreach ($data as $key => $value) {
+                if (in_array($key, $defaultData['field_duplicate'])) {
+                    $dataCreate[$key] = $value;
+                }
+            }
+            $tableInsert =  $defaultData['table'];
+            $dataCreate[$defaultData['field']] = reset($rs_create);
+            $dataCreate[$defaultData['field_relationship']] = $id;
+            DB::table($tableInsert)->insert($dataCreate);
+        }
+    }
+
     public function store(Request $request, $table)
     {
         $ret = $this->__insert($request, $table);
@@ -386,6 +406,14 @@ trait InsertTrait
                     unset($data[$key]);
                 }
             }
+            //tạo dữ liểu cho bảng khác
+            $rs_create = [];
+            foreach ($data as $key => $value) {
+                if (strpos($key, 'rs_create_') === 0) {
+                    $rs_create[$key] = $value;
+                    unset($data[$key]);
+                }
+            }
 
             $form_contacts = [];
             foreach ($data as $key => $value) {
@@ -435,7 +463,10 @@ trait InsertTrait
 
             if ($_id > 0) {
                 $this->__insertPivots($_id, $pivots, $table->table_map);
-                $this->__insertContact($_id, $form_contacts, $table->table_map);
+                if(count($form_contacts) > 0){
+                    $this->__insertContact($_id, $form_contacts, $table->table_map);
+                }
+                $this->__insertCreateDataMapTable($_id, $rs_create, $table->table_map);
                 /*insert translation table*/
                 if (isset($transData)) {
                     $t = $this->__insertTranslationTable($table, $transTable, $transData, $_id);
@@ -514,6 +545,7 @@ trait InsertTrait
     private function __insertContact($itemId, $pivots, $table)
     {
         foreach ($pivots as $key => $pivot) {
+            if(!is_array($pivot) && $pivot == null) continue;
             $vdetail = VDetailTable::where(['parent_name' => $table, 'name' => $key])->first();
             if ($vdetail == null) {
                 continue;
