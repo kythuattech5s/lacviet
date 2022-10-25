@@ -14,7 +14,7 @@
 
     <base href="{{ url('/') }}">
 
-    <link rel="alternate" href="{{ url()->current() }}" hreflang="vi-vn" />
+    <link rel="alternate" href="{{ url()->current() }}" hreflang="vi-vn"/>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
