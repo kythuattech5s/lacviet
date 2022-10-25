@@ -114,12 +114,12 @@
         <img src="theme/frontend/images/Calendar.svg" class="inline-block mr-1 w-5 h-5 object-contain brightnes-[100]" alt="icon">
         Đặt lịch
     </a>
-    <a href="#" title="" class="link text-center leading-[1.1] inline-flex items-center justify-center flex-1 text-white rounded-t-xl py-2 px-4 bg-[#028cde]">
+    <a href="#" title="" class="link show-widget text-center leading-[1.1] inline-flex items-center justify-center flex-1 text-white rounded-t-xl py-2 px-4 bg-[#028cde]">
         <img src="theme/frontend/images/icon-3.png" class="inline-block mr-1 w-5 h-5 object-contain brightnes-[100]" alt="icon">
         Chat ngay
     </a>
 </div>
-<ul class="widget fixed bottom-[10%] right-[2%] z-10 block lg:hidden">
+<ul class="widget fixed bottom-[10%] right-[2%] z-10 hidden">
     <li class="mb-2 last:mb-0">
         <a href="" title="" target="_blank " class="block w-10 h-10 rounded-full overflow-hidden shadow-[0_4px_10px_rgba(0,0,0,.3)]">
             <img src="theme/frontend/images/chat.png" class="w-full h-full" alt="chat">

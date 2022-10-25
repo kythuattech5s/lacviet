@@ -398,11 +398,12 @@ a:focus {
     position: relative;
 }
 
-.breadcrumb li span {
+.breadcrumb li:last-child a {
     color: #252525;
+    pointer-events: none;
 }
 
-.breadcrumb li a::after {
+.breadcrumb li:not(:last-child) a::after {
     content: "\f105";
     font-family: "fontAwesome";
     margin: 0 8px;
@@ -1116,6 +1117,9 @@ body {
 }
 
 @media (max-width: 1023px) {
+    .widget.active{
+        display: block !important;
+    }
     .h-lang a {
         width: 40px;
         height: 40px;

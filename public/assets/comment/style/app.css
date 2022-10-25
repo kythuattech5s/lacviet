@@ -3276,12 +3276,12 @@ video {
     width: 2.5rem;
   }
 
-  .lg\:w-\[150px\] {
-    width: 150px;
-  }
-
   .lg\:w-\[330px\] {
     width: 330px;
+  }
+
+  .lg\:w-\[150px\] {
+    width: 150px;
   }
 
   .lg\:w-6 {

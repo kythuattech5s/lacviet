@@ -16,23 +16,23 @@
                 @csrf
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div class="col-span-1">
-                        <input type="text" name="fullname" placeholder="Họ và tên (*)" class="form-control bg-white lg:p-3 px-3 py-2 rounded-xl w-full border-[1px] border-solid border-[#e0eaf0]" rules="required">
+                        <input type="text" name="fullname" placeholder="Họ và tên (*)" class="form-control bg-white lg:p-3 px-3 py-2 lg:rounded-xl rounded-lg w-full border-[1px] border-solid border-[#e0eaf0]" rules="required">
                     </div>
                     <div class="col-span-1">
-                        <input type="text" name="phone" placeholder="Số điện thoại (*)" class="form-control bg-white lg:p-3 px-3 py-2 rounded-xl w-full border-[1px] border-solid border-[#e0eaf0]" rules="required||phone">
+                        <input type="text" name="phone" placeholder="Số điện thoại (*)" class="form-control bg-white lg:p-3 px-3 py-2 lg:rounded-xl rounded-lg w-full border-[1px] border-solid border-[#e0eaf0]" rules="required||phone">
                     </div>
                 </div>
-                <input type="text" name="email" placeholder="Email" class="form-control bg-white lg:p-3 px-3 py-2 rounded-xl w-full border-[1px] border-solid border-[#e0eaf0] mb-4">
+                <input type="text" name="email" placeholder="Email" class="form-control bg-white lg:p-3 px-3 py-2 lg:rounded-xl rounded-lg w-full border-[1px] border-solid border-[#e0eaf0] mb-4">
                 <div class="flex items-center gap-4 mb-4">
                 <span class="title whitespace-nowrap">Dịch vụ cần tư vấn: </span>
-                    <select name="service" class="flex-1 text-center form-control bg-white lg:p-3 px-3 py-2 rounded-xl w-full border-[1px] border-solid border-[#e0eaf0]">
+                    <select name="service" class="flex-1 text-center form-control bg-white lg:p-3 px-3 py-2 lg:rounded-xl rounded-lg w-full border-[1px] border-solid border-[#e0eaf0]">
                         <option value="">--Vui lòng chọn dịch vụ--</option>
                         @foreach (\App\Models\Services::act()->get() as $item)
                         <option value="{{$item->id}}" {{isset(request()->service) && request()->service == $item->id ? 'selected':''}}>{{$item->name}}</option>
                         @endforeach
                     </select>
                 </div>
-                <textarea class="form-control bg-white lg:p-3 px-3 py-2 rounded-xl w-full border-[1px] border-solid border-[#e0eaf0] min-h-[100px] resize-none mb-4" name="note" placeholder="Ghi chú"></textarea>
+                <textarea class="form-control bg-white lg:p-3 px-3 py-2 lg:rounded-xl rounded-lg w-full border-[1px] border-solid border-[#e0eaf0] min-h-[100px] resize-none mb-4" name="note" placeholder="Ghi chú"></textarea>
                 <button type="submit" class="btn-red flex w-fit mx-auto font-semibold items-center justify-center lg:text-[0.875rem] uppercase py-1 lg:py-2 px-6 rounded-lg lg:rounded-2xl text-white bg-[#fb2317] transition-all duration-300 lg:shadow-[0_6px_8px_rgba(0,0,0,.17)] lg:mb-4 mb-1">Đăng ký ngay</button>
                 <p class="text-note text-center text-[#fc0c0f] italic font-semibold">
                     Tư vấn trực tiếp 24/7: <a href="tel:{[hotline]}" title="Hotline">{[hotline]}</a>
