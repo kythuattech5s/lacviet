@@ -1000,6 +1000,12 @@ video {
 .h-\[9px\] {
   height: 9px;
 }
+.h-\[55px\] {
+  height: 55px;
+}
+.h-\[65px\] {
+  height: 65px;
+}
 .min-h-\[80px\] {
   min-height: 80px;
 }
@@ -1103,6 +1109,15 @@ video {
 .min-w-\[160px\] {
   min-width: 160px;
 }
+.min-w-\[55px\] {
+  min-width: 55px;
+}
+.min-w-\[60px\] {
+  min-width: 60px;
+}
+.min-w-\[65px\] {
+  min-width: 65px;
+}
 .max-w-\[600px\] {
   max-width: 600px;
 }
@@ -1156,6 +1171,12 @@ video {
 }
 .max-w-\[900px\] {
   max-width: 900px;
+}
+.max-w-\[700px\] {
+  max-width: 700px;
+}
+.max-w-\[480px\] {
+  max-width: 480px;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -1687,6 +1708,10 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(247 247 247 / var(--tw-bg-opacity));
 }
+.bg-\[\#b4b4b4\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(180 180 180 / var(--tw-bg-opacity));
+}
 .bg-gradient-to-b {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
@@ -2055,6 +2080,9 @@ video {
 .text-\[1\.3rem\] {
   font-size: 1.3rem;
 }
+.text-\[20px\] {
+  font-size: 20px;
+}
 .font-bold {
   font-weight: 700;
 }
@@ -2282,6 +2310,14 @@ video {
 .text-gray-700 {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+.text-\[\#985031\] {
+  --tw-text-opacity: 1;
+  color: rgb(152 80 49 / var(--tw-text-opacity));
+}
+.text-\[\#c28d43\] {
+  --tw-text-opacity: 1;
+  color: rgb(194 141 67 / var(--tw-text-opacity));
 }
 .underline {
   text-decoration-line: underline;
@@ -2940,6 +2976,11 @@ html {
   background-color: rgb(5 87 172 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-\[\#c28d43\]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(194 141 67 / var(--tw-bg-opacity));
+}
+
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -3332,6 +3373,10 @@ html {
   .md\:text-\[1\.25rem\] {
     font-size: 1.25rem;
   }
+
+  .md\:text-\[25px\] {
+    font-size: 25px;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -3531,6 +3576,10 @@ html {
     height: 2.25rem;
   }
 
+  .lg\:h-\[65px\] {
+    height: 65px;
+  }
+
   .lg\:max-h-\[590px\] {
     max-height: 590px;
   }
@@ -3602,6 +3651,10 @@ html {
   .lg\:min-w-fit {
     min-width: -moz-fit-content;
     min-width: fit-content;
+  }
+
+  .lg\:min-w-\[65px\] {
+    min-width: 65px;
   }
 
   .lg\:flex-1 {
@@ -3686,6 +3739,10 @@ html {
 
   .lg\:rounded-xl {
     border-radius: 0.75rem;
+  }
+
+  .lg\:rounded-\[2\.5rem\] {
+    border-radius: 2.5rem;
   }
 
   .lg\:rounded-t-\[1\.875rem\] {
@@ -3956,6 +4013,10 @@ html {
 
   .lg\:text-\[1\.4rem\] {
     font-size: 1.4rem;
+  }
+
+  .lg\:text-\[38px\] {
+    font-size: 38px;
   }
 
   .lg\:font-semibold {

@@ -920,6 +920,19 @@ body {
 .form-comment__box {
     display: block !important;
 }
+.section-booking .main-img img{
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+.section-booking .title-gradient{
+    background: radial-gradient(circle, #FFF8C4, #B77E41);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
 @media (min-width: 992px) {
     .container {
         max-width: 992px;

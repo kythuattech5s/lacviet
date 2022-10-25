@@ -28,6 +28,7 @@
     <div class="button-banner banner-next 2xl:w-20 2xl:h-20 lg:h-14 lg:w-14 h-10 w-10 rounded-full hidden lg:flex items-center justify-center absolute top-1/2 -translate-y-1/2 z-[1] cursor-pointer right-[5%] border-[1px] border-solid border-[#fff] text-[2.5rem] text-white transition-all duration-300 hover:bg-white hover:text-[#252525]">
         <i class="fa fa-angle-right" aria-hidden="true"></i>
     </div>
+
 </div>
 <section class="py-6 lg:py-14 2xl:py-20">
     <div class="container">
@@ -232,6 +233,63 @@
     </div>
 </section>
 @endif
+@if(isset($_GET ['test']))
+<section class="section-booking 2xl:py-10 py-6 bg-no-repeat bg-cover" style="background-image: url(theme/frontend/images/back-20210723095120.jpg);">
+    <div class="container">
+        <div class="module-content max-w-[700px] mx-auto">
+            <div class="main-img text-center">
+                <img src="theme/frontend/images/2-20210723095120.png" alt="">
+            </div>
+            <div class="box-content bg-no-repeat bg-cover lg:rounded-[2.5rem] rounded-3xl overflow-hidden lg:p-8 p-4" style="background-image: url(theme/frontend/images/background1-20210723080452.jpg);">
+                <p class="title title-gradient text-center 2xl:text-[1.875rem] lg:text-[1.5rem] text-[1.25rem] uppercase font-semibold mb-2">
+                    ĐẶT LỊCH KHÁM MIỄN PHÍ CÙNG CHUYÊN GIA
+                </p>
+                <p class="text-center lg:text-[1.125rem] uppercase text-white mb-4">
+                    NHẬN ƯU ĐÃI ĐẾN <span class="title-gradient lg:text-[38px] md:text-[25px] text-[20px]">40%</span>
+                    Trả góp
+                    <span class="title-gradient lg:text-[38px] md:text-[25px] text-[20px]">0%</span>
+                </p>
+                <div class="time-countdown text-center mb-4" data-start="2022-10-07 00:00:00" data-end="2022-10-27 00:00:00">
+                    <div class="item inline-flex flex-col items-center justify-center lg:min-w-[65px] lg:h-[65px] w-10 h-10 rounded bg-[#b4b4b4] text-center lg:mr-4 mr-2 last:mr-0">
+                        <span class="block text-[#985031] font-semibold lg:text-[1.5rem] text-[1rem]" id="day">2</span>
+                        <span class="text text-white">Ngày</span>
+                    </div>
+                    <div class="item inline-flex flex-col items-center justify-center lg:min-w-[65px] lg:h-[65px] w-10 h-10 rounded bg-[#b4b4b4] text-center lg:mr-4 mr-2 last:mr-0">
+                        <span class="block text-[#985031] font-semibold lg:text-[1.5rem] text-[1rem]" id="hours">2</span>
+                        <span class="text text-white">Giờ</span>
+                    </div>
+                    <div class="item inline-flex flex-col items-center justify-center lg:min-w-[65px] lg:h-[65px] w-10 h-10 rounded bg-[#b4b4b4] text-center lg:mr-4 mr-2 last:mr-0">
+                        <span class="block text-[#985031] font-semibold lg:text-[1.5rem] text-[1rem]" id="minutes">2</span>
+                        <span class="text text-white">Phút</span>
+                    </div>
+                    <div class="item inline-flex flex-col items-center justify-center lg:min-w-[65px] lg:h-[65px] w-10 h-10 rounded bg-[#b4b4b4] text-center lg:mr-4 mr-2 last:mr-0">
+                        <span class="block text-[#985031] font-semibold lg:text-[1.5rem] text-[1rem]" id="seconds">2</span>
+                        <span class="text text-white">Giây</span>
+                    </div>
+                </div>
+                <form action="" method="" class="form max-w-[480px] mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="col-span-1">
+                            <input type="text" name="" placeholder="Họ và tên" class="form-control w-full py-2 px-4 border-[1px] border-solid border-[#ebebeb] outline-none">
+                        </div>
+                        <div class="col-span-1">
+                            <input type="text" name="" placeholder="Số điện thoại" class="form-control w-full py-2 px-4 border-[1px] border-solid border-[#ebebeb] outline-none">
+                        </div>
+                        <div class="col-span-1 md:col-span-2">
+                            <select class="form-control w-full py-2 px-4 border-[1px] border-solid border-[#ebebeb] outline-none">
+                                <option>Chọn dịch vụ</option>
+                            </select>
+                        </div>
+                        <div class="col-span 1 md:col-span-2 text-center">
+                            <button class="btn bg-white text-[#c28d43] py-2 px-4 inline-flex items-center justify-center hover:bg-[#c28d43] hover:text-white">Đăng ký ngay</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
 <a href="javascript:void(0)" title="Yêu cầu gọi lại" onclick="MORE_FUNCTION.showModal(this);" data-modal="modalRegis" class="callback hidden lg:flex items-center fixed top-1/2 right-[10px] z-10 -translate-y-1/2">
     <div class="box bg-[#028cde] p-2 2xl:w-20 2xl:h-20 w-16 h-16 rounded-full overflow-hidden shrink-0">
         <span class="ava block w-full h-full rounded-full bg-white overflow-hidden">
@@ -245,9 +303,9 @@
         </span>
     </div>
 </a>
-<div id="modalRegis"  modal="" tabindex="-1" aria-hidden="true" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full form-validate">
+<div id="modalRegis" modal="" tabindex="-1" aria-hidden="true" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
     <div class="w-full bg-white max-w-[370px] h-full md:h-auto mx-auto relative p-2 rounded-[1.25rem] border-[1px] border-solid border-[#5e8fea]">
-        <form action="{{VRoute::get('resgisterAdvise')}}" method="post" class="bg-white rounded-[1.25rem] overflow-hidden shadow-[6px_8px_40px_rgba(0,0,0,.2)] form-validate" absolute data-success="NOTIFICATION.toastrMessageRedirect" accept-charset="utf8">
+        <form action="" method="" class="bg-white rounded-[1.25rem] overflow-hidden shadow-[6px_8px_40px_rgba(0,0,0,.2)]">
             <div class="logo-modal text-center p-4">
                 <img src="theme/frontend/images/logo.png" class="inline-block" alt="">
             </div>
@@ -255,19 +313,12 @@
                 Đăng ký tư vấn
             </p>
             <div class="content py-3 px-4">
-                @csrf
-                <input type="hidden" name="type" value="1">
-                <input type="text" name="fullname" placeholder="Họ tên*:" rules="required" class="w-full p-3 bg-[#f2f2f2] text-[#767676] placeholder:text-[#767676] mb-2 outline-none">
-                <input type="text" name="phone" placeholder="Điện thoại*:" rules="required||phone" class="w-full p-3 bg-[#f2f2f2] text-[#767676] placeholder:text-[#767676] mb-2 outline-none">
-                <?php $services = App\Models\Services::act()->get(); ?>
-                <select name="service" class="w-full p-3 bg-[#f2f2f2] text-[#767676] placeholder:text-[#767676] mb-2 outline-none">
-                    <option value="">Chọn dịch vụ</option>
-                    @foreach($services as $itemService)
-                    <option value="{{Support::show($itemService,'name')}}">{{Support::show($itemService,'name')}}</option>
-                    @endforeach
-                </select>
-                <input type="text" name="time" placeholder="Nhập khung giờ gọi lại:" class="w-full p-3 bg-[#f2f2f2] text-[#767676] placeholder:text-[#767676] mb-10 outline-none">
-                <button type="submit" class=" btn-red inline-flex w-full items-center justify-center uppercase py-2 px-4 text-white bg-[#fb2317] transition-all duration-300 font-semibold lg:text-[22px] md:text-[18px] text-[14px] mb-3">Hoàn tất</button>
+                <input type="text" name="" placeholder="Họ tên*:" class="w-full p-3 bg-[#f2f2f2] text-[#767676] placeholder:text-[#767676] mb-2 outline-none">
+                <input type="text" name="" placeholder="Điện thoại*:" class="w-full p-3 bg-[#f2f2f2] text-[#767676] placeholder:text-[#767676] mb-2 outline-none">
+                <input type="text" name="" placeholder="Dịch vụ:" class="w-full p-3 bg-[#f2f2f2] text-[#767676] placeholder:text-[#767676] mb-2 outline-none">
+                <input type="text" name="" placeholder="Chọn khung giờ gọi lại:" class="w-full p-3 bg-[#f2f2f2] text-[#767676] placeholder:text-[#767676] mb-10 outline-none">
+
+                <button class=" btn-red inline-flex w-full items-center justify-center uppercase py-2 px-4 text-white bg-[#fb2317] transition-all duration-300 font-semibold lg:text-[22px] md:text-[18px] text-[14px] mb-3">Hoàn tất</button>
                 <p class="text-center font-semibold lg:text-[18px] text-[#028cde]">
                     Bác sĩ sẽ liên hệ ngay với bạn!
                 </p>
