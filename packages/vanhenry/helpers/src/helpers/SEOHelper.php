@@ -5,6 +5,7 @@ use vanhenry\helpers\helpers\FCHelper;
 use vanhenry\helpers\helpers\StringHelper;
 use vanhenry\helpers\helpers\SettingHelper;
 use Session;
+use Support;
 use vanhenry\manager\helpers\CT;
 class SEOHelper{
 	public static function showBreadcrumb($currentItem, $itemTable,$itemRoutes) {
@@ -29,7 +30,7 @@ class SEOHelper{
 						$q=$q->where('id',$parent);
 						$arr=$q->get();
 						if(count($arr)>0) {
-							$br.='<li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="'.$FCHelper::er($arr[0],'slug').'"><span itemprop="title">'.FCHelper::er($arr[0],'name').'</span></a></li>';
+							$br.='<li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="'.FCHelper::er($arr[0],'slug').'"><span itemprop="title">'.FCHelper::er($arr[0],'name').'</span></a></li>';
 						} else {
 							break;
 						}
@@ -259,11 +260,11 @@ class SEOHelper{
         if ($isInline) {
             echo '<style type="text/css">' . file_get_contents(public_path($file)) . '</style>';
         } else {
-            echo '<link rel="stylesheet" type="text/css" href="' . asset($file) . '">';
+            echo '<link rel="stylesheet" type="text/css" href="' . Support::asset($file) . '">';
         }
     }
 
-    public static function loadJs($files, $file = "theme/frontend/js/script_chunk.min.js", $isInline = false)
+    public static function loadJs($files, $file = "theme/frontend/js/script_chunk.min.js", $isInline = false, $type = '')
     {
         set_time_limit(0);
         $minifyTime = 0;
@@ -289,7 +290,8 @@ class SEOHelper{
          if ($isInline) {
             echo '<script defer>'.file_get_contents(asset($file)).'</script>';
         } else {
-            echo '<script src="' . asset($file) . '" defer></script>';
+
+            echo '<script  src="' . Support::asset($file) . ' "' . $type . ' defer></script>';
         }
     }
 }
