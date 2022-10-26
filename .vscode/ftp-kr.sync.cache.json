@@ -1,0 +1,403 @@
+{
+  "ftp://lacviet@lacviet.tech5s.net": {
+    ".bash_history": {
+      "type": "-",
+      "size": 542,
+      "lmtime": 0,
+      "modified": false
+    },
+    ".bash_logout": {
+      "type": "-",
+      "size": 18,
+      "lmtime": 0,
+      "modified": false
+    },
+    ".bash_profile": {
+      "type": "-",
+      "size": 193,
+      "lmtime": 0,
+      "modified": false
+    },
+    ".bashrc": {
+      "type": "-",
+      "size": 426,
+      "lmtime": 0,
+      "modified": false
+    },
+    ".cache": {},
+    ".config": {},
+    ".local": {},
+    ".php": {},
+    ".shadow": {
+      "type": "-",
+      "size": 98,
+      "lmtime": 0,
+      "modified": false
+    },
+    "Maildir": {},
+    "domains": {
+      "lacviet.tech5s.net": {
+        "public_html": {
+          ".editorconfig": {
+            "type": "-",
+            "size": 220,
+            "lmtime": 0,
+            "modified": false
+          },
+          ".env": {
+            "type": "-",
+            "size": 1044,
+            "lmtime": 0,
+            "modified": false
+          },
+          ".env.example": {
+            "type": "-",
+            "size": 811,
+            "lmtime": 0,
+            "modified": false
+          },
+          ".gitattributes": {
+            "type": "-",
+            "size": 111,
+            "lmtime": 0,
+            "modified": false
+          },
+          ".gitignore": {
+            "type": "-",
+            "size": 191,
+            "lmtime": 0,
+            "modified": false
+          },
+          ".htaccess": {
+            "type": "-",
+            "size": 567,
+            "lmtime": 0,
+            "modified": false
+          },
+          ".styleci.yml": {
+            "type": "-",
+            "size": 181,
+            "lmtime": 0,
+            "modified": false
+          },
+          "README.md": {
+            "type": "-",
+            "size": 3780,
+            "lmtime": 0,
+            "modified": false
+          },
+          "_ide_helper.php": {
+            "type": "-",
+            "size": 784683,
+            "lmtime": 0,
+            "modified": false
+          },
+          "app": {
+            "Http": {
+              "Controllers": {
+                "BodyLookupController.php": {
+                  "type": "-",
+                  "size": 923,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "CommentController.php": {
+                  "type": "-",
+                  "size": 8357,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "Controller.php": {
+                  "type": "-",
+                  "size": 578,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "CrawlController.php": {
+                  "type": "-",
+                  "size": 502,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "CronImgController.php": {
+                  "type": "-",
+                  "size": 3482,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "CronMailController.php": {
+                  "type": "-",
+                  "size": 1649,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "CustomerStoryCategoryController.php": {
+                  "type": "-",
+                  "size": 1365,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "CustomerStoryController.php": {
+                  "type": "-",
+                  "size": 1852,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "CustomerStoryTagController.php": {
+                  "type": "-",
+                  "size": 575,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "DentalKnowledgeCategoryController.php": {
+                  "type": "-",
+                  "size": 1387,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "DentalKnowledgeController.php": {
+                  "type": "-",
+                  "size": 1854,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "DentalKnowledgeTagController.php": {
+                  "type": "-",
+                  "size": 611,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "DiseaseLookupController.php": {
+                  "type": "-",
+                  "size": 938,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "DoctorController.php": {
+                  "type": "-",
+                  "size": 920,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "DrugLookupController.php": {
+                  "type": "-",
+                  "size": 923,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "FileGalleryCategoryController.php": {
+                  "type": "-",
+                  "size": 961,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "FileGalleryController.php": {
+                  "type": "-",
+                  "size": 673,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "HomeController.php": {
+                  "type": "-",
+                  "size": 3511,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "ImageGalleryCategoryController.php": {
+                  "type": "-",
+                  "size": 970,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "ImageGalleryController.php": {
+                  "type": "-",
+                  "size": 680,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "MedicalRecordLookupController.php": {
+                  "type": "-",
+                  "size": 1933,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "NewsCategoryController.php": {
+                  "type": "-",
+                  "size": 1237,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "NewsController.php": {
+                  "type": "-",
+                  "size": 1745,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "NewsTagController.php": {
+                  "type": "-",
+                  "size": 544,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "PageStaticController.php": {
+                  "type": "-",
+                  "size": 559,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "QuestionCategoryController.php": {
+                  "type": "-",
+                  "size": 871,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "QuestionController.php": {
+                  "type": "-",
+                  "size": 1629,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "RegisterInfoController.php": {
+                  "type": "-",
+                  "size": 1229,
+                  "lmtime": 1666772166810,
+                  "modified": false
+                },
+                "ServiceCategoryController.php": {
+                  "type": "-",
+                  "size": 726,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "ServiceController.php": {
+                  "type": "-",
+                  "size": 747,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "SpecialistCategoryController.php": {
+                  "type": "-",
+                  "size": 595,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "SpecialistController.php": {
+                  "type": "-",
+                  "size": 898,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "StaticController.php": {
+                  "type": "-",
+                  "size": 21034,
+                  "lmtime": 1666776225211,
+                  "modified": false
+                },
+                "VideoGalleryCategoryController.php": {
+                  "type": "-",
+                  "size": 1016,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "VideoGalleryController.php": {
+                  "type": "-",
+                  "size": 682,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "simple_html_dom.php": {
+                  "type": "-",
+                  "size": 59254,
+                  "lmtime": 0,
+                  "modified": false
+                }
+              }
+            }
+          },
+          "artisan": {
+            "type": "-",
+            "size": 1686,
+            "lmtime": 0,
+            "modified": false
+          },
+          "bootstrap": {},
+          "composer.json": {
+            "type": "-",
+            "size": 2934,
+            "lmtime": 0,
+            "modified": false
+          },
+          "composer.lock": {
+            "type": "-",
+            "size": 379693,
+            "lmtime": 0,
+            "modified": false
+          },
+          "composer.phar": {
+            "type": "-",
+            "size": 2258604,
+            "lmtime": 0,
+            "modified": false
+          },
+          "config": {},
+          "database": {},
+          "package.json": {
+            "type": "-",
+            "size": 473,
+            "lmtime": 0,
+            "modified": false
+          },
+          "packages": {},
+          "phpunit.xml": {
+            "type": "-",
+            "size": 1202,
+            "lmtime": 0,
+            "modified": false
+          },
+          "public": {},
+          "resources": {
+            "views": {
+              "index.blade.php": {
+                "type": "-",
+                "size": 3815,
+                "lmtime": 1666776032344,
+                "modified": false
+              }
+            }
+          },
+          "routes": {},
+          "server.php": {
+            "type": "-",
+            "size": 563,
+            "lmtime": 0,
+            "modified": false
+          },
+          "storage": {},
+          "tailwind.config.js": {
+            "type": "-",
+            "size": 662,
+            "lmtime": 0,
+            "modified": false
+          },
+          "tests": {},
+          "vendor": {},
+          "webpack.mix.js": {
+            "type": "-",
+            "size": 293,
+            "lmtime": 0,
+            "modified": false
+          }
+        }
+      }
+    },
+    "imap": {},
+    "public_html": {
+      "type": "l",
+      "size": 40,
+      "lmtime": 0,
+      "modified": false
+    },
+    "tmp": {}
+  },
+  "$version": 1
+}
