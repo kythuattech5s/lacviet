@@ -25,6 +25,7 @@ class RegisterInfoController extends Controller
             "Email" => "email",
             "Số_điện_thoại" => "phone",
             "Ghi_chú" => "note",
+            "Dịch_vụ" => "service_text",
         ];
         $params = [];
         foreach ($inputs as $k => $input) {

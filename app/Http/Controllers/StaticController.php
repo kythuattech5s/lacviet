@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Support;
-use App\Models\{News, ServiceCategory, Specialist, Doctor, RegisterAdvise, BookApointment, BookApointmentDoctor, TimePick, Question, QueueEmail, DrugLookup, BodyLookup, DiseaseLookup};
+use App\Models\{News, ServiceCategory, Specialist, Doctor, RegisterAdvise, BookApointment, BookApointmentDoctor, TimePick, Question, QueueEmail, DrugLookup, BodyLookup, DiseaseLookup, QuestionCategory};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
@@ -393,6 +393,15 @@ class StaticController extends Controller
             'is_static' => 0,
         );
         \DB::table('v_routes')->insert($dataRoutes);
+
+        $questionCategory = QuestionCategory::find((int)$request->input('parent'))->get()->first();
+        $questionCategory = $questionCategory != null ? $questionCategory->name : "Không xác định";
+
+        $data['fullname'] = $request->input('fullname');
+        $data['phone'] = $request->input('phone');
+        $data['email'] = $request->input('email');
+        $data['content'] = "Chuyên khoa:" . $questionCategory . " - Tuổi: " . $request->input('age') . " - " . "Ghi chú :" . $request->input('note');
+        Support::sentFormGoogleSheet($data,"Đặt câu hỏi");
         return \Support::response([
             'code' => 200,
             'message' => 'Gửi câu hỏi thành công',

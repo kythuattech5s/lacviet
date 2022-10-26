@@ -1,0 +1,16 @@
+{
+    "host": "lacviet.tech5s.net",
+    "username": "lacviet",
+    "password": "x7yx4V0nGBwkQCaM",
+    "remotePath": "/domains/lacviet.tech5s.net/public_html",
+    "protocol": "ftp",
+    "port": 0,
+    "fileNameEncoding": "utf8",
+    "autoUpload": true,
+    "autoDelete": false,
+    "autoDownload": false,
+    "ignore": [
+        ".git",
+        "/.vscode"
+    ]
+}
