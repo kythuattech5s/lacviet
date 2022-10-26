@@ -71,10 +71,10 @@ var NOTIFICATION = {
     },
     showNotifyWhenLoadPage() {
         if (
-            typeNotify != "undefined" &&
+            typeof typeNotify != "undefined" &&
             typeNotify != undefined &&
             typeNotify != "" &&
-            messageNotify != "undefined" &&
+            typeof messageNotify != "undefined" &&
             messageNotify != undefined &&
             messageNotify != ""
         ) {

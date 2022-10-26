@@ -434,7 +434,7 @@ var COMMENT = (function () {
             }
         }
         var main = document.querySelector(".comment-box__list");
-        if (main.querySelectorAll(".comment-item").length == 9) {
+        if (main.querySelectorAll(".comment-item").length == 0) {
             main.innerHTML = "";
         }
         // Kiểm tra có lastPage

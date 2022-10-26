@@ -6,8 +6,17 @@ $default_code = FCHelper::er($table, 'default_code');
 $default_code = json_decode($default_code, true);
 $default_code = @$default_code ? $default_code : [];
 $value = '';
+$checkNameCoppy = false;
 if ($actionType == 'edit' || $actionType == 'copy') {
-    $value = FCHelper::er($dataItem, $name);
+    if ($name != 'price' && $name != 'price_sale') {
+        $value = FCHelper::er($dataItem, $name);
+    } else {
+        $value = $dataItem->$name;
+    }
+
+    if ($actionType == 'copy') {
+        $checkNameCoppy = true;
+    }
 }
 $id = $dataItem->id ?? null;
 $lang = \Session::get('_table_lang') != null ? \Session::get('_table_lang')[array_key_first(\Session::get('_table_lang'))] : Config::get('app.locale_origin');
@@ -16,6 +25,7 @@ if ($lang == 'en') {
 } else {
     $langSlug = '';
 }
+
 ?>
 
 <div class="form-group">

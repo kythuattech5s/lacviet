@@ -582,6 +582,14 @@ trait EditTrait
                 }
             }
 
+            $rs_create = [];
+            foreach ($data as $key => $value) {
+                if (strpos($key, 'rs_create_') === 0) {
+                    $rs_create[$key] = $value;
+                    unset($data[$key]);
+                }
+            }
+
             if ($table->table_map == 'combos') {
                 $data['start_at'] = date('Y-m-d H:i:s', strtotime($data['start_at']));
                 $data['expired_at'] = date('Y-m-d H:i:s', strtotime($data['expired_at']));
@@ -591,6 +599,7 @@ trait EditTrait
             if ($ret >= 0) {
                 $this->__updatePivots($data['id'], $pivots, $table->table_map);
                 $this->__updateFormContact($data['id'], $form_contacts, $table->table_map);
+                $this->__updateDataMapTable($data['id'], $rs_create, $table->table_map);
                 $this->_updateOutRefernce($table->table_map, $outs, $id);
                 \Event::dispatch('vanhenry.manager.update_normal.success', array($table, $data, $injects, $id, $oldData));
                 return 200;
@@ -601,6 +610,30 @@ trait EditTrait
             return 100;
         }
     }
+
+    public function __updateDataMapTable($id, $rs_create, $table){
+        if(!empty($rs_create) && count($rs_create) > 0){
+            $data = request()->all();
+            $vdetail = VDetailTable::where(['parent_name' => $table, 'name' => array_key_first($rs_create)])->first();
+            $defaultData = json_decode($vdetail->default_data, true);
+            $dataCreate = [];
+            foreach($data as $key => $value){
+                if(in_array($key,$defaultData['field_duplicate'])){
+                    $dataCreate[$key] = $value;
+                }
+            }
+            $tableInsert =  $defaultData['table'];
+            $dataCreate[$defaultData['field']] = reset($rs_create);
+            $dataCreate[$defaultData['field_relationship']] = $id;
+            $dataOld = DB::table($tableInsert)->where($defaultData['field_relationship'],$id)->first();
+            if($dataOld !== null){
+                DB::table($tableInsert)->where($defaultData['field_relationship'],$id)->update($dataCreate);
+            }else{
+                DB::table($tableInsert)->insert($dataCreate);
+            }
+        }
+    }
+
     private function __updateTranslationTable($table, $data, $map_id, $langChoose = 'vi')
     {
         $transTable = \FCHelper::getTranslationTable($table->table_map);

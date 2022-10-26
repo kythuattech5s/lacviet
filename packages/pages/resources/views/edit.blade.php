@@ -16,7 +16,12 @@
 <body data-id="{-currentItem.id-}">
     <div id="navbar" class="sidenav show bg-[#2e3037] fixed !top-[41px] z-[100] flex h-[100vh] w-[15%] translate-x-[-100%] flex-col scrollbar-hide overflow-scroll overflow-x-hidden border-r border-r-black shadow-md transition-all duration-200">
         <nav class="navbar navbar-custom navbar-light sticky top-0 z-[1000] flex items-center justify-between bg-white px-3 py-2">
-            <span class="navbar-brand  h3 logo mb-0 p-2 font-bold text-black">{-currentItem.name-}</span>
+            <div class="flex items-center gap-2">
+                <a href="{{url('esystem/view/pages')}}" title="Quay lại quản trị page">
+                    <i class="fa-solid fa-right-from-bracket text-red-400"></i>
+                </a>
+                <span class="navbar-brand  h3 logo mb-0 p-2 font-bold text-black">{-currentItem.name-}</span>
+            </div>
             <a class="text-green-500" href="/{-currentItem.slug-}" title="Xem trang" target="_blank"><i class="fa-solid fa-up-right-from-square"></i></a>
         </nav>
         <div class="action-block">

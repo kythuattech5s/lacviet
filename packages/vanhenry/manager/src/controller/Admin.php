@@ -163,7 +163,7 @@ class Admin extends BaseAdminController
             $filterShow = DetailTableHelper::filterDataShow($tableDetailData, $force);
             $fieldSelect = array();
             $filterShow = $filterShow->filter(function ($v, $k) {
-                return !\Str::startsWith($v->name, 'pivot_') && !\Str::startsWith($v->name, 'form_contact') && !\Str::startsWith($v->name, 'rs_create_order_rating');
+                return !\Str::startsWith($v->name, 'pivot_') && !\Str::startsWith($v->name, 'form_contact') && !\Str::startsWith($v->name, 'rs_create_');
             });
             foreach ($filterShow as $key => $value) {
                 array_push($fieldSelect, $value->parent_name.'.'.$value->name);
@@ -878,74 +878,7 @@ class Admin extends BaseAdminController
         $pdf = PDF::loadHTML('<h1>Thanh Niên An</h1>');
         return $pdf->stream();
     }
-    public function searchProductModal(Request $request)
-    {
-        $saleName = $request->sale_name;
-        $saleId = $request->sale_id;
-        $saleInstance = null;
-        /*item mà user đã chọn trước đó*/
-        $chooseStorage = json_decode($request->choose_storage, true);
-        $chooseStorage = !is_array($chooseStorage) ? [] : $chooseStorage;
-        switch ($saleName) {
-            case 'deal':
-                $saleInstance = Deal::where('id', $saleId)->first();
-                break;
-            case 'combo':
-                # code...
-                break;
-            case 'promotion':
-                # code...
-                break;
-            case 'flash_sale':
-                # code...
-                break;
-        }
-        if ($saleInstance == null) {
-            return \Support::json(['code' => 100, 'message' => 'Không tồn tại loại khuyến mãi']);
-        }
-        $categoryId = $request->category;
-        $type = $request->type;
-        $keyword = $request->keyword;
-        $productChooses = Product::whereDoesntHave('flashSale', function ($q) use ($saleInstance) {
-            $q->where('start_at', '<=', $saleInstance->expired_at)->where('expired_at', '>=', $saleInstance->start_at);
-        })
-        ->whereDoesntHave('deal', function ($q) use ($saleInstance) { // sp deal chính
-            $q->where('start_at', '<=', $saleInstance->expired_at)->where('expired_at', '>=', $saleInstance->start_at);
-            if ($saleInstance instanceof Deal) {
-                $q->where('deals.id', $saleInstance->id);
-            }
-        })
-        ->whereDoesntHave('getDealSub', function ($q) use ($saleInstance) { // sp deal đi kèm
-            $q->where('start_at', '<=', $saleInstance->expired_at)->where('expired_at', '>=', $saleInstance->start_at);
-            if ($saleInstance instanceof Deal) {
-                $q->where('deals.id', $saleInstance->id);
-            }
-        })
-        ->whereDoesntHave('combo', function ($q) use ($saleInstance) { // sp deal chính
-            $q->where('start_at', '<=', $saleInstance->expired_at)->where('expired_at', '>=', $saleInstance->start_at);
-            if ($saleInstance instanceof Combo) {
-                $q->where('combos.id', $saleInstance->id);
-            }
-        })
-        ->where(function ($q) use ($categoryId, $type, $keyword) {
-            if ($categoryId != null) {
-                $q->whereHas('category', function ($q2) use ($categoryId) {
-                    $q2->where('id', $categoryId);
-                });
-            }
-            if ($type == 1 && $keyword != null && trim($keyword) != '') {
-                $q->where('name', 'like', '%'.$keyword.'%');
-            } elseif ($type == 2 && $keyword != null && trim($keyword) != '') {
-                $q->where('code', 'like', '%'.$keyword.'%');
-            }
-        })
-        ->orderBy('id', 'desc')
-        ->get();
-        return \Support::json([
-            'code' => 200,
-            'html' => view('vh::view.deal.item_product', compact('productChooses', 'chooseStorage'))->render(),
-        ]);
-    }
+   
     public function chooseProductModal(Request $request)
     {
         $chooses = $request->input('check-single-product');
@@ -972,5 +905,32 @@ class Admin extends BaseAdminController
                 break;
         }
         return $result;
+    }
+
+    public function generalSlug(Request $request){
+        $slug = \Str::random(8);
+        $link = \DB::table('v_routes')->where('vi_link',$slug)->first();
+        while(!is_null($link)){
+            $slug = \Str::random(8);
+            $link = \DB::table('v_routes')->where('vi_link',$slug)->first();
+        }
+        return $slug;
+    }
+
+    public function checkFieldDuplicated($table)
+    {   
+        $request = request();
+        $field = $request->name;
+        $val = $request->value;
+        $dataFile = DB::table($table)->where($field, \Str::of($val)->trim())->first();
+        if (($dataFile != null && isset($request->id) && $dataFile->id == $request->id) || $dataFile == null) {
+            return response([
+                'code' => 200
+            ]);
+        } else {
+            return response([
+                'code' => 100
+            ]);
+        }
     }
 }
