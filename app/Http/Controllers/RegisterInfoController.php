@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Support;
 
 class RegisterInfoController extends Controller
 {
@@ -18,6 +19,21 @@ class RegisterInfoController extends Controller
         unset($inputs['map_id']);
         $dataInsert['content'] = json_encode($inputs);
         \DB::table('form_contents')->insert($dataInsert);
+
+        $rules = [
+            "Họ_và_tên" => "fullname",
+            "Email" => "email",
+            "Số_điện_thoại" => "phone",
+            "Ghi_chú" => "note",
+        ];
+        $params = [];
+        foreach ($inputs as $k => $input) {
+            $key = array_key_exists($k, $rules);
+            if ($key) {
+                $params[$rules[$k]] = $input;
+            }
+        }
+        Support::sentFormGoogleSheet($params);
 
         return response([
             'code' => 200,
