@@ -213,7 +213,7 @@ class Helper
             $comment = new Comment;
             $comment->map_table = $request->input('map_table');
             $comment->map_id = $id;
-            $comment->content = self::strip_all_tags($request->content[$key]);
+            $comment->content = self::noRunScript($request->content[$key]);
             $comment->user_id = $user->id;
             $comment->order_id = $order_id;
             $comment->comment_id = $request->input('comment_id');
@@ -433,21 +433,9 @@ class Helper
 
     public static function noRunScript($string)
     {
-        return htmlspecialchars_decode($string);
+        return htmlspecialchars_decode(strip_tags($string, ['code', 'p']));
     }
-    // FIX ERROR SCRIPT TAGS
-    public static function strip_all_tags($string, $remove_breaks = false)
-    {
-        $string = preg_replace('@<(script|style)[^>]*?>.*?</\\1>@si', '', $string);
-        $string = strip_tags($string);
-
-        if ($remove_breaks) {
-            $string = preg_replace('/[\r\n\t ]+/', ' ', $string);
-        }
-
-        return trim($string);
-    }
-
+    
     public static function getFirstStrinng(string $string)
     {
         return substr($string, 0, 1);

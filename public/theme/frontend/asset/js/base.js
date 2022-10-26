@@ -41,6 +41,17 @@ var BASE_GUI = {
     },
 };
 var NOTIFICATION = {
+    callbackAjaxMedicalRecordLookup: function (data) {
+        NOTIFICATION.showNotify(data.code, data.message);
+        if (data.code == 200) {
+            var modalResult = document.getElementById("modal_result");
+            if (modalResult != undefined) {
+                modalResult.getElementsByClassName("content")[0].innerHTML =
+                    data.html;
+                modalResult.classList.add("active");
+            }
+        }
+    },
     toastrMessage: function (data) {
         NOTIFICATION.showNotify(data.code, data.message);
     },
@@ -60,10 +71,10 @@ var NOTIFICATION = {
     },
     showNotifyWhenLoadPage() {
         if (
-            typeNotify != "undefined" &&
+            typeof typeNotify != "undefined" &&
             typeNotify != undefined &&
             typeNotify != "" &&
-            messageNotify != "undefined" &&
+            typeof messageNotify != "undefined" &&
             messageNotify != undefined &&
             messageNotify != ""
         ) {

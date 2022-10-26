@@ -81,6 +81,54 @@ Breadcrumbs::for('news', function ($trail, $currentItem, $parent) {
     	$trail->push($currentItem->name, \Support::show($currentItem, 'slug'));
     }
 });
+Breadcrumbs::for('dental_knowledge_category', function ($trail, $currentItem, $level = 0) {
+	if ($level == 0) {
+		$trail->parent('home');
+		$trail->push('Kiến thức nha khoa', VRoute::get('tin-tuc'));
+	}
+	if ($currentItem->parent > 0) {
+		$parent = App\Models\NewsCategory::where('news_categories.id', $currentItem->parent)->first();
+	    if ($parent != null) {
+    		$trail->parent('news_category', $parent, $level += 1);
+	    }	
+	}
+    $trail->push($currentItem->name, \Support::show($currentItem, 'slug'));
+});
+Breadcrumbs::for('dental_knowledge', function ($trail, $currentItem, $parent) {
+    if ($parent == null) {
+		$trail->parent('home');
+   		$trail->push($currentItem->name, \Support::show($currentItem, 'slug'));
+    }
+    else{
+    	$trail->parent('news_category', $parent);
+    	$trail->push($currentItem->name, \Support::show($currentItem, 'slug'));
+    }
+});
+
+Breadcrumbs::for('customer_story_category', function ($trail, $currentItem, $level = 0) {
+	if ($level == 0) {
+		$trail->parent('home');
+		$trail->push('Câu chuyện khách hàng', VRoute::get('tin-tuc'));
+	}
+	if ($currentItem->parent > 0) {
+		$parent = App\Models\NewsCategory::where('news_categories.id', $currentItem->parent)->first();
+	    if ($parent != null) {
+    		$trail->parent('news_category', $parent, $level += 1);
+	    }	
+	}
+    $trail->push($currentItem->name, \Support::show($currentItem, 'slug'));
+});
+Breadcrumbs::for('customer_story', function ($trail, $currentItem, $parent) {
+    if ($parent == null) {
+		$trail->parent('home');
+   		$trail->push($currentItem->name, \Support::show($currentItem, 'slug'));
+    }
+    else{
+    	$trail->parent('news_category', $parent);
+    	$trail->push($currentItem->name, \Support::show($currentItem, 'slug'));
+    }
+});
+
 Breadcrumbs::for('service_category', function ($trail, $currentItem, $level = 0) {
 	if ($level == 0) {
 		$trail->parent('home');

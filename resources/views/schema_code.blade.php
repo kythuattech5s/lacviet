@@ -38,7 +38,7 @@
     </script>
 @endif
 @if (isset($currentItem) && is_object($currentItem) && method_exists($currentItem,'getTable'))
-    @if ($currentItem->getTable() == 'news')
+    @if ($currentItem->getTable() == 'news' || $currentItem->getTable() == 'dental_knowledges' || $currentItem->getTable() == 'customer_stories')
         <script type="application/ld+json">
             /*<![CDATA[*/{
                 "@context": "https://schema.org",
@@ -68,6 +68,44 @@
                 "dateModified": "{{Support::showDate($currentItem->updated_at,'Y-m-d H:i:s')}}"
             }/*]]>*/
         </script>
+        <script type="application/ld+json">
+            {
+                "@context":"https://schema.org/",
+                "@type":"Book",
+                "name":"Admin",
+                "description":"",
+                "aggregateRating":{
+                    "@type":"AggregateRating",
+                    "ratingValue":"5",
+                    "bestRating":"5",
+                    "ratingCount":"1"
+                }
+            }
+        </script>
+        <?php $admin = \DB::table('h_users')->where('id',Support::show($currentItem,'create_by',1))->first(); ?>
+        @if(isset($admin))
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Hà Nội",
+                    "addressRegion": "Ha Noi",
+                    "postalCode": "100000",
+                    "streetAddress": "{{Support::show($admin,'address')}}"
+                },
+                "colleague": [
+                    "{{url('/')}}"
+                ],
+                "email": "{{Support::show($admin,'email')}}",
+                "image": "{{url('/')}}/{Ilogo.imgI}",
+                "jobTitle": "Professor",
+                "name": "{{Support::show($admin,'name')}}",
+                "telephone": "{{Support::show($admin,'phone')}}"
+            }
+        </script>
+        @endif
     @endif
 @endif
 <script type="application/ld+json">

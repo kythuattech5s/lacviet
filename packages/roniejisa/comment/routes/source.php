@@ -8,10 +8,10 @@ Route::match(['GET', 'POST'], 'danh-gia-san-pham', 'CommentController@ratingOrde
 Route::post('shop-tra-loi-binh-luan', 'CommentController@shopReplyComment');
 
 
-Route::post('binh-luan', 'CommentController@commentNow');
-Route::get('show-comment/{id}', 'CommentController@showComment');
-Route::post('tra-loi-binh-luan', 'CommentController@repCommentNow');
-Route::post('binh-luan-be-khac', 'CommentController@fetchCommentChild');
-Route::post('binh-luan-khac', 'CommentController@fetchCommentMore');
-Route::post('loc-danh-gia', 'CommentController@filterRating');
-Route::post('thich-binh-luan', 'CommentController@likeAndUnlike');
+Route::post('binh-luan', 'CommentController@commentNow')->name('comment.now');
+Route::get('show-comment/{id}', 'CommentController@showComment')->name('comment.show');
+Route::post('tra-loi-binh-luan', 'CommentController@repCommentNow')->name('comment.rep');
+Route::post('binh-luan-be-khac', 'CommentController@fetchCommentChild')->name('comment.load.child');
+Route::post('binh-luan-khac', 'CommentController@fetchCommentMore')->name('comment.load');
+Route::post('loc-danh-gia', 'CommentController@filterRating')->name('comment.filter');
+Route::post('thich-binh-luan', 'CommentController@likeAndUnlike')->name('comment.like');

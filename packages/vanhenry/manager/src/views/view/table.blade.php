@@ -5,6 +5,7 @@ $has_copy = $tableData->get('has_copy', '') == 1;
 $has_trash = $tableData->get('has_trash', '') == 1;
 $has_history = $tableData->get('has_history', '') == 1;
 @endphp
+<link rel="stylesheet" href="{{asset('assets/comment/css/star.css')}}">
 <div class="pagination">
     <span class="total">{{ trans('db::number_record') }}: <strong>{{ $listData->total() }}</strong></span>
     {{ $listData->withQueryString()->links('vendor.pagination.pagination') }}
@@ -142,7 +143,7 @@ $has_history = $tableData->get('has_history', '') == 1;
                                 @endif
                                 @if ($tableData->get('table_map') == 'pages')
                                     <a href="gp/edit-page?id={{ $itemMain->id }}" class="tooltipx {{ $tableData->get('table_map', '') }}">
-                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                        <i class="fa fa-pencil-square" aria-hidden="true"></i>
                                         <span class="tooltiptext">Sửa trang</span>
                                     </a>
                                 @endif

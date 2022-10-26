@@ -97,4 +97,5 @@ $bannerGdnSocialBottomSidebar = \App\Models\BannerGdn::where('group',3)->act()->
 </a>
 @endif
 @endforeach
+
 @endif

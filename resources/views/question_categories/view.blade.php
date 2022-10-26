@@ -6,15 +6,15 @@
         </div>
     </div>
     <section class="section-qa bg-[#fcfcfc] py-6 2xl:py-10">
-        <div class="container">
+        <div class="container 2xl:!max-w-[1250px]">
             @include('question_categories.select')
-            <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 2xl:gap-8">
-                <div class="col-span-1">
+            <div class="grid grid-cols-1 lg:flex gap-4 lg:grid-cols-4 2xl:gap-6">
+                <div class="col-span-1 lg:w-[245px]">
                     @include('question_categories.sidebar')
                 </div>
-                <div class="col-span-1 lg:col-span-2">
+                <div class="col-span-1 lg:col-span-2 flex-1">
                     <div class="box-content border-[1px] border-solid border-[#ebebeb] bg-white py-4 lg:py-8 2xl:pt-12">
-                        <h1 class="title-qa text-center text-[1.125rem] font-bold text-[#767676] lg:text-[1.5rem] 2xl:text-[2rem]">{{ $currentItem->name }}</h1>
+                        <h1 class="title-qa text-center text-[1.3rem] font-bold text-[#767676] lg:text-[1.5rem] 2xl:text-[2rem]">{{ $currentItem->name }}</h1>
                         @if (count($listItems) > 0)
                             <div class="module-content">
                                 @foreach ($listItems as $item)
@@ -27,7 +27,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-span-1">
+                <div class="col-span-1 px-8 sm:px-0 lg:w-[330px]">
                     <a href="{{ \VRoute::get('makeQuestion') }}" class="btn-blue d-block mb-5 rounded border-[1px] border-solid border-transparent bg-[#028cde] py-2 text-center text-[1.25rem] text-white" title="Đặt câu hỏi">Đặt câu hỏi</a>
                     @include('news.sidebar')
                 </div>

@@ -4,7 +4,7 @@ return [
         [
             'label' => 'Chỉnh sửa',
             'url' => url('gp/edit-page'),
-            'icon' => 'fa fa-times-circle-o',
+            'icon' => 'fa fa-pencil',
             // 'class' => 'testclass',
             // "target_blank" => false, // Không bắt buộc
             // "attributes" => 'modal-target="#test"', // Không bắt buộc - nếu là modal thì có thể thêm view modal tại component

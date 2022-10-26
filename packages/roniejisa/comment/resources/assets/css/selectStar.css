@@ -37,9 +37,9 @@ label.star:before {
 }
 
 input.star:checked ~ label.star:before {
-    content: "\f006";
-    color: var(--color-star-checked);
-    transition: all 0.25s;
+    content: "\f005";
+    color: var(--color-star-check-full);
+    text-shadow: 0.1px 0.1px 4px var(--color-star-check-full);
 }
 
 input.star-5:checked ~ label.star:before {
@@ -49,6 +49,7 @@ input.star-5:checked ~ label.star:before {
 }
 
 label.star:hover {
+    cursor: pointer;
     transform: rotate(-5deg) scale(1.1);
     color: var(--color-star-hover);
 }

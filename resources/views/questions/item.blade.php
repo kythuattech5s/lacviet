@@ -5,9 +5,9 @@
         </span>
         <div class="head-qa flex gap-x-4 items-center justify-between flex-wrap">
             <div class="info flex gap-4 items-center flex-wrap lg:mb-4 mb-2">
-                <span class="name font-semibold text-[#252525] 2xl:text-[1.25rem] lg:text-[1rem] text-[0.875rem] ">{{Support::show($item,'customer_name')}}</span>
+                <span class="name font-semibold text-[#40b5ff] 2xl:text-[1.25rem] lg:text-[1rem] text-[0.875rem] ">{{Support::show($item,'customer_name')}}</span>
                 @if (isset($item->category))
-                    <span class="examined font-semibold text-[0.75rem] text-[#888] bg-[#ebebeb] rounded p-1">{{Support::show($item->category,'name')}}</span>
+                    <span class="examined font-semibold text-[0.75rem] text-white bg-[#028cde] rounded p-1">{{Support::show($item->category,'name')}}</span>
                 @endif
             </div>
             <p class="time text-[0.75rem] lg:mb-4 mb-2 text-[#888]">Đã hỏi: <span class="text-[#40b5ff] font-semibold">Ngày {{Support::showDateTime($item->time_ask,'d/m/Y')}}</span></p>

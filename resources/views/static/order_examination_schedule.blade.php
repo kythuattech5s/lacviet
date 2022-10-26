@@ -12,7 +12,7 @@
             Vui lòng để lại thông tin, nha khoa sẽ liên hệ tư vấn trong thời gian sớm nhất
         </p>
         <div class="box-content max-w-[800px] mx-auto bg-[#e0f3ff] 2xl:p-16 lg:p-8 px-4 pt-8 pb-14 lg:rounded-3xl rounded-xl">
-            <form name="form-booking" action="{{VRoute::get('bookApointment')}}" method="post" class="form-booking form-validate" absolute data-success="NOTIFICATION.toastrMessageReload" accept-charset="utf8">
+            <form action="{{VRoute::get('bookApointment')}}" method="post" class="form-booking form-validate" absolute data-success="NOTIFICATION.toastrMessageRedirect" accept-charset="utf8">
                 @csrf
                 <input type="hidden" name="form" value="form-booking">
                 <input type="hidden" name="type" value="Đặt lịch khám">

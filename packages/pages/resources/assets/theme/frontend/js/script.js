@@ -69,13 +69,15 @@ var CLICK = {
         }
 
         var width_ = window.innerWidth;
-        var listIitemLi = Tech.$('.menu').find('li');
-        if(width_ >=1024){
-            listIitemLi.forEach(function (element, index) {
-                if (element.find(':scope > ul').length() > 0) {
-                    element.append(`<span class="btn-dropdown-menu"><i class="fa fa-caret-down" aria-hidden="true"></i></span>`);
-                }
-            });
+        if(Tech.$('.menu')){
+            var listIitemLi = Tech.$('.menu').find('li');
+            if(width_ >=1024){
+                listIitemLi.forEach(function (element, index) {
+                    if (element.find(':scope > ul').length() > 0) {
+                        element.append(`<span class="btn-dropdown-menu"><i class="fa fa-caret-down" aria-hidden="true"></i></span>`);
+                    }
+                });
+            }
         }
       
         if (width_ < 1024) {

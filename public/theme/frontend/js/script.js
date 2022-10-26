@@ -78,7 +78,7 @@ var CLICK = {
         if (width_ < 1024) {
             listIitemLi.forEach(function (element, index) {
                 if (element.find(':scope > ul').length() > 0) {
-                    element.append(`<span class="btn-dropdown-menu"><i class="fa fa-angle-down" aria-hidden="true"></i></span>`);
+                    element.append(`<span class="btn-dropdown-menu"></span>`);
                 }
             });
             var listBtnDropdownMenu = Tech.$('.menu').find('.btn-dropdown-menu');
@@ -99,16 +99,16 @@ var CLICK = {
     },
     showCategory:function(){
         var btn=Tech.$('.show-category');
-        var btnClose=Tech.$('.close-category');
         if(typeof btn !=='undefined'){
             btn.onClick(function(){
-                Tech.$('.nav-category').addClass('active');
+                Tech.$(this).find('ul').toggleClass('active');
             })
-        }
-        if(typeof btnClose !=='undefined'){
-            btnClose.onClick(function(){
-                Tech.$('.nav-category').removeClass('active');
-            })
+            window.onclick = function(event) {
+                var ul = document.querySelector('.show-category ul');
+                if(event.target == ul){
+                    ul.classList.remove('active');
+                }
+            }
         }
     },
 
@@ -140,7 +140,15 @@ var CLICK = {
         }
 
     },
-
+    showWidget:function(){
+        var btn=Tech.$('.show-widget');
+        if(typeof btn !=='undefined'){
+            btn.onClick(function(e){
+                e.preventDefault();
+                Tech.$('.widget').toggleClass('active');
+            })
+        }
+    },
 
 
  
@@ -150,6 +158,7 @@ var CLICK = {
         CLICK.showCategory();
         CLICK.moduleSearch();
         CLICK.fixedMenu();
+        CLICK.showWidget();
    
 
     },

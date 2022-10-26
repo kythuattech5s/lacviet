@@ -7,7 +7,8 @@ class MedicalRecordLookupController extends Controller
 {
     public function medicalRecordLookup($request,$route){
         $currentItem = \vanhenry\manager\model\VRoute::find($route->id);
-        if ($request->isMethod('post')) {
+        $patientGetCode = $request->input('patient_code');
+        if ($patientGetCode !='' || $request->isMethod('post')) {
             if (!isset($request->patient_code) || $request->patient_code == '') {
                 return Support::response(['code'=>100,'message'=>'Vui lòng nhập mã bệnh nhân','redirect'=>\VRoute::get("medicalRecordLookup")]);
             }
@@ -21,8 +22,15 @@ class MedicalRecordLookupController extends Controller
                 return Support::response(['code'=>100,'message'=>'Không có dữ liệu nào được tìm thấy','redirect'=>\VRoute::get("medicalRecordLookup")]);
             }
             $listLichKham = $dataRes['data0'];
-            return view('static.medical_record_lookup',compact('currentItem','listLichKham','patientCode'));
+            if($request->ajax()){
+                $html = view('static.medical_record_lookup_ajax',compact('currentItem','listLichKham','patientCode'))->render();
+                return Support::response(['code'=>200,'message'=>'Tra cứu thành công','html'=>$html]);
+            }
+            else{
+                return view('static.medical_record_lookup',compact('currentItem','listLichKham','patientCode'));
+            }
         }
-        return view('static.medical_record_lookup',compact('currentItem'));
+        $patientCode = $patientGetCode;
+        return view('static.medical_record_lookup',compact('currentItem','patientCode'));
     }
 }
