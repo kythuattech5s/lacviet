@@ -1,5 +1,5 @@
 function countDownDeal() {
-    const timecoundown = document.querySelectorAll("[coundown-rs]");
+    const timecoundown = document.querySelectorAll("[rs-countdown]");
     if (timecoundown.length == 0) {
         return false;
     }
@@ -25,30 +25,34 @@ function countDownDeal() {
             now = now.getTime();
             timeStart = startEventTime - now;
             timeEnd = endEvent - now;
-            var showHour = element.querySelector("#hour");
-            var showMinute = element.querySelector("#minute");
-            var showSecond = element.querySelector("#second");
+
             var days = Math.floor(timeEnd / (1000 * 60 * 60 * 24));
             if (days > 0) {
                 days = days + 1;
             }
-            var hours =
-                Math.floor(
-                    (timeEnd % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-                ) +
-                days * 24;
+            var hours = Math.floor(
+                (timeEnd % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+            );
+
             var minutes = Math.floor(
                 (timeEnd % (1000 * 60 * 60)) / (1000 * 60)
             );
-            var second = Math.floor((timeEnd % (1000 * 60)) / 1000);
-            showHour.innerHTML =
-                Number(hours) >= 10 ? hours : "0" + Number(hours);
-            showMinute.innerHTML =
-                Number(minutes) >= 10 ? minutes : "0" + Number(minutes);
-            showSecond.innerHTML =
-                Number(second) >= 10 ? second : "0" + Number(second);
+            var seconds = Math.floor((timeEnd % (1000 * 60)) / 1000);
+            window.dispatchEvent(
+                new CustomEvent(
+                    "countdown.time.rs." + element.getAttribute("rs-countdown"),
+                    {
+                        detail: {
+                            days,
+                            hours: hours < 10 ? "0"+hours : hours,
+                            minutes: minutes < 10 ? "0"+minutes : minutes,
+                            seconds: seconds < 10 ? "0"+seconds : seconds,
+                        },
+                    }
+                )
+            );
             if (timeEnd <= 0) {
-                if (element.hasAttribute("countdown-end")) {
+                if (element.hasAttribute("rs-countdown-end")) {
                     CLICK.callFunction(element.dataset.func);
                 }
                 clearInterval(timeElement);
@@ -112,3 +116,26 @@ function callFunction(func, options = []) {
         );
     }
 }
+
+function handleEventCountDown() {
+    const timecoundown = document.querySelectorAll("[rs-countdown]");
+    timecoundown.forEach((item) => {
+        const type = item.getAttribute("rs-countdown");
+        window.addEventListener("countdown.time.rs." + type, (e) => {
+            const listItems = document.querySelectorAll(
+                `[item-of-rs-countdown="${type}"]`
+            );
+            listItems.forEach((item) => {
+                const typeShow = item.getAttribute("type-of-rs-countdown");
+                if (`${typeShow}` in e.detail) {
+                    item.innerHTML = e.detail[typeShow];
+                }
+            });
+        });
+    });
+}
+
+window.addEventListener("DOMContentLoaded", function () {
+    handleEventCountDown();
+    countDownDeal();
+});
