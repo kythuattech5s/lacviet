@@ -312,6 +312,14 @@
                   "modified": false
                 }
               }
+            },
+            "Helpers": {
+              "Support.php": {
+                "type": "-",
+                "size": 58025,
+                "lmtime": 1666779346121,
+                "modified": false
+              }
             }
           },
           "artisan": {
@@ -339,7 +347,104 @@
             "lmtime": 0,
             "modified": false
           },
-          "config": {},
+          "config": {
+            "app.php": {
+              "type": "-",
+              "size": 10643,
+              "lmtime": 1666779346122,
+              "modified": false
+            },
+            "auth.php": {
+              "type": "-",
+              "size": 4259,
+              "lmtime": 0,
+              "modified": false
+            },
+            "breadcrumbs.php": {
+              "type": "-",
+              "size": 2782,
+              "lmtime": 0,
+              "modified": false
+            },
+            "broadcasting.php": {
+              "type": "-",
+              "size": 1711,
+              "lmtime": 0,
+              "modified": false
+            },
+            "cache.php": {
+              "type": "-",
+              "size": 3199,
+              "lmtime": 0,
+              "modified": false
+            },
+            "cors.php": {
+              "type": "-",
+              "size": 846,
+              "lmtime": 0,
+              "modified": false
+            },
+            "database.php": {
+              "type": "-",
+              "size": 5202,
+              "lmtime": 0,
+              "modified": false
+            },
+            "filesystems.php": {
+              "type": "-",
+              "size": 2197,
+              "lmtime": 0,
+              "modified": false
+            },
+            "hashing.php": {
+              "type": "-",
+              "size": 1571,
+              "lmtime": 0,
+              "modified": false
+            },
+            "laravellocalization.php": {
+              "type": "-",
+              "size": 41917,
+              "lmtime": 0,
+              "modified": false
+            },
+            "logging.php": {
+              "type": "-",
+              "size": 3054,
+              "lmtime": 0,
+              "modified": false
+            },
+            "mail.php": {
+              "type": "-",
+              "size": 3372,
+              "lmtime": 0,
+              "modified": false
+            },
+            "queue.php": {
+              "type": "-",
+              "size": 2906,
+              "lmtime": 0,
+              "modified": false
+            },
+            "services.php": {
+              "type": "-",
+              "size": 950,
+              "lmtime": 0,
+              "modified": false
+            },
+            "session.php": {
+              "type": "-",
+              "size": 7041,
+              "lmtime": 0,
+              "modified": false
+            },
+            "view.php": {
+              "type": "-",
+              "size": 1053,
+              "lmtime": 0,
+              "modified": false
+            }
+          },
           "database": {},
           "package.json": {
             "type": "-",
@@ -354,13 +459,90 @@
             "lmtime": 0,
             "modified": false
           },
-          "public": {},
+          "public": {
+            "assets": {
+              "plugins": {
+                "countdown": {
+                  "countDownCustom.js": {
+                    "type": "-",
+                    "size": 5139,
+                    "lmtime": 1666779346123,
+                    "modified": false
+                  },
+                  "countDownTwo.js": {
+                    "type": "-",
+                    "size": 5131,
+                    "lmtime": 0,
+                    "modified": false
+                  }
+                }
+              }
+            }
+          },
           "resources": {
             "views": {
+              "customer_stories": {},
+              "customer_story_categories": {},
+              "customer_story_tags": {},
+              "dental_knowledge_categories": {},
+              "dental_knowledge_tags": {},
+              "dental_knowledges": {},
+              "doctors": {},
+              "errors": {},
+              "footer.blade.php": {
+                "type": "-",
+                "size": 10028,
+                "lmtime": 0,
+                "modified": false
+              },
+              "gg_js.blade.php": {
+                "type": "-",
+                "size": 2156,
+                "lmtime": 0,
+                "modified": false
+              },
+              "header.blade.php": {
+                "type": "-",
+                "size": 15260,
+                "lmtime": 0,
+                "modified": false
+              },
+              "home.blade.php": {
+                "type": "-",
+                "size": 21572,
+                "lmtime": 1666779376542,
+                "modified": false
+              },
+              "image_loader": {},
               "index.blade.php": {
                 "type": "-",
-                "size": 3815,
-                "lmtime": 1666776032344,
+                "size": 3474,
+                "lmtime": 1666779346125,
+                "modified": false
+              },
+              "news": {},
+              "news_categories": {},
+              "news_tags": {},
+              "page_statics": {},
+              "path": {},
+              "question_categories": {},
+              "questions": {},
+              "queue_emails": {},
+              "schema_code.blade.php": {
+                "type": "-",
+                "size": 5853,
+                "lmtime": 0,
+                "modified": false
+              },
+              "search": {},
+              "service_categories": {},
+              "services": {},
+              "static": {},
+              "vendor": {},
+              "view.blade.php": {
+                "type": "-",
+                "size": 721,
+                "lmtime": 0,
                 "modified": false
               }
             }

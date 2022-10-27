@@ -1268,6 +1268,17 @@ class Support
             if (strpos($itemKey, 'short_code') !== false) {
                 $key = str_replace('[short_code=', '', $itemKey);
                 $key = str_replace(']', '', $key);
+                $arrayChange = [];
+
+                $arrayKey = explode('||', $key);
+                if (count($arrayKey) > 1) {
+                    $key = $arrayKey[0];
+                    $dataArray = array_slice($arrayKey, 1, 2);
+                    foreach ($dataArray as $stringArray) {
+                        list($keyAttr, $valueAttr) = explode('=', $stringArray);
+                        $arrayChange[$keyAttr] = $valueAttr;
+                    }
+                }
                 $itemShortCode = DB::table('short_codes')->where('code', $key)->first();
                 $html = '';
                 if ($itemShortCode != null) {
@@ -1279,6 +1290,14 @@ class Support
                     }
                 }
                 $content = str_replace($itemKey, $html, $content);
+                if (count($arrayChange) > 0) {
+                    foreach ($arrayChange as $keyChange => $valueChange) {
+                        $content = str_replace($keyChange, $valueChange, $content);
+                    }
+                }
+                $content = str_replace("@csrf", '<input name="_token" value="' . csrf_token() . '" type="hidden">', $content);
+                $content = str_replace("@mapTable", '<input name="map_table" value="' . $map_table . '" type="hidden">', $content);
+                $content = str_replace("@mapId", '<input name="map_id" value="' . $map_id . '" type="hidden">', $content);
             }
         }
         return $content;
