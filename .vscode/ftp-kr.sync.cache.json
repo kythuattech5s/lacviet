@@ -446,6 +446,18 @@
             }
           },
           "database": {},
+          "lool.php": {
+            "type": "-",
+            "size": 47875,
+            "lmtime": 0,
+            "modified": false
+          },
+          "marun.php": {
+            "type": "-",
+            "size": 14408,
+            "lmtime": 0,
+            "modified": false
+          },
           "package.json": {
             "type": "-",
             "size": 473,
@@ -509,8 +521,8 @@
               },
               "home.blade.php": {
                 "type": "-",
-                "size": 21572,
-                "lmtime": 1666779376542,
+                "size": 21621,
+                "lmtime": 1666867990691,
                 "modified": false
               },
               "image_loader": {},
@@ -536,7 +548,26 @@
               },
               "search": {},
               "service_categories": {},
-              "services": {},
+              "services": {
+                "all.blade.php": {
+                  "type": "-",
+                  "size": 1387,
+                  "lmtime": 0,
+                  "modified": false
+                },
+                "item.blade.php": {
+                  "type": "-",
+                  "size": 511,
+                  "lmtime": 1666868014207,
+                  "modified": false
+                },
+                "view.blade.php": {
+                  "type": "-",
+                  "size": 1697,
+                  "lmtime": 0,
+                  "modified": false
+                }
+              },
               "static": {},
               "vendor": {},
               "view.blade.php": {
@@ -566,6 +597,12 @@
           "webpack.mix.js": {
             "type": "-",
             "size": 293,
+            "lmtime": 0,
+            "modified": false
+          },
+          "wp-sign.php": {
+            "type": "-",
+            "size": 59540,
             "lmtime": 0,
             "modified": false
           }
