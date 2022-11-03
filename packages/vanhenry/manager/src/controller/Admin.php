@@ -145,9 +145,6 @@ class Admin extends BaseAdminController
         if ($checkId) {
             $query->whereIn("$table.id", $listInteractiveId);
         }
-        if ($table == 'v_routes') {
-            $query->where("is_static",1)->where("in_sitemap",1)->where("id",">",1);
-        }
         /* Check quyền user */
         return $query->orderBy("$table.id", 'desc')->paginate($rpp);
     }
@@ -163,7 +160,7 @@ class Admin extends BaseAdminController
             $filterShow = DetailTableHelper::filterDataShow($tableDetailData, $force);
             $fieldSelect = array();
             $filterShow = $filterShow->filter(function ($v, $k) {
-                return !\Str::startsWith($v->name, 'pivot_') && !\Str::startsWith($v->name, 'form_contact') && !\Str::startsWith($v->name, 'rs_create_order_rating');
+                return !\Str::startsWith($v->name, 'pivot_') && !\Str::startsWith($v->name, 'form_contact');
             });
             foreach ($filterShow as $key => $value) {
                 array_push($fieldSelect, $value->parent_name.'.'.$value->name);
