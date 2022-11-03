@@ -692,6 +692,7 @@ trait EditTrait
     private function __updateFormContact($itemId, $pivots, $table)
     {
         foreach ($pivots as $key => $pivot) {
+            if(!is_array($pivot) && $pivot == null) continue;
             $vdetail = VDetailTable::where(['parent_name' => $table, 'name' => $key])->first();
             if ($vdetail == null) {
                 continue;

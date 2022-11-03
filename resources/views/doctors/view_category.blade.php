@@ -16,7 +16,7 @@
             <div class="col-span-1">
                 @include('doctors.item_doctor')
             </div>
-            @if($k % 3 ===1)
+            @if($k-1 % 3 ===1)
             <hr class="col-span-3 hidden lg:block my-10 h-[3px] opacity-100 bg-[#c7ccce]">
             @endif
             @endforeach
@@ -28,7 +28,7 @@
         @if (Support::isMobile())
         <div class="mt-10 px-8 sm:px-0">
             <a href="{{ \VRoute::get('makeQuestion') }}" class="btn-blue d-block mb-4 uppercase border-[1px] border-solid border-transparent bg-[#028cde] py-2 text-center text-[1.25rem] text-white" title="Đặt câu hỏi">Đặt câu hỏi</a>
-            <?php $listNewsNew = App\Models\News::act()->publish()->orderBy('time_published','desc')->limit(5)->get(); ?>
+            <?php $listNewsNew = App\Models\News::act()->publish()->orderBy('time_published', 'desc')->limit(5)->get(); ?>
             @if(count($listNewsNew) > 0)
             <div class="border-[1px] border-solid border-[#7d7d7d] p-4 mb-4">
                 <p class="title text-[#028cde] font-bold uppercase text-[1.25rem] after:h-[3px] after:bg-[#028cde] after:w-20 after:block after:mt-1 mb-6">
@@ -55,7 +55,7 @@
                 </div>
             </div>
             @endif
-            <?php $listQuestion = App\Models\Question::act()->orderBy('id','desc')->limit(4)->get(); ?>
+            <?php $listQuestion = App\Models\Question::act()->orderBy('id', 'desc')->limit(4)->get(); ?>
             @if(count($listQuestion) > 0)
             <div class="border-[1px] border-solid border-[#7d7d7d] p-4 mb-4">
                 <p class="text-center font-bold text-[#028cde] uppercase text-[1.25rem] mb-4">Câu hỏi mới nhất</p>
@@ -71,12 +71,22 @@
             @endif
             <div class="border-[1px] border-solid border-[#7d7d7d] p-4 mb-4">
                 <p class="text-center font-bold text-[#028cde] uppercase text-[1.25rem] mb-4">Đăng ký nhận tư vấn</p>
-                <form action="{{VRoute::get('resgisterAdvise')}}" method="post" class="form-regis-sidebar form-validate" absolute data-success="NOTIFICATION.toastrMessageRedirect" accept-charset="utf8">
+                <form name="form-contact-register" action="{{VRoute::get('resgisterAdvise')}}" method="post" class="form-regis-sidebar form-validate" absolute data-success="NOTIFICATION.toastrMessageReload" accept-charset="utf8">
                     @csrf
+                    <input type="hidden" name="form" value="form-contact-register">
+                    <input type="hidden" name="type" value="Đăng ký tư vấn">
                     <input type="hidden" name="type" value="1">
                     <input type="text" name="fullname" placeholder="Họ và tên (*)" class="form-control text-[#888] placeholder:text-[#888] w-full p-1 rounded outline-none border-[1px] border-solid border-[#79c2ee] mb-4" rules="required">
                     <input type="text" name="phone" placeholder="Số điện thoại (*)" class="form-control text-[#888] placeholder:text-[#888] w-full p-1 rounded outline-none border-[1px] border-solid border-[#79c2ee] mb-4" rules="required||phone">
-                    <input type="text" name="register_address" placeholder="Nơi đăng ký khám" class="form-control text-[#888] placeholder:text-[#888] w-full p-1 rounded outline-none border-[1px] border-solid border-[#79c2ee] mb-4">
+                    <?php $branchs = \App\Models\BranchSystem::act()->get(); ?>
+                    @if($branchs != null)
+                    <select name="register_address" rules="required" class="form-control text-[#888] placeholder:text-[#888] w-full p-3 rounded-md outline-none border-[1px] border-solid border-[#bce0f6] mb-4">
+                    <option value="Không xác định" disabled selected>Chọn cơ sở</option>        
+                        @foreach($branchs as $k =>$branch)
+                            <option value="{{ Support::show($branch, 'full_address') }}">{{Str::limit($branch->full_address, 30, ' (...)')}}</option>
+                        @endforeach
+                    </select>
+                    @endif
                     <input type="text" name="email" placeholder="Email" class="form-control text-[#888] placeholder:text-[#888] w-full p-1 rounded outline-none border-[1px] border-solid border-[#79c2ee] mb-4">
                     <textarea name="note" placeholder="Triệu chứng:" class="form-control resize-none text-[#888] placeholder:text-[#888] w-full h-24 p-1 rounded outline-none border-[1px] border-solid border-[#79c2ee] mb-4"></textarea>
                     <button type="submit" class=" btn-red flex w-fit mx-auto items-center justify-center lg:text-[0.875rem] uppercase lg:py-3 py-1 lg:px-6 px-3 rounded text-white bg-[#028cde] transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">Đăng ký ngay</button>
