@@ -146,6 +146,7 @@
     "/_grapes/assets/theme/frontend/js/slider.js": "/_grapes/assets/theme/frontend/js/slider.js",
     "/_grapes/assets/theme/frontend/js/swiper-bundle.min.js": "/_grapes/assets/theme/frontend/js/swiper-bundle.min.js",
     "/_grapes/assets/theme/frontend/js/tabs.js": "/_grapes/assets/theme/frontend/js/tabs.js",
+    "/_grapes/assets/theme/frontend/js/ValidateForm.js": "/_grapes/assets/theme/frontend/js/ValidateForm.js",
     "/_grapes/assets/theme/frontend/js/wow.min.js": "/_grapes/assets/theme/frontend/js/wow.min.js",
     "/_grapes/assets/theme/frontend/scss/lading.scss": "/_grapes/assets/theme/frontend/scss/lading.scss",
     "/_grapes/assets/theme/frontend/scss/main.scss": "/_grapes/assets/theme/frontend/scss/main.scss",
@@ -157,7 +158,6 @@
     "/assets/comment/css/admin_comment.css": "/assets/comment/css/admin_comment.css",
     "/assets/comment/css/ratingOrder.css": "/assets/comment/css/ratingOrder.css",
     "/assets/comment/css/selectStar.css": "/assets/comment/css/selectStar.css",
-    "/assets/comment/css/selectStart.css": "/assets/comment/css/selectStart.css",
     "/assets/comment/css/star.css": "/assets/comment/css/star.css",
     "/assets/comment/css/style.css": "/assets/comment/css/style.css",
     "/assets/comment/images/check.svg": "/assets/comment/images/check.svg",
@@ -290,5 +290,7 @@
     "/assets/webfonts/fa-regular-400.ttf": "/assets/webfonts/fa-regular-400.ttf",
     "/assets/webfonts/fa-regular-400.woff2": "/assets/webfonts/fa-regular-400.woff2",
     "/assets/webfonts/fa-solid-900.woff2": "/assets/webfonts/fa-solid-900.woff2",
-    "/assets/works/js/address.js": "/assets/works/js/address.js"
+    "/assets/works/js/address.js": "/assets/works/js/address.js",
+    "/assets/css/toastify.css": "/assets/css/toastify.css",
+    "/assets/js/toastify.js": "/assets/js/toastify.js"
 }

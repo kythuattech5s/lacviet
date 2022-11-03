@@ -13,7 +13,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Tech5s\\PageGrapes\\": "src"
+            "Tech5s\\PageGrapes\\": "./src"
         }
     },
     "extra": {

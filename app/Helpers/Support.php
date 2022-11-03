@@ -20,6 +20,7 @@ use App\Models\UserProductFavourite;
 use App\Models\ComboTranslation;
 use App\Models\Color;
 use App\Helpers\Carriers\GiaoHangNhanh;
+use Illuminate\Support\Str;
 use Auth;
 use vanhenry\helpers\helpers\SettingHelper;
 use App\Helpers\Order\Order as OrderHelper;
@@ -29,6 +30,30 @@ use WebPConvert\WebPConvert;
 
 class Support
 {
+    const LINK_SHEET = "https://script.google.com/macros/s/AKfycby5MgRKOrnP4MOYYqUQY1W5K-N4WjwAlOhCRIyARjrTyHuI8Rt1jOyaUqkxlHsxsk69yA/exec";
+    public static function getCurl($params, $url)
+    {
+        $result = "";
+        $ch = curl_init();
+        if (is_array($params) && !empty($params)) {
+            $params = $params;
+            $params_string = http_build_query($params);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $params_string);
+            curl_setopt($ch, CURLOPT_POST, is_array($params) ? true : false);
+        }
+        curl_setopt($ch, CURLOPT_URL,  $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36');
+        $result = curl_exec($ch);
+        return json_decode($result);
+    }
+    public static function sentFormGoogleSheet($params, $type = "")
+    {
+        $type = $type != "" ? $type : "Đăng ký tư vấn";
+        $params['type'] = $type;
+        return Support::getCurl($params, Support::LINK_SHEET);
+    }
     public static function isDateTime($string, $format = 'Y-m-d H:i:s')
     {
         return \DateTime::createFromFormat($format, $string);
@@ -284,7 +309,6 @@ class Support
         }
         return $menus->get();
     }
-
     public static function showMenuRecursive($menus)
     {
         if ($menus->count() > 0) {
@@ -295,9 +319,10 @@ class Support
             echo '<ul class="' . $addClass . '">';
             foreach ($menus as $menu) {
                 $active = url()->current() == url($menu->link) ? "active" : " ";
-                echo '<li>';
-                $aLink = $menu->link == '' ? 'javascript:void(0)' : trim($menu->link, '/') . '/';
                 $aTitle = Support::show($menu, 'name');
+                echo '<li class="' . Str::slug($aTitle, '-') . '">';
+                $aLink = $menu->link == '' ? 'javascript:void(0)' : trim($menu->link, '/') . '/';
+
                 $aClass = $active . ' ' . count($menu->recursiveChilds) > 0 ? 'have-child' : '';
                 $aStartLink = vsprintf('<a href="%s" title="%s" class="%s" %s>', [$aLink, $aTitle, $aClass, \Support::showNofollow($menu)]);
                 echo $aStartLink;
@@ -312,7 +337,6 @@ class Support
             echo '</ul>';
         }
     }
-
     public static function json(array $arr, int $status = -1)
     {
         if ($status != -1) {
@@ -330,7 +354,6 @@ class Support
             return (!isset($arr['redirect']) ? redirect('/') : $arr['redirect'] == false) ? back() : redirect($arr['redirect']);
         }
     }
-
     public static function exeCurl($url, $type = 'GET', $data = null, $headers = [])
     {
         $curl = curl_init();
@@ -359,7 +382,6 @@ class Support
             $params[CURLOPT_HTTPHEADER] = $headers;
         }
         curl_setopt_array($curl, $params);
-
         $res = curl_exec($curl);
         $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         $err = curl_error($curl);
@@ -562,7 +584,6 @@ class Support
         $length = 0;
         // width
         $width = 0;
-
         foreach ($products as $key => $item) {
             $weight += $item['weight'];
             if ($weight == 0) {
@@ -965,7 +986,6 @@ class Support
     {
         return isset($data[$key]) ? (array)$data[$key] : $def;
     }
-
     public static function checkHasOrder($id, $field)
     {
         $orders = \App\Models\Order::where([$field => $id])->get();
@@ -1003,7 +1023,6 @@ class Support
         $start = $start > 10 ? 1 : $start;
         $end = $end < 0 ? 0 : $end;
         $end = $end > 10 ? 10 : $end;
-
         if (strlen($string) > 10) {
             return 'Sai định dạng số điện thoại';
         }
@@ -1114,15 +1133,12 @@ class Support
                 'percen' => ""
             ];
         }
-
         return $result;
     }
-
     public static function getColorById($id)
     {
         return Color::act()->where('id', $id)->first();
     }
-
     public static function countStatistic()
     {
         return \App\Models\StatisticsCount::count();
@@ -1141,12 +1157,10 @@ class Support
     {
         return \App\Models\NewsCategory::with('news')->get();
     }
-
     public static function getNewsTag()
     {
         return \App\Models\NewsTag::with('news')->get();
     }
-
     public static function getNewsLast()
     {
         return \App\Models\News::where('hot', 1)->act()->ord()->get();
@@ -1218,7 +1232,7 @@ class Support
         preg_match_all('/\[(.+?)\]/', $content, $allKey);
         $allKey = $allKey[0] ?? [];
         $gallery = self::jsonDecode($gallery);
-        
+
         foreach ($allKey as $itemKey) {
             if (strpos($itemKey, 'gallery') !== false) {
                 $key = str_replace('[gallery=', '', $itemKey);
@@ -1235,7 +1249,6 @@ class Support
         }
         return $content;
     }
-
     public static function showContentHasForm($content, $map_table, $map_id)
     {
         if ($content == '') return $content;
@@ -1246,29 +1259,49 @@ class Support
                 $key = str_replace('[el_form_contact=', '', $itemKey);
                 $key = str_replace(']', '', $key);
                 $data = DB::table('form_tables')->where('map_table', $map_table)->where('map_id', $map_id)->where('code', $key)->first();
-                $listInputs = json_decode($data->content, true);
-                $form = view('path.form_detail', compact('data', 'listInputs', 'map_table', 'map_id'))->render();
-                $content = str_replace($itemKey, $form, $content);
+                if ($data != null) {
+                    $listInputs = json_decode($data->content, true);
+                    $form = view('path.form_detail', compact('data', 'listInputs', 'map_table', 'map_id'))->render();
+                    $content = str_replace($itemKey, $form, $content);
+                }
             }
             if (strpos($itemKey, 'short_code') !== false) {
                 $key = str_replace('[short_code=', '', $itemKey);
                 $key = str_replace(']', '', $key);
+                $arrayChange = [];
+
+                $arrayKey = explode('||', $key);
+                if (count($arrayKey) > 1) {
+                    $key = $arrayKey[0];
+                    $dataArray = array_slice($arrayKey, 1, 2);
+                    foreach ($dataArray as $stringArray) {
+                        list($keyAttr, $valueAttr) = explode('=', $stringArray);
+                        $arrayChange[$keyAttr] = $valueAttr;
+                    }
+                }
                 $itemShortCode = DB::table('short_codes')->where('code', $key)->first();
                 $html = '';
-                if($itemShortCode != null){
-                    if(self::show($itemShortCode,'content') != ''){
-                        $html .= '<div class="content_short_code_html">'.self::show($itemShortCode,'content').'</div>';
+                if ($itemShortCode != null) {
+                    if (self::show($itemShortCode, 'content') != '') {
+                        $html .= '<div class="content_short_code_html">' . self::show($itemShortCode, 'content') . '</div>';
                     }
-                    if(self::show($itemShortCode,'content_text') != ''){
-                        $html .= '<div class="content_short_code_text">'.self::show($itemShortCode,'content_text').'</div>';
+                    if (self::show($itemShortCode, 'content_text') != '') {
+                        $html .= '<div class="content_short_code_text">' . self::show($itemShortCode, 'content_text') . '</div>';
                     }
                 }
                 $content = str_replace($itemKey, $html, $content);
+                if (count($arrayChange) > 0) {
+                    foreach ($arrayChange as $keyChange => $valueChange) {
+                        $content = str_replace($keyChange, $valueChange, $content);
+                    }
+                }
+                $content = str_replace("@csrf", '<input name="_token" value="' . csrf_token() . '" type="hidden">', $content);
+                $content = str_replace("@mapTable", '<input name="map_table" value="' . $map_table . '" type="hidden">', $content);
+                $content = str_replace("@mapId", '<input name="map_id" value="' . $map_id . '" type="hidden">', $content);
             }
         }
         return $content;
     }
-
     public static function showContentHasHtmlTemplate($content, $htmlsTemplate, $view = 'path.html_template')
     {
         if ($content == '') return $content;
@@ -1297,7 +1330,6 @@ class Support
         if (isset($params['orderkey'])) {
             unset($params['orderkey']);
         }
-
         if ($show->simple_sort == 1) {
             if (isset($params['ordervalue']) && $params['ordervalue'] == 'desc') {
                 $ordervalue = 'asc';
@@ -1314,7 +1346,6 @@ class Support
             } else {
                 $paramBuild = '';
             }
-
             $cursor = 'cursor-pointer';
             $url_sort = url()->current() . '?' . $paramBuild . '&orderkey=' . $show->name . '&ordervalue=' . $ordervalue;
         } else {
@@ -1366,5 +1397,31 @@ class Support
         $ret['title'] = $imageInfo['title'] ?? $name;
         $ret['alt'] = $imageInfo['alt'] ?? $name;
         return $ret;
+    }
+
+    public static function asset($file)
+    {
+        $file_path = public_path($file);
+
+        if (file_exists($file_path)) {
+            return asset($file) . '?v=' . filemtime($file_path);
+        } else {
+            try {
+                $path = collect(get_headers(url($file)));
+                $path = $path->first(function ($string) {
+                    return strpos($string, 'path-link') === 0;
+                });
+                if ($path) {
+                    $file_path = base_path() . str_replace('path-link: ', '', $path);
+                }
+            } catch (\Exception $err) {
+            }
+
+            if (file_exists($file_path)) {
+                return asset($file) . '?v=' . filemtime($file_path);
+            } else {
+                return asset($file) . '?v=2';
+            }
+        }
     }
 }

@@ -1,23 +1,22 @@
 @extends('vh::master')
 @section('content')
     <input type="hidden" name="model" value="{{ request()->input('model') }}" />
-    <input type="hidden" name="field_parent" value="{{ request()->input('parentField') }}" />
+    <input type="hidden" name="field_parent" value="{{ request()->input('field_parent') }}" />
     @foreach (request()->all() as $key => $input)
-        @if (strpos($key, 'plus_') !== false)
-            <input type="hidden" plus-param name="{{ str_replace('plus_','',$key) }}" value="{{ $input }}" />
+        @if (strpos('plus_') !== false)
+            <input type="hidden" plus-param name="{{ str_replace('plus_') }}" value="{{ $input }}" />
         @endif
-    @endforeach
+    @endif
     <input type="hidden" name="view" value="{{ request()->input('view') }}" />
-    <input type="hidden" name="view_item" value="{{ request()->input('view_item') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('comment/css/admin_comment.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('__commentRS/css/admin_comment.css') }}">
     <div class="card d-flex justify-content-between">
-        <a href="{{ base64_decode(request()->input('returnurl')) }}" class="btn btn-red d-flex align-items-center justify-content-center">Quay lại</a>
-        <p class="cart__title list-link">Chi tiết câu hỏi {{ $data->id }}</p>
+        <a href="esystem/view/questions" class="btn btn-red d-flex align-items-center justify-content-center">Quay lại</a>
+        <p class="cart__title list-link">Chi tiết câu hỏi {{ $question->id }}</p>
     </div>
     <hr>
     @php
-        $key = str_replace('s', '', $data->map_table);
-        $item = $data->$key;
+        $key = str_replace('s', '', $question->map_table);
+        $item = $question->$key;
     @endphp
     @if ($item !== null)
         <div class="product-view">
@@ -33,9 +32,9 @@
         </div>
     @endif
     <div class="comment-detail">
-        @include('commentRS::comments.item', ['comment' => $data])
+        @include('commentRS::comments.item', ['comment' => $question])
     </div>
 @stop
 @section('js')
-    <script src="{'comment/js/admin_comment.js'}" defer></script>
+    <script src="{'__commentRS/js/admin_comment.js'}" defer></script>
 @endsection

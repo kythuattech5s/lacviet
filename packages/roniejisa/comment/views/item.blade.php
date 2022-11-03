@@ -85,8 +85,8 @@
                                 <textarea name="content" id="" cols="30" rows="1" clear class="w-full rounded-md border px-2 py-2" rules="required" name="content" placeholder="Nhập câu trả lời"></textarea>
                                 <div class="grid w-full grid-cols-3 gap-3">
                                     <input type="text" name="plus_name" clear class="col-span-1 rounded-md border px-2 py-1" rules="required" placeholder="Họ tên">
-                                    <input type="text" name="plus_email" clear class="col-span-1 rounded-md border px-2 py-1" rules="required" placeholder="Email">
-                                    <input type="text" name="plus_phone" clear class="col-span-1 rounded-md border px-2 py-1" rules="required" placeholder="Số điện thoại">
+                                    <input type="text" name="plus_email" clear class="col-span-1 rounded-md border px-2 py-1" rules="required||email" placeholder="Email">
+                                    <input type="text" name="plus_phone" clear class="col-span-1 rounded-md border px-2 py-1" rules="required||phone" placeholder="Số điện thoại">
                                 </div>
                                 <button type="submit" button-reply data-placeholder="Nhập câu trả lời..." class="mt-2 flex space-x-[4px] rounded-md bg-[#028cde] px-3 text-white" comment-skeleton>
                                     Trả lời
