@@ -18,6 +18,14 @@ class Doctor extends BaseModel
             return $q->where('act', 1);
         }
     }
+    public function getListNewCustomer()
+    {
+        return News::act()->publish()->whereIn('id',explode(',',$this->list_new_customer))->get();
+    }
+    public function getListNewMagazine()
+    {
+        return News::act()->publish()->whereIn('id',explode(',',$this->list_new_magazine))->get();
+    }
 	public function ratings()
     {
         return $this->hasMany(Rating::class, 'map_id', 'id')->where('map_table', 'doctors');
