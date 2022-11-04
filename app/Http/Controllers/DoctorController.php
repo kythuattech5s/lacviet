@@ -9,9 +9,11 @@ class DoctorController extends Controller
         if ($currentItem == null) { abort(404); }
         $currentItem->count_view = (int)$currentItem->count_view + 1;
         $currentItem->save();
-        $listRelateDoctor = Doctor::where('id','!=',$currentItem->id)->inRandomOrder()->act()->limit(10)->get();
+        $listRelateDoctor = Doctor::where('id','!=',$currentItem->id)->inRandomOrder()->where('specialist_id',$currentItem->specialist_id)->act()->limit(10)->get();
         $dataContent = \Support::createdTocContent($currentItem->content);
         $listDoctorNews = $currentItem->news()->limit(3)->get();
-        return view('doctors.view',compact('currentItem','dataContent','listRelateDoctor','listDoctorNews'));
+        $listNewsCustomer = $currentItem->getListNewCustomer();
+        $listNewsMagazine = $currentItem->getListNewMagazine();
+        return view('doctors.view',compact('currentItem','dataContent','listRelateDoctor','listDoctorNews','listNewsCustomer','listNewsMagazine'));
     }
 }

@@ -10,7 +10,7 @@
 </div>
 <section class="section-experts__detail 2xl:py-10 py-6">
     <div class="container">
-        <div class="grid grid-cols-1 lg:grid-cols-4 2xl:gap-8 gap-4">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
             <div class="col-span-1 lg:col-span-3">
                 <div class="box-info-author lg:mb-6 mb-2  bg-white">
                     <div class="content sm:p-4 !pt-0 flex 2xl:gap-8 lg:gap-6 md:gap-4 gap-2">
@@ -28,14 +28,14 @@
                             @endif
                             <div class="flex items-center flex-wrap gap-4">
                                 <a href="tel:{[hotline]}" title="Đăng ký khám"
-                                    class=" btn-border__blue inline-flex items-center sm:min-w-[180px] justify-center lg:text-[0.875rem] lg:py-2 py-1 sm:px-4 px-3 text-[#333] bg-transparent transition-all duration-300 border-[1px] border-solid border-[#028cde]">
+                                    class=" btn-border__blue inline-flex items-center sm:min-w-[240px] justify-center lg:py-2 py-1 px-6 text-[#333] bg-transparent transition-all duration-300 border-[1px] border-solid border-[#028cde]">
                                     Tổng đài: <strong class="font-bold">{[hotline]}</strong>
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <p class="title-new__pages relative 2xl:after:h-1 after:h-[2px] after:w-20 after:bg-[#ed9f09] after:block after:mt-2 mb-4 uppercase font-bold text-[#028cde] 2xl:text-[1.5rem] text-[1rem]">Thông tin bác sĩ</p>
+                <p class="title-new__pages relative 2xl:after:h-1 after:h-[2px] after:w-20 after:bg-[#ed9f09] after:block after:mt-2 mb-4 uppercase font-bold text-[#028cde] 2xl:text-[1.5rem] text-[21px]">Thông tin bác sĩ</p>
                 <div class="s-content 2xl:mb-10 mb-6">
                     {!!Support::show($dataContent,'content')!!}
                 </div>
@@ -49,8 +49,28 @@
                         @endforeach
                     </ul>
                 @endif
+                @if (count($listNewsCustomer) > 0)
+                    <p class="title-new__pages relative 2xl:after:h-1 after:h-[2px] after:w-20 after:bg-[#ed9f09] after:block after:mt-2 mb-4 uppercase font-bold text-[#0557ac] 2xl:text-[1.25rem] text-[1rem]">Khách hàng nói gì về bác sĩ</p>
+                    <ul class="list-new__experts list-disc mb-6">
+                        @foreach ($listNewsCustomer as $itemNewsCustomer)
+                            <li class="ml-4 lg:py-4 py-2 border-b-[1px] border-solid border-[#f6cf84]">
+                                <a href="{{Support::show($itemNewsCustomer,'slug')}}" title="{{Support::show($itemNewsCustomer,'name')}}" class="italic text-[#62a3ff] 2xl:text-[1.25rem]">{{Support::show($itemNewsCustomer,'name')}}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif
+                @if (count($listNewsMagazine) > 0)
+                    <p class="title-new__pages relative 2xl:after:h-1 after:h-[2px] after:w-20 after:bg-[#ed9f09] after:block after:mt-2 mb-4 uppercase font-bold text-[#0557ac] 2xl:text-[1.25rem] text-[1rem]">Báo chí, truyền hình</p>
+                    <ul class="list-new__experts list-disc mb-6">
+                        @foreach ($listNewsMagazine as $itemNewMagazine)
+                            <li class="ml-4 lg:py-4 py-2 border-b-[1px] border-solid border-[#f6cf84]">
+                                <a href="{{Support::show($itemNewMagazine,'slug')}}" title="{{Support::show($itemNewMagazine,'name')}}" class="italic text-[#62a3ff] 2xl:text-[1.25rem]">{{Support::show($itemNewMagazine,'name')}}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif
                 @if (count($listRelateDoctor) > 0)
-                    <p class="title-all 2xl:text-[2rem] lg:text-[1.5rem] text-[1.25rem] text-[#000] font-semibold mb-6">Xem thêm chuyên gia</p>
+                    <p class="title-all uppercase 2xl:text-[2rem] lg:text-[1.5rem] text-[21px] text-[#000] font-semibold mb-6">Xem thêm bác sĩ</p>
                     <div class="boxslide relative">
                         <div class="swiper-container slide-experts">
                             <div class="swiper-wrapper">
