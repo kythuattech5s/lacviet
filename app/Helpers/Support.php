@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Helpers;
-
 use DB;
 use Carbon\Carbon;
 use App\Models\Menu;
@@ -27,10 +25,11 @@ use App\Helpers\Order\Order as OrderHelper;
 use App\Helpers\Mobile_Detect as MobileDetect;
 use Currency;
 use WebPConvert\WebPConvert;
-
 class Support
 {
     const LINK_SHEET = "https://script.google.com/macros/s/AKfycby5MgRKOrnP4MOYYqUQY1W5K-N4WjwAlOhCRIyARjrTyHuI8Rt1jOyaUqkxlHsxsk69yA/exec";
+    const TIME_CACHE = 86400;
+    const LIMIT_OF_PAGE = 30;
     public static function getCurl($params, $url)
     {
         $result = "";
@@ -295,11 +294,15 @@ class Support
     }
     public static function getMenuRecursive($group = null, int $take = null)
     {
-        $menus = Menu::where('menu_category_id', $group)->where('parent', 0)->act()->ord()->with('recursiveChilds');
-        if ($take != null) {
-            return $menus->take($take)->get();
-        }
-        return $menus->get();
+        $menus = Menu::act();   
+        return \Cache::remember('menu_'.((int)$group), self::TIME_CACHE, function () use ($menus,$take,$group){
+            if ($take != null) {
+                return $menus->where('menu_category_id', $group)->where('parent', 0)->take($take)->ord()->with('recursiveChilds')->get();
+            }
+            else{
+                return  $menus->where('menu_category_id', $group)->where('parent', 0)->ord()->with('recursiveChilds')->get();
+            }
+        });
     }
     public static function getMenuSitemapRecursive($group = null, int $take = null)
     {
@@ -322,7 +325,6 @@ class Support
                 $aTitle = Support::show($menu, 'name');
                 echo '<li class="' . Str::slug($aTitle, '-') . '">';
                 $aLink = $menu->link == '' ? 'javascript:void(0)' : trim($menu->link, '/') . '/';
-
                 $aClass = $active . ' ' . count($menu->recursiveChilds) > 0 ? 'have-child' : '';
                 $aStartLink = vsprintf('<a href="%s" title="%s" class="%s" %s>', [$aLink, $aTitle, $aClass, \Support::showNofollow($menu)]);
                 echo $aStartLink;
@@ -1232,7 +1234,6 @@ class Support
         preg_match_all('/\[(.+?)\]/', $content, $allKey);
         $allKey = $allKey[0] ?? [];
         $gallery = self::jsonDecode($gallery);
-
         foreach ($allKey as $itemKey) {
             if (strpos($itemKey, 'gallery') !== false) {
                 $key = str_replace('[gallery=', '', $itemKey);
@@ -1269,7 +1270,6 @@ class Support
                 $key = str_replace('[short_code=', '', $itemKey);
                 $key = str_replace(']', '', $key);
                 $arrayChange = [];
-
                 $arrayKey = explode('||', $key);
                 if (count($arrayKey) > 1) {
                     $key = $arrayKey[0];
@@ -1398,11 +1398,9 @@ class Support
         $ret['alt'] = $imageInfo['alt'] ?? $name;
         return $ret;
     }
-
     public static function asset($file)
     {
         $file_path = public_path($file);
-
         if (file_exists($file_path)) {
             return asset($file) . '?v=' . filemtime($file_path);
         } else {
@@ -1416,7 +1414,6 @@ class Support
                 }
             } catch (\Exception $err) {
             }
-
             if (file_exists($file_path)) {
                 return asset($file) . '?v=' . filemtime($file_path);
             } else {

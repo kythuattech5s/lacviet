@@ -95,7 +95,7 @@
                 </a>
 
                 @php
-                $menus = Support::getMenuRecursive(1);
+                    $menus = Support::getMenuRecursive(1);
                 @endphp
                 {{Support::showMenuRecursive($menus,0)}}
                 <form action="{{VRoute::get('medicalRecordLookup')}}" method="GET" class="form relative mt-5 block lg:hidden">
