@@ -49,7 +49,7 @@ class HomeController extends Controller
             return \Redirect::to($newUrl, 301);
         }
         /* End check link đuôi có dấu / */
-
+        
         $maxSegment = 1;
         if (isset($tableAccess)) {
             $maxSegment = 2;
@@ -67,13 +67,28 @@ class HomeController extends Controller
     {
         Utm::check();
         $isHome = 1;
-        $listBanner = Banner::act()->where('time_show','>',new \DateTime())->where('time_public','<',new \DateTime())->ord()->get();
-        $listReasonChoose = ReasonChoose::act()->ord()->get();
-        $listHotService = Services::act()->where('hot',1)->ord()->get();
-        $listBranchSystem = BranchSystem::act()->ord()->get();
-        $listHomeNews = News::act()->where('home',1)->publish()->orderBy('time_published','desc')->limit(3)->get();
-        $listQuestion = Question::act()->orderBy('id','desc')->limit(4)->get();
-        $videoHome = Video::act()->first();
+        $listBanner =  \Cache::remember('banner_home', \Support::TIME_CACHE, function (){
+            return Banner::act()->where('time_show','>',new \DateTime())->where('time_public','<',new \DateTime())->ord()->get();
+        });
+        $listReasonChoose = \Cache::remember('reason_choose', \Support::TIME_CACHE, function (){
+            return ReasonChoose::act()->ord()->get();
+        });
+        $listHotService = \Cache::remember('list_hot_service', \Support::TIME_CACHE, function (){
+            return Services::act()->where('hot',1)->ord()->get();
+        });
+        $listBranchSystem = \Cache::remember('list_branch_system', \Support::TIME_CACHE, function (){
+            return BranchSystem::act()->ord()->get();
+        });
+        $listHomeNews = \Cache::remember('list_home_news', \Support::TIME_CACHE, function (){
+            return News::act()->where('home',1)->publish()->orderBy('time_published','desc')->limit(3)->get();
+        });
+
+        $listQuestion = \Cache::remember('list_question', \Support::TIME_CACHE, function (){
+            return Question::act()->orderBy('id','desc')->limit(4)->get();
+        });
+        $videoHome = \Cache::remember('video_home', \Support::TIME_CACHE, function (){
+            return Video::act()->first();
+        });
         return view('home', compact('listBanner','isHome','listReasonChoose','listHotService','listBranchSystem','listHomeNews','listQuestion','videoHome'));
     }
 }

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html itemscope="" itemtype="http://schema.org/WebPage" lang="vi">
-
 <head>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
@@ -17,7 +16,9 @@
 	@yield('cssl')
 	<link href="theme/frontend/css/app.css?v={{ time() }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('./css/app.css?v=5.2') }}" rel="stylesheet">
-	<script src="https://cdn.tailwindcss.com"></script>
+	@if(!Support::isLightHouseSp())
+		<script src="https://cdn.tailwindcss.com"></script>
+	@endif
 	<script>
 		tailwind.config = {
 			theme: {
@@ -40,12 +41,15 @@
 		var messageNotify = "{{ Session::get('messageNotify', '') }}";
 		var typeNotify = "{{ Session::get('typeNotify', '') }}";
 	</script>
-	{[CMS_HEADER]}
-	@include('schema_code')
+	@if(!Support::isLightHouseSp())
+		{[CMS_HEADER]}
+		@include('schema_code')
+	@endif
 </head>
-
-<body class="wrapper mx-auto overflow-x-hidden font-['Gilroy',sans-serif] text-[12px] leading-normal text-[#262626] sm:text-[14px] 2xl:text-[16px]">
-	{[CMS_BODY]}
+<body class="wrapper mx-auto overflow-x-hidden font-['Arial',sans-serif] text-[12px] leading-normal text-[#262626] sm:text-[14px] 2xl:text-[16px]">
+	@if(!Support::isLightHouseSp())
+		{[CMS_BODY]}
+	@endif
 	@if (!isset($onlyShowContent))
 		@include('header')
 	@endif
@@ -53,10 +57,12 @@
 	@if (!isset($onlyShowContent))
 		@include('footer')
 	@endif
-	@include('gg_js')
-	{[CMS_FOOTER]}
-	<div id="fb-root"></div>
-	<script defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v14.0&appId=480194903000973&autoLogAppEvents=1" nonce="sBHfRLsS"></script>
+	@if(!Support::isLightHouseSp())
+		@include('gg_js')
+		{[CMS_FOOTER]}
+		<div id="fb-root"></div>
+		<script defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v14.0&appId=480194903000973&autoLogAppEvents=1" nonce="sBHfRLsS"></script>
+	@endif
 	@yield('jsl')
 	<script src="theme/frontend/asset/js/base.js" defer></script>
 	<script src="theme/frontend/asset/js/toastify.js" defer></script>
@@ -68,11 +74,12 @@
 	<script src="theme/frontend/js/wow.min.js" defer></script>
 	<script src="theme/frontend/js/fslightbox.js" defer></script>
 	<script src="theme/frontend/js/modal.js" defer></script>
-	<script src="theme/frontend/js/swiper-bundle.min.js" defer></script>
+	@if(!Support::isLightHouseSp())
+		<script src="theme/frontend/js/swiper-bundle.min.js" defer></script>
+	@endif
 	<script src="theme/frontend/js/slider.js" defer></script>
 	<script src="{{ Support::asset('assets/plugins/countdown/countDownCustom.js') }}" defer></script>
 	@yield('js')
 	<script src="theme/frontend/js/script.js" defer></script>
 </body>
-
 </html>
