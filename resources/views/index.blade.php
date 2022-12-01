@@ -17,7 +17,8 @@
 	<link href="theme/frontend/css/app.css?v={{ time() }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('./css/app.css?v=5.2') }}" rel="stylesheet">
 	@if(!Support::isLightHouseSp())
-	<script src="https://cdn.tailwindcss.com"></script>
+		<script src="https://cdn.tailwindcss.com"></script>
+	@endif
 	<script>
 		tailwind.config = {
 			theme: {
@@ -34,7 +35,6 @@
 			}
 		}
 	</script>
-	@endif
 	<link href="theme/frontend/css/main.css?v={{ time() }}" rel="stylesheet" type="text/css" />
 	@yield('css')
 	<script type="text/javascript">
@@ -46,7 +46,7 @@
 		@include('schema_code')
 	@endif
 </head>
-<body class="wrapper mx-auto overflow-x-hidden font-['Gilroy',sans-serif] text-[12px] leading-normal text-[#262626] sm:text-[14px] 2xl:text-[16px]">
+<body class="wrapper mx-auto overflow-x-hidden font-['Arial',sans-serif] text-[12px] leading-normal text-[#262626] sm:text-[14px] 2xl:text-[16px]">
 	@if(!Support::isLightHouseSp())
 		{[CMS_BODY]}
 	@endif
@@ -75,7 +75,7 @@
 	<script src="theme/frontend/js/fslightbox.js" defer></script>
 	<script src="theme/frontend/js/modal.js" defer></script>
 	@if(!Support::isLightHouseSp())
-	<script src="theme/frontend/js/swiper-bundle.min.js" defer></script>
+		<script src="theme/frontend/js/swiper-bundle.min.js" defer></script>
 	@endif
 	<script src="theme/frontend/js/slider.js" defer></script>
 	<script src="{{ Support::asset('assets/plugins/countdown/countDownCustom.js') }}" defer></script>

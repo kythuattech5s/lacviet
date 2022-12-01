@@ -16,18 +16,18 @@
                 <i class="fa fa-bars" aria-hidden="true"></i>
             </span>
             <a href="{{\VRoute::get("home")}}" title="Trang chủ" class="logo-header block">
-                @include('image_loader.config.tiny',['config_key'=>'logo','noLazyLoad'=>1])
+                <img src="{Ilogo.imgI}" alt="{Ilogo.altI}" title="{Ilogo.altI}" width="300" height="83">
             </a>
             <form action="{{\VRoute::get("search")}}" method="get" class="form-search-header min-w-[290px] hidden lg:block relative flex-1" accept-charset="utf8">
                 <input type="text" placeholder="Bạn cần tìm gì?" name="q" class="form-control lg:px-7 px-5 py-2 w-full bg-white rounded-3xl border-[1px] border-[#a2a2a2] border-solid">
                 <button type="submit" class="btn-search absolute top-1/2 right-4 -translate-y-1/2 z-[1]">
-                    <img src="theme/frontend/images/icon-search.png" alt="search">
+                    <img src="theme/frontend/images/icon-search.png" alt="search" style="width:22px;height:22px;">
 
                 </button>
             </form>
             <div class="head-action hidden lg:flex items-center justify-end gap-x-4">
                 <a href="tel:{[hotline]}" class="h-hotline flex items-center" title="Hotline">
-                    <img src="theme/frontend/images/h-hotline.svg" class="w-12 h-12 object-contain mr-2" alt="hotline">
+                    <img src="theme/frontend/images/h-hotline.svg" class="w-12 h-12 object-contain mr-2" alt="hotline" style="width:48px;height:48px;">
                     <p class="content">
                         <span class="title block font-semibold text-[#028cde] 2xl:text-[1.125rem]">Hotline</span>
                         <span class="phone font-bold text-[#f53632] 2xl:text-[1.125rem]">{[hotline]}</span>
@@ -83,7 +83,7 @@
             </div>
         </div>
     </div>
-    <div class="header-nav bg-[#028cde]">
+    <div class="header-nav bg-[#028cde] header_over_flow_hidden">
         <div class="container flex justify-between">
             <a href="{{\VRoute::get("home")}}" title="Trang chủ" class="go-home hidden lg:flex items-center justify-center text-white text-[1.875rem] w-[53px] lg:mr-10">
                 <i class="fa fa-home" aria-hidden="true"></i>
@@ -91,9 +91,8 @@
 
             <div class="menu">
                 <a href="{{\VRoute::get("home")}}" title="Trang chủ" class="logo-mobile block lg:hidden mb-6">
-                    @include('image_loader.config.tiny',['config_key'=>'logo','noLazyLoad'=>1])
+                    <img src="{Ilogo.imgI}" alt="{Ilogo.altI}" title="{Ilogo.altI}">
                 </a>
-
                 @php
                     $menus = Support::getMenuRecursive(1);
                 @endphp

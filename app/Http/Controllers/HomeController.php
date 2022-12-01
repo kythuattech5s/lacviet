@@ -49,7 +49,7 @@ class HomeController extends Controller
             return \Redirect::to($newUrl, 301);
         }
         /* End check link đuôi có dấu / */
-
+        
         $maxSegment = 1;
         if (isset($tableAccess)) {
             $maxSegment = 2;

@@ -14,13 +14,12 @@
         {{\Breadcrumbs::render('news',$currentItem,$parent)}}
     </div>
 </div>
-<section class="section-new__detail 2xl:py-10 py-6 sm:pt-6 pt-0">
+<section class="section-new__detail 2xl:py-10 py-6 sm:pt-6 pt-2">
     <div class="container">
         @php
         $bannerGdnTopNew = \App\Models\BannerGdn::where('group',1)->act()->first();
         @endphp
         @if (isset($bannerGdnTopNew))
-
         <div class="banner-new__detail lg:mb-6 mb-4 hidden lg:block">
             @if ($bannerGdnTopNew->use_code == 1)
             {!!$bannerGdnTopNew->banner_content!!}
@@ -29,18 +28,15 @@
                 @include('image_loader.all',['itemImage'=>$bannerGdnTopNew,'key'=>'img'])
             </a>
             @endif
-
         </div>
         @endif
         <div class="grid grid-cols-1 2xl:gap-8 gap-4 lg:flex">
             <div class="col-span-1 lg:col-span-3 lg:flex-1">
                 <h1 class="title-new font-bold uppercase 2xl:text-[1.25rem] text-[1rem] mb-2 text-[#028cde]">{{Support::show($currentItem,'name')}}</h1>
                 <div class="flex items-center gap-4 2xl:mb-6 mb-2">
-                <p class="count "><i class="fa fa-eye mr-1" aria-hidden="true"></i>Lượt xem: {{Support::show($currentItem,'count_view')}}</p>
-                <p class="text"> <i class="fa fa-clock-o mr-1" aria-hidden="true"></i>  Cập nhật ngày: {{Support::showDateTime($currentItem->time_published,'d/m/Y')}}</p>
-
+                    <p class="count "><i class="fa fa-eye mr-1" aria-hidden="true"></i>Lượt xem: {{Support::show($currentItem,'count_view')}}</p>
+                    <p class="text"> <i class="fa fa-clock-o mr-1" aria-hidden="true"></i> Cập nhật ngày: {{Support::showDateTime($currentItem->time_published,'d/m/Y')}}</p>
                 </div>
-
                 <div class="content-intro hidden lg:block font-bold md:text-[0.875rem] s-content 2xl:p-5 lg:p-4 p-2 bg-[#e0f3ff] border-[1px] border-dashed border-[#a1a1a1] mb-6">
                     {{Support::show($currentItem,'short_content')}}
                 </div>
@@ -91,13 +87,12 @@
                             <a href="{{Support::show($doctor->specialist,'slug')}}" class="inline-block lg:p-2 p-1 bg-[#f43d3b] text-white lg:rounded rounded-sm 2xl:mb-4 mb-2" title="{{Support::show($doctor->specialist,'name')}}">{{Support::show($doctor->specialist,'name')}}</a>
                             @endif
                             <div class="flex items-center flex-wrap sm:gap-4 gap-2">
-                              
                                 <a href="tel: {[hotline]}" title="Đăng ký khám" class="btn-border__blue inline-flex items-center justify-center lg:text-[0.875rem] lg:py-2 py-1 px-4 text-[#333] bg-transparent transition-all duration-300 border-[1px] border-solid border-[#028cde]">
-                                        Tổng đài: <strong class="font-bold">{[hotline]}</strong>
-                                    </a>
+                                    Tổng đài: <strong class="font-bold">{[hotline]}</strong>
+                                </a>
                                 <a href="{{Support::show($doctor,'slug')}}" title="Xem thông tin bác sĩ" class="btn-border__yellow inline-flex items-center justify-center lg:text-[0.875rem] lg:py-2 py-1 px-4 text-[#333] bg-transparent transition-all duration-300 border-[1px] border-solid border-[#eea517] hover:bg-[#eea517] hover:text-white">
-                                        Xem thông tin bác sĩ
-                                    </a>
+                                    Xem thông tin bác sĩ
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -140,7 +135,7 @@
                 </div>
                 @endif
                 @if (count($listMostViewNews) > 0)
-                <div class="box-new__hot 2xl:my-20 lg:my-8 my-6 lg:rounded-3xl rounded-xl overflow-hidden">
+                <div class="box-new__hot hidden sm:block 2xl:my-20 lg:my-8 my-6 lg:rounded-3xl rounded-xl overflow-hidden">
                     <p class="head text-center 2xl:text-[1.5rem] lg:text-[1.25rem] text-[0.875rem] uppercase bg-[#028cde] text-white 2xl:p-5 p-3">Những bài viết đang được nhiều người quan tâm</p>
                     <div class="content bg-[#f6f7f8] 2xl:py-7 lg:px-16 lg:py-4 p-4">
                         @foreach ($listMostViewNews as $itemMostViewNews)
@@ -155,6 +150,19 @@
                 <div class="comment-box">
                     @include('commentRS::comment_box',['map_table'=>'news'])
                 </div>
+                @if (count($listMostViewNews) > 0)
+                <div class="box-new__hot block sm:hidden mt-0 2xl:my-20 lg:my-8 my-6 lg:rounded-3xl rounded-xl overflow-hidden">
+                    <p class="head text-center 2xl:text-[1.5rem] lg:text-[1.25rem] text-[0.875rem] uppercase bg-[#028cde] text-white 2xl:p-5 p-3">Những bài viết đang được nhiều người quan tâm</p>
+                    <div class="content bg-[#f6f7f8] 2xl:py-7 lg:px-16 lg:py-4 p-4">
+                        @foreach ($listMostViewNews as $itemMostViewNews)
+                        <div class="item-new__hot relative flex flex-col sm:flex-row sm:items-center justify-between sm:gap-4 gap-2 2xl:py-4 py-2 border-b-[1px] border-solid border-[#7cc1eb] last:border-dashed">
+                            <a href="{{Support::show($itemMostViewNews,'slug')}}" title="{{Support::show($itemMostViewNews,'name')}}" class="title text-[#373737] uppercase 2xl:text-[1.125rem] lg:text-[1rem]">{{Support::show($itemMostViewNews,'name')}}</a>
+                            <span class="count shrink-0 lg:text-[0.875rem] italic">{{Support::show($itemMostViewNews,'count_view')}} lượt xem</span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                @endif
                 @if (count($newsRelateds) > 0)
                 <p class="title-new__pages relative 2xl:after:h-1 after:h-[2px] after:w-20 after:bg-[#ed9f09] after:block after:mt-2 mb-4 uppercase font-bold text-[#028cde] 2xl:text-[1.25rem] text-[1rem]">Tin cùng chủ đề</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 2xl:gap-8 lg:gap-6 gap-4 mb-6">
@@ -200,7 +208,7 @@
                 </div>
                 @endif
             </div>
-            <div class="col-span-1 px-8 sm:px-0 lg:w-[330px]">
+            <div class="col-span-1 lg:w-[330px] sidebar-new-content">
                 @include('news.sidebar')
             </div>
         </div>

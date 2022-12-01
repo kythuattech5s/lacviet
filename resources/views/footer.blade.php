@@ -66,23 +66,23 @@
                     </div>
                     <ul class="social-footer flex items-center mb-5">
                         <li class="inline-block mr-5 last:mr-0">
-                            <a href="{[facebook]}" title="Facebook" target="_blank" rel="noopener" class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-lg bg-white text-[#044da8] lg:text-[1.25rem] text-[1rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="{[facebook]}" title="Facebook" target="_blank" rel="nofollow" class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-lg bg-white text-[#044da8] lg:text-[1.25rem] text-[1rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                         </li>
                         <li class="inline-block mr-5 last:mr-0">
-                            <a href="{[youtube]}" title="Youtube" target="_blank" rel="noopener" class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-lg bg-white text-[#044da8] lg:text-[1.25rem] text-[1rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                            <a href="{[youtube]}" title="Youtube" target="_blank" rel="nofollow" class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-lg bg-white text-[#044da8] lg:text-[1.25rem] text-[1rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
                         </li>
                         <li class="inline-block mr-5 last:mr-0">
-                            <a href="{[tiktok]}" title="Tiktok" target="_blank" rel="noopener" class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-lg bg-white text-[#044da8] lg:text-[1.25rem] text-[1rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white group">
+                            <a href="{[tiktok]}" title="Tiktok" target="_blank" rel="nofollow" class="flex items-center justify-center lg:w-10 lg:h-10 w-8 h-8 rounded-lg bg-white text-[#044da8] lg:text-[1.25rem] text-[1rem] transition-all duration-300 border-[1px] border-solid border-[#fff] hover:bg-transparent hover:text-white group">
                                 <img src="theme/frontend/images/tiktok.svg" class="group-hover:brightness-[100] w-4 h-4 object-contain" alt="tiktok">
                             </a>
                         </li>
                     </ul>
                     @if(!Support::isLightHouseSp())
-					<a target="blank" href="//www.dmca.com/Protection/Status.aspx?ID=3ec13106-65ac-469b-b4fb-d60c2846a236" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=3ec13106-65ac-469b-b4fb-d60c2846a236"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
+					<a target="blank" href="//www.dmca.com/Protection/Status.aspx?ID=3ec13106-65ac-469b-b4fb-d60c2846a236" rel="nofollow" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=3ec13106-65ac-469b-b4fb-d60c2846a236"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
                     @endif
                     @if (SettingHelper::getSetting('link_dky_bct') != '')
                     <div class="img-certifi block md:hidden 2xl:mt-10 mt-6">
-                        <a href="{[link_dky_bct]}" target="_blank" rel="noopener" title="Đã đăng lý bộ công thương">
+                        <a href="{[link_dky_bct]}" target="_blank" rel="nofollow" title="Đã đăng lý bộ công thương">
                             <img src="theme/frontend/images/bct.png" alt="Đã đăng lý bộ công thương">
                         </a>
                     </div>
@@ -93,18 +93,18 @@
     </div>
     <div class="footer-bottom bg-[#044b95] py-4 text-white">
         <div class="container">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
                 <div class="col-span-1">
                     <p class="copyright text-white text-center lg:text-left">{[copy_right]}</p>
                 </div>
-                <div class="col-span-1 hidden lg:block text-center">
-                    @php
+                <div class="col-span-1 lg:col-span-2 hidden lg:block text-center">
+                    <?php 
                         $menus = \Cache::remember('menu_footer', \Support::TIME_CACHE, function (){
                             return \App\Models\Menu::where('menu_category_id',2)->get();
                         }); 
-                    @endphp
+                    ?>
                     @foreach ($menus as $itemMenu)
-                    <a href="{{$itemMenu->link == '' ? 'javascript:void(0)':trim($menu->link,'/').'/'}}" title="{{Support::show($itemMenu,'name')}}" class="link-footer text-white inline-block relative" {!!Support::showNofollow($itemMenu)!!}>{{Support::show($itemMenu,'name')}}</a>
+                    <a href="{{$itemMenu->link == '' ? 'javascript:void(0)':trim($itemMenu->link,'/').'/'}}" title="{{Support::show($itemMenu,'name')}}" class="link-footer text-white inline-block relative" {!!Support::showNofollow($itemMenu)!!}>{{Support::show($itemMenu,'name')}}</a>
                     @endforeach
                 </div>
             </div>
