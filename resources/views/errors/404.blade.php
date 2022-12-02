@@ -1,4 +1,4 @@
-@extends('index')
+@extends('index',['meta_tile'=>'Page not found'])
 @section('content')
 <section class="py-6">
     <div class="container text-center">

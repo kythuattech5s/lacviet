@@ -6,7 +6,7 @@
             <div class="col-span-1 lg:col-span-3">
                 @if (count($listItems) > 0)
                     <p class="result 2xl:text-[1.5rem] lg:text-[1.25rem] text-[1rem] mb-4 text-center">
-                        {{$listItems->total()}} KẾT QUẢ TÌM KIẾM "<span class="keywork">{{$val}}</span>"
+                        {{count($listItems)}} KẾT QUẢ TÌM KIẾM "<span class="keywork">{{$val}}</span>"
                     </p>
                     <form action="{{\VRoute::get("search")}}" method="get" class="form-search-new relative max-w-[725px] mx-auto 2xl:mb-9 mb-6  overflow-hidden" accept-charset="utf8">
                         <input type="text" name="q" value="{{$val}}" class="form-control w-full py-2 px-4 h-9 border-[1px] border-solid border-[#aaa] rounded-md  pr-10">
@@ -15,11 +15,10 @@
                         </button>
                     </form>
                     @foreach ($listItems as $item)
-                        <div class="module-new__search p-4 bg-[#fafafa] 2xl:mb-6 mb-4">
-                            @include('news.item_search')
-                        </div>
+                    <div class="module-new__search p-4 bg-[#fafafa] 2xl:mb-6 mb-4">
+                        @include('news.item_search')
+                    </div>
                     @endforeach
-                    {{$listItems->withQueryString()->links('vendor.pagination.pagination')}}
                 @else
                     <p class="result 2xl:text-[1.5rem] lg:text-[1.25rem] text-[1rem] mb-4 text-center">
                         KHÔNG CÓ KẾT QUẢ TÌM KIẾM "<span class="keywork">{{$val}}</span>"

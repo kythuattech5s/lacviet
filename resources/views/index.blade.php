@@ -3,6 +3,9 @@
 <head>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	@if(isset($meta_tile))
+	<title>{{$meta_tile ?? ''}}</title>
+	@endif
 	{!! \vanhenry\helpers\helpers\SEOHelper::HEADER_SEO(@$currentItem ? $currentItem : null) !!}
 	<base href="{{ url('/') }}">
 	<link href="{{ url()->current() }}" hreflang="vi-vn" rel="alternate" />
@@ -65,17 +68,17 @@
 	@endif
 	@yield('jsl')
 	<script src="theme/frontend/asset/js/base.js" defer></script>
-	<script src="theme/frontend/asset/js/toastify.js" defer></script>
-	<script src="{{ asset('assets/js/ValidateForm.js') }}" defer></script>
-	<script src="theme/frontend/asset/js/xhr.js" defer></script>
 	<script src="theme/frontend/tech5s_js/tech5s_base.min.js" defer></script>
 	<script src="theme/frontend/tech5s_js/libraries/Tech.js" defer></script>
 	<script src="theme/frontend/tech5s_js/libraries/BackToTop.js" defer></script>
 	<script src="theme/frontend/js/wow.min.js" defer></script>
-	<script src="theme/frontend/js/fslightbox.js" defer></script>
-	<script src="theme/frontend/js/modal.js" defer></script>
 	@if(!Support::isLightHouseSp())
-		<script src="theme/frontend/js/swiper-bundle.min.js" defer></script>
+	<script src="theme/frontend/asset/js/toastify.js" defer></script>
+	<script src="{{ asset('assets/js/ValidateForm.js') }}" defer></script>
+	<script src="theme/frontend/js/fslightbox.js" defer></script>
+	<script src="theme/frontend/asset/js/xhr.js" defer></script>
+	<script src="theme/frontend/js/modal.js" defer></script>
+	<script src="theme/frontend/js/swiper-bundle.min.js" defer></script>
 	@endif
 	<script src="theme/frontend/js/slider.js" defer></script>
 	<script src="{{ Support::asset('assets/plugins/countdown/countDownCustom.js') }}" defer></script>

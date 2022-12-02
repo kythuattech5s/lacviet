@@ -15,10 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/clear', function () {
     $exitCode = Artisan::call('cache:clear');
     $exitCode = Artisan::call('config:cache');
-    echo '<pre>';
-    var_dump(__LINE__);
-    die();
-    echo '</pre>';
+    echo '<pre>';var_dump(__LINE__);die();echo '</pre>';
 });
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
