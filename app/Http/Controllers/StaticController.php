@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Support;
-use App\Models\{News, ServiceCategory, Specialist, Doctor, RegisterAdvise, BookApointment, BookApointmentDoctor, TimePick, Question, QueueEmail, DrugLookup, BodyLookup, DiseaseLookup, QuestionCategory};
+use App\Models\{News, ServiceCategory, Specialist, Doctor, RegisterAdvise, BookApointment, BookApointmentDoctor, TimePick, Question, QueueEmail, DrugLookup, BodyLookup, DiseaseLookup, QuestionCategory,CustomerStory,DentalKnowledge};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
@@ -35,7 +35,15 @@ class StaticController extends Controller
         // if ($request->isMethod('get')) {
         $val = $request->input('q');
         $currentItem = \vanhenry\manager\model\VRoute::find($route->id);
-        $listItems = News::publish()->act()->FullTextSearch('name', $val)->orderBy('time_published', 'desc')->paginate(5);
+        $listItems = collect();
+        $listNews = News::publish()->act()->FullTextSearch('name', $val)->orderBy('time_published', 'desc')->get();
+        $listCustomerHistory = CustomerStory::publish()->act()->FullTextSearch('name', $val)->orderBy('time_published', 'desc')->get();
+        $listDentalKnowledge = DentalKnowledge::publish()->act()->FullTextSearch('name', $val)->orderBy('time_published', 'desc')->get();
+
+
+        $listItems = $listItems->merge($listNews);
+        $listItems = $listItems->merge($listCustomerHistory);
+        $listItems = $listItems->merge($listDentalKnowledge);
         $listHotNews = News::act()->where('hot', 1)->publish()->orderBy('time_published', 'desc')->limit(5)->get();
         return view('search.basic_view', compact('val', 'currentItem', 'listItems', 'listHotNews'));
         // }

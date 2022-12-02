@@ -16,25 +16,25 @@
                 <i class="fa fa-bars" aria-hidden="true"></i>
             </span>
             <a href="{{\VRoute::get("home")}}" title="Trang chủ" class="logo-header block">
-                <img src="{Ilogo.imgI}" alt="{Ilogo.altI}" title="{Ilogo.altI}" width="300" height="83">
+                @include('image_loader.config.tiny',['config_key'=>'logo','noLazyLoad'=>1])
             </a>
             <form action="{{\VRoute::get("search")}}" method="get" class="form-search-header min-w-[290px] hidden lg:block relative flex-1" accept-charset="utf8">
                 <input type="text" placeholder="Bạn cần tìm gì?" name="q" class="form-control lg:px-7 px-5 py-2 w-full bg-white rounded-3xl border-[1px] border-[#a2a2a2] border-solid">
                 <button type="submit" class="btn-search absolute top-1/2 right-4 -translate-y-1/2 z-[1]">
-                    <img src="theme/frontend/images/icon-search.png" alt="search" style="width:22px;height:22px;">
+                    <img src="theme/frontend/images/icon-search.png" alt="search">
 
                 </button>
             </form>
             <div class="head-action hidden lg:flex items-center justify-end gap-x-4">
-                <a href="tel:{[hotline]}" class="h-hotline flex items-center" title="Hotline">
-                    <img src="theme/frontend/images/h-hotline.svg" class="w-12 h-12 object-contain mr-2" alt="hotline" style="width:48px;height:48px;">
+                <a href="tel:{[hotline_header]}" class="h-hotline flex items-center" title="Tel:{[hotline_header]}">
+                    <img src="theme/frontend/images/h-hotline.svg" class="w-12 h-12 object-contain mr-2" alt="hotline">
                     <p class="content">
-                        <span class="title block font-semibold text-[#028cde] 2xl:text-[1.125rem]">Hotline</span>
-                        <span class="phone font-bold text-[#f53632] 2xl:text-[1.125rem]">{[hotline]}</span>
+                        <span class="title block font-semibold text-[#028cde]">Hotline</span>
+                        <span class="phone font-bold text-[#f53632]">{[hotline_header]}</span>
                     </p>
                 </a>
-                <div class="flex flex-wrap gap-4 justify-end">
-                    <a href="{{VRoute::get('orderExaminationSchedule')}}" title="Đăng ký khám" class=" btn-red font-bold inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-2 px-4 rounded-3xl text-white bg-[#fb2317] transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
+                <div class="flex gap-4 justify-end">
+                    <a href="{{VRoute::get('orderExaminationSchedule')}}" title="Đăng ký khám" class=" btn-red shrink-0 font-bold inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-2 px-4 rounded-3xl text-white bg-[#fb2317] transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
                         <svg width="25" height="24" class="mr-1 shrink-0" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M13.0005 13.0005H16.5019" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                             <path d="M13.0005 13.0005H17.5024" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -59,7 +59,7 @@
                         </svg>
                         Tra cứu bệnh án
                     </a> -->
-                    <a href="jvascript:void(0)" title="Tra cứu bệnh án" onclick="MORE_FUNCTION.showModal(this);" data-modal="modal_look_up" class=" btn-blue font-bold inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-2 px-4 rounded-3xl text-white bg-[#028cde] transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
+                    <a href="jvascript:void(0)" title="Tra cứu bệnh án" onclick="MORE_FUNCTION.showModal(this);" data-modal="modal_look_up" class=" btn-blue shrink-0 font-bold inline-flex items-center justify-center lg:text-[0.875rem] uppercase py-2 px-4 rounded-3xl text-white bg-[#028cde] transition-all duration-300 shadow-[0_6px_8px_rgba(0,0,0,.17)]">
                         <svg width="24" height="24" class="mr-1 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M20.0037 8.99884V4.99717C20.0037 3.89214 19.1079 2.99634 18.0028 2.99634H4.99742C3.89239 2.99634 2.99658 3.89214 2.99658 4.99717V19.003C2.99658 20.108 3.89239 21.0038 4.99742 21.0038H9.9995" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                             <path d="M6.99805 6.99801H16.0018" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -83,7 +83,7 @@
             </div>
         </div>
     </div>
-    <div class="header-nav bg-[#028cde] header_over_flow_hidden">
+    <div class="header-nav bg-[#028cde]">
         <div class="container flex justify-between">
             <a href="{{\VRoute::get("home")}}" title="Trang chủ" class="go-home hidden lg:flex items-center justify-center text-white text-[1.875rem] w-[53px] lg:mr-10">
                 <i class="fa fa-home" aria-hidden="true"></i>
@@ -91,10 +91,11 @@
 
             <div class="menu">
                 <a href="{{\VRoute::get("home")}}" title="Trang chủ" class="logo-mobile block lg:hidden mb-6">
-                    <img src="{Ilogo.imgI}" alt="{Ilogo.altI}" title="{Ilogo.altI}">
+                    @include('image_loader.config.tiny',['config_key'=>'logo','noLazyLoad'=>1])
                 </a>
+
                 @php
-                    $menus = Support::getMenuRecursive(1);
+                $menus = Support::getMenuRecursive(1);
                 @endphp
                 {{Support::showMenuRecursive($menus,0)}}
                 <form action="{{VRoute::get('medicalRecordLookup')}}" method="GET" class="form relative mt-5 block lg:hidden">
